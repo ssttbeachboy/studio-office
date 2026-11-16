@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16 23:47",
+ "generated": "2026-11-16 23:50",
  "members": [
   {
    "id": "manager",
@@ -53,12 +53,12 @@
    "id": "gemini",
    "name": "Gemini",
    "role": "看影片・聽聲音",
-   "state": "idle",
-   "count": 2,
+   "state": "working",
+   "count": 3,
    "project": null,
    "last": {
-    "time": "2026-11-16 21:43",
-    "summary": "讀完 ref_01 The beauty of FUKUOKA：原片 13.5 秒、6 個固定鏡頭、底片感"
+    "time": "2026-11-16 23:50",
+    "summary": "讀全部素材 149 支（畫面＋聲音），主人核准預算約 US.7"
    }
   },
   {
@@ -89,6 +89,13 @@
  ],
  "reports": [],
  "events": [
+  {
+   "id": "20261116235053-a9b0",
+   "time": "2026-11-16 23:50",
+   "type": "start",
+   "by": "gemini",
+   "summary": "讀全部素材 149 支（畫面＋聲音），主人核准預算約 US.7"
+  },
   {
    "id": "20261116234748-09a5",
    "time": "2026-11-16 23:47",
