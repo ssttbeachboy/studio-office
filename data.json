@@ -1,0 +1,252 @@
+{
+ "generated": "2026-11-16 22:29",
+ "members": [
+  {
+   "id": "manager",
+   "name": "小主管",
+   "role": "企劃・腳本・分鏡・週報",
+   "state": "idle",
+   "count": 0,
+   "project": null,
+   "last": null
+  },
+  {
+   "id": "editor",
+   "name": "剪輯師",
+   "role": "FFmpeg 粗剪・各平台尺寸",
+   "state": "idle",
+   "count": 0,
+   "project": null,
+   "last": null
+  },
+  {
+   "id": "sound",
+   "name": "音控師",
+   "role": "降噪・響度・白噪音",
+   "state": "idle",
+   "count": 0,
+   "project": null,
+   "last": null
+  },
+  {
+   "id": "analyst",
+   "name": "數據分析師",
+   "role": "發佈數據・風格比較",
+   "state": "idle",
+   "count": 0,
+   "project": null,
+   "last": null
+  },
+  {
+   "id": "reviewer",
+   "name": "審稿員",
+   "role": "只挑 AI 感",
+   "state": "idle",
+   "count": 0,
+   "project": null,
+   "last": null
+  },
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "role": "看影片・聽聲音",
+   "state": "idle",
+   "count": 2,
+   "project": null,
+   "last": {
+    "time": "2026-11-16 21:43",
+    "summary": "讀完 ref_01 The beauty of FUKUOKA：原片 13.5 秒、6 個固定鏡頭、底片感"
+   }
+  },
+  {
+   "id": "main",
+   "name": "Claude 助理",
+   "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
+   "state": "idle",
+   "count": 9,
+   "project": null,
+   "last": {
+    "time": "2026-11-16 22:29",
+    "summary": "儀表板：拿掉機器人，改成成員起身走到對方桌前交棒；團隊對話可切換依時間／依作品"
+   }
+  }
+ ],
+ "pending": [
+  {
+   "id": "20261116200600-deec",
+   "time": "2026-11-16 20:06",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "summary": "請在 05_style/我的文字範本.md 貼上至少 10 則自己寫過的文字，審稿員才能判斷像不像你",
+   "files": [
+    "05_style/我的文字範本.md"
+   ]
+  },
+  {
+   "id": "20261116200500-7d82",
+   "time": "2026-11-16 20:05",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "summary": "請把素材放進 00_footage（video／audio／photo），小主管才能盤點"
+  }
+ ],
+ "reports": [],
+ "events": [
+  {
+   "id": "20261116222951-f3c7",
+   "time": "2026-11-16 22:29",
+   "type": "note",
+   "by": "main",
+   "summary": "儀表板：拿掉機器人，改成成員起身走到對方桌前交棒；團隊對話可切換依時間／依作品",
+   "files": [
+    "dashboard/index.html"
+   ]
+  },
+  {
+   "id": "20261116221616-b6bb",
+   "time": "2026-11-16 22:16",
+   "type": "note",
+   "by": "main",
+   "summary": "儀表板改版：成員頭像分頁、作品卡左右滑動、顯示交棒路線與最新交棒",
+   "files": [
+    "dashboard/index.html"
+   ]
+  },
+  {
+   "id": "20261116220627-b79d",
+   "time": "2026-11-16 22:06",
+   "type": "note",
+   "by": "main",
+   "summary": "儀表板加上每個作品的細部進度卡（目前步驟、負責人、審稿輪次）",
+   "files": [
+    "dashboard/index.html",
+    "tools/new_project.py"
+   ]
+  },
+  {
+   "id": "20261116215849-8663",
+   "time": "2026-11-16 21:58",
+   "type": "note",
+   "by": "main",
+   "summary": "建好像素辦公室儀表板與交棒紀錄機制，待設定 GitHub 發佈",
+   "files": [
+    "dashboard/index.html",
+    "tools/build_dashboard.py"
+   ]
+  },
+  {
+   "id": "20261116215000-d071",
+   "time": "2026-11-16 21:50",
+   "type": "note",
+   "by": "main",
+   "summary": "用抽圖核對 Gemini 報告：更正了第一版的錯誤，也抓到 Gemini 把「分享」誤讀成「收藏」",
+   "files": [
+    "01_reference/參考影片分析.md"
+   ]
+  },
+  {
+   "id": "20261116214300-d848",
+   "time": "2026-11-16 21:43",
+   "type": "handoff",
+   "by": "gemini",
+   "to": "main",
+   "summary": "讀完 ref_01 The beauty of FUKUOKA：原片 13.5 秒、6 個固定鏡頭、底片感",
+   "files": [
+    "_gemini/01_reference/ref_01.reference.md"
+   ]
+  },
+  {
+   "id": "20261116214100-07df",
+   "time": "2026-11-16 21:41",
+   "type": "handoff",
+   "by": "gemini",
+   "to": "main",
+   "summary": "讀完 ref_02 Sounds of Melbourne：23 個鏡頭、沒有配樂、剪接跟著聲音走",
+   "files": [
+    "_gemini/01_reference/ref_02.reference.md"
+   ]
+  },
+  {
+   "id": "20261116202000-12a6",
+   "time": "2026-11-16 20:20",
+   "type": "note",
+   "by": "main",
+   "summary": "（補登）讀完墨爾本七日遊行程網站，整理出可用的素材時刻",
+   "files": [
+    "01_reference/墨爾本七日遊_行程摘要.md"
+   ]
+  },
+  {
+   "id": "20261116200600-deec",
+   "time": "2026-11-16 20:06",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "summary": "請在 05_style/我的文字範本.md 貼上至少 10 則自己寫過的文字，審稿員才能判斷像不像你",
+   "files": [
+    "05_style/我的文字範本.md"
+   ]
+  },
+  {
+   "id": "20261116200500-7d82",
+   "time": "2026-11-16 20:05",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "summary": "請把素材放進 00_footage（video／audio／photo），小主管才能盤點"
+  },
+  {
+   "id": "20261116200000-898b",
+   "time": "2026-11-16 20:00",
+   "type": "note",
+   "by": "main",
+   "summary": "（補登）團隊成立：寫好 CLAUDE.md、五位成員設定檔、初版禁用詞清單",
+   "files": [
+    "CLAUDE.md",
+    "05_style/禁用詞清單.md"
+   ]
+  }
+ ],
+ "projects": [],
+ "status_order": [
+  "提案",
+  "製作中",
+  "審稿中",
+  "待核准",
+  "已核准",
+  "已發佈"
+ ],
+ "spend": {
+  "gemini_month_usd": 0.0376,
+  "gemini_total_usd": 0.0376,
+  "gemini_runs": 2,
+  "by_day": [
+   {
+    "day": "2026-11-16",
+    "usd": 0.0376
+   }
+  ],
+  "by_mode": {
+   "reference": 0.0376
+  },
+  "recent": [
+   {
+    "time": "2026-11-16 21:43",
+    "mode": "reference",
+    "source": "ref_01.MP4",
+    "seconds": "29.0",
+    "usd": 0.0197
+   },
+   {
+    "time": "2026-11-16 21:41",
+    "mode": "reference",
+    "source": "ref_02.MP4",
+    "seconds": "27.7",
+    "usd": 0.0179
+   }
+  ],
+  "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
+ }
+}

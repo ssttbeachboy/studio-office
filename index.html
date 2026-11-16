@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio Office</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#14121f; --panel:#1f1c30; --panel2:#2a2640; --line:#3d3758; --ink:#ece6d8; --dim:#9a93b3;
+  --gold:#f2c14e; --red:#e5534b; --green:#6cc070; --blue:#5aa9e6; --purple:#a97bd6; --teal:#3fb6a8;
+  --shadow:#0b0a12;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.px{font-family:"Press Start 2P",monospace;letter-spacing:.5px}
+.wrap{max-width:1180px;margin:0 auto;padding:16px}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 16px}
+header h1{font-size:18px;margin:0;color:var(--gold);text-shadow:3px 3px 0 var(--shadow)}
+header .meta{color:var(--dim);font-size:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button.pbtn{font:inherit;font-size:12px;color:var(--ink);background:var(--panel2);border:3px solid var(--line);box-shadow:3px 3px 0 var(--shadow);padding:5px 10px;cursor:pointer}
+button.pbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+.box{background:var(--panel);border:3px solid var(--line);box-shadow:5px 5px 0 var(--shadow);padding:14px;min-width:0}
+.box h2{font-family:"Press Start 2P",monospace;font-size:11px;color:var(--gold);margin:0 0 12px;display:flex;align-items:center;gap:8px;line-height:1.6}
+.box h2 small{font-family:-apple-system,"PingFang TC","Noto Sans TC",sans-serif;color:var(--dim);font-size:12px;font-weight:400}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat{background:var(--panel);border:3px solid var(--line);box-shadow:4px 4px 0 var(--shadow);padding:10px 12px;min-width:0}
+.stat .k{font-size:12px;color:var(--dim)}
+.stat .v{font-family:"Press Start 2P",monospace;font-size:16px;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stat .v.alert{color:var(--red)}
+.office-row{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;margin-bottom:16px}
+.office{position:relative;border:3px solid var(--line);box-shadow:5px 5px 0 var(--shadow);background:#000;line-height:0}
+.office canvas{width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer;display:block}
+.tag{position:absolute;transform:translate(-50%,0);font-size:11px;line-height:1.2;padding:2px 5px;background:rgba(20,18,31,.85);border:2px solid var(--line);color:var(--ink);white-space:nowrap;pointer-events:none}
+.tag.working{border-color:var(--green);color:var(--green)}
+.card .who{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.card img{width:48px;height:48px;image-rendering:pixelated;background:var(--panel2);border:2px solid var(--line)}
+.card .nm{font-weight:700;font-size:16px}
+.card .rl{color:var(--dim);font-size:12px}
+.pill{display:inline-block;font-size:11px;padding:1px 7px;border:2px solid var(--line);margin-right:4px}
+.pill.working{border-color:var(--green);color:var(--green)}
+.pill.idle{color:var(--dim)}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:16px}
+.item{border-left:4px solid var(--line);padding:6px 10px;margin-bottom:10px;background:var(--panel2)}
+.item.decision{border-color:var(--gold)}
+.item.request{border-color:var(--blue)}
+.item.report{border-color:var(--purple)}
+.item .t{font-size:11px;color:var(--dim)}
+.item .s{margin:2px 0}
+.opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.opt{font-size:12px;padding:2px 8px;border:2px dashed var(--gold);color:var(--gold)}
+.hint{font-size:12px;color:var(--dim);margin-top:4px}
+.files{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.file{font:11px/1.4 ui-monospace,Menlo,monospace;color:var(--teal);background:#16142a;padding:1px 6px;word-break:break-all}
+.empty{color:var(--dim);font-size:13px;padding:6px 0}
+.projects{display:flex;align-items:flex-start;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-color:var(--line) transparent}
+.pc{background:var(--panel2);border:3px solid var(--line);padding:12px;min-width:0;flex:0 0 320px;scroll-snap-align:start}
+.h2row{justify-content:space-between}
+.arrows{display:flex;gap:6px}.arrows .pbtn{padding:2px 8px;font-size:11px}
+.pc details{margin-top:6px}
+.pc summary{cursor:pointer;font-size:12px;color:var(--blue);list-style:none}
+.pc summary::-webkit-details-marker{display:none}
+.pc summary:before{content:"▸ ";}
+.pc details[open] summary:before{content:"▾ ";}
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:2px;margin:6px 0 2px;font-size:11px;color:var(--dim)}
+.chain img{width:20px;height:20px;image-rendering:pixelated;border:1px solid var(--line)}
+.chain .ar{color:var(--gold);margin:0 1px}
+.mtabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin:-4px 0 10px;border-bottom:2px dashed var(--line)}
+.mtab{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:2px solid transparent;padding:4px 3px;cursor:pointer;color:var(--dim);font:inherit;font-size:10px;position:relative}
+.mtab img{width:32px;height:32px;image-rendering:pixelated;border:2px solid var(--line)}
+.mtab.on{border-color:var(--gold);color:var(--gold)}
+.mtab .dot{position:absolute;top:2px;right:2px;width:8px;height:8px;background:var(--green);border:1px solid var(--shadow)}
+.relay{background:var(--panel);border:3px solid var(--line);border-top:0;box-shadow:5px 5px 0 var(--shadow);padding:8px 12px;font-size:13px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;min-height:44px}
+.relay .lb{font-family:"Press Start 2P",monospace;font-size:9px;color:var(--gold)}
+.relay img{width:22px;height:22px;image-rendering:pixelated;border:1px solid var(--line)}
+.relay .ar{color:var(--gold)}
+.seg{display:flex;gap:4px}.seg .chip{font-family:-apple-system,"PingFang TC",sans-serif;font-size:12px;padding:2px 8px}
+.fgroup{border:2px solid var(--line);margin-bottom:12px;background:#1a1729}
+.fgroup summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 10px;background:var(--panel2);font-size:13px}
+.fgroup summary::-webkit-details-marker{display:none}
+.fgroup summary:before{content:"▸";color:var(--gold)} .fgroup[open] summary:before{content:"▾"}
+.fgroup .fg-name{font-weight:700;word-break:break-all}
+.fgroup .fg-n{color:var(--dim);font-size:11px;margin-left:auto}
+.fgroup .msg{margin:10px 10px 10px 8px}
+.msg .to{display:inline-flex;align-items:center;gap:4px}
+.msg .to img{width:18px;height:18px;border-width:1px}
+.pc.hot{border-color:var(--gold)}
+.pc.doneall{opacity:.65}
+.pc .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.pc .pn{font-weight:700;font-size:15px;word-break:break-all}
+.pc .kind{font-size:11px;color:var(--dim)}
+.st{font-size:11px;padding:1px 7px;border:2px solid var(--line);white-space:nowrap}
+.st.s-待核准{border-color:var(--gold);color:var(--gold)} .st.s-已核准,.st.s-已發佈{border-color:var(--green);color:var(--green)}
+.st.s-審稿中{border-color:var(--purple);color:var(--purple)} .st.s-製作中{border-color:var(--blue);color:var(--blue)}
+.cur{margin:10px 0 8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cur .now{font-size:16px;font-weight:700;color:var(--gold)}
+.cur .by{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--dim)}
+.cur .by img{width:20px;height:20px;image-rendering:pixelated;border:1px solid var(--line)}
+.prog{display:flex;gap:3px;margin:6px 0 4px}
+.prog i{flex:1 1 0;height:12px;background:#3a3552;box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
+.prog i.done{background:var(--green)}
+.prog i.doing{background:var(--gold);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{background:#8a6f2a}}
+.steps{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12px;margin:6px 0 8px}
+.steps span.done{color:var(--green)} .steps span.doing{color:var(--gold);font-weight:700} .steps span.todo{color:#6d6788}
+.pmeta{display:flex;flex-wrap:wrap;gap:6px;font-size:11px;color:var(--dim);align-items:center}
+.plat{border:1px solid var(--line);padding:0 5px;color:var(--ink)}
+.pev{margin-top:8px;border-top:2px dashed var(--line);padding-top:6px;font-size:12px}
+.pev div{margin-bottom:3px} .pev .tm{color:var(--dim);font-size:11px;margin-right:4px}
+@media (prefers-reduced-motion:reduce){.prog i.doing{animation:none}}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{font-size:12px;padding:3px 9px;border:2px solid var(--line);background:var(--panel2);color:var(--ink);cursor:pointer}
+.chip.on{border-color:var(--gold);color:var(--gold)}
+.feed{max-height:560px;overflow:auto;padding-right:4px}
+.msg{display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;margin-bottom:12px}
+.msg img{width:36px;height:36px;image-rendering:pixelated;background:var(--panel2);border:2px solid var(--line)}
+.bubble{background:var(--panel2);border:2px solid var(--line);padding:6px 10px;position:relative;min-width:0}
+.bubble:before{content:"";position:absolute;left:-8px;top:10px;border:4px solid transparent;border-right:4px solid var(--line);border-top:4px solid var(--line)}
+.bubble .h{font-size:12px;color:var(--dim);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.bubble .h b{color:var(--ink)}
+.ty{font-size:10px;padding:0 5px;border:1px solid currentColor}
+.ty.start{color:var(--green)} .ty.handoff{color:var(--blue)} .ty.report{color:var(--purple)}
+.ty.decision{color:var(--gold)} .ty.request{color:var(--blue)} .ty.resolve{color:var(--teal)}
+.ty.approval{color:var(--green)} .ty.note{color:var(--dim)}
+.spend-top{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;margin-bottom:12px}
+.big{font-family:"Press Start 2P",monospace;font-size:20px;color:var(--green)}
+.bars{display:flex;align-items:flex-end;gap:4px;height:90px;border-bottom:3px solid var(--line);padding:0 2px;margin-bottom:6px;overflow:hidden}
+.bar{flex:1 1 0;min-width:6px;max-width:28px;background:var(--green);box-shadow:inset -3px 0 0 rgba(0,0,0,.25)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+td,th{padding:4px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--dim);font-weight:400}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tablewrap{overflow-x:auto}
+footer{color:var(--dim);font-size:12px;text-align:center;margin:24px 0 8px}
+.err{background:#3a1d22;border:3px solid var(--red);padding:12px;margin-bottom:16px;display:none}
+@media (max-width:900px){
+  .office-row,.grid2{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pc{flex-basis:86%}
+  .tag{font-size:9px;padding:1px 3px;border-width:1px}
+}
+@media (max-width:480px){ header h1{font-size:14px} .stat .v{font-size:13px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 class="px">STUDIO OFFICE</h1>
+    <div class="meta"><span id="gen">讀取中…</span><button class="pbtn" id="reload">重新整理</button></div>
+  </header>
+
+  <div class="err" id="err"></div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">等你決定／處理</div><div class="v" id="st-pending">–</div></div>
+    <div class="stat"><div class="k">工作中的成員</div><div class="v" id="st-working">–</div></div>
+    <div class="stat"><div class="k">進行中的作品</div><div class="v" id="st-proj">–</div></div>
+    <div class="stat"><div class="k">本月 Gemini 花費</div><div class="v" id="st-spend">–</div></div>
+  </div>
+
+  <div class="office-row">
+    <div>
+      <div class="office" id="office"><canvas id="cv" width="256" height="144" aria-label="像素辦公室"></canvas></div>
+      <div class="relay" id="relay"></div>
+    </div>
+    <div class="box card">
+      <div class="mtabs" id="mtabs" role="tablist"></div>
+      <div id="card"></div>
+    </div>
+  </div>
+
+  <div class="box" style="margin-bottom:16px">
+    <h2 class="h2row"><span>作品進度 <small id="proj-sum"></small></span>
+      <span class="arrows"><button class="pbtn" id="pprev" aria-label="上一個">◀</button><button class="pbtn" id="pnext" aria-label="下一個">▶</button></span></h2>
+    <div class="projects" id="board"></div>
+  </div>
+
+  <div class="grid2">
+    <div class="box">
+      <h2>等你決定 <small>請回到 Claude App 回覆</small></h2>
+      <div id="pending"></div>
+    </div>
+    <div class="box">
+      <h2>小主管報告</h2>
+      <div id="reports"></div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="box">
+      <h2 class="h2row"><span>團隊對話 <small>誰交了什麼給誰</small></span>
+        <span class="seg" id="feedmode"><button class="chip" data-m="time">依時間</button><button class="chip" data-m="project">依作品</button></span></h2>
+      <div class="filters" id="filters"></div>
+      <div class="feed" id="feed"></div>
+    </div>
+    <div class="box">
+      <h2>花費</h2>
+      <div id="spend"></div>
+    </div>
+  </div>
+
+  <footer>這個頁面只顯示進度，核准一律在 Claude App 進行。</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+const TWD = 32; // 約略匯率，只用於顯示
+const NAMES = {owner:"你", main:"Claude 助理", manager:"小主管", editor:"剪輯師", sound:"音控師", analyst:"數據分析師", reviewer:"審稿員", gemini:"Gemini"};
+const TYPE_LABEL = {start:"開始", handoff:"交棒", report:"報告", decision:"待決定", request:"待處理", resolve:"已決定", approval:"核准", note:"紀錄"};
+
+/* ---------------- pixel art ---------------- */
+const PAL = {
+  wall:"#3b3357", wall2:"#332c4c", trim:"#5b4e7e", floorA:"#4a3f35", floorB:"#433930", rug:"#5c2f3f", rug2:"#6e3a4c",
+  win:"#0f1a33", winFrame:"#1d1a2b", sky1:"#1b2547", bld:"#0b1022", lit:"#f2c14e", lit2:"#ffe8a3",
+  deskTop:"#b07a4a", deskFront:"#7d5333", deskDark:"#5a3b25", mon:"#1a1826", stand:"#2e2a3f",
+  skin:"#f1c39b", skin2:"#d9a57c", eye:"#2a1e1a", mouth:"#b5564e", K:"#1a1826", plant:"#4f9a52", plant2:"#357a3c", pot:"#b5654a",
+  white:"#ece6d8", grey:"#a7a3b8", cyan:"#68e0e6", red:"#e5534b", gold:"#f2c14e"
+};
+const PEOPLE = {
+  manager: {hair:"#3a2a22", shirt:"#2f4a7a", x:14,  y:54, screen:"doc"},
+  editor:  {hair:"#2a2230", shirt:"#3f8a55", x:74,  y:54, screen:"film", hat:"#e0823d"},
+  sound:   {hair:"#15121c", shirt:"#7a4fa8", x:134, y:54, screen:"wave", phones:true},
+  analyst: {hair:"#c9a052", shirt:"#2f8f86", x:194, y:54, screen:"chart"},
+  reviewer:{hair:"#8a8598", shirt:"#8a3046", x:44,  y:88, screen:"text", glasses:true}
+};
+const GEMINI = {x:104, y:88};
+const HEAD = [
+"..HHHHHH..",
+".HHHHHHHH.",
+".HSSSSSSH.",
+".SSESSESS.",
+".SSSSSSSS.",
+"..SSMMSS..",
+"...SSSS...",
+".CCCCCCCC.",
+"CCCCCCCCCC",
+"CCCCCCCCCC",
+"CCCCCCCCCC",
+"CCCCCCCCCC"];
+const DIGITS = {"0":["111","101","101","101","111"],"1":["010","110","010","010","111"],"2":["111","001","111","100","111"],"3":["111","001","111","001","111"],"4":["101","101","111","001","001"],"5":["111","100","111","001","111"],"6":["111","100","111","101","111"],"7":["111","001","010","010","010"],"8":["111","101","111","101","111"],"9":["111","101","111","001","111"],":":["0","1","0","1","0"]};
+
+function R(c,x,y,w,h,col){c.fillStyle=col;c.fillRect(x|0,y|0,w,h);}
+function text3x5(c,str,x,y,col){let cx=x;for(const ch of str){const g=DIGITS[ch];if(!g){cx+=4;continue;}g.forEach((row,ry)=>{[...row].forEach((b,rx)=>{if(b==="1")R(c,cx+rx,y+ry,1,1,col);});});cx+=g[0].length+1;}}
+
+function drawPerson(c,id,x,y,frame,working){
+  const p=PEOPLE[id]; const bob=(working&&frame%2)?1:0;
+  const map={H:p.hair,S:PAL.skin,E:PAL.eye,M:PAL.mouth,C:p.shirt};
+  HEAD.forEach((row,ry)=>{[...row].forEach((ch,rx)=>{ if(ch!==".") R(c,x+rx,y+ry+(ry<7?bob:0),1,1,map[ch]); });});
+  const yy=y+bob;
+  if(p.hat){R(c,x+1,yy-1,8,2,p.hat);R(c,x+1,yy+1,8,1,p.hat);R(c,x+4,yy-2,2,1,PAL.white);}
+  if(p.phones){R(c,x+2,yy-1,6,1,PAL.K);R(c,x+1,yy,1,1,PAL.K);R(c,x+8,yy,1,1,PAL.K);R(c,x,yy+2,2,3,PAL.K);R(c,x+8,yy+2,2,3,PAL.K);R(c,x,yy+3,1,1,PAL.red);R(c,x+9,yy+3,1,1,PAL.red);}
+  if(p.glasses){R(c,x+2,yy+3,3,1,PAL.K);R(c,x+5,yy+3,3,1,PAL.K);R(c,x+3,yy+3,1,1,PAL.white);R(c,x+6,yy+3,1,1,PAL.white);}
+  if(id==="manager"){R(c,x+4,y+8,2,1,PAL.red);R(c,x+4,y+9,2,2,"#b8403a");R(c,x+2,y+7,1,1,PAL.white);R(c,x+7,y+7,1,1,PAL.white);}
+  if(id==="analyst"){R(c,x+1,y+7,1,4,"#256f68");R(c,x+8,y+7,1,4,"#256f68");}
+}
+function drawDesk(c,x,y){
+  R(c,x-2,y+10,32,3,PAL.deskTop); R(c,x-2,y+13,32,9,PAL.deskFront);
+  R(c,x-2,y+13,32,1,PAL.deskDark); R(c,x+1,y+15,10,5,PAL.deskDark); R(c,x+2,y+16,8,1,PAL.deskTop);
+}
+function drawHands(c,x,y,frame,working){
+  const o=working?(frame%2):0;
+  R(c,x+1+o,y+10,2,1,PAL.skin); R(c,x+7-o,y+10,2,1,PAL.skin);
+}
+function drawMonitor(c,x,y,kind,frame,working){
+  const mx=x+17,my=y+1;
+  R(c,mx,my,11,8,PAL.mon); R(c,mx+4,my+8,3,1,PAL.stand); R(c,mx+2,my+9,7,1,PAL.stand);
+  const sx=mx+1,sy=my+1,sw=9,sh=6;
+  if(!working){R(c,sx,sy,sw,sh,"#22203a");R(c,sx+1,sy+1,2,1,"#34315a");return;}
+  R(c,sx,sy,sw,sh,"#101828");
+  if(kind==="doc"){R(c,sx,sy,sw,sh,"#dfe6f0");for(let i=0;i<3;i++)R(c,sx+1,sy+1+i*2,((frame+i)%3)+4,1,"#5a6a86");}
+  if(kind==="film"){const cols=["#e5534b","#f2c14e","#5aa9e6","#6cc070"];for(let i=0;i<3;i++)R(c,sx+i*3,sy+1,2,4,cols[(i+frame)%4]);R(c,sx,sy,sw,1,"#000");R(c,sx,sy+5,sw,1,"#000");}
+  if(kind==="wave"){for(let i=0;i<sw;i++){const h=1+((i*7+frame*3)%5);R(c,sx+i,sy+3-(h>>1),1,h,"#a97bd6");}}
+  if(kind==="chart"){const hs=[2,4,3,5];hs.forEach((h,i)=>{const hh=Math.min(5,h+((frame+i)%2));R(c,sx+1+i*2,sy+sh-hh,1,hh,"#3fb6a8");});}
+  if(kind==="text"){R(c,sx,sy,sw,sh,"#ece6d8");for(let i=0;i<3;i++)R(c,sx+1,sy+1+i*2,7,1,"#777");R(c,sx+2+(frame%4),sy+1+((frame>>1)%3)*2,3,1,"#e5534b");}
+}
+function drawBubble(c,x,y,frame,kind){
+  R(c,x,y,11,7,PAL.white); R(c,x+1,y+7,2,1,PAL.white); R(c,x+1,y+8,1,1,PAL.white);
+  if(kind==="dots"){for(let i=0;i<3;i++) if(i<=frame%4) R(c,x+2+i*3,y+3,2,2,PAL.K);}
+  else if(kind==="doc"){R(c,x+3,y+1,5,5,"#c9c2dc");R(c,x+4,y+2,3,1,"#5a5078");R(c,x+4,y+4,3,1,"#5a5078");}
+  else {R(c,x+5,y+1,1,4,PAL.red);R(c,x+5,y+5,1,1,PAL.red);}
+}
+function drawGemini(c,frame,working){
+  const {x,y}=GEMINI;
+  R(c,x-2,y+10,32,3,PAL.deskTop); R(c,x-2,y+13,32,9,PAL.deskFront); R(c,x-2,y+13,32,1,PAL.deskDark);
+  R(c,x+4,y-2,20,13,"#2c2944"); R(c,x+5,y-1,18,11,"#0d1020");
+  const s = working?(frame%4):1; const cx=x+14, cy=y+4; const col = working?PAL.cyan:"#3d5a77";
+  R(c,cx,cy-2-s%2,1,5+2*(s%2),col); R(c,cx-2-s%2,cy,5+2*(s%2),1,col); R(c,cx-1,cy-1,3,3,col);
+  for(let i=0;i<4;i++) R(c,x+6+i*4,y+12,2,1,(working&&(frame+i)%2)?PAL.green:"#304030");
+}
+/* 每位成員桌前的站位（腳的位置）。main＝左側門口，owner＝牆上的待決信箱下方 */
+const SPOT={manager:[28,82],editor:[88,82],sound:[148,82],analyst:[196,82],reviewer:[58,117],gemini:[118,117],main:[14,117],owner:[222,82]};
+const AISLE=92;
+function along(pts,f){
+  const seg=[];let tot=0; for(let i=1;i<pts.length;i++){const l=Math.abs(pts[i][0]-pts[i-1][0])+Math.abs(pts[i][1]-pts[i-1][1]);seg.push(l);tot+=l;}
+  let d=f*tot; for(let i=0;i<seg.length;i++){ if(d<=seg[i]||i===seg.length-1){const p=seg[i]?Math.min(1,d/seg[i]):1; const a=pts[i],b=pts[i+1]; return [a[0]+(b[0]-a[0])*p, a[1]+(b[1]-a[1])*p, Math.sign(b[0]-a[0])||1]; } d-=seg[i]; }
+  return [pts[pts.length-1][0],pts[pts.length-1][1],1];
+}
+/* 成員起身走到對方桌前交棒：輪流播放最近 3 次交棒，每次 12 秒 */
+const CYCLE=12;
+function drawWalker(c,id,fx,fy,frame,dir,moving,carry){
+  const p=PEOPLE[id], x=Math.round(fx)-5, y=Math.round(fy)-16;
+  const map={H:p.hair,S:PAL.skin,E:PAL.eye,M:PAL.mouth,C:p.shirt};
+  HEAD.slice(0,7).forEach((row,ry)=>{[...row].forEach((ch,rx)=>{ if(ch!==".") R(c,x+rx,y+ry,1,1,map[ch]); });});
+  if(p.hat){R(c,x+1,y-1,8,2,p.hat);R(c,x+1,y+1,8,1,p.hat);}
+  if(p.phones){R(c,x+2,y-1,6,1,PAL.K);R(c,x,y+2,2,3,PAL.K);R(c,x+8,y+2,2,3,PAL.K);}
+  if(p.glasses){R(c,x+2,y+3,3,1,PAL.K);R(c,x+5,y+3,3,1,PAL.K);}
+  R(c,x+1,y+7,8,5,p.shirt);
+  const sw=moving?(frame%2):0;                                   // 手臂擺動
+  R(c,x,y+7+sw,1,4,p.shirt); R(c,x+9,y+8-sw,1,4,p.shirt); R(c,x,y+11+sw,1,1,PAL.skin); R(c,x+9,y+12-sw,1,1,PAL.skin);
+  if(id==="manager"){R(c,x+4,y+7,2,4,PAL.red);}
+  R(c,x+2,y+12,6,2,"#2c2a40");                                  // 褲子與腳
+  if(moving&&frame%2){R(c,x+2,y+14,2,1,"#2c2a40");R(c,x+6,y+14,2,2,"#2c2a40");R(c,x+1,y+15,3,1,PAL.K);R(c,x+6,y+16,3,1,PAL.K);}
+  else {R(c,x+2,y+14,2,2,"#2c2a40");R(c,x+6,y+14,2,2,"#2c2a40");R(c,x+1,y+16,3,1,PAL.K);R(c,x+6,y+16,3,1,PAL.K);}
+  if(carry){const ex=dir>0?x+10:x-4; R(c,ex,y+9,4,5,PAL.white); R(c,ex+1,y+10,2,1,"#7a7390"); R(c,ex+1,y+12,2,1,"#7a7390");}
+}
+function relayList(){
+  if(!DATA) return [];
+  return DATA.events.filter(e=>e.to&&e.by!==e.to&&SPOT[e.by]&&SPOT[e.to]&&(PEOPLE[e.by]||PEOPLE[e.to])
+    &&["handoff","report","decision","request","resolve"].includes(e.type)).slice(0,3);
+}
+function walkerFor(rel,t){
+  if(!rel) return null;
+  const id=PEOPLE[rel.by]?rel.by:rel.to, other=id===rel.by?rel.to:rel.by;
+  const A=SPOT[id], B=[SPOT[other][0]+(PEOPLE[other]?10:0), SPOT[other][1]];
+  const pts=[A,[AISLE,A[1]],[AISLE,B[1]],B], cyc=(t/1000)%CYCLE;
+  let f,phase; if(cyc<4){f=cyc/4;phase="go";} else if(cyc<7){f=1;phase="talk";} else if(cyc<11){f=1-(cyc-7)/4;phase="back";} else {return null;}
+  let [x,y,dir]=along(pts,f); if(phase==="back") dir=-dir;
+  return {id,other,x,y,dir,phase,carry:phase==="go"&&id===rel.by};
+}
+function drawRoom(c,frame,pending){
+  R(c,0,0,256,50,PAL.wall); for(let x=0;x<256;x+=16) R(c,x,0,1,50,PAL.wall2);
+  R(c,0,48,256,3,PAL.trim);
+  for(let y=51;y<144;y+=8) for(let x=0;x<256;x+=8) R(c,x,y,8,8,((x+y)/8)%2?PAL.floorA:PAL.floorB);
+  R(c,70,118,120,20,PAL.rug); R(c,72,120,116,16,PAL.rug2); R(c,74,122,112,12,PAL.rug);
+  [[10,8],[58,8]].forEach(([wx,wy])=>{
+    R(c,wx-2,wy-2,44,32,PAL.winFrame); R(c,wx,wy,40,28,PAL.sky1);
+    const blds=[[0,14,7],[7,8,6],[13,18,8],[21,10,5],[26,4,8],[34,12,6]];
+    blds.forEach(([bx,bh,bw],i)=>{R(c,wx+bx,wy+28-bh-6,bw,bh+6,PAL.bld);
+      for(let yy=wy+28-bh-4;yy<wy+26;yy+=3) for(let xx=wx+bx+1;xx<wx+bx+bw-1;xx+=2){ if(((xx*13+yy*7+i)%5)===0) R(c,xx,yy,1,1,((xx+yy+(frame>>3))%7===0)?PAL.lit2:PAL.lit);} });
+    R(c,wx+19,wy,2,28,PAL.winFrame); R(c,wx,wy+13,40,1,PAL.winFrame);
+  });
+  R(c,112,10,34,12,"#16142a"); R(c,113,11,32,10,"#0b0a12");
+  const d=new Date(); const hh=String(d.getHours()).padStart(2,"0"), mm=String(d.getMinutes()).padStart(2,"0");
+  text3x5(c,hh,118,13,PAL.red); text3x5(c,mm,128,13,PAL.red);
+  const colon=(frame%4<2)?PAL.red:"#3a1414"; R(c,126,14,1,1,colon); R(c,126,16,1,1,colon);
+  R(c,160,6,28,30,"#e9e2cf"); R(c,162,8,24,4,PAL.red); for(let i=0;i<4;i++) R(c,163,15+i*4,18-(i%2)*6,1,"#7a7390"); R(c,183,30,3,3,PAL.gold);
+  R(c,206,12,34,26,"#6b4a2d"); R(c,208,14,30,22,"#8a6038"); R(c,210,16,26,10,"#2a1e14");
+  const n=Math.min(99,pending||0); const ns=String(n); text3x5(c,ns,223-ns.length*2,19,n?PAL.gold:"#5a4a3a");
+  R(c,212,29,22,2,PAL.gold); if(n&&frame%2) R(c,236,12,3,3,PAL.red);
+  R(c,236,74,12,12,PAL.pot); R(c,238,86,8,2,"#8a4a36"); R(c,233,60,6,8,PAL.plant); R(c,241,56,7,10,PAL.plant2); R(c,237,52,5,10,PAL.plant);
+  R(c,176,84,14,26,"#c9d6e6"); R(c,178,78,10,8,"#7fb6e6"); R(c,179,79,8,3,"#a9d4f5"); R(c,180,94,6,4,"#5a6a86");
+  R(c,200,86,30,24,"#3a3350"); R(c,202,88,26,3,"#5a5078"); R(c,202,94,26,3,"#5a5078"); R(c,202,100,26,3,"#5a5078");
+}
+
+const cv=document.getElementById("cv"), ctx=cv.getContext("2d");
+let DATA=null, frame=0, tick=0, selected="manager", RELAY_IDX=null;
+const HIT={};
+Object.entries(PEOPLE).forEach(([id,p])=>HIT[id]=[p.x-2,p.y-3,32,25]);
+HIT.gemini=[GEMINI.x-2,GEMINI.y-3,32,25];
+
+function memberState(id){ if(!DATA) return "idle"; const m=DATA.members.find(m=>m.id===id); return m?m.state:"idle"; }
+function recent(id){ if(!DATA) return false; const m=DATA.members.find(m=>m.id===id); if(!m||!m.last) return false; return (Date.now()-new Date(m.last.time.replace(" ","T")).getTime())<24*3600e3; }
+
+function render(t){
+  tick=t||0; frame=Math.floor(tick/300);
+  drawRoom(ctx,frame,DATA?DATA.pending.length:0);
+  const rels=relayList(), ri=rels.length?Math.floor(tick/1000/CYCLE)%rels.length:-1;
+  if(ri!==RELAY_IDX){RELAY_IDX=ri; showRelay(rels[ri]);}
+  const wk=walkerFor(rels[ri],tick);
+  Object.keys(PEOPLE).forEach(id=>{
+    const p=PEOPLE[id], w=memberState(id)==="working", away=wk&&wk.id===id;
+    if(!away) drawPerson(ctx,id,p.x+3,p.y,frame,w);
+    drawDesk(ctx,p.x,p.y); if(!away) drawHands(ctx,p.x+3,p.y,frame,w); drawMonitor(ctx,p.x,p.y,p.screen,frame,w&&!away);
+    if(id==="reviewer") {R(ctx,p.x+24,p.y+11,4,1,PAL.red);}
+    if(!away){ if(wk&&wk.phase==="talk"&&wk.other===id&&(frame>>2)%2) drawBubble(ctx,p.x+12,p.y-10,frame,"dots");
+      else if(w) drawBubble(ctx,p.x+12,p.y-10,frame,"dots"); else if(recent(id)&&!wk) drawBubble(ctx,p.x+12,p.y-10,frame,"bang"); }
+    if(selected===id){R(ctx,p.x-3,p.y+23,34,1,PAL.gold);}
+  });
+  const gw=memberState("gemini")==="working"; drawGemini(ctx,frame,gw);
+  if(gw) drawBubble(ctx,GEMINI.x+27,GEMINI.y-3,frame,"dots"); else if(recent("gemini")) drawBubble(ctx,GEMINI.x+27,GEMINI.y-3,frame,"bang");
+  if(selected==="gemini") R(ctx,GEMINI.x-3,GEMINI.y+23,34,1,PAL.gold);
+  R(ctx,4,96,14,22,"#2a2238"); R(ctx,5,97,12,21,"#5a4632"); R(ctx,14,107,2,2,PAL.gold);   // 左側門口（Claude 助理所在）
+  if(wk){ drawWalker(ctx,wk.id,wk.x,wk.y,frame,wk.dir,wk.phase!=="talk",wk.carry);
+    if(wk.phase==="talk"&&!((frame>>2)%2)) drawBubble(ctx,Math.round(wk.x)-2,Math.round(wk.y)-28,frame,"doc"); }
+  requestAnimationFrame(render);
+}
+
+function placeTags(){
+  const office=document.getElementById("office");
+  office.querySelectorAll(".tag").forEach(n=>n.remove());
+  const add=(id,x,y)=>{const s=document.createElement("span");s.className="tag"+(memberState(id)==="working"?" working":"");s.textContent=NAMES[id];s.style.left=(x/256*100)+"%";s.style.top=(y/144*100)+"%";office.appendChild(s);};
+  Object.entries(PEOPLE).forEach(([id,p])=>add(id,p.x+14,p.y+23));
+  add("gemini",GEMINI.x+14,GEMINI.y+23);
+  const s=document.createElement("span");s.className="tag";s.textContent="待決信箱";s.style.left=(223/256*100)+"%";s.style.top=(39/144*100)+"%";office.appendChild(s);
+}
+
+cv.addEventListener("click",e=>{
+  const r=cv.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width*256, y=(e.clientY-r.top)/r.height*144;
+  for(const [id,[hx,hy,hw,hh]] of Object.entries(HIT)){ if(x>=hx&&x<=hx+hw&&y>=hy&&y<=hy+hh){ selected=id; renderCard(); return; } }
+  if(x>=206&&x<=240&&y>=12&&y<=38) document.getElementById("pending").scrollIntoView({behavior:"smooth",block:"center"});
+});
+
+/* avatars */
+const AV={};
+function avatar(id){
+  if(AV[id]) return AV[id];
+  const c=document.createElement("canvas"); c.width=16; c.height=16; const g=c.getContext("2d");
+  g.fillStyle="#2a2640"; g.fillRect(0,0,16,16);
+  if(PEOPLE[id]) drawPerson(g,id,3,3,0,false);
+  else if(id==="gemini"){R(g,7,3,2,10,PAL.cyan);R(g,3,7,10,2,PAL.cyan);R(g,6,6,4,4,PAL.cyan);}
+  else if(id==="main"){R(g,2,3,12,8,"#e0823d");R(g,4,11,3,2,"#e0823d");R(g,4,6,2,2,PAL.white);R(g,7,6,2,2,PAL.white);R(g,10,6,2,2,PAL.white);}
+  else {R(g,4,3,8,3,PAL.gold);R(g,4,6,8,6,PAL.skin);R(g,6,8,1,1,PAL.eye);R(g,9,8,1,1,PAL.eye);R(g,3,12,10,4,"#e0823d");}
+  AV[id]=c.toDataURL(); return AV[id];
+}
+
+/* ---------------- content ---------------- */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+const files=f=>f&&f.length?`<div class="files">${f.map(x=>`<span class="file">${esc(x)}</span>`).join("")}</div>`:"";
+const usd=v=>"$"+Number(v||0).toFixed(2);
+const twd=v=>"約 NT$"+Math.round(Number(v||0)*TWD);
+
+function renderTabs(){
+  if(!DATA) return;
+  $("mtabs").innerHTML=DATA.members.map(m=>`<button class="mtab${m.id===selected?" on":""}" role="tab" aria-selected="${m.id===selected}" data-id="${m.id}"><img alt="" src="${avatar(m.id)}">${esc(m.name.replace("Claude ",""))}${m.state==="working"?'<span class="dot" title="工作中"></span>':""}</button>`).join("");
+  $("mtabs").querySelectorAll(".mtab").forEach(b=>b.onclick=()=>{selected=b.dataset.id;renderCard();});
+}
+function renderCard(){
+  renderTabs();
+  const id=selected, m=DATA&&DATA.members.find(x=>x.id===id);
+  if(!m){$("card").innerHTML='<div class="empty">選一位成員，看他最近在做什麼。</div>';return;}
+  const evs=DATA.events.filter(e=>e.by===id||e.to===id).slice(0,4);
+  $("card").innerHTML=`<div class="who"><img alt="" src="${avatar(id)}"><div><div class="nm">${esc(m.name)}</div><div class="rl">${esc(m.role)}</div></div></div>
+   <div style="margin-bottom:10px"><span class="pill ${m.state}">${m.state==="working"?"工作中":"待命"}</span><span class="pill">${m.count} 筆紀錄</span></div>
+   ${m.last?`<div class="item" style="border-color:var(--gold)"><div class="t">最近在做・${esc(m.last.time)}</div><div class="s">${esc(m.last.summary)}</div></div>`:""}
+   ${m.project?`<div class="item" style="border-color:var(--green)"><div class="t">正在做</div><div class="s">${esc(m.project)}</div></div>`:""}
+   ${evs.length?`<div class="hint" style="margin:8px 0 6px">和其他人的往來</div>`+evs.map(e=>`<div class="item ${e.type}"><div class="t">${esc(e.time)}・${TYPE_LABEL[e.type]||e.type}・${e.by===id?(e.to?"交給 "+esc(NAMES[e.to]||e.to):"自己"):"來自 "+esc(NAMES[e.by]||e.by)}</div><div class="s">${esc(e.summary)}</div>${files(e.files)}</div>`).join(""):'<div class="empty">還沒有紀錄。</div>'}`;
+}
+
+function renderAll(){
+  const d=DATA;
+  $("gen").textContent="資料更新："+d.generated;
+  $("st-pending").textContent=d.pending.length; $("st-pending").classList.toggle("alert",d.pending.length>0);
+  $("st-working").textContent=d.members.filter(m=>m.state==="working").length+" / "+d.members.length;
+  $("st-proj").textContent=d.projects.filter(p=>p.status!=="已發佈").length;
+  $("st-spend").textContent=usd(d.spend.gemini_month_usd);
+
+  $("pending").innerHTML=d.pending.length?d.pending.map(e=>`<div class="item ${e.type}">
+     <div class="t">${esc(e.time)}・${esc(NAMES[e.by]||e.by)}・${TYPE_LABEL[e.type]}</div>
+     <div class="s">${esc(e.summary)}</div>
+     ${e.options?`<div class="opts">${e.options.map(o=>`<span class="opt">${esc(o)}</span>`).join("")}</div>`:""}
+     ${files(e.files)}</div>`).join("")+'<div class="hint">要決定或核准，請回到 Claude App 告訴 Claude 助理。這個頁面不能操作。</div>'
+     :'<div class="empty">目前沒有要你決定的事。</div>';
+
+  $("reports").innerHTML=d.reports.length?d.reports.map(e=>`<div class="item report"><div class="t">${esc(e.time)}・${TYPE_LABEL[e.type]}</div><div class="s">${esc(e.summary)}</div>${files(e.files)}</div>`).join("")
+     :'<div class="empty">小主管還沒有交報告。素材放進 00_footage 後，第一份會是素材盤點與方向提案。</div>';
+
+  const cnt={}; d.projects.forEach(p=>cnt[p.status]=(cnt[p.status]||0)+1);
+  $("proj-sum").textContent=d.status_order.filter(s=>cnt[s]).map(s=>s+" "+cnt[s]).join("・");
+  $("board").innerHTML=d.projects.length?d.projects.map(p=>{
+     const total=p.steps.length||1;
+     const ownerId=Object.keys(NAMES).find(k=>k===p.owner||NAMES[k]===p.owner);
+     return `<div class="pc ${p.status==="待核准"?"hot":""} ${p.status==="已發佈"?"doneall":""}">
+       <div class="top"><div><div class="pn">${esc(p.name)}</div><div class="kind">${esc(p.kind||"")}</div></div><span class="st s-${esc(p.status)}">${esc(p.status)}</span></div>
+       <div class="cur"><span class="now">${esc(p.current||"—")}</span>${ownerId?`<span class="by"><img alt="" src="${avatar(ownerId)}">${esc(NAMES[ownerId])}</span>`:""}</div>
+       ${p.steps.length?`<div class="prog" aria-label="完成 ${p.done} / ${total} 步">${p.steps.map(s=>`<i class="${s.state}" title="${esc(s.label)}"></i>`).join("")}</div>
+       <div class="pmeta"><span>完成 ${p.done} / ${total} 步</span>${p.updated?`<span>・更新 ${esc(p.updated.slice(5))}</span>`:""}</div>`:'<div class="empty">status.md 還沒有進度清單。</div>'}
+       ${chain(p.events)}
+       <details><summary>細節</summary>
+         <div class="steps">${p.steps.map(s=>`<span class="${s.state}">${s.state==="done"?"✓":s.state==="doing"?"▶":"・"} ${esc(s.label)}</span>`).join("")}</div>
+         <div class="pmeta">${p.platforms.map(x=>`<span class="plat">${esc(x)}</span>`).join("")}${p.videos?`<span>影片 ${p.videos} 支</span>`:""}</div>
+         ${p.events.length?`<div class="pev">${p.events.slice(0,4).map(e=>`<div><span class="tm">${esc(e.time.slice(5))}</span>${esc(NAMES[e.by]||e.by)}${e.to?" → "+esc(NAMES[e.to]||e.to):""}：${esc(e.summary)}</div>`).join("")}</div>`:'<div class="hint">還沒有交棒紀錄。</div>'}
+       </details>
+     </div>`;}).join("")
+     :'<div class="empty">還沒有作品。小主管的方向經你核准後，會用 tools/new-project 開作品資料夾，這裡就會出現進度卡。</div>';
+
+  const who=["all",...new Set(d.events.flatMap(e=>[e.by,e.to]).filter(Boolean))];
+  $("filters").innerHTML=who.map(w=>`<button class="chip${w===feedFilter?" on":""}" data-w="${w}">${w==="all"?"全部":esc(NAMES[w]||w)}</button>`).join("");
+  $("filters").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{feedFilter=b.dataset.w;try{localStorage.setItem("feedFilter",feedFilter);}catch(e){}renderAll();});
+  document.querySelectorAll("#feedmode button").forEach(b=>{b.classList.toggle("on",b.dataset.m===feedMode);b.onclick=()=>{feedMode=b.dataset.m;try{localStorage.setItem("feedMode",feedMode);}catch(e){}renderAll();};});
+  const evs=d.events.filter(e=>feedFilter==="all"||e.by===feedFilter||e.to===feedFilter);
+  const msg=(e,showProj)=>`<div class="msg"><img alt="" src="${avatar(e.by)}"><div class="bubble">
+     <div class="h"><b>${esc(NAMES[e.by]||e.by)}</b>${e.to?`<span class="to">→ <img alt="" src="${avatar(e.to)}"><b>${esc(NAMES[e.to]||e.to)}</b></span>`:""}<span class="ty ${e.type}">${TYPE_LABEL[e.type]||e.type}</span><span>${esc(e.time)}</span></div>
+     <div class="s">${esc(e.summary)}</div>${e.options?`<div class="opts">${e.options.map(o=>`<span class="opt">${esc(o)}</span>`).join("")}</div>`:""}${files(e.files)}${showProj&&e.project?`<div class="t" style="color:var(--dim);font-size:11px">作品：${esc(e.project)}</div>`:""}</div></div>`;
+  if(!evs.length){ $("feed").innerHTML='<div class="empty">還沒有紀錄。</div>'; }
+  else if(feedMode==="time"){ $("feed").innerHTML=evs.map(e=>msg(e,true)).join(""); }
+  else {
+    const groups=new Map();                                   // evs 已是新到舊，第一次出現的作品＝最近有動態的
+    evs.forEach(e=>{const k=e.project||"";if(!groups.has(k))groups.set(k,[]);groups.get(k).push(e);});
+    const keys=[...groups.keys()].filter(k=>k).concat(groups.has("")?[""]:[]);
+    $("feed").innerHTML=keys.map(k=>{const p=d.projects.find(x=>x.name===k), list=groups.get(k);
+      return `<details class="fgroup" open><summary><span class="fg-name">${k?esc(k):"其他（沒有指定作品）"}</span>${p?`<span class="st s-${esc(p.status)}">${esc(p.current||p.status)}</span>`:""}<span class="fg-n">${list.length} 則・最近 ${esc(list[0].time.slice(5))}</span></summary>${list.map(e=>msg(e,false)).join("")}</details>`;}).join("");
+  }
+
+  const s=d.spend, maxv=Math.max(0.0001,...s.by_day.map(x=>x.usd));
+  $("spend").innerHTML=`<div class="spend-top"><div><div class="hint">本月 Gemini</div><div class="big">${usd(s.gemini_month_usd)}</div><div class="hint">${twd(s.gemini_month_usd)}</div></div>
+     <div><div class="hint">累計</div><div class="px" style="font-size:13px">${usd(s.gemini_total_usd)}</div><div class="hint">${s.gemini_runs} 次讀片</div></div></div>
+     <div class="hint">本月每日花費</div>
+     <div class="bars">${s.by_day.length?s.by_day.map(x=>`<div class="bar" title="${esc(x.day)}：${usd(x.usd)}" style="height:${Math.max(4,x.usd/maxv*100)}%"></div>`).join(""):'<div class="empty">本月還沒有花費。</div>'}</div>
+     <div class="tablewrap"><table><thead><tr><th>時間</th><th>影片</th><th>模式</th><th class="num">秒</th><th class="num">USD</th></tr></thead><tbody>
+     ${s.recent.map(r=>`<tr><td>${esc(r.time.slice(5))}</td><td>${esc(r.source)}</td><td>${esc(r.mode)}</td><td class="num">${esc(r.seconds)}</td><td class="num">${Number(r.usd).toFixed(3)}</td></tr>`).join("")||'<tr><td colspan="5" class="empty">還沒有紀錄。</td></tr>'}
+     </tbody></table></div><div class="hint">${esc(s.note)}</div>`;
+
+  RELAY_IDX=null;
+  placeTags(); renderCard();
+}
+function showRelay(r){
+  $("relay").innerHTML=r?`<span class="lb">交棒中</span><img alt="" src="${avatar(r.by)}">${esc(NAMES[r.by]||r.by)}<span class="ar">→</span><img alt="" src="${avatar(r.to)}">${esc(NAMES[r.to]||r.to)}<span style="color:var(--dim)">：${esc(r.summary)}（${esc(r.time.slice(5))}${r.project?"・"+esc(r.project):""}）</span>`
+     :'<span class="lb">交棒中</span><span style="color:var(--dim)">還沒有成員之間的交棒。</span>';
+}
+function chain(evs){
+  const hs=evs.filter(e=>e.to&&e.by!==e.to).slice().reverse().slice(-6);
+  if(!hs.length) return "";
+  const seq=[hs[0].by]; hs.forEach(e=>{ if(seq[seq.length-1]!==e.by) seq.push(e.by); seq.push(e.to); });
+  return `<div class="chain" title="這個作品的交棒路線">${seq.map((id,i)=>`${i?'<span class="ar">→</span>':""}<img alt="${esc(NAMES[id]||id)}" title="${esc(NAMES[id]||id)}" src="${avatar(id)}">`).join("")}</div>`;
+}
+$("pprev").onclick=()=>$("board").scrollBy({left:-340,behavior:"smooth"});
+$("pnext").onclick=()=>$("board").scrollBy({left:340,behavior:"smooth"});
+
+let feedFilter="all"; try{feedFilter=localStorage.getItem("feedFilter")||"all";}catch(e){}
+let feedMode="time"; try{feedMode=localStorage.getItem("feedMode")||"time";}catch(e){}
+async function load(){
+  try{
+    const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"}); if(!r.ok) throw new Error("HTTP "+r.status);
+    DATA=await r.json(); $("err").style.display="none"; renderAll();
+  }catch(e){
+    $("err").style.display="block";
+    $("err").textContent="讀不到 data.json（"+e.message+"）。如果是直接用檔案打開，請改用網址開啟。";
+  }
+}
+$("reload").onclick=load;
+load(); setInterval(load,5*60*1000);
+requestAnimationFrame(render);
+})();
+</script>
+</body>
+</html>
