@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-16 23:50",
+ "generated": "2026-11-17 00:02",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "working",
-   "count": 1,
+   "state": "idle",
+   "count": 6,
    "project": null,
    "last": {
-    "time": "2026-11-16 23:47",
-    "summary": "素材盤點＋影片切分方案與內容策略提案"
+    "time": "2026-11-17 00:02",
+    "summary": "Q5 方向選哪個？"
    }
   },
   {
@@ -76,6 +76,55 @@
  ],
  "pending": [
   {
+   "id": "20261117000243-ca5a",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q5 方向選哪個？",
+   "options": [
+    "A 集合之前＋普芬比利＋長版",
+    "B 主題式",
+    "C 每天一支",
+    "D 其他"
+   ]
+  },
+  {
+   "id": "20261117000243-693a",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q4 YouTube 長版畫面（素材全是直式）怎麼處理？",
+   "options": [
+    "A 先不做長版",
+    "B 裁成 16:9 做 8 分鐘測試",
+    "C 保留直式加黑邊"
+   ]
+  },
+  {
+   "id": "20261117000243-1862",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q2 要不要講出「跟團」？",
+   "options": [
+    "A 直說「九點集合」",
+    "B 不提，只寫時間",
+    "C 做完第 1 集再決定"
+   ]
+  },
+  {
+   "id": "20261117000243-de15",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q1 同行者和團員可以入鏡到什麼程度？",
+   "options": [
+    "A 完全不出現",
+    "B 背影手腳可以、正臉不行",
+    "C 正臉模糊後可以"
+   ]
+  },
+  {
    "id": "20261116200600-deec",
    "time": "2026-11-16 20:06",
    "type": "request",
@@ -87,8 +136,131 @@
    ]
   }
  ],
- "reports": [],
+ "reports": [
+  {
+   "id": "20261117000243-ca5a",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q5 方向選哪個？",
+   "options": [
+    "A 集合之前＋普芬比利＋長版",
+    "B 主題式",
+    "C 每天一支",
+    "D 其他"
+   ]
+  },
+  {
+   "id": "20261117000243-693a",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q4 YouTube 長版畫面（素材全是直式）怎麼處理？",
+   "options": [
+    "A 先不做長版",
+    "B 裁成 16:9 做 8 分鐘測試",
+    "C 保留直式加黑邊"
+   ]
+  },
+  {
+   "id": "20261117000243-1862",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q2 要不要講出「跟團」？",
+   "options": [
+    "A 直說「九點集合」",
+    "B 不提，只寫時間",
+    "C 做完第 1 集再決定"
+   ]
+  },
+  {
+   "id": "20261117000243-de15",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q1 同行者和團員可以入鏡到什麼程度？",
+   "options": [
+    "A 完全不出現",
+    "B 背影手腳可以、正臉不行",
+    "C 正臉模糊後可以"
+   ]
+  },
+  {
+   "id": "20261117000243-03f2",
+   "time": "2026-11-17 00:02",
+   "type": "report",
+   "by": "manager",
+   "to": "owner",
+   "summary": "素材盤點＋方向提案：推薦「集合之前」系列（早上）＋普芬比利＋一支 8 分鐘長版",
+   "files": [
+    "02_plans/提案_2026-11-17.md",
+    "02_plans/素材庫.md"
+   ]
+  }
+ ],
  "events": [
+  {
+   "id": "20261117000243-ca5a",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q5 方向選哪個？",
+   "options": [
+    "A 集合之前＋普芬比利＋長版",
+    "B 主題式",
+    "C 每天一支",
+    "D 其他"
+   ]
+  },
+  {
+   "id": "20261117000243-693a",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q4 YouTube 長版畫面（素材全是直式）怎麼處理？",
+   "options": [
+    "A 先不做長版",
+    "B 裁成 16:9 做 8 分鐘測試",
+    "C 保留直式加黑邊"
+   ]
+  },
+  {
+   "id": "20261117000243-1862",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q2 要不要講出「跟團」？",
+   "options": [
+    "A 直說「九點集合」",
+    "B 不提，只寫時間",
+    "C 做完第 1 集再決定"
+   ]
+  },
+  {
+   "id": "20261117000243-de15",
+   "time": "2026-11-17 00:02",
+   "type": "decision",
+   "by": "manager",
+   "summary": "Q1 同行者和團員可以入鏡到什麼程度？",
+   "options": [
+    "A 完全不出現",
+    "B 背影手腳可以、正臉不行",
+    "C 正臉模糊後可以"
+   ]
+  },
+  {
+   "id": "20261117000243-03f2",
+   "time": "2026-11-17 00:02",
+   "type": "report",
+   "by": "manager",
+   "to": "owner",
+   "summary": "素材盤點＋方向提案：推薦「集合之前」系列（早上）＋普芬比利＋一支 8 分鐘長版",
+   "files": [
+    "02_plans/提案_2026-11-17.md",
+    "02_plans/素材庫.md"
+   ]
+  },
   {
    "id": "20261116235053-a9b0",
    "time": "2026-11-16 23:50",
@@ -246,32 +418,128 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 0.0376,
-  "gemini_total_usd": 0.0376,
-  "gemini_runs": 2,
+  "gemini_month_usd": 0.5716,
+  "gemini_total_usd": 0.5716,
+  "gemini_runs": 82,
   "by_day": [
    {
     "day": "2026-11-16",
-    "usd": 0.0376
+    "usd": 0.404
+   },
+   {
+    "day": "2026-11-17",
+    "usd": 0.1676
    }
   ],
   "by_mode": {
-   "reference": 0.0376
+   "reference": 0.0376,
+   "footage": 0.534
   },
   "recent": [
    {
-    "time": "2026-11-16 21:43",
-    "mode": "reference",
-    "source": "ref_01.MP4",
-    "seconds": "29.0",
-    "usd": 0.0197
+    "time": "2026-11-17 00:02",
+    "mode": "footage",
+    "source": "IMG_6804.MOV",
+    "seconds": "10.4",
+    "usd": 0.0095
    },
    {
-    "time": "2026-11-16 21:41",
-    "mode": "reference",
-    "source": "ref_02.MP4",
-    "seconds": "27.7",
-    "usd": 0.0179
+    "time": "2026-11-17 00:02",
+    "mode": "footage",
+    "source": "IMG_7243.MOV",
+    "seconds": "2.3",
+    "usd": 0.0037
+   },
+   {
+    "time": "2026-11-17 00:02",
+    "mode": "footage",
+    "source": "IMG_7032.MOV",
+    "seconds": "2.0",
+    "usd": 0.0048
+   },
+   {
+    "time": "2026-11-17 00:02",
+    "mode": "footage",
+    "source": "video-6347_singular_display.MOV",
+    "seconds": "57.1",
+    "usd": 0.0129
+   },
+   {
+    "time": "2026-11-17 00:02",
+    "mode": "footage",
+    "source": "IMG_7242.MOV",
+    "seconds": "2.6",
+    "usd": 0.0044
+   },
+   {
+    "time": "2026-11-17 00:02",
+    "mode": "footage",
+    "source": "IMG_7031.MOV",
+    "seconds": "3.2",
+    "usd": 0.0043
+   },
+   {
+    "time": "2026-11-17 00:01",
+    "mode": "footage",
+    "source": "video-7428_singular_display.MOV",
+    "seconds": "180.0",
+    "usd": 0.0219
+   },
+   {
+    "time": "2026-11-17 00:01",
+    "mode": "footage",
+    "source": "IMG_6802.MOV",
+    "seconds": "5.3",
+    "usd": 0.0083
+   },
+   {
+    "time": "2026-11-17 00:01",
+    "mode": "footage",
+    "source": "IMG_7241.MOV",
+    "seconds": "9.0",
+    "usd": 0.0062
+   },
+   {
+    "time": "2026-11-17 00:01",
+    "mode": "footage",
+    "source": "IMG_7030.MOV",
+    "seconds": "18.7",
+    "usd": 0.0082
+   },
+   {
+    "time": "2026-11-17 00:01",
+    "mode": "footage",
+    "source": "IMG_6801.MOV",
+    "seconds": "9.5",
+    "usd": 0.0084
+   },
+   {
+    "time": "2026-11-17 00:01",
+    "mode": "footage",
+    "source": "IMG_7237.MOV",
+    "seconds": "6.1",
+    "usd": 0.0056
+   },
+   {
+    "time": "2026-11-17 00:00",
+    "mode": "footage",
+    "source": "video-7413_singular_display.MOV",
+    "seconds": "67.1",
+    "usd": 0.0187
+   },
+   {
+    "time": "2026-11-17 00:00",
+    "mode": "footage",
+    "source": "IMG_6799.MOV",
+    "seconds": "13.5",
+    "usd": 0.0063
+   },
+   {
+    "time": "2026-11-17 00:00",
+    "mode": "footage",
+    "source": "IMG_7029.mov",
+    "seconds": "7.0",
+    "usd": 0.0059
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
