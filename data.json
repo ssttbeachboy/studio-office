@@ -5,12 +5,12 @@
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "idle",
-   "count": 6,
+   "state": "working",
+   "count": 7,
    "project": null,
    "last": {
-    "time": "2026-11-17 00:02",
-    "summary": "Q5 方向選哪個？"
+    "time": "2026-11-17 00:29",
+    "summary": "把 Gemini 聲音報告併入素材庫與提案"
    }
   },
   {
@@ -54,11 +54,11 @@
    "name": "Gemini",
    "role": "看影片・聽聲音",
    "state": "idle",
-   "count": 4,
+   "count": 5,
    "project": null,
    "last": {
     "time": "2026-11-17 00:29",
-    "summary": "149 支素材讀完 148 支（IMG_6756 Google 端錯誤），實際花費約 US.17"
+    "summary": "補跑 IMG_6756 成功，149 支全部完成，合計約 US.17"
    }
   },
   {
@@ -200,6 +200,23 @@
   }
  ],
  "events": [
+  {
+   "id": "20261117002940-a99e",
+   "time": "2026-11-17 00:29",
+   "type": "start",
+   "by": "manager",
+   "summary": "把 Gemini 聲音報告併入素材庫與提案",
+   "files": [
+    "02_plans/素材庫.md"
+   ]
+  },
+  {
+   "id": "20261117002940-dfba",
+   "time": "2026-11-17 00:29",
+   "type": "note",
+   "by": "gemini",
+   "summary": "補跑 IMG_6756 成功，149 支全部完成，合計約 US.17"
+  },
   {
    "id": "20261117002918-4078",
    "time": "2026-11-17 00:29",
