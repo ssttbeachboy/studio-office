@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17 06:51",
+ "generated": "2026-11-17 07:12",
  "members": [
   {
    "id": "manager",
@@ -54,11 +54,11 @@
    "name": "Gemini",
    "role": "看影片・聽聲音",
    "state": "idle",
-   "count": 5,
+   "count": 7,
    "project": null,
    "last": {
-    "time": "2026-11-17 00:29",
-    "summary": "補跑 IMG_6756 成功，149 支全部完成，合計約 US.17"
+    "time": "2026-11-17 07:12",
+    "summary": "參考影片 03 是飯店品牌廣告：長鏡頭開場、穩定運鏡、硬切、乾淨調色可借"
    }
   },
   {
@@ -85,19 +85,6 @@
     "A 移到 11/15 那集當開場",
     "B 先不用",
     "C 讓小主管重排"
-   ]
-  },
-  {
-   "id": "20261117000243-ca5a",
-   "time": "2026-11-17 00:02",
-   "type": "decision",
-   "by": "manager",
-   "summary": "Q5 方向選哪個？",
-   "options": [
-    "A 集合之前＋普芬比利＋長版",
-    "B 主題式",
-    "C 每天一支",
-    "D 其他"
    ]
   },
   {
@@ -200,6 +187,39 @@
   }
  ],
  "events": [
+  {
+   "id": "20261117071211-986e",
+   "time": "2026-11-17 07:12",
+   "type": "handoff",
+   "by": "gemini",
+   "to": "main",
+   "summary": "參考影片 03 是飯店品牌廣告：長鏡頭開場、穩定運鏡、硬切、乾淨調色可借",
+   "files": [
+    "01_reference/參考影片分析.md"
+   ]
+  },
+  {
+   "id": "20261117071106-3525",
+   "time": "2026-11-17 07:11",
+   "type": "start",
+   "by": "gemini",
+   "summary": "讀參考影片 03（49 秒）"
+  },
+  {
+   "id": "20261117071106-e6e8",
+   "time": "2026-11-17 07:11",
+   "type": "note",
+   "by": "owner",
+   "summary": "正臉原則上不用；真的很適合又很短的片段，可用卡通圖蓋住"
+  },
+  {
+   "id": "20261117071106-5f9c",
+   "time": "2026-11-17 07:11",
+   "type": "resolve",
+   "by": "owner",
+   "ref": "20261117000243-ca5a",
+   "summary": "鉤子用畫面或聲音反差，畫面不打時間、標題不用直線分隔；系列方向「早上的墨爾本」；片長 30–50 秒；第1集按鈕開場、第2集普芬比利白霧開場"
+  },
   {
    "id": "20261117065103-01a4",
    "time": "2026-11-17 06:51",
@@ -501,9 +521,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 1.2083,
-  "gemini_total_usd": 1.2083,
-  "gemini_runs": 152,
+  "gemini_month_usd": 1.2324,
+  "gemini_total_usd": 1.2324,
+  "gemini_runs": 153,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -511,14 +531,21 @@
    },
    {
     "day": "2026-11-17",
-    "usd": 0.8043
+    "usd": 0.8284
    }
   ],
   "by_mode": {
-   "reference": 0.0376,
+   "reference": 0.0617,
    "footage": 1.1707
   },
   "recent": [
+   {
+    "time": "2026-11-17 07:11",
+    "mode": "reference",
+    "source": "ref_03.MP4",
+    "seconds": "49.1",
+    "usd": 0.0241
+   },
    {
     "time": "2026-11-17 00:43",
     "mode": "footage",
@@ -616,13 +643,6 @@
     "source": "video-7696_singular_display.MOV",
     "seconds": "2.2",
     "usd": 0.0039
-   },
-   {
-    "time": "2026-11-17 00:18",
-    "mode": "footage",
-    "source": "video-7687_singular_display.MOV",
-    "seconds": "3.6",
-    "usd": 0.005
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
