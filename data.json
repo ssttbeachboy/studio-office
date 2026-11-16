@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-17 00:29",
+ "generated": "2026-11-17 00:43",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "working",
-   "count": 7,
+   "state": "idle",
+   "count": 9,
    "project": null,
    "last": {
-    "time": "2026-11-17 00:29",
-    "summary": "把 Gemini 聲音報告併入素材庫與提案"
+    "time": "2026-11-17 00:43",
+    "summary": "05:28 窗外鏡頭（IMG_7200，其實是 11/15）要移到 11/15 那集嗎？"
    }
   },
   {
@@ -76,6 +76,18 @@
  ],
  "pending": [
   {
+   "id": "20261117004348-22db",
+   "time": "2026-11-17 00:43",
+   "type": "decision",
+   "by": "manager",
+   "summary": "05:28 窗外鏡頭（IMG_7200，其實是 11/15）要移到 11/15 那集嗎？",
+   "options": [
+    "A 移到 11/15 那集當開場",
+    "B 先不用",
+    "C 讓小主管重排"
+   ]
+  },
+  {
    "id": "20261117000243-ca5a",
    "time": "2026-11-17 00:02",
    "type": "decision",
@@ -137,6 +149,30 @@
   }
  ],
  "reports": [
+  {
+   "id": "20261117004348-22db",
+   "time": "2026-11-17 00:43",
+   "type": "decision",
+   "by": "manager",
+   "summary": "05:28 窗外鏡頭（IMG_7200，其實是 11/15）要移到 11/15 那集嗎？",
+   "options": [
+    "A 移到 11/15 那集當開場",
+    "B 先不用",
+    "C 讓小主管重排"
+   ]
+  },
+  {
+   "id": "20261117004348-a28d",
+   "time": "2026-11-17 00:43",
+   "type": "report",
+   "by": "manager",
+   "to": "owner",
+   "summary": "提案更新：聲音已由 Gemini 確認；第 1 集改用 IMG_7018（07:51 電車過橋）開場；YouTube 長版聲音可用，但要模糊約 15 處路人臉",
+   "files": [
+    "02_plans/提案_2026-11-17.md",
+    "02_plans/素材庫.md"
+   ]
+  },
   {
    "id": "20261117000243-ca5a",
    "time": "2026-11-17 00:02",
@@ -200,6 +236,30 @@
   }
  ],
  "events": [
+  {
+   "id": "20261117004348-22db",
+   "time": "2026-11-17 00:43",
+   "type": "decision",
+   "by": "manager",
+   "summary": "05:28 窗外鏡頭（IMG_7200，其實是 11/15）要移到 11/15 那集嗎？",
+   "options": [
+    "A 移到 11/15 那集當開場",
+    "B 先不用",
+    "C 讓小主管重排"
+   ]
+  },
+  {
+   "id": "20261117004348-a28d",
+   "time": "2026-11-17 00:43",
+   "type": "report",
+   "by": "manager",
+   "to": "owner",
+   "summary": "提案更新：聲音已由 Gemini 確認；第 1 集改用 IMG_7018（07:51 電車過橋）開場；YouTube 長版聲音可用，但要模糊約 15 處路人臉",
+   "files": [
+    "02_plans/提案_2026-11-17.md",
+    "02_plans/素材庫.md"
+   ]
+  },
   {
    "id": "20261117002940-a99e",
    "time": "2026-11-17 00:29",
@@ -446,9 +506,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 1.2044,
-  "gemini_total_usd": 1.2044,
-  "gemini_runs": 151,
+  "gemini_month_usd": 1.2083,
+  "gemini_total_usd": 1.2083,
+  "gemini_runs": 152,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -456,14 +516,21 @@
    },
    {
     "day": "2026-11-17",
-    "usd": 0.8004
+    "usd": 0.8043
    }
   ],
   "by_mode": {
    "reference": 0.0376,
-   "footage": 1.1668
+   "footage": 1.1707
   },
   "recent": [
+   {
+    "time": "2026-11-17 00:43",
+    "mode": "footage",
+    "source": "IMG_6771.mov",
+    "seconds": "3.4",
+    "usd": 0.0039
+   },
    {
     "time": "2026-11-17 00:29",
     "mode": "footage",
@@ -561,13 +628,6 @@
     "source": "video-7687_singular_display.MOV",
     "seconds": "3.6",
     "usd": 0.005
-   },
-   {
-    "time": "2026-11-17 00:17",
-    "mode": "footage",
-    "source": "video-7315_singular_display.MOV",
-    "seconds": "180.0",
-    "usd": 0.0262
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
