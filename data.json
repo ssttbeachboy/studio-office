@@ -1,14 +1,17 @@
 {
- "generated": "2026-11-16 22:45",
+ "generated": "2026-11-16 23:47",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "idle",
-   "count": 0,
+   "state": "working",
+   "count": 1,
    "project": null,
-   "last": null
+   "last": {
+    "time": "2026-11-16 23:47",
+    "summary": "素材盤點＋影片切分方案與內容策略提案"
+   }
   },
   {
    "id": "editor",
@@ -82,18 +85,28 @@
    "files": [
     "05_style/我的文字範本.md"
    ]
-  },
-  {
-   "id": "20261116200500-7d82",
-   "time": "2026-11-16 20:05",
-   "type": "request",
-   "by": "main",
-   "to": "owner",
-   "summary": "請把素材放進 00_footage（video／audio／photo），小主管才能盤點"
   }
  ],
  "reports": [],
  "events": [
+  {
+   "id": "20261116234748-09a5",
+   "time": "2026-11-16 23:47",
+   "type": "start",
+   "by": "manager",
+   "summary": "素材盤點＋影片切分方案與內容策略提案",
+   "files": [
+    "02_plans/素材庫.md"
+   ]
+  },
+  {
+   "id": "20261116234748-cf01",
+   "time": "2026-11-16 23:47",
+   "type": "resolve",
+   "by": "owner",
+   "ref": "20261116200500-7d82",
+   "summary": "素材已放進 00_footage：5 天影片 149 支（約 56 分鐘）＋照片 23 張"
+  },
   {
    "id": "20261116224537-3b50",
    "time": "2026-11-16 22:45",
