@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16 22:29",
+ "generated": "2026-11-16 22:45",
  "members": [
   {
    "id": "manager",
@@ -63,11 +63,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 9,
+   "count": 10,
    "project": null,
    "last": {
-    "time": "2026-11-16 22:29",
-    "summary": "儀表板：拿掉機器人，改成成員起身走到對方桌前交棒；團隊對話可切換依時間／依作品"
+    "time": "2026-11-16 22:45",
+    "summary": "儀表板發佈到 GitHub Pages"
    }
   }
  ],
@@ -94,6 +94,13 @@
  ],
  "reports": [],
  "events": [
+  {
+   "id": "20261116224537-3b50",
+   "time": "2026-11-16 22:45",
+   "type": "note",
+   "by": "main",
+   "summary": "儀表板發佈到 GitHub Pages"
+  },
   {
    "id": "20261116222951-f3c7",
    "time": "2026-11-16 22:29",
