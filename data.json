@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17 14:34",
+ "generated": "2026-11-17 14:47",
  "members": [
   {
    "id": "manager",
@@ -29,12 +29,12 @@
    "id": "sound",
    "name": "音控師",
    "role": "降噪・響度・白噪音",
-   "state": "working",
-   "count": 5,
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "state": "idle",
+   "count": 6,
+   "project": null,
    "last": {
-    "time": "2026-11-17 14:33",
-    "summary": "第1集C版配樂重做：配樂加大、樂句踩剪接點、依原聲特色分段調比例"
+    "time": "2026-11-17 14:45",
+    "summary": "C版v3配樂完成：剪接點踩拍、平淡段配樂主導、特色原聲段配樂退到很小，-14 LUFS"
    }
   },
   {
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 12,
+   "count": 13,
    "project": null,
    "last": {
-    "time": "2026-11-17 11:58",
-    "summary": "第1集選版本：C 有配樂或無配樂；有配樂需加音色出處；小紅書標題逗號是否算 D-8"
+    "time": "2026-11-17 14:47",
+    "summary": "C版v3配樂成品檢查完成（量測＋Gemini），送S老闆試聽"
    }
   }
  ],
@@ -220,6 +220,31 @@
   }
  ],
  "events": [
+  {
+   "id": "20261117144721-0d64",
+   "time": "2026-11-17 14:47",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "C版v3配樂成品檢查完成（量測＋Gemini），送S老闆試聽",
+   "files": [
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/preview/ep01_C_v3_music_preview.mp4"
+   ]
+  },
+  {
+   "id": "20261117144514-4c60",
+   "time": "2026-11-17 14:45",
+   "type": "handoff",
+   "by": "sound",
+   "to": "main",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "C版v3配樂完成：剪接點踩拍、平淡段配樂主導、特色原聲段配樂退到很小，-14 LUFS",
+   "files": [
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v3_music.mp4",
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
+   ]
+  },
   {
    "id": "20261117143321-a760",
    "time": "2026-11-17 14:33",
@@ -1019,9 +1044,9 @@
  "projects": [
   {
    "name": "2026-11-15_墨爾本_早上的墨爾本01",
-   "status": "製作中",
-   "current": "配樂重做（加大、踩點、分段比例）",
-   "owner": "sound",
+   "status": "待核准",
+   "current": "等你聽 C 版 v3 配樂並核准",
+   "owner": "owner",
    "kind": "短影音",
    "platforms": [
     "IG",
@@ -1029,7 +1054,7 @@
     "小紅書",
     "YouTube Shorts"
    ],
-   "updated": "2026-11-17 14:33",
+   "updated": "2026-11-17 14:47",
    "steps": [
     {
      "label": "方向核准",
@@ -1053,11 +1078,11 @@
     },
     {
      "label": "聲音",
-     "state": "doing"
+     "state": "done"
     },
     {
      "label": "成品檢查",
-     "state": "todo"
+     "state": "done"
     },
     {
      "label": "S老闆核准",
@@ -1068,13 +1093,38 @@
      "state": "todo"
     }
    ],
-   "done": 5,
+   "done": 7,
    "review": {
     "round": 6,
     "result": "通過"
    },
-   "videos": 10,
+   "videos": 11,
    "events": [
+    {
+     "id": "20261117144721-0d64",
+     "time": "2026-11-17 14:47",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-15_墨爾本_早上的墨爾本01",
+     "summary": "C版v3配樂成品檢查完成（量測＋Gemini），送S老闆試聽",
+     "files": [
+      "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/preview/ep01_C_v3_music_preview.mp4"
+     ]
+    },
+    {
+     "id": "20261117144514-4c60",
+     "time": "2026-11-17 14:45",
+     "type": "handoff",
+     "by": "sound",
+     "to": "main",
+     "project": "2026-11-15_墨爾本_早上的墨爾本01",
+     "summary": "C版v3配樂完成：剪接點踩拍、平淡段配樂主導、特色原聲段配樂退到很小，-14 LUFS",
+     "files": [
+      "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v3_music.mp4",
+      "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
+     ]
+    },
     {
      "id": "20261117143321-a760",
      "time": "2026-11-17 14:33",
@@ -1094,27 +1144,6 @@
       "C 無配樂",
       "C 有配樂（加出處）"
      ]
-    },
-    {
-     "id": "20261117115858-98c0",
-     "time": "2026-11-17 11:58",
-     "type": "handoff",
-     "by": "editor",
-     "to": "owner",
-     "project": "2026-11-15_墨爾本_早上的墨爾本01",
-     "summary": "C 版 v2 完成（車牌改羽化小框），有／無配樂兩支待核准",
-     "files": [
-      "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v2_music.mp4",
-      "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v2_nomusic.mp4"
-     ]
-    },
-    {
-     "id": "20261117090504-36f5",
-     "time": "2026-11-17 09:05",
-     "type": "start",
-     "by": "editor",
-     "project": "2026-11-15_墨爾本_早上的墨爾本01",
-     "summary": "C 版車牌模糊重做"
     }
    ]
   }
@@ -1128,9 +1157,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 1.3239,
-  "gemini_total_usd": 1.3239,
-  "gemini_runs": 157,
+  "gemini_month_usd": 1.3661,
+  "gemini_total_usd": 1.3661,
+  "gemini_runs": 158,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -1138,15 +1167,22 @@
    },
    {
     "day": "2026-11-17",
-    "usd": 0.9199
+    "usd": 0.9621
    }
   ],
   "by_mode": {
    "reference": 0.0617,
    "footage": 1.1755,
-   "output": 0.0867
+   "output": 0.1289
   },
   "recent": [
+   {
+    "time": "2026-11-17 14:47",
+    "mode": "output",
+    "source": "ep01_C_v3_music.mp4",
+    "seconds": "39.6",
+    "usd": 0.0422
+   },
    {
     "time": "2026-11-17 09:02",
     "mode": "output",
@@ -1244,13 +1280,6 @@
     "source": "video-7893_singular_display.MOV",
     "seconds": "11.6",
     "usd": 0.0088
-   },
-   {
-    "time": "2026-11-17 00:20",
-    "mode": "footage",
-    "source": "video-7888_singular_display.MOV",
-    "seconds": "7.5",
-    "usd": 0.0074
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
