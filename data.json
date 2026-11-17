@@ -1,28 +1,28 @@
 {
- "generated": "2026-11-17 07:43",
+ "generated": "2026-11-17 08:13",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "working",
-   "count": 15,
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "state": "idle",
+   "count": 19,
+   "project": null,
    "last": {
-    "time": "2026-11-17 07:42",
-    "summary": "改 YouTube 標題、寫配樂說明卡"
+    "time": "2026-11-17 08:13",
+    "summary": "第1集成品修改：小孩鏡頭入點、車牌模糊、車聲出點、市場音量、A/B 版"
    }
   },
   {
    "id": "editor",
    "name": "剪輯師",
    "role": "FFmpeg 粗剪・各平台尺寸",
-   "state": "working",
-   "count": 1,
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "state": "idle",
+   "count": 2,
+   "project": null,
    "last": {
-    "time": "2026-11-17 07:42",
-    "summary": "粗剪 A、B 兩版"
+    "time": "2026-11-17 07:55",
+    "summary": "A、B 兩版粗剪完成（各 43 秒），交音控師處理聲音"
    }
   },
   {
@@ -30,9 +30,12 @@
    "name": "音控師",
    "role": "降噪・響度・白噪音",
    "state": "idle",
-   "count": 0,
+   "count": 2,
    "project": null,
-   "last": null
+   "last": {
+    "time": "2026-11-17 08:06",
+    "summary": "兩版聲音處理完成（-14 LUFS），送 Gemini 成品檢查"
+   }
   },
   {
    "id": "analyst",
@@ -48,11 +51,11 @@
    "name": "審稿員",
    "role": "只挑 AI 感",
    "state": "idle",
-   "count": 5,
+   "count": 8,
    "project": null,
    "last": {
-    "time": "2026-11-17 07:38",
-    "summary": "文案二校通過"
+    "time": "2026-11-17 08:11",
+    "summary": "成品畫面文字審稿通過（無後製字幕、無時間碼）"
    }
   },
   {
@@ -60,11 +63,11 @@
    "name": "Gemini",
    "role": "看影片・聽聲音",
    "state": "idle",
-   "count": 7,
+   "count": 9,
    "project": null,
    "last": {
-    "time": "2026-11-17 07:12",
-    "summary": "參考影片 03 是飯店品牌廣告：長鏡頭開場、穩定運鏡、硬切、乾淨調色可借"
+    "time": "2026-11-17 08:09",
+    "summary": "成品檢查完成：兩版無字幕、無爆音、叫號聽得到；小孩側臉、車牌兩邊判斷不一，列給主人"
    }
   },
   {
@@ -82,6 +85,18 @@
  ],
  "pending": [
   {
+   "id": "20261117081346-8d0e",
+   "time": "2026-11-17 08:13",
+   "type": "decision",
+   "by": "manager",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "第1集成品修改：小孩鏡頭入點、車牌模糊、車聲出點、市場音量、A/B 版",
+   "options": [
+    "全照建議",
+    "逐項決定"
+   ]
+  },
+  {
    "id": "20261116200600-deec",
    "time": "2026-11-16 20:06",
    "type": "request",
@@ -94,6 +109,18 @@
   }
  ],
  "reports": [
+  {
+   "id": "20261117081346-8d0e",
+   "time": "2026-11-17 08:13",
+   "type": "decision",
+   "by": "manager",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "第1集成品修改：小孩鏡頭入點、車牌模糊、車聲出點、市場音量、A/B 版",
+   "options": [
+    "全照建議",
+    "逐項決定"
+   ]
+  },
   {
    "id": "20261117073842-54dd",
    "time": "2026-11-17 07:38",
@@ -193,6 +220,140 @@
   }
  ],
  "events": [
+  {
+   "id": "20261117081346-8d0e",
+   "time": "2026-11-17 08:13",
+   "type": "decision",
+   "by": "manager",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "第1集成品修改：小孩鏡頭入點、車牌模糊、車聲出點、市場音量、A/B 版",
+   "options": [
+    "全照建議",
+    "逐項決定"
+   ]
+  },
+  {
+   "id": "20261117081346-68a1",
+   "time": "2026-11-17 08:13",
+   "type": "handoff",
+   "by": "manager",
+   "to": "owner",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "兩版成品對得上分鏡；建議改小孩入點、車牌模糊、車聲出點",
+   "files": [
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/script.md"
+   ]
+  },
+  {
+   "id": "20261117081121-3f11",
+   "time": "2026-11-17 08:11",
+   "type": "handoff",
+   "by": "reviewer",
+   "to": "manager",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "成品畫面文字審稿通過（無後製字幕、無時間碼）",
+   "files": [
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/review.md"
+   ]
+  },
+  {
+   "id": "20261117080947-54f2",
+   "time": "2026-11-17 08:09",
+   "type": "start",
+   "by": "manager",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "確認成品對得上分鏡"
+  },
+  {
+   "id": "20261117080947-aceb",
+   "time": "2026-11-17 08:09",
+   "type": "handoff",
+   "by": "gemini",
+   "to": "reviewer",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "成品檢查完成：兩版無字幕、無爆音、叫號聽得到；小孩側臉、車牌兩邊判斷不一，列給主人",
+   "files": [
+    "_gemini/03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_A_v1.output.md",
+    "_gemini/03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_B_v1.output.md"
+   ]
+  },
+  {
+   "id": "20261117080632-60e7",
+   "time": "2026-11-17 08:06",
+   "type": "start",
+   "by": "gemini",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "成品檢查 A、B 兩版"
+  },
+  {
+   "id": "20261117080632-0477",
+   "time": "2026-11-17 08:06",
+   "type": "handoff",
+   "by": "sound",
+   "to": "gemini",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "兩版聲音處理完成（-14 LUFS），送 Gemini 成品檢查",
+   "files": [
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_A_v1.mp4",
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_B_v1.mp4",
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
+   ]
+  },
+  {
+   "id": "20261117075500-a9a3",
+   "time": "2026-11-17 07:55",
+   "type": "start",
+   "by": "sound",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "第1集聲音處理（兩版）"
+  },
+  {
+   "id": "20261117075500-0ec6",
+   "time": "2026-11-17 07:55",
+   "type": "handoff",
+   "by": "editor",
+   "to": "sound",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "A、B 兩版粗剪完成（各 43 秒），交音控師處理聲音",
+   "files": [
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_A_rough.mp4",
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_B_rough.mp4",
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/edit_log.md"
+   ]
+  },
+  {
+   "id": "20261117074702-fbf5",
+   "time": "2026-11-17 07:47",
+   "type": "handoff",
+   "by": "reviewer",
+   "to": "manager",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "YouTube 標題三校通過；小紅書標題逗號接法列存疑，交主人判斷",
+   "files": [
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/review.md"
+   ]
+  },
+  {
+   "id": "20261117074608-1302",
+   "time": "2026-11-17 07:46",
+   "type": "start",
+   "by": "reviewer",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "YouTube 標題三校"
+  },
+  {
+   "id": "20261117074608-063a",
+   "time": "2026-11-17 07:46",
+   "type": "handoff",
+   "by": "manager",
+   "to": "reviewer",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "YouTube 標題改成一句話，配樂說明卡完成，標題送三校",
+   "files": [
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/copy.md",
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/music_card.md"
+   ]
+  },
   {
    "id": "20261117074239-01c1",
    "time": "2026-11-17 07:42",
@@ -662,7 +823,7 @@
   {
    "name": "2026-11-15_墨爾本_早上的墨爾本01",
    "status": "製作中",
-   "current": "等你決定剪輯細節",
+   "current": "等你決定成品修改",
    "owner": "owner",
    "kind": "短影音",
    "platforms": [
@@ -671,7 +832,7 @@
     "小紅書",
     "YouTube Shorts"
    ],
-   "updated": "2026-11-17 07:38",
+   "updated": "2026-11-17 08:13",
    "steps": [
     {
      "label": "方向核准",
@@ -686,20 +847,20 @@
      "state": "done"
     },
     {
-     "label": "審稿（第 2 輪・通過）",
+     "label": "審稿（第 4 輪・通過）",
      "state": "done"
     },
     {
      "label": "粗剪",
-     "state": "todo"
+     "state": "done"
     },
     {
      "label": "聲音",
-     "state": "todo"
+     "state": "done"
     },
     {
      "label": "成品檢查",
-     "state": "todo"
+     "state": "doing"
     },
     {
      "label": "主人核准",
@@ -710,49 +871,56 @@
      "state": "todo"
     }
    ],
-   "done": 4,
+   "done": 6,
    "review": {
-    "round": 2,
+    "round": 4,
     "result": "通過"
    },
-   "videos": 0,
+   "videos": 4,
    "events": [
     {
-     "id": "20261117074239-01c1",
-     "time": "2026-11-17 07:42",
-     "type": "start",
-     "by": "manager",
-     "project": "2026-11-15_墨爾本_早上的墨爾本01",
-     "summary": "改 YouTube 標題、寫配樂說明卡"
-    },
-    {
-     "id": "20261117074239-73de",
-     "time": "2026-11-17 07:42",
-     "type": "start",
-     "by": "editor",
-     "project": "2026-11-15_墨爾本_早上的墨爾本01",
-     "summary": "粗剪 A、B 兩版"
-    },
-    {
-     "id": "20261117074239-7165",
-     "time": "2026-11-17 07:42",
-     "type": "resolve",
-     "by": "owner",
-     "project": "2026-11-15_墨爾本_早上的墨爾本01",
-     "ref": "20261117073842-54dd",
-     "summary": "先剪 A、B 兩版再選；麵包櫃換市場人聲；熟食攤先留著看；窗外縮成 2–4 秒；標題不用空格分段；先交無配樂版加說明卡"
-    },
-    {
-     "id": "20261117073842-54dd",
-     "time": "2026-11-17 07:38",
+     "id": "20261117081346-8d0e",
+     "time": "2026-11-17 08:13",
      "type": "decision",
      "by": "manager",
      "project": "2026-11-15_墨爾本_早上的墨爾本01",
-     "summary": "第1集剪輯前要決定：按鈕開場 A/B、麵包櫃聲音、熟食攤小孩側臉、窗外長度、YouTube 標題空格",
+     "summary": "第1集成品修改：小孩鏡頭入點、車牌模糊、車聲出點、市場音量、A/B 版",
      "options": [
-      "先剪兩版給你看",
-      "直接定案再剪"
+      "全照建議",
+      "逐項決定"
      ]
+    },
+    {
+     "id": "20261117081346-68a1",
+     "time": "2026-11-17 08:13",
+     "type": "handoff",
+     "by": "manager",
+     "to": "owner",
+     "project": "2026-11-15_墨爾本_早上的墨爾本01",
+     "summary": "兩版成品對得上分鏡；建議改小孩入點、車牌模糊、車聲出點",
+     "files": [
+      "03_output/2026-11-15_墨爾本_早上的墨爾本01/script.md"
+     ]
+    },
+    {
+     "id": "20261117081121-3f11",
+     "time": "2026-11-17 08:11",
+     "type": "handoff",
+     "by": "reviewer",
+     "to": "manager",
+     "project": "2026-11-15_墨爾本_早上的墨爾本01",
+     "summary": "成品畫面文字審稿通過（無後製字幕、無時間碼）",
+     "files": [
+      "03_output/2026-11-15_墨爾本_早上的墨爾本01/review.md"
+     ]
+    },
+    {
+     "id": "20261117080947-54f2",
+     "time": "2026-11-17 08:09",
+     "type": "start",
+     "by": "manager",
+     "project": "2026-11-15_墨爾本_早上的墨爾本01",
+     "summary": "確認成品對得上分鏡"
     }
    ]
   }
@@ -766,9 +934,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 1.2324,
-  "gemini_total_usd": 1.2324,
-  "gemini_runs": 153,
+  "gemini_month_usd": 1.2829,
+  "gemini_total_usd": 1.2829,
+  "gemini_runs": 155,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -776,14 +944,29 @@
    },
    {
     "day": "2026-11-17",
-    "usd": 0.8284
+    "usd": 0.8789
    }
   ],
   "by_mode": {
    "reference": 0.0617,
-   "footage": 1.1707
+   "footage": 1.1707,
+   "output": 0.0505
   },
   "recent": [
+   {
+    "time": "2026-11-17 08:09",
+    "mode": "output",
+    "source": "ep01_B_v1.mp4",
+    "seconds": "43.1",
+    "usd": 0.0283
+   },
+   {
+    "time": "2026-11-17 08:07",
+    "mode": "output",
+    "source": "ep01_A_v1.mp4",
+    "seconds": "43.1",
+    "usd": 0.0222
+   },
    {
     "time": "2026-11-17 07:11",
     "mode": "reference",
@@ -874,20 +1057,6 @@
     "source": "video-7734_singular_display.MOV",
     "seconds": "12.4",
     "usd": 0.0059
-   },
-   {
-    "time": "2026-11-17 00:19",
-    "mode": "footage",
-    "source": "video-7732_singular_display.MOV",
-    "seconds": "5.3",
-    "usd": 0.0034
-   },
-   {
-    "time": "2026-11-17 00:18",
-    "mode": "footage",
-    "source": "video-7696_singular_display.MOV",
-    "seconds": "2.2",
-    "usd": 0.0039
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
