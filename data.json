@@ -1,40 +1,40 @@
 {
- "generated": "2026-11-18 07:37",
+ "generated": "2026-11-18 07:46",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
    "state": "idle",
-   "count": 52,
+   "count": 54,
    "project": null,
    "last": {
-    "time": "2026-11-18 07:37",
-    "summary": "左到右要做 A 版、B 版，還是等補拍"
+    "time": "2026-11-18 07:45",
+    "summary": "正式分鏡 8 顆 27.7 秒、轉速對齊計畫與三平台文案寫好，文案送審"
    }
   },
   {
    "id": "editor",
    "name": "剪輯師",
    "role": "FFmpeg 粗剪・各平台尺寸",
-   "state": "idle",
-   "count": 8,
-   "project": null,
+   "state": "working",
+   "count": 9,
+   "project": "2026-11-18_墨爾本_往右轉",
    "last": {
-    "time": "2026-11-17 16:16",
-    "summary": "C版v5畫面剪好：1040格，車牌模糊已移到新位置"
+    "time": "2026-11-18 07:45",
+    "summary": "依分鏡粗剪並對齊轉速（含 24fps 補格兩版）"
    }
   },
   {
    "id": "sound",
    "name": "音控師",
    "role": "降噪・響度・白噪音",
-   "state": "idle",
-   "count": 12,
-   "project": null,
+   "state": "working",
+   "count": 13,
+   "project": "2026-11-18_墨爾本_往右轉",
    "last": {
-    "time": "2026-11-17 16:55",
-    "summary": "C版v6弦樂兩版完成（三組／兩組）"
+    "time": "2026-11-18 07:45",
+    "summary": "乾淨環境音替換、雨聲漸弱、原創配樂"
    }
   },
   {
@@ -50,12 +50,12 @@
    "id": "reviewer",
    "name": "審稿員",
    "role": "只挑 AI 感",
-   "state": "idle",
-   "count": 11,
-   "project": null,
+   "state": "working",
+   "count": 12,
+   "project": "2026-11-18_墨爾本_往右轉",
    "last": {
-    "time": "2026-11-17 09:03",
-    "summary": "C 版成品畫面文字審稿通過"
+    "time": "2026-11-18 07:45",
+    "summary": "文案一校"
    }
   },
   {
@@ -84,18 +84,6 @@
   }
  ],
  "pending": [
-  {
-   "id": "20261118073718-b764",
-   "time": "2026-11-18 07:37",
-   "type": "decision",
-   "by": "manager",
-   "summary": "左到右要做 A 版、B 版，還是等補拍",
-   "options": [
-    "A 固定鏡頭版（約20秒）",
-    "B 鏡頭往右轉版（約33秒）",
-    "等下一趟補拍"
-   ]
-  },
   {
    "id": "20261118060859-6bb6",
    "time": "2026-11-18 06:08",
@@ -289,6 +277,59 @@
   }
  ],
  "events": [
+  {
+   "id": "20261118074537-7df9",
+   "time": "2026-11-18 07:45",
+   "type": "start",
+   "by": "sound",
+   "project": "2026-11-18_墨爾本_往右轉",
+   "summary": "乾淨環境音替換、雨聲漸弱、原創配樂"
+  },
+  {
+   "id": "20261118074537-cf87",
+   "time": "2026-11-18 07:45",
+   "type": "start",
+   "by": "editor",
+   "project": "2026-11-18_墨爾本_往右轉",
+   "summary": "依分鏡粗剪並對齊轉速（含 24fps 補格兩版）"
+  },
+  {
+   "id": "20261118074537-19a2",
+   "time": "2026-11-18 07:45",
+   "type": "start",
+   "by": "reviewer",
+   "project": "2026-11-18_墨爾本_往右轉",
+   "summary": "文案一校"
+  },
+  {
+   "id": "20261118074537-1d70",
+   "time": "2026-11-18 07:45",
+   "type": "handoff",
+   "by": "manager",
+   "to": "reviewer",
+   "project": "2026-11-18_墨爾本_往右轉",
+   "summary": "正式分鏡 8 顆 27.7 秒、轉速對齊計畫與三平台文案寫好，文案送審",
+   "files": [
+    "03_output/2026-11-18_墨爾本_往右轉/script.md",
+    "03_output/2026-11-18_墨爾本_往右轉/copy.md"
+   ]
+  },
+  {
+   "id": "20261118073841-3ddf",
+   "time": "2026-11-18 07:38",
+   "type": "start",
+   "by": "manager",
+   "project": "2026-11-18_墨爾本_往右轉",
+   "summary": "B 版（鏡頭往右轉）寫正式分鏡、轉速對齊計畫與各平台文案"
+  },
+  {
+   "id": "20261118073832-265b",
+   "time": "2026-11-18 07:38",
+   "type": "resolve",
+   "by": "owner",
+   "ref": "20261118073718-b764",
+   "summary": "先做 B 版（鏡頭由左往右轉）"
+  },
   {
    "id": "20261118073718-b764",
    "time": "2026-11-18 07:37",
@@ -1706,6 +1747,99 @@
  ],
  "projects": [
   {
+   "name": "2026-11-18_墨爾本_往右轉",
+   "status": "審稿中",
+   "current": "文案一校＋粗剪＋聲音",
+   "owner": "reviewer",
+   "kind": "短影音",
+   "platforms": [
+    "IG",
+    "Threads",
+    "小紅書"
+   ],
+   "updated": "2026-11-18 08:05",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "腳本／分鏡",
+     "state": "done"
+    },
+    {
+     "label": "文案",
+     "state": "done"
+    },
+    {
+     "label": "審稿",
+     "state": "doing"
+    },
+    {
+     "label": "粗剪",
+     "state": "doing"
+    },
+    {
+     "label": "聲音",
+     "state": "doing"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 3,
+   "review": null,
+   "videos": 0,
+   "events": [
+    {
+     "id": "20261118074537-7df9",
+     "time": "2026-11-18 07:45",
+     "type": "start",
+     "by": "sound",
+     "project": "2026-11-18_墨爾本_往右轉",
+     "summary": "乾淨環境音替換、雨聲漸弱、原創配樂"
+    },
+    {
+     "id": "20261118074537-cf87",
+     "time": "2026-11-18 07:45",
+     "type": "start",
+     "by": "editor",
+     "project": "2026-11-18_墨爾本_往右轉",
+     "summary": "依分鏡粗剪並對齊轉速（含 24fps 補格兩版）"
+    },
+    {
+     "id": "20261118074537-19a2",
+     "time": "2026-11-18 07:45",
+     "type": "start",
+     "by": "reviewer",
+     "project": "2026-11-18_墨爾本_往右轉",
+     "summary": "文案一校"
+    },
+    {
+     "id": "20261118074537-1d70",
+     "time": "2026-11-18 07:45",
+     "type": "handoff",
+     "by": "manager",
+     "to": "reviewer",
+     "project": "2026-11-18_墨爾本_往右轉",
+     "summary": "正式分鏡 8 顆 27.7 秒、轉速對齊計畫與三平台文案寫好，文案送審",
+     "files": [
+      "03_output/2026-11-18_墨爾本_往右轉/script.md",
+      "03_output/2026-11-18_墨爾本_往右轉/copy.md"
+     ]
+    }
+   ]
+  },
+  {
    "name": "2026-11-12_墨爾本_早上的墨爾本03",
    "status": "提案",
    "current": "抬頭素材檢查完，等你看",
@@ -1932,9 +2066,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 1.5207,
-  "gemini_total_usd": 1.5207,
-  "gemini_runs": 162,
+  "gemini_month_usd": 1.5439,
+  "gemini_total_usd": 1.5439,
+  "gemini_runs": 163,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -1943,14 +2077,25 @@
    {
     "day": "2026-11-17",
     "usd": 1.1167
+   },
+   {
+    "day": "2026-11-18",
+    "usd": 0.0232
    }
   ],
   "by_mode": {
    "reference": 0.0617,
-   "footage": 1.1755,
+   "footage": 1.1987,
    "output": 0.2835
   },
   "recent": [
+   {
+    "time": "2026-11-18 07:40",
+    "mode": "footage",
+    "source": "南墨爾本市場_audio.mp4",
+    "seconds": "197.0",
+    "usd": 0.0232
+   },
    {
     "time": "2026-11-17 16:58",
     "mode": "output",
@@ -2048,13 +2193,6 @@
     "source": "video-7979_singular_display.MOV",
     "seconds": "65.7",
     "usd": 0.0134
-   },
-   {
-    "time": "2026-11-17 00:25",
-    "mode": "footage",
-    "source": "video-7977_singular_display.MOV",
-    "seconds": "48.6",
-    "usd": 0.0164
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
