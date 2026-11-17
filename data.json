@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-17 17:11",
+ "generated": "2026-11-17 17:18",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "idle",
-   "count": 29,
-   "project": null,
+   "state": "working",
+   "count": 30,
+   "project": "2026-11-12_墨爾本_早上的墨爾本03",
    "last": {
-    "time": "2026-11-17 16:09",
-    "summary": "v5分鏡完成：34.667秒，可頌移到倒數第二、咖啡收尾"
+    "time": "2026-11-17 17:18",
+    "summary": "第3集（11/12晴天清晨）素材盤點與方向提案"
    }
   },
   {
@@ -235,6 +235,14 @@
   }
  ],
  "events": [
+  {
+   "id": "20261117171804-b356",
+   "time": "2026-11-17 17:18",
+   "type": "start",
+   "by": "manager",
+   "project": "2026-11-12_墨爾本_早上的墨爾本03",
+   "summary": "第3集（11/12晴天清晨）素材盤點與方向提案"
+  },
   {
    "id": "20261117171059-4fc0",
    "time": "2026-11-17 17:10",
@@ -1313,6 +1321,71 @@
   }
  ],
  "projects": [
+  {
+   "name": "2026-11-12_墨爾本_早上的墨爾本03",
+   "status": "提案",
+   "current": "方向討論中",
+   "owner": "manager",
+   "kind": "短影音",
+   "platforms": [
+    "IG",
+    "Threads",
+    "小紅書",
+    "YouTube Shorts"
+   ],
+   "updated": "2026-11-17 17:17",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "todo"
+    },
+    {
+     "label": "腳本／分鏡",
+     "state": "todo"
+    },
+    {
+     "label": "文案",
+     "state": "todo"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "粗剪",
+     "state": "todo"
+    },
+    {
+     "label": "聲音",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 0,
+   "review": null,
+   "videos": 0,
+   "events": [
+    {
+     "id": "20261117171804-b356",
+     "time": "2026-11-17 17:18",
+     "type": "start",
+     "by": "manager",
+     "project": "2026-11-12_墨爾本_早上的墨爾本03",
+     "summary": "第3集（11/12晴天清晨）素材盤點與方向提案"
+    }
+   ]
+  },
   {
    "name": "2026-11-15_墨爾本_早上的墨爾本01",
    "status": "製作中",
