@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-17 17:29",
+ "generated": "2026-11-17 17:33",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
    "state": "idle",
-   "count": 33,
+   "count": 34,
    "project": null,
    "last": {
-    "time": "2026-11-17 17:29",
-    "summary": "第3集方向選哪個；系列格式要不要定；手機通知與手錶處理"
+    "time": "2026-11-17 17:33",
+    "summary": "YouTube對標分析：長版安靜散步頻道做得好；安靜Shorts在YouTube上找不到夠格的；散步頻道Shorts畫面幾乎不放字"
    }
   },
   {
@@ -134,6 +134,17 @@
  ],
  "reports": [
   {
+   "id": "20261117173336-aba2",
+   "time": "2026-11-17 17:33",
+   "type": "report",
+   "by": "manager",
+   "to": "owner",
+   "summary": "YouTube對標分析：長版安靜散步頻道做得好；安靜Shorts在YouTube上找不到夠格的；散步頻道Shorts畫面幾乎不放字",
+   "files": [
+    "01_reference/對標_YouTube_2026-11-17.md"
+   ]
+  },
+  {
    "id": "20261117172934-6143",
    "time": "2026-11-17 17:29",
    "type": "decision",
@@ -245,21 +256,20 @@
     "B 裁成 16:9 做 8 分鐘測試",
     "C 保留直式加黑邊"
    ]
-  },
-  {
-   "id": "20261117000243-1862",
-   "time": "2026-11-17 00:02",
-   "type": "decision",
-   "by": "manager",
-   "summary": "Q2 要不要講出「跟團」？",
-   "options": [
-    "A 直說「九點集合」",
-    "B 不提，只寫時間",
-    "C 做完第 1 集再決定"
-   ]
   }
  ],
  "events": [
+  {
+   "id": "20261117173336-aba2",
+   "time": "2026-11-17 17:33",
+   "type": "report",
+   "by": "manager",
+   "to": "owner",
+   "summary": "YouTube對標分析：長版安靜散步頻道做得好；安靜Shorts在YouTube上找不到夠格的；散步頻道Shorts畫面幾乎不放字",
+   "files": [
+    "01_reference/對標_YouTube_2026-11-17.md"
+   ]
+  },
   {
    "id": "20261117172934-6143",
    "time": "2026-11-17 17:29",
