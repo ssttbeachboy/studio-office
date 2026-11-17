@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17 16:09",
+ "generated": "2026-11-17 16:16",
  "members": [
   {
    "id": "manager",
@@ -17,12 +17,12 @@
    "id": "editor",
    "name": "剪輯師",
    "role": "FFmpeg 粗剪・各平台尺寸",
-   "state": "working",
-   "count": 7,
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "state": "idle",
+   "count": 8,
+   "project": null,
    "last": {
-    "time": "2026-11-17 16:09",
-    "summary": "C版v5粗剪（34.667秒）"
+    "time": "2026-11-17 16:16",
+    "summary": "C版v5畫面剪好：1040格，車牌模糊已移到新位置"
    }
   },
   {
@@ -248,6 +248,19 @@
   }
  ],
  "events": [
+  {
+   "id": "20261117161608-4b38",
+   "time": "2026-11-17 16:16",
+   "type": "handoff",
+   "by": "editor",
+   "to": "sound",
+   "project": "2026-11-15_墨爾本_早上的墨爾本01",
+   "summary": "C版v5畫面剪好：1040格，車牌模糊已移到新位置",
+   "files": [
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/_ep01_C_v5_picture.mp4",
+    "03_output/2026-11-15_墨爾本_早上的墨爾本01/edit_log.md"
+   ]
+  },
   {
    "id": "20261117160908-44bc",
    "time": "2026-11-17 16:09",
@@ -1199,8 +1212,8 @@
   {
    "name": "2026-11-15_墨爾本_早上的墨爾本01",
    "status": "製作中",
-   "current": "v5 粗剪＋配樂重做",
-   "owner": "editor",
+   "current": "v5 畫面剪好，等聲音與配樂",
+   "owner": "sound",
    "kind": "短影音",
    "platforms": [
     "IG",
@@ -1228,7 +1241,7 @@
     },
     {
      "label": "粗剪",
-     "state": "doing"
+     "state": "done"
     },
     {
      "label": "聲音",
@@ -1247,13 +1260,26 @@
      "state": "todo"
     }
    ],
-   "done": 4,
+   "done": 5,
    "review": {
     "round": 6,
     "result": "通過"
    },
-   "videos": 12,
+   "videos": 14,
    "events": [
+    {
+     "id": "20261117161608-4b38",
+     "time": "2026-11-17 16:16",
+     "type": "handoff",
+     "by": "editor",
+     "to": "sound",
+     "project": "2026-11-15_墨爾本_早上的墨爾本01",
+     "summary": "C版v5畫面剪好：1040格，車牌模糊已移到新位置",
+     "files": [
+      "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/_ep01_C_v5_picture.mp4",
+      "03_output/2026-11-15_墨爾本_早上的墨爾本01/edit_log.md"
+     ]
+    },
     {
      "id": "20261117160908-44bc",
      "time": "2026-11-17 16:09",
@@ -1280,19 +1306,6 @@
      "summary": "v5分鏡完成：34.667秒，可頌移到倒數第二、咖啡收尾",
      "files": [
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/script.md"
-     ]
-    },
-    {
-     "id": "20261117160344-6b0f",
-     "time": "2026-11-17 16:03",
-     "type": "decision",
-     "by": "main",
-     "project": "2026-11-15_墨爾本_早上的墨爾本01",
-     "summary": "配樂要不要加弦樂音色（需下載）",
-     "options": [
-      "A VSCO2 社群版（CC0，不用署名，需另裝播放工具）",
-      "B MuseScore General（MIT，約36MB，現有工具可用）",
-      "C 不下載，只加工現在的鋼琴"
      ]
     }
    ]
