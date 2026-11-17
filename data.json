@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17 21:56",
+ "generated": "2026-11-18 06:04",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 21,
+   "count": 22,
    "project": null,
    "last": {
-    "time": "2026-11-17 17:23",
-    "summary": "IG／Threads 研究帳號：S老闆自己登入App瀏覽器，團隊只看公開內容"
+    "time": "2026-11-18 06:04",
+    "summary": "IG/Threads 對標第一輪：看了 7 個帳號，YouTube 大頻道在 IG 都小，爆紅靠一眼就懂的小發現"
    }
   }
  ],
@@ -264,6 +264,17 @@
   }
  ],
  "events": [
+  {
+   "id": "20261118060406-0cb9",
+   "time": "2026-11-18 06:04",
+   "type": "report",
+   "by": "main",
+   "to": "owner",
+   "summary": "IG/Threads 對標第一輪：看了 7 個帳號，YouTube 大頻道在 IG 都小，爆紅靠一眼就懂的小發現",
+   "files": [
+    "01_reference/對標_IG_Threads_2026-11-18.md"
+   ]
+  },
   {
    "id": "20261117215656-1fa3",
    "time": "2026-11-17 21:56",
