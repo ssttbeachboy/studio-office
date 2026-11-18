@@ -1,28 +1,28 @@
 {
- "generated": "2026-11-18 16:10",
+ "generated": "2026-11-18 16:16",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "working",
-   "count": 67,
-   "project": "2026-11-18_墨爾本_往右轉",
+   "state": "idle",
+   "count": 68,
+   "project": null,
    "last": {
-    "time": "2026-11-18 16:09",
-    "summary": "把 v3 兩版寫進 script.md"
+    "time": "2026-11-18 16:12",
+    "summary": "script.md 改成 v3 兩版，麵包櫃倒放縮到 0.78 秒，總長約 12 秒"
    }
   },
   {
    "id": "editor",
    "name": "剪輯師",
    "role": "FFmpeg 粗剪・各平台尺寸",
-   "state": "working",
-   "count": 13,
-   "project": "2026-11-18_墨爾本_往右轉",
+   "state": "idle",
+   "count": 15,
+   "project": null,
    "last": {
-    "time": "2026-11-18 16:09",
-    "summary": "剪 v3 兩版預覽（紫色電車／白色電車）"
+    "time": "2026-11-18 16:16",
+    "summary": "往右轉 v3 選紫色電車版還是白色電車版"
    }
   },
   {
@@ -84,6 +84,18 @@
   }
  ],
  "pending": [
+  {
+   "id": "20261118161623-70eb",
+   "time": "2026-11-18 16:16",
+   "type": "decision",
+   "by": "editor",
+   "project": "2026-11-18_墨爾本_往右轉",
+   "summary": "往右轉 v3 選紫色電車版還是白色電車版",
+   "options": [
+    "v3a 紫色電車",
+    "v3b 白色電車"
+   ]
+  },
   {
    "id": "20261118060859-6bb6",
    "time": "2026-11-18 06:08",
@@ -275,6 +287,43 @@
   }
  ],
  "events": [
+  {
+   "id": "20261118161623-70eb",
+   "time": "2026-11-18 16:16",
+   "type": "decision",
+   "by": "editor",
+   "project": "2026-11-18_墨爾本_往右轉",
+   "summary": "往右轉 v3 選紫色電車版還是白色電車版",
+   "options": [
+    "v3a 紫色電車",
+    "v3b 白色電車"
+   ]
+  },
+  {
+   "id": "20261118161623-9c7e",
+   "time": "2026-11-18 16:16",
+   "type": "handoff",
+   "by": "editor",
+   "to": "owner",
+   "project": "2026-11-18_墨爾本_往右轉",
+   "summary": "v3 兩版粗剪預覽，各 12.1 秒，每刀轉速都接上；麵包櫃倒放沒穿幫",
+   "files": [
+    "03_output/2026-11-18_墨爾本_往右轉/video/rtr_v3a.mp4",
+    "03_output/2026-11-18_墨爾本_往右轉/video/rtr_v3b.mp4"
+   ]
+  },
+  {
+   "id": "20261118161200-aacb",
+   "time": "2026-11-18 16:12",
+   "type": "handoff",
+   "by": "manager",
+   "to": "editor",
+   "project": "2026-11-18_墨爾本_往右轉",
+   "summary": "script.md 改成 v3 兩版，麵包櫃倒放縮到 0.78 秒，總長約 12 秒",
+   "files": [
+    "03_output/2026-11-18_墨爾本_往右轉/script.md"
+   ]
+  },
   {
    "id": "20261118160951-cf9f",
    "time": "2026-11-18 16:09",
@@ -2064,15 +2113,15 @@
   {
    "name": "2026-11-18_墨爾本_往右轉",
    "status": "製作中",
-   "current": "v3 兩版粗剪",
-   "owner": "editor",
+   "current": "等你看 v3 兩版預覽、選電車",
+   "owner": "owner",
    "kind": "短影音",
    "platforms": [
     "IG",
     "Threads",
     "小紅書"
    ],
-   "updated": "2026-11-18 16:09",
+   "updated": "2026-11-18 16:16",
    "steps": [
     {
      "label": "方向核准",
@@ -2080,7 +2129,7 @@
     },
     {
      "label": "腳本／分鏡",
-     "state": "doing"
+     "state": "done"
     },
     {
      "label": "文案",
@@ -2092,7 +2141,7 @@
     },
     {
      "label": "粗剪",
-     "state": "doing"
+     "state": "done"
     },
     {
      "label": "聲音",
@@ -2111,13 +2160,50 @@
      "state": "todo"
     }
    ],
-   "done": 1,
+   "done": 3,
    "review": {
     "round": 4,
     "result": "通過"
    },
-   "videos": 5,
+   "videos": 7,
    "events": [
+    {
+     "id": "20261118161623-70eb",
+     "time": "2026-11-18 16:16",
+     "type": "decision",
+     "by": "editor",
+     "project": "2026-11-18_墨爾本_往右轉",
+     "summary": "往右轉 v3 選紫色電車版還是白色電車版",
+     "options": [
+      "v3a 紫色電車",
+      "v3b 白色電車"
+     ]
+    },
+    {
+     "id": "20261118161623-9c7e",
+     "time": "2026-11-18 16:16",
+     "type": "handoff",
+     "by": "editor",
+     "to": "owner",
+     "project": "2026-11-18_墨爾本_往右轉",
+     "summary": "v3 兩版粗剪預覽，各 12.1 秒，每刀轉速都接上；麵包櫃倒放沒穿幫",
+     "files": [
+      "03_output/2026-11-18_墨爾本_往右轉/video/rtr_v3a.mp4",
+      "03_output/2026-11-18_墨爾本_往右轉/video/rtr_v3b.mp4"
+     ]
+    },
+    {
+     "id": "20261118161200-aacb",
+     "time": "2026-11-18 16:12",
+     "type": "handoff",
+     "by": "manager",
+     "to": "editor",
+     "project": "2026-11-18_墨爾本_往右轉",
+     "summary": "script.md 改成 v3 兩版，麵包櫃倒放縮到 0.78 秒，總長約 12 秒",
+     "files": [
+      "03_output/2026-11-18_墨爾本_往右轉/script.md"
+     ]
+    },
     {
      "id": "20261118160951-cf9f",
      "time": "2026-11-18 16:09",
@@ -2125,35 +2211,6 @@
      "by": "manager",
      "project": "2026-11-18_墨爾本_往右轉",
      "summary": "把 v3 兩版寫進 script.md"
-    },
-    {
-     "id": "20261118160951-9cab",
-     "time": "2026-11-18 16:09",
-     "type": "start",
-     "by": "editor",
-     "project": "2026-11-18_墨爾本_往右轉",
-     "summary": "剪 v3 兩版預覽（紫色電車／白色電車）"
-    },
-    {
-     "id": "20261118160951-869b",
-     "time": "2026-11-18 16:09",
-     "type": "resolve",
-     "by": "owner",
-     "project": "2026-11-18_墨爾本_往右轉",
-     "ref": "20261118154359-b67a",
-     "summary": "兩版都剪預覽再選；麵包櫃縮短，讓電車接麵包櫃順一點"
-    },
-    {
-     "id": "20261118154359-b67a",
-     "time": "2026-11-18 15:43",
-     "type": "decision",
-     "by": "manager",
-     "project": "2026-11-18_墨爾本_往右轉",
-     "summary": "往右轉 v3 電車用哪一顆、麵包櫃倒放可不可以",
-     "options": [
-      "版本一 2183 原地轉",
-      "版本二 6801 電車迎面"
-     ]
     }
    ]
   },
