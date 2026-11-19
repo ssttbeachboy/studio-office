@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-19 14:04",
+ "generated": "2026-11-19 14:14",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
    "state": "idle",
-   "count": 77,
+   "count": 79,
    "project": null,
    "last": {
-    "time": "2026-11-19 14:03",
-    "summary": "小紅書內文重寫，送二校"
+    "time": "2026-11-19 14:14",
+    "summary": "成品 v2 對得上分鏡，送S老闆核准"
    }
   },
   {
@@ -29,12 +29,12 @@
    "id": "sound",
    "name": "音控師",
    "role": "降噪・響度・白噪音",
-   "state": "working",
-   "count": 19,
-   "project": "2026-11-19_墨爾本_手伸出去",
+   "state": "idle",
+   "count": 20,
+   "project": null,
    "last": {
-    "time": "2026-11-19 13:57",
-    "summary": "整理 E1b 聲音：麵包段人聲、電車段先聽、結尾風聲"
+    "time": "2026-11-19 14:11",
+    "summary": "聲音 v2 完成：去掉麵包段人聲、電車段一聲同行者驚呼，結尾低切；Gemini 說換場接點生硬"
    }
   },
   {
@@ -51,11 +51,11 @@
    "name": "審稿員",
    "role": "只挑 AI 感",
    "state": "idle",
-   "count": 19,
+   "count": 21,
    "project": null,
    "last": {
-    "time": "2026-11-19 14:04",
-    "summary": "文案二校通過，等聲音和成品檢查"
+    "time": "2026-11-19 14:14",
+    "summary": "成品畫面文字通過（都是實景字，抽圖確認沒有後製字）"
    }
   },
   {
@@ -75,15 +75,27 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 27,
+   "count": 28,
    "project": null,
    "last": {
-    "time": "2026-11-18 18:34",
-    "summary": "Gemini 聽 v4b 環境音版：沒有清楚人聲；尖聲是電車輪子轉彎，悶響是低頻撞擊。Gemini 把麵包櫃時間寫錯，抽圖確認是 5.2–7.47"
+    "time": "2026-11-19 14:14",
+    "summary": "「手伸出去」v2 是否核准發佈"
    }
   }
  ],
  "pending": [
+  {
+   "id": "20261119141434-2550",
+   "time": "2026-11-19 14:14",
+   "type": "decision",
+   "by": "main",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "「手伸出去」v2 是否核准發佈",
+   "options": [
+    "核准",
+    "要修改"
+   ]
+  },
   {
    "id": "20261119082634-6798",
    "time": "2026-11-19 08:26",
@@ -289,6 +301,72 @@
   }
  ],
  "events": [
+  {
+   "id": "20261119141434-2550",
+   "time": "2026-11-19 14:14",
+   "type": "decision",
+   "by": "main",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "「手伸出去」v2 是否核准發佈",
+   "options": [
+    "核准",
+    "要修改"
+   ]
+  },
+  {
+   "id": "20261119141434-d403",
+   "time": "2026-11-19 14:14",
+   "type": "handoff",
+   "by": "manager",
+   "to": "owner",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "成品 v2 對得上分鏡，送S老闆核准",
+   "files": [
+    "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2_540.mp4",
+    "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
+   ]
+  },
+  {
+   "id": "20261119141416-f50b",
+   "time": "2026-11-19 14:14",
+   "type": "handoff",
+   "by": "reviewer",
+   "to": "manager",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "成品畫面文字通過（都是實景字，抽圖確認沒有後製字）",
+   "files": [
+    "03_output/2026-11-19_墨爾本_手伸出去/review.md"
+   ]
+  },
+  {
+   "id": "20261119141302-0ac7",
+   "time": "2026-11-19 14:13",
+   "type": "start",
+   "by": "manager",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "確認 hands_v2 成品對得上分鏡"
+  },
+  {
+   "id": "20261119141302-1fb8",
+   "time": "2026-11-19 14:13",
+   "type": "start",
+   "by": "reviewer",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "審成品畫面文字（Gemini 報告）"
+  },
+  {
+   "id": "20261119141154-f9f7",
+   "time": "2026-11-19 14:11",
+   "type": "handoff",
+   "by": "sound",
+   "to": "manager",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "聲音 v2 完成：去掉麵包段人聲、電車段一聲同行者驚呼，結尾低切；Gemini 說換場接點生硬",
+   "files": [
+    "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2.mp4",
+    "03_output/2026-11-19_墨爾本_手伸出去/sound_log.md"
+   ]
+  },
   {
    "id": "20261119140442-7464",
    "time": "2026-11-19 14:04",
@@ -2284,84 +2362,21 @@
    "type": "note",
    "by": "main",
    "summary": "儀表板發佈到 GitHub Pages"
-  },
-  {
-   "id": "20261116222951-f3c7",
-   "time": "2026-11-16 22:29",
-   "type": "note",
-   "by": "main",
-   "summary": "儀表板：拿掉機器人，改成成員起身走到對方桌前交棒；團隊對話可切換依時間／依作品",
-   "files": [
-    "dashboard/index.html"
-   ]
-  },
-  {
-   "id": "20261116221616-b6bb",
-   "time": "2026-11-16 22:16",
-   "type": "note",
-   "by": "main",
-   "summary": "儀表板改版：成員頭像分頁、作品卡左右滑動、顯示交棒路線與最新交棒",
-   "files": [
-    "dashboard/index.html"
-   ]
-  },
-  {
-   "id": "20261116220627-b79d",
-   "time": "2026-11-16 22:06",
-   "type": "note",
-   "by": "main",
-   "summary": "儀表板加上每個作品的細部進度卡（目前步驟、負責人、審稿輪次）",
-   "files": [
-    "dashboard/index.html",
-    "tools/new_project.py"
-   ]
-  },
-  {
-   "id": "20261116215849-8663",
-   "time": "2026-11-16 21:58",
-   "type": "note",
-   "by": "main",
-   "summary": "建好像素辦公室儀表板與交棒紀錄機制，待設定 GitHub 發佈",
-   "files": [
-    "dashboard/index.html",
-    "tools/build_dashboard.py"
-   ]
-  },
-  {
-   "id": "20261116215000-d071",
-   "time": "2026-11-16 21:50",
-   "type": "note",
-   "by": "main",
-   "summary": "用抽圖核對 Gemini 報告：更正了第一版的錯誤，也抓到 Gemini 把「分享」誤讀成「收藏」",
-   "files": [
-    "01_reference/參考影片分析.md"
-   ]
-  },
-  {
-   "id": "20261116214300-d848",
-   "time": "2026-11-16 21:43",
-   "type": "handoff",
-   "by": "gemini",
-   "to": "main",
-   "summary": "讀完 ref_01 The beauty of FUKUOKA：原片 13.5 秒、6 個固定鏡頭、底片感",
-   "files": [
-    "_gemini/01_reference/ref_01.reference.md"
-   ]
   }
  ],
  "projects": [
   {
    "name": "2026-11-19_墨爾本_手伸出去",
-   "status": "製作中",
-   "current": "整理聲音（文案二校通過）",
-   "owner": "sound",
+   "status": "待核准",
+   "current": "等你核准",
+   "owner": "owner",
    "kind": "短影音",
    "platforms": [
     "IG",
     "Threads",
     "小紅書"
    ],
-   "updated": "2026-11-19 14:04",
+   "updated": "2026-11-19 14:14",
    "steps": [
     {
      "label": "方向核准",
@@ -2376,7 +2391,7 @@
      "state": "done"
     },
     {
-     "label": "審稿（第 2 輪・通過）",
+     "label": "審稿（第 3 輪・通過）",
      "state": "done"
     },
     {
@@ -2385,11 +2400,11 @@
     },
     {
      "label": "聲音",
-     "state": "doing"
+     "state": "done"
     },
     {
      "label": "成品檢查",
-     "state": "todo"
+     "state": "done"
     },
     {
      "label": "S老闆核准",
@@ -2400,56 +2415,57 @@
      "state": "todo"
     }
    ],
-   "done": 5,
+   "done": 7,
    "review": {
-    "round": 2,
+    "round": 3,
     "result": "通過"
    },
    "videos": 4,
    "events": [
     {
-     "id": "20261119140442-7464",
-     "time": "2026-11-19 14:04",
-     "type": "handoff",
-     "by": "reviewer",
-     "to": "sound",
+     "id": "20261119141434-2550",
+     "time": "2026-11-19 14:14",
+     "type": "decision",
+     "by": "main",
      "project": "2026-11-19_墨爾本_手伸出去",
-     "summary": "文案二校通過，等聲音和成品檢查",
-     "files": [
-      "03_output/2026-11-19_墨爾本_手伸出去/review.md"
+     "summary": "「手伸出去」v2 是否核准發佈",
+     "options": [
+      "核准",
+      "要修改"
      ]
     },
     {
-     "id": "20261119140341-e91e",
-     "time": "2026-11-19 14:03",
+     "id": "20261119141434-d403",
+     "time": "2026-11-19 14:14",
      "type": "handoff",
      "by": "manager",
-     "to": "reviewer",
+     "to": "owner",
      "project": "2026-11-19_墨爾本_手伸出去",
-     "summary": "小紅書內文重寫，送二校",
+     "summary": "成品 v2 對得上分鏡，送S老闆核准",
      "files": [
+      "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2_540.mp4",
       "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
      ]
     },
     {
-     "id": "20261119140246-bd56",
-     "time": "2026-11-19 14:02",
+     "id": "20261119141416-f50b",
+     "time": "2026-11-19 14:14",
      "type": "handoff",
      "by": "reviewer",
      "to": "manager",
      "project": "2026-11-19_墨爾本_手伸出去",
-     "summary": "文案一校退回：小紅書三段排比、跟 IG／Threads 句子重複",
+     "summary": "成品畫面文字通過（都是實景字，抽圖確認沒有後製字）",
      "files": [
       "03_output/2026-11-19_墨爾本_手伸出去/review.md"
      ]
     },
     {
-     "id": "20261119140122-473e",
-     "time": "2026-11-19 14:01",
+     "id": "20261119141302-0ac7",
+     "time": "2026-11-19 14:13",
      "type": "start",
-     "by": "reviewer",
+     "by": "manager",
      "project": "2026-11-19_墨爾本_手伸出去",
-     "summary": "審 copy.md 三平台文案（一校）"
+     "summary": "確認 hands_v2 成品對得上分鏡"
     }
    ]
   },
@@ -2777,9 +2793,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 1.6271,
-  "gemini_total_usd": 1.6271,
-  "gemini_runs": 167,
+  "gemini_month_usd": 1.6748,
+  "gemini_total_usd": 1.6748,
+  "gemini_runs": 171,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -2795,15 +2811,43 @@
    },
    {
     "day": "2026-11-19",
-    "usd": 0.0064
+    "usd": 0.0541
    }
   ],
   "by_mode": {
    "reference": 0.0617,
    "footage": 1.2051,
-   "output": 0.3603
+   "output": 0.408
   },
   "recent": [
+   {
+    "time": "2026-11-19 14:12",
+    "mode": "output",
+    "source": "hands_v2.mp4",
+    "seconds": "17.4",
+    "usd": 0.0112
+   },
+   {
+    "time": "2026-11-19 14:09",
+    "mode": "output",
+    "source": "hands_v2.mp4",
+    "seconds": "17.4",
+    "usd": 0.014
+   },
+   {
+    "time": "2026-11-19 14:07",
+    "mode": "output",
+    "source": "hands_v2.mp4",
+    "seconds": "17.4",
+    "usd": 0.0126
+   },
+   {
+    "time": "2026-11-19 14:06",
+    "mode": "output",
+    "source": "hands_v2.mp4",
+    "seconds": "17.4",
+    "usd": 0.0099
+   },
    {
     "time": "2026-11-19 13:58",
     "mode": "footage",
@@ -2880,34 +2924,6 @@
     "source": "ep01_C_v1_music.mp4",
     "seconds": "39.6",
     "usd": 0.0362
-   },
-   {
-    "time": "2026-11-17 08:39",
-    "mode": "footage",
-    "source": "IMG_7247.MOV",
-    "seconds": "6.5",
-    "usd": 0.0048
-   },
-   {
-    "time": "2026-11-17 08:09",
-    "mode": "output",
-    "source": "ep01_B_v1.mp4",
-    "seconds": "43.1",
-    "usd": 0.0283
-   },
-   {
-    "time": "2026-11-17 08:07",
-    "mode": "output",
-    "source": "ep01_A_v1.mp4",
-    "seconds": "43.1",
-    "usd": 0.0222
-   },
-   {
-    "time": "2026-11-17 07:11",
-    "mode": "reference",
-    "source": "ref_03.MP4",
-    "seconds": "49.1",
-    "usd": 0.0241
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
