@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-19 13:57",
+ "generated": "2026-11-19 14:04",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "working",
-   "count": 75,
-   "project": "2026-11-19_墨爾本_手伸出去",
+   "state": "idle",
+   "count": 77,
+   "project": null,
    "last": {
-    "time": "2026-11-19 13:57",
-    "summary": "依 E1b 寫 script.md 與各平台文案"
+    "time": "2026-11-19 14:03",
+    "summary": "小紅書內文重寫，送二校"
    }
   },
   {
@@ -51,11 +51,11 @@
    "name": "審稿員",
    "role": "只挑 AI 感",
    "state": "idle",
-   "count": 16,
+   "count": 19,
    "project": null,
    "last": {
-    "time": "2026-11-18 10:54",
-    "summary": "文案第 4 輪通過"
+    "time": "2026-11-19 14:04",
+    "summary": "文案二校通過，等聲音和成品檢查"
    }
   },
   {
@@ -289,6 +289,63 @@
   }
  ],
  "events": [
+  {
+   "id": "20261119140442-7464",
+   "time": "2026-11-19 14:04",
+   "type": "handoff",
+   "by": "reviewer",
+   "to": "sound",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "文案二校通過，等聲音和成品檢查",
+   "files": [
+    "03_output/2026-11-19_墨爾本_手伸出去/review.md"
+   ]
+  },
+  {
+   "id": "20261119140341-e91e",
+   "time": "2026-11-19 14:03",
+   "type": "handoff",
+   "by": "manager",
+   "to": "reviewer",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "小紅書內文重寫，送二校",
+   "files": [
+    "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
+   ]
+  },
+  {
+   "id": "20261119140246-bd56",
+   "time": "2026-11-19 14:02",
+   "type": "handoff",
+   "by": "reviewer",
+   "to": "manager",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "文案一校退回：小紅書三段排比、跟 IG／Threads 句子重複",
+   "files": [
+    "03_output/2026-11-19_墨爾本_手伸出去/review.md"
+   ]
+  },
+  {
+   "id": "20261119140122-473e",
+   "time": "2026-11-19 14:01",
+   "type": "start",
+   "by": "reviewer",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "審 copy.md 三平台文案（一校）"
+  },
+  {
+   "id": "20261119140122-c58d",
+   "time": "2026-11-19 14:01",
+   "type": "handoff",
+   "by": "manager",
+   "to": "reviewer",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "定稿分鏡與三平台文案寫好，交審稿",
+   "files": [
+    "03_output/2026-11-19_墨爾本_手伸出去/script.md",
+    "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
+   ]
+  },
   {
    "id": "20261119135718-fbd1",
    "time": "2026-11-19 13:57",
@@ -2290,72 +2347,21 @@
    "files": [
     "_gemini/01_reference/ref_01.reference.md"
    ]
-  },
-  {
-   "id": "20261116214100-07df",
-   "time": "2026-11-16 21:41",
-   "type": "handoff",
-   "by": "gemini",
-   "to": "main",
-   "summary": "讀完 ref_02 Sounds of Melbourne：23 個鏡頭、沒有配樂、剪接跟著聲音走",
-   "files": [
-    "_gemini/01_reference/ref_02.reference.md"
-   ]
-  },
-  {
-   "id": "20261116202000-12a6",
-   "time": "2026-11-16 20:20",
-   "type": "note",
-   "by": "main",
-   "summary": "（補登）讀完墨爾本七日遊行程網站，整理出可用的素材時刻",
-   "files": [
-    "01_reference/墨爾本七日遊_行程摘要.md"
-   ]
-  },
-  {
-   "id": "20261116200600-deec",
-   "time": "2026-11-16 20:06",
-   "type": "request",
-   "by": "main",
-   "to": "owner",
-   "summary": "請在 05_style/我的文字範本.md 貼上至少 10 則自己寫過的文字，審稿員才能判斷像不像你",
-   "files": [
-    "05_style/我的文字範本.md"
-   ]
-  },
-  {
-   "id": "20261116200500-7d82",
-   "time": "2026-11-16 20:05",
-   "type": "request",
-   "by": "main",
-   "to": "owner",
-   "summary": "請把素材放進 00_footage（video／audio／photo），小主管才能盤點"
-  },
-  {
-   "id": "20261116200000-898b",
-   "time": "2026-11-16 20:00",
-   "type": "note",
-   "by": "main",
-   "summary": "（補登）團隊成立：寫好 CLAUDE.md、五位成員設定檔、初版禁用詞清單",
-   "files": [
-    "CLAUDE.md",
-    "05_style/禁用詞清單.md"
-   ]
   }
  ],
  "projects": [
   {
    "name": "2026-11-19_墨爾本_手伸出去",
    "status": "製作中",
-   "current": "寫腳本與文案、整理聲音",
-   "owner": "manager",
+   "current": "整理聲音（文案二校通過）",
+   "owner": "sound",
    "kind": "短影音",
    "platforms": [
     "IG",
     "Threads",
     "小紅書"
    ],
-   "updated": "2026-11-19 13:57",
+   "updated": "2026-11-19 14:04",
    "steps": [
     {
      "label": "方向核准",
@@ -2363,15 +2369,15 @@
     },
     {
      "label": "腳本／分鏡",
-     "state": "doing"
+     "state": "done"
     },
     {
      "label": "文案",
-     "state": "doing"
+     "state": "done"
     },
     {
-     "label": "審稿",
-     "state": "todo"
+     "label": "審稿（第 2 輪・通過）",
+     "state": "done"
     },
     {
      "label": "粗剪",
@@ -2394,25 +2400,56 @@
      "state": "todo"
     }
    ],
-   "done": 2,
-   "review": null,
-   "videos": 2,
+   "done": 5,
+   "review": {
+    "round": 2,
+    "result": "通過"
+   },
+   "videos": 4,
    "events": [
     {
-     "id": "20261119135718-fbd1",
-     "time": "2026-11-19 13:57",
-     "type": "start",
-     "by": "sound",
+     "id": "20261119140442-7464",
+     "time": "2026-11-19 14:04",
+     "type": "handoff",
+     "by": "reviewer",
+     "to": "sound",
      "project": "2026-11-19_墨爾本_手伸出去",
-     "summary": "整理 E1b 聲音：麵包段人聲、電車段先聽、結尾風聲"
+     "summary": "文案二校通過，等聲音和成品檢查",
+     "files": [
+      "03_output/2026-11-19_墨爾本_手伸出去/review.md"
+     ]
     },
     {
-     "id": "20261119135718-86ad",
-     "time": "2026-11-19 13:57",
-     "type": "start",
+     "id": "20261119140341-e91e",
+     "time": "2026-11-19 14:03",
+     "type": "handoff",
      "by": "manager",
+     "to": "reviewer",
      "project": "2026-11-19_墨爾本_手伸出去",
-     "summary": "依 E1b 寫 script.md 與各平台文案"
+     "summary": "小紅書內文重寫，送二校",
+     "files": [
+      "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
+     ]
+    },
+    {
+     "id": "20261119140246-bd56",
+     "time": "2026-11-19 14:02",
+     "type": "handoff",
+     "by": "reviewer",
+     "to": "manager",
+     "project": "2026-11-19_墨爾本_手伸出去",
+     "summary": "文案一校退回：小紅書三段排比、跟 IG／Threads 句子重複",
+     "files": [
+      "03_output/2026-11-19_墨爾本_手伸出去/review.md"
+     ]
+    },
+    {
+     "id": "20261119140122-473e",
+     "time": "2026-11-19 14:01",
+     "type": "start",
+     "by": "reviewer",
+     "project": "2026-11-19_墨爾本_手伸出去",
+     "summary": "審 copy.md 三平台文案（一校）"
     }
    ]
   },
@@ -2740,9 +2777,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 1.6207,
-  "gemini_total_usd": 1.6207,
-  "gemini_runs": 166,
+  "gemini_month_usd": 1.6271,
+  "gemini_total_usd": 1.6271,
+  "gemini_runs": 167,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -2755,14 +2792,25 @@
    {
     "day": "2026-11-18",
     "usd": 0.1
+   },
+   {
+    "day": "2026-11-19",
+    "usd": 0.0064
    }
   ],
   "by_mode": {
    "reference": 0.0617,
-   "footage": 1.1987,
+   "footage": 1.2051,
    "output": 0.3603
   },
   "recent": [
+   {
+    "time": "2026-11-19 13:58",
+    "mode": "footage",
+    "source": "IMG_2246.MOV",
+    "seconds": "5.9",
+    "usd": 0.0064
+   },
    {
     "time": "2026-11-18 18:33",
     "mode": "output",
@@ -2860,13 +2908,6 @@
     "source": "ref_03.MP4",
     "seconds": "49.1",
     "usd": 0.0241
-   },
-   {
-    "time": "2026-11-17 00:43",
-    "mode": "footage",
-    "source": "IMG_6771.mov",
-    "seconds": "3.4",
-    "usd": 0.0039
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
