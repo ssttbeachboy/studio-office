@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-19 13:51",
+ "generated": "2026-11-19 13:57",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "idle",
-   "count": 74,
-   "project": null,
+   "state": "working",
+   "count": 75,
+   "project": "2026-11-19_墨爾本_手伸出去",
    "last": {
-    "time": "2026-11-19 08:26",
-    "summary": "「手伸出去」結尾選哪個、先用現有素材剪還是等補拍"
+    "time": "2026-11-19 13:57",
+    "summary": "依 E1b 寫 script.md 與各平台文案"
    }
   },
   {
@@ -29,12 +29,12 @@
    "id": "sound",
    "name": "音控師",
    "role": "降噪・響度・白噪音",
-   "state": "idle",
-   "count": 18,
-   "project": null,
+   "state": "working",
+   "count": 19,
+   "project": "2026-11-19_墨爾本_手伸出去",
    "last": {
-    "time": "2026-11-19 13:48",
-    "summary": "市場錄音乾淨版 87 秒、10 分鐘延長測試完成；素材太短，推測約 1 分鐘一輪聽得出重複"
+    "time": "2026-11-19 13:57",
+    "summary": "整理 E1b 聲音：麵包段人聲、電車段先聽、結尾風聲"
    }
   },
   {
@@ -289,6 +289,22 @@
   }
  ],
  "events": [
+  {
+   "id": "20261119135718-fbd1",
+   "time": "2026-11-19 13:57",
+   "type": "start",
+   "by": "sound",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "整理 E1b 聲音：麵包段人聲、電車段先聽、結尾風聲"
+  },
+  {
+   "id": "20261119135718-86ad",
+   "time": "2026-11-19 13:57",
+   "type": "start",
+   "by": "manager",
+   "project": "2026-11-19_墨爾本_手伸出去",
+   "summary": "依 E1b 寫 script.md 與各平台文案"
+  },
   {
    "id": "20261119135112-4635",
    "time": "2026-11-19 13:51",
@@ -2328,6 +2344,78 @@
   }
  ],
  "projects": [
+  {
+   "name": "2026-11-19_墨爾本_手伸出去",
+   "status": "製作中",
+   "current": "寫腳本與文案、整理聲音",
+   "owner": "manager",
+   "kind": "短影音",
+   "platforms": [
+    "IG",
+    "Threads",
+    "小紅書"
+   ],
+   "updated": "2026-11-19 13:57",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "腳本／分鏡",
+     "state": "doing"
+    },
+    {
+     "label": "文案",
+     "state": "doing"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "粗剪",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "doing"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 2,
+   "review": null,
+   "videos": 2,
+   "events": [
+    {
+     "id": "20261119135718-fbd1",
+     "time": "2026-11-19 13:57",
+     "type": "start",
+     "by": "sound",
+     "project": "2026-11-19_墨爾本_手伸出去",
+     "summary": "整理 E1b 聲音：麵包段人聲、電車段先聽、結尾風聲"
+    },
+    {
+     "id": "20261119135718-86ad",
+     "time": "2026-11-19 13:57",
+     "type": "start",
+     "by": "manager",
+     "project": "2026-11-19_墨爾本_手伸出去",
+     "summary": "依 E1b 寫 script.md 與各平台文案"
+    }
+   ]
+  },
   {
    "name": "2026-11-18_墨爾本_往右轉",
    "status": "製作中",
