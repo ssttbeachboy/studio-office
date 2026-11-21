@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21 08:13",
+ "generated": "2026-11-21 14:37",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 44,
+   "count": 45,
    "project": null,
    "last": {
-    "time": "2026-11-21 08:13",
-    "summary": "結構測試版：要不要核准，以及用主版本還是 B 淡膠片版"
+    "time": "2026-11-21 14:37",
+    "summary": "分析 ref_05 高雄旅拍：前碎後長、黑畫面呼吸、最後長鏡頭；爆紅主因可能是名人"
    }
   }
  ],
@@ -394,6 +394,17 @@
   }
  ],
  "events": [
+  {
+   "id": "20261121143745-a218",
+   "time": "2026-11-21 14:37",
+   "type": "report",
+   "by": "main",
+   "to": "owner",
+   "summary": "分析 ref_05 高雄旅拍：前碎後長、黑畫面呼吸、最後長鏡頭；爆紅主因可能是名人",
+   "files": [
+    "01_reference/ref_05_高雄旅拍分析_2026-11-21.md"
+   ]
+  },
   {
    "id": "20261121081310-5366",
    "time": "2026-11-21 08:13",
@@ -2492,14 +2503,6 @@
    "files": [
     "03_output/2026-11-15_墨爾本_早上的墨爾本01/review.md"
    ]
-  },
-  {
-   "id": "20261117080947-54f2",
-   "time": "2026-11-17 08:09",
-   "type": "start",
-   "by": "manager",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "確認成品對得上分鏡"
   }
  ],
  "projects": [
@@ -3245,9 +3248,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 1.8767,
-  "gemini_total_usd": 1.8767,
-  "gemini_runs": 188,
+  "gemini_month_usd": 1.9204,
+  "gemini_total_usd": 1.9204,
+  "gemini_runs": 189,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -3271,16 +3274,23 @@
    },
    {
     "day": "2026-11-21",
-    "usd": 0.0838
+    "usd": 0.1275
    }
   ],
   "by_mode": {
-   "reference": 0.1048,
+   "reference": 0.1485,
    "footage": 1.2051,
    "output": 0.4353,
    "audio": 0.1315
   },
   "recent": [
+   {
+    "time": "2026-11-21 14:37",
+    "mode": "reference",
+    "source": "ref_05.MP4",
+    "seconds": "142.9",
+    "usd": 0.0437
+   },
    {
     "time": "2026-11-21 08:09",
     "mode": "output",
@@ -3378,13 +3388,6 @@
     "source": "淺水灣海濱公園.m4a",
     "seconds": "144.0",
     "usd": 0.0084
-   },
-   {
-    "time": "2026-11-20 08:18",
-    "mode": "audio",
-    "source": "琉球ホテル&リゾート 名城ビーチ.m4a",
-    "seconds": "530.9",
-    "usd": 0.0204
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
