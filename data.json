@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-21 19:13",
+ "generated": "2026-11-22 09:36",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
    "state": "idle",
-   "count": 93,
+   "count": 95,
    "project": null,
    "last": {
-    "time": "2026-11-21 19:13",
-    "summary": "照 11/21 新規則改企劃和小抄：路人臉改成盡量避開、不做模糊；號碼布、同行者照舊"
+    "time": "2026-11-22 09:36",
+    "summary": "素材盤點：起跑倒數、9.5K 補水站的手、河濱日出、飛機都有；0–8K、第二站、終點後、補錄沒有。粗版企劃改成手拿水→拿紙杯→丟掉，飛機收尾"
    }
   },
   {
@@ -279,6 +279,18 @@
  ],
  "reports": [
   {
+   "id": "20261122093618-e61d",
+   "time": "2026-11-22 09:36",
+   "type": "report",
+   "by": "manager",
+   "to": "owner",
+   "project": "2026-11-22_南山_跑到安靜",
+   "summary": "素材盤點：起跑倒數、9.5K 補水站的手、河濱日出、飛機都有；0–8K、第二站、終點後、補錄沒有。粗版企劃改成手拿水→拿紙杯→丟掉，飛機收尾",
+   "files": [
+    "03_output/2026-11-22_南山_跑到安靜/素材盤點.md"
+   ]
+  },
+  {
    "id": "20261120134940-260c",
    "time": "2026-11-20 13:49",
    "type": "report",
@@ -391,21 +403,29 @@
     "02_plans/提案_重新發想_2026-11-19.md",
     "_frames/02_plans/ideas_2026-11-19/"
    ]
-  },
-  {
-   "id": "20261118154359-b67a",
-   "time": "2026-11-18 15:43",
-   "type": "decision",
-   "by": "manager",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "往右轉 v3 電車用哪一顆、麵包櫃倒放可不可以",
-   "options": [
-    "版本一 2183 原地轉",
-    "版本二 6801 電車迎面"
-   ]
   }
  ],
  "events": [
+  {
+   "id": "20261122093618-e61d",
+   "time": "2026-11-22 09:36",
+   "type": "report",
+   "by": "manager",
+   "to": "owner",
+   "project": "2026-11-22_南山_跑到安靜",
+   "summary": "素材盤點：起跑倒數、9.5K 補水站的手、河濱日出、飛機都有；0–8K、第二站、終點後、補錄沒有。粗版企劃改成手拿水→拿紙杯→丟掉，飛機收尾",
+   "files": [
+    "03_output/2026-11-22_南山_跑到安靜/素材盤點.md"
+   ]
+  },
+  {
+   "id": "20261122093618-ad18",
+   "time": "2026-11-22 09:36",
+   "type": "start",
+   "by": "manager",
+   "project": "2026-11-22_南山_跑到安靜",
+   "summary": "南山素材回來：抽圖、量響度、跑 Gemini（22 支約 6.8 分鐘，US$0.16）"
+  },
   {
    "id": "20261121191357-f71d",
    "time": "2026-11-21 19:13",
@@ -2495,30 +2515,6 @@
    "by": "editor",
    "project": "2026-11-15_墨爾本_早上的墨爾本01",
    "summary": "剪 C 版"
-  },
-  {
-   "id": "20261117084247-c313",
-   "time": "2026-11-17 08:42",
-   "type": "handoff",
-   "by": "manager",
-   "to": "reviewer",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "C 版文案調整（IG、YouTube 說明欄）送審",
-   "files": [
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/copy.md"
-   ]
-  },
-  {
-   "id": "20261117084247-9f50",
-   "time": "2026-11-17 08:42",
-   "type": "handoff",
-   "by": "manager",
-   "to": "editor",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "C 版分鏡完成：按鈕開場、可頌收尾，39.6 秒",
-   "files": [
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/script.md"
-   ]
   }
  ],
  "projects": [
@@ -2738,7 +2734,7 @@
   {
    "name": "2026-11-22_南山_跑到安靜",
    "status": "提案",
-   "current": "等你核准方向（已照 21K 路線排好拍攝點）",
+   "current": "素材盤點完，等你看粗版企劃",
    "owner": "owner",
    "kind": "短影音",
    "platforms": [
@@ -2746,7 +2742,7 @@
     "Threads",
     "小紅書"
    ],
-   "updated": "2026-11-21 19:13",
+   "updated": "2026-11-22 09:36",
    "steps": [
     {
      "label": "方向核准",
@@ -2790,6 +2786,26 @@
    "videos": 0,
    "events": [
     {
+     "id": "20261122093618-e61d",
+     "time": "2026-11-22 09:36",
+     "type": "report",
+     "by": "manager",
+     "to": "owner",
+     "project": "2026-11-22_南山_跑到安靜",
+     "summary": "素材盤點：起跑倒數、9.5K 補水站的手、河濱日出、飛機都有；0–8K、第二站、終點後、補錄沒有。粗版企劃改成手拿水→拿紙杯→丟掉，飛機收尾",
+     "files": [
+      "03_output/2026-11-22_南山_跑到安靜/素材盤點.md"
+     ]
+    },
+    {
+     "id": "20261122093618-ad18",
+     "time": "2026-11-22 09:36",
+     "type": "start",
+     "by": "manager",
+     "project": "2026-11-22_南山_跑到安靜",
+     "summary": "南山素材回來：抽圖、量響度、跑 Gemini（22 支約 6.8 分鐘，US$0.16）"
+    },
+    {
      "id": "20261121191357-f71d",
      "time": "2026-11-21 19:13",
      "type": "handoff",
@@ -2813,27 +2829,6 @@
      "files": [
       "03_output/2026-11-22_南山_跑到安靜/script.md",
       "03_output/2026-11-22_南山_跑到安靜/現場小抄.md"
-     ]
-    },
-    {
-     "id": "20261120134900-d1a6",
-     "time": "2026-11-20 13:49",
-     "type": "start",
-     "by": "manager",
-     "project": "2026-11-22_南山_跑到安靜",
-     "summary": "S老闆跑21K、給了路線圖：照路線把拍攝點對到公里數"
-    },
-    {
-     "id": "20261120134549-bd47",
-     "time": "2026-11-20 13:45",
-     "type": "decision",
-     "by": "manager",
-     "project": "2026-11-22_南山_跑到安靜",
-     "summary": "南山半馬：核准方向嗎？跑哪一組？",
-     "options": [
-      "A 核准，跑 21K",
-      "B 核准，跑 10K",
-      "C 方向要改"
      ]
     }
    ]
@@ -3264,9 +3259,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 1.9428,
-  "gemini_total_usd": 1.9428,
-  "gemini_runs": 191,
+  "gemini_month_usd": 2.1071,
+  "gemini_total_usd": 2.1071,
+  "gemini_runs": 213,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -3291,119 +3286,123 @@
    {
     "day": "2026-11-21",
     "usd": 0.1499
+   },
+   {
+    "day": "2026-11-22",
+    "usd": 0.1643
    }
   ],
   "by_mode": {
    "reference": 0.159,
-   "footage": 1.2051,
+   "footage": 1.3694,
    "output": 0.4353,
    "audio": 0.1434
   },
   "recent": [
    {
-    "time": "2026-11-21 14:48",
-    "mode": "audio",
-    "source": "南墨爾本市場.m4a",
-    "seconds": "142.7",
-    "usd": 0.0119
+    "time": "2026-11-22 09:34",
+    "mode": "footage",
+    "source": "video-8515_singular_display.MOV",
+    "seconds": "9.7",
+    "usd": 0.0085
    },
    {
-    "time": "2026-11-21 14:38",
-    "mode": "reference",
-    "source": "ref_06.MP4",
-    "seconds": "11.0",
-    "usd": 0.0105
+    "time": "2026-11-22 09:34",
+    "mode": "footage",
+    "source": "video-8501_singular_display.MOV",
+    "seconds": "180.0",
+    "usd": 0.0278
    },
    {
-    "time": "2026-11-21 14:37",
-    "mode": "reference",
-    "source": "ref_05.MP4",
-    "seconds": "142.9",
-    "usd": 0.0437
+    "time": "2026-11-22 09:33",
+    "mode": "footage",
+    "source": "video-8496_singular_display.MOV",
+    "seconds": "36.3",
+    "usd": 0.0121
    },
    {
-    "time": "2026-11-21 08:09",
-    "mode": "output",
-    "source": "structure_v1.mp4",
-    "seconds": "31.1",
-    "usd": 0.0273
+    "time": "2026-11-22 09:31",
+    "mode": "footage",
+    "source": "video-8491_singular_display.MOV",
+    "seconds": "4.7",
+    "usd": 0.0051
    },
    {
-    "time": "2026-11-21 07:29",
-    "mode": "audio",
-    "source": "structure_v1_mix.wav",
-    "seconds": "31.1",
-    "usd": 0.0152
+    "time": "2026-11-22 09:31",
+    "mode": "footage",
+    "source": "video-8486_singular_display.MOV",
+    "seconds": "6.3",
+    "usd": 0.007
    },
    {
-    "time": "2026-11-21 07:22",
-    "mode": "audio",
-    "source": "chk_7193_night_0-3.97.wav",
-    "seconds": "4.0",
-    "usd": 0.0046
-   },
-   {
-    "time": "2026-11-21 07:21",
-    "mode": "audio",
-    "source": "chk_7192_bike_0-5.43.wav",
-    "seconds": "5.4",
+    "time": "2026-11-22 09:30",
+    "mode": "footage",
+    "source": "video-8481_singular_display.MOV",
+    "seconds": "3.5",
     "usd": 0.0035
    },
    {
-    "time": "2026-11-21 07:21",
-    "mode": "audio",
-    "source": "chk_7147_library_6.4-10.83.wav",
-    "seconds": "4.4",
+    "time": "2026-11-22 09:30",
+    "mode": "footage",
+    "source": "video-8475_singular_display.MOV",
+    "seconds": "1.8",
+    "usd": 0.0069
+   },
+   {
+    "time": "2026-11-22 09:29",
+    "mode": "footage",
+    "source": "video-8470_singular_display.MOV",
+    "seconds": "1.4",
+    "usd": 0.0053
+   },
+   {
+    "time": "2026-11-22 09:29",
+    "mode": "footage",
+    "source": "video-8433_singular_display.MOV",
+    "seconds": "39.7",
+    "usd": 0.0112
+   },
+   {
+    "time": "2026-11-22 09:27",
+    "mode": "footage",
+    "source": "video-8426_singular_display.MOV",
+    "seconds": "0.3",
+    "usd": 0.0033
+   },
+   {
+    "time": "2026-11-22 09:27",
+    "mode": "footage",
+    "source": "IMG_7460.MOV",
+    "seconds": "3.4",
     "usd": 0.0049
    },
    {
-    "time": "2026-11-21 07:21",
-    "mode": "audio",
-    "source": "chk_7112_river_2.8-7.2.wav",
-    "seconds": "4.4",
-    "usd": 0.0066
+    "time": "2026-11-22 09:27",
+    "mode": "footage",
+    "source": "IMG_7459.MOV",
+    "seconds": "14.4",
+    "usd": 0.0042
    },
    {
-    "time": "2026-11-21 07:20",
-    "mode": "audio",
-    "source": "chk_7043_rain_7.5-13.0.wav",
-    "seconds": "5.5",
-    "usd": 0.0043
+    "time": "2026-11-22 09:26",
+    "mode": "footage",
+    "source": "IMG_7458.MOV",
+    "seconds": "21.3",
+    "usd": 0.0082
    },
    {
-    "time": "2026-11-21 07:20",
-    "mode": "audio",
-    "source": "chk_7037_cart_0-3.2.wav",
-    "seconds": "3.2",
-    "usd": 0.0057
+    "time": "2026-11-22 09:25",
+    "mode": "footage",
+    "source": "IMG_7457.MOV",
+    "seconds": "8.8",
+    "usd": 0.0061
    },
    {
-    "time": "2026-11-21 07:20",
-    "mode": "audio",
-    "source": "chk_7035_table_0-10.16.wav",
-    "seconds": "10.2",
-    "usd": 0.0057
-   },
-   {
-    "time": "2026-11-21 07:19",
-    "mode": "audio",
-    "source": "chk_7031_cup_0-3.17.wav",
-    "seconds": "3.2",
-    "usd": 0.006
-   },
-   {
-    "time": "2026-11-20 22:10",
-    "mode": "reference",
-    "source": "ref_04.MP4",
-    "seconds": "133.8",
-    "usd": 0.0431
-   },
-   {
-    "time": "2026-11-20 08:20",
-    "mode": "audio",
-    "source": "新錄音5.m4a",
-    "seconds": "24.7",
-    "usd": 0.0071
+    "time": "2026-11-22 09:25",
+    "mode": "footage",
+    "source": "IMG_7455.MOV",
+    "seconds": "8.3",
+    "usd": 0.0046
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
