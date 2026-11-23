@@ -1080,6 +1080,8 @@ function togglePause(force) {
 }
 function levelClear() {
   game.state = 'clear'; game.endT = 0; playMusic(null); SFX.win();
+  // drop the overhead banner so nothing blocks the view of the goal
+  game.finish.children.forEach(c => { if (c.geometry && c.geometry.type === 'PlaneGeometry') return; c.visible = false; });
   const stars = game.hp, score = game.bugs * 10 + game.hp * 50;
   const prev = best[game.L.id];
   if (!prev || score > prev.score) best[game.L.id] = { stars: Math.max(stars, prev ? prev.stars : 0), score };
@@ -1282,8 +1284,9 @@ function updateGame(dt) {
   const intro = g.state === 'intro' ? clamp(1 - g.introT / 1.6, 0, 1) : 0;
   const portrait = camera.aspect < 1;
   const cz = (portrait ? 8.6 : 7.4) - intro * 2.8, cy = (portrait ? 4.6 : 4.0) - intro * 1.8;
-  camera.position.set(g.x * 0.55 + rand(-sh, sh), cy + chick.position.y * 0.3 + rand(-sh, sh), cz);
-  camera.lookAt(g.x * 0.7, 1.1 + chick.position.y * 0.25 - intro * 0.2, -7 + intro * 7);
+  const fin = g.state === 'clear' ? clamp(g.endT / 1.4, 0, 1) : 0, fe = fin * fin * (3 - 2 * fin);
+  camera.position.set(lerp(g.x * 0.55, g.x * 0.3, fe) + rand(-sh, sh), lerp(cy + chick.position.y * 0.3, cy - 0.6, fe) + rand(-sh, sh), lerp(cz, cz + 1.5, fe));
+  camera.lookAt(g.x * 0.7, lerp(1.1 + chick.position.y * 0.25 - intro * 0.2, 4.5, fe), lerp(-7 + intro * 7, -30, fe));
   renderer.render(g.scene, camera);
 }
 
