@@ -798,7 +798,7 @@ function library() { // front face sits at z = 0, door in the middle
     for (let i = 0; i <= w; i += 32) { x.beginPath(); x.moveTo(i, 0); x.lineTo(i, h); x.stroke(); x.beginPath(); x.moveTo(0, i); x.lineTo(w, i); x.stroke(); }
   });
   plazaTex.repeat.set(12, 7);
-  const plaza = new THREE.Mesh(new THREE.PlaneGeometry(56, 32), new THREE.MeshStandardMaterial({ map: plazaTex, roughness: 1 }));
+  const plaza = new THREE.Mesh(new THREE.PlaneGeometry(56, 32, 1, 24), new THREE.MeshStandardMaterial({ map: plazaTex, roughness: 1 }));
   plaza.rotation.x = -Math.PI / 2; plaza.position.set(0, 0.025, 14); plaza.receiveShadow = true; g.add(plaza);
   return g;
 }
@@ -959,10 +959,10 @@ function buildLevel(li) {
   sun.shadow.bias = -0.0006; s.add(sun, sun.target);
 
   game.pathTex = L.path(); game.pathTex.repeat.set(1, PATH_LEN / L.pathTile);
-  const path = new THREE.Mesh(new THREE.PlaneGeometry(PATH_W, PATH_LEN), new THREE.MeshStandardMaterial({ map: game.pathTex, roughness: 1 }));
+  const path = new THREE.Mesh(new THREE.PlaneGeometry(PATH_W, PATH_LEN, 1, Math.round(PATH_LEN / 2)), new THREE.MeshStandardMaterial({ map: game.pathTex, roughness: 1 }));
   path.rotation.x = -Math.PI / 2; path.position.set(0, 0.012, -PATH_LEN / 2 + 14); path.receiveShadow = true; s.add(path);
   game.sideTex = L.side(); game.sideTex.repeat.set(300 / L.sideTile, PATH_LEN / L.sideTile);
-  const side = new THREE.Mesh(new THREE.PlaneGeometry(300, PATH_LEN), new THREE.MeshStandardMaterial({ map: game.sideTex, roughness: 1 }));
+  const side = new THREE.Mesh(new THREE.PlaneGeometry(300, PATH_LEN, 1, Math.round(PATH_LEN / 2)), new THREE.MeshStandardMaterial({ map: game.sideTex, roughness: 1 }));
   side.rotation.x = -Math.PI / 2; side.position.set(0, 0, -PATH_LEN / 2 + 14); side.receiveShadow = true; s.add(side);
 
   game.items = []; game.scenery = []; game.particles = []; game.backdrops = []; game.seaTex = null; game.library = null; game.clearLeft = [];
@@ -977,9 +977,9 @@ function buildLevel(li) {
       for (let i = 0; i < 26; i++) { const yy = Math.random() * h, xx = Math.random() * w; x.beginPath(); x.moveTo(xx, yy); x.quadraticCurveTo(xx + 10, yy - 4, xx + 22, yy); x.stroke(); }
     });
     game.seaTex.repeat.set(1, PATH_LEN / 30);
-    const sea = new THREE.Mesh(new THREE.PlaneGeometry(220, PATH_LEN), new THREE.MeshStandardMaterial({ map: game.seaTex, roughness: 0.25, metalness: 0.1 }));
+    const sea = new THREE.Mesh(new THREE.PlaneGeometry(220, PATH_LEN, 1, Math.round(PATH_LEN / 2)), new THREE.MeshStandardMaterial({ map: game.seaTex, roughness: 0.25, metalness: 0.1 }));
     sea.rotation.x = -Math.PI / 2; sea.position.set(9.5 + 110, 0.04, -PATH_LEN / 2 + 14); s.add(sea); game.sea = sea;
-    const foam = new THREE.Mesh(new THREE.PlaneGeometry(1.2, PATH_LEN), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 }));
+    const foam = new THREE.Mesh(new THREE.PlaneGeometry(1.2, PATH_LEN, 1, Math.round(PATH_LEN / 2)), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 }));
     foam.rotation.x = -Math.PI / 2; foam.position.set(9.6, 0.06, -PATH_LEN / 2 + 14); s.add(foam); game.foam = foam;
     // distant island + sun
     const isl = new THREE.Group();
@@ -1148,7 +1148,7 @@ function toViewer() {
 function startLevel(li) {
   closeModal(); ui.title.hidden = true; ui.hud.hidden = false;
   buildLevel(li);
-  Object.assign(game, { giant: 0, meter: 0, gScale: 1, speed: game.L.speed, dist: 0, hp: 3, bugs: 0, lane: 1, x: 0, y: 0, vy: 0, inv: 0, spawnAcc: 0, nextGap: 22, sceneryAcc: 0, introT: 0, endT: 0, shake: 0, state: 'intro' });
+  Object.assign(game, { slow: 1, giant: 0, meter: 0, gScale: 1, speed: game.L.speed, dist: 0, hp: 3, bugs: 0, lane: 1, x: 0, y: 0, vy: 0, inv: 0, spawnAcc: 0, nextGap: 22, sceneryAcc: 0, introT: 0, endT: 0, shake: 0, state: 'intro' });
   chick.visible = true;
   $('#hudLevel').textContent = game.L.name;
   updateHud(); mode = 'game'; playMusic(game.L.id);
@@ -1287,7 +1287,8 @@ function updateGame(dt) {
     poseChick(T, k < 0.6 ? 'idle' : 'run', { freq: 10, hop: k < 0.5 ? Math.abs(Math.sin(g.introT * 8)) * 0.2 : 0 });
     if (g.introT > 1.7) { g.state = 'play'; showBanner('跑！', 600); }
   } else if (g.state === 'play') {
-    g.speed = L.speed + (g.dist / L.length) * 1.5;
+    g.slow = Math.min(1, g.slow + dt * 0.3);   // recover from bumping into rocks
+    g.speed = (L.speed + (g.dist / L.length) * 1.5) * g.slow;
     move = g.speed * dt; g.dist += move;
     // lateral
     const tx = LANES[g.lane]; const prevX = g.x;
@@ -1361,10 +1362,11 @@ function updateGame(dt) {
         const bc = $('#bugCount'); bc.classList.remove('bump'); void bc.offsetWidth; bc.classList.add('bump');
       } else if (u.kind === 'rock' && g.giant > 0) { // giant: kick the rock away, no damage
         u.done = true; u.fly = true; u.vel = new THREE.Vector3((o.position.x - g.x || rand(-1, 1)) * 6 + rand(-2, 2), 9, -14);
+        g.slow = Math.min(g.slow, 0.7);
         g.shake = 0.15; SFX.smash(); burst(o.position, [0x9a948a, 0xc9c3b8, 0xffffff], 10, 6);
       } else if (u.kind === 'rock' && g.y < 0.75 && g.inv <= 0) {
         u.done = true; u.fly = true; u.vel = new THREE.Vector3(rand(-3, 3), 6, -4);
-        g.hp--; g.inv = 2.2; g.shake = 0.35; SFX.hit();
+        g.hp--; g.inv = 2.2; g.slow = 0.35; g.shake = 0.35; SFX.hit();
         burst(chick.position, [0xffe36a, 0xff6a24], 12, 5);
         updateHud();
         if (g.hp <= 0) gameOver();
