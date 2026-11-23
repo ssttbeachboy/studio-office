@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-23 11:04",
+ "generated": "2026-11-23 11:08",
  "members": [
   {
    "id": "manager",
@@ -29,12 +29,12 @@
    "id": "sound",
    "name": "音控師",
    "role": "降噪・響度・白噪音",
-   "state": "working",
-   "count": 32,
+   "state": "idle",
+   "count": 33,
    "project": null,
    "last": {
-    "time": "2026-11-23 10:56",
-    "summary": "把雨、咖啡廳、海浪拆成三支 25 分鐘工作版（番茄鐘）"
+    "time": "2026-11-23 11:08",
+    "summary": "番茄鐘 25 分鐘三支完成（雨合成、咖啡廳真錄音、海浪真錄音＋合成），規格達標；等頻道名稱和照片就能做成影片私人上傳"
    }
   },
   {
@@ -433,6 +433,20 @@
   }
  ],
  "events": [
+  {
+   "id": "20261123110852-97d0",
+   "time": "2026-11-23 11:08",
+   "type": "handoff",
+   "by": "sound",
+   "to": "owner",
+   "summary": "番茄鐘 25 分鐘三支完成（雨合成、咖啡廳真錄音、海浪真錄音＋合成），規格達標；等頻道名稱和照片就能做成影片私人上傳",
+   "files": [
+    "02_plans/sound_tests/pomodoro/rain_25min.m4a",
+    "02_plans/sound_tests/pomodoro/cafe_25min.m4a",
+    "02_plans/sound_tests/pomodoro/ocean_25min.m4a",
+    "02_plans/sound_tests/pomodoro/sound_log.md"
+   ]
+  },
   {
    "id": "20261123110401-e99d",
    "time": "2026-11-23 11:04",
@@ -2530,18 +2544,6 @@
    "by": "editor",
    "project": "2026-11-15_墨爾本_早上的墨爾本01",
    "summary": "C版v5粗剪（34.667秒）"
-  },
-  {
-   "id": "20261117160908-546d",
-   "time": "2026-11-17 16:09",
-   "type": "handoff",
-   "by": "manager",
-   "to": "editor",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "v5分鏡完成：34.667秒，可頌移到倒數第二、咖啡收尾",
-   "files": [
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/script.md"
-   ]
   }
  ],
  "projects": [
