@@ -1362,7 +1362,6 @@ function updateGame(dt) {
         const bc = $('#bugCount'); bc.classList.remove('bump'); void bc.offsetWidth; bc.classList.add('bump');
       } else if (u.kind === 'rock' && g.giant > 0) { // giant: kick the rock away, no damage
         u.done = true; u.fly = true; u.vel = new THREE.Vector3((o.position.x - g.x || rand(-1, 1)) * 6 + rand(-2, 2), 9, -14);
-        g.slow = Math.min(g.slow, 0.7);
         g.shake = 0.15; SFX.smash(); burst(o.position, [0x9a948a, 0xc9c3b8, 0xffffff], 10, 6);
       } else if (u.kind === 'rock' && g.y < 0.75 && g.inv <= 0) {
         u.done = true; u.fly = true; u.vel = new THREE.Vector3(rand(-3, 3), 6, -4);
