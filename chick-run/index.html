@@ -75,10 +75,11 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
 #banner span{display:inline-block;background:rgba(255,247,223,.9);padding:4px 14px;border-radius:999px}
 .touchpad{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;padding:0 max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 18px) max(16px,env(safe-area-inset-left,0px));pointer-events:none}
 .touchpad .grp{display:flex;gap:12px;pointer-events:auto}
-.tbtn{border:0;width:64px;height:64px;border-radius:50%;background:rgba(255,247,223,.85);box-shadow:0 4px 0 rgba(156,118,71,.85);font-size:24px;font-family:var(--f-display);font-weight:700;touch-action:none}
-.tbtn.jump{width:80px;height:80px;background:rgba(255,216,77,.92);font-size:18px}
+.tbtn{border:0;width:84px;height:84px;border-radius:50%;background:rgba(255,247,223,.85);box-shadow:0 4px 0 rgba(156,118,71,.85);font-size:30px;font-family:var(--f-display);font-weight:700;touch-action:none;-webkit-tap-highlight-color:transparent}
+.tbtn.jump{width:108px;height:108px;background:rgba(255,216,77,.95);font-size:24px}
+.touchpad .grp{gap:16px}
 .tbtn:active,.tbtn.on{transform:translateY(3px);box-shadow:0 1px 0 rgba(156,118,71,.85)}
-@media (hover:hover) and (pointer:fine){ .touchpad{display:none} }
+@media (hover:hover) and (pointer:fine){ html:not(.touch) .touchpad{display:none} }
 
 /* ---------- Modal ---------- */
 #modal{display:flex;align-items:center;justify-content:center;background:rgba(59,42,24,.35);padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
@@ -169,6 +170,7 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
 (() => {
 'use strict';
 const $ = s => document.querySelector(s);
+if (navigator.maxTouchPoints > 0 || 'ontouchstart' in window) document.documentElement.classList.add('touch');
 const rand = (a, b) => a + Math.random() * (b - a);
 const pick = arr => arr[(Math.random() * arr.length) | 0];
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -478,7 +480,7 @@ function skyTex(stops) {
 }
 const LEVELS = [
   {
-    id: 'park', name: '四號公園', tag: 'LEVEL 1', meta: '草地小徑・樹蔭長椅', speed: 15, length: 650, gap: [11, 15],
+    id: 'park', name: '四號公園', tag: 'LEVEL 1', meta: '草地小徑・樹蔭長椅', speed: 11, length: 460, gap: [14, 18],
     sky: [[0, '#6fc3f0'], [0.6, '#bfe8ff'], [1, '#e9f7ff']], fog: [0xcdeaf5, 45, 125],
     hemi: [0xe8f6ff, 0x5a8a3a, 0.75], sunColor: 0xfff2d6, rock: 0x8a8378,
     path: () => canvasTex(256, 256, (x, w, h) => {
@@ -495,7 +497,7 @@ const LEVELS = [
     }), sideTile: 10,
   },
   {
-    id: 'cks', name: '中正紀念堂', tag: 'LEVEL 2', meta: '自由廣場・藍頂白牆', speed: 18, length: 800, gap: [10, 14],
+    id: 'cks', name: '中正紀念堂', tag: 'LEVEL 2', meta: '自由廣場・藍頂白牆', speed: 12.5, length: 530, gap: [13, 17],
     sky: [[0, '#5aa9e6'], [0.6, '#a9d6f7'], [1, '#e7f4ff']], fog: [0xd8ecf8, 70, 240],
     hemi: [0xf2f8ff, 0xbab3a6, 0.8], sunColor: 0xffffff, rock: 0xa7a197,
     path: () => canvasTex(256, 256, (x, w, h) => {
@@ -515,7 +517,7 @@ const LEVELS = [
     }), sideTile: 14,
   },
   {
-    id: 'oki', name: '沖繩海邊', tag: 'LEVEL 3', meta: '白沙・椰子樹・風獅爺', speed: 21, length: 950, gap: [9, 13],
+    id: 'oki', name: '沖繩海邊', tag: 'LEVEL 3', meta: '白沙・椰子樹・風獅爺', speed: 14, length: 600, gap: [12, 16],
     sky: [[0, '#2f9de0'], [0.55, '#8fd6f7'], [1, '#fdf3d0']], fog: [0xbfe9f6, 55, 150],
     hemi: [0xf0fbff, 0xe8d29a, 0.85], sunColor: 0xfff4d0, rock: 0x625c52,
     path: () => canvasTex(256, 256, (x, w, h) => {
@@ -851,12 +853,13 @@ function spawnRow() {
   const lanes = [0, 1, 2].sort(() => Math.random() - 0.5);
   const rock = l => { const m = rockMesh(L.rock); m.position.set(LANES[l], 0, SPAWN_Z); addMover(m, 'rock'); };
   const bug = (l, dz = 0, y = 0.3) => { const m = bugMesh(); m.position.set(LANES[l], y, SPAWN_Z + dz); m.rotation.y = Math.PI; addMover(m, 'bug', { baseY: y }); };
-  const hard = game.li * 0.12;
-  if (r < 0.28) { rock(lanes[0]); bug(lanes[1]); }
-  else if (r < 0.48 + hard) { rock(lanes[0]); rock(lanes[1]); bug(lanes[2]); }
-  else if (r < 0.66 + hard * 0.5) { rock(lanes[0]); bug(lanes[0], 0, 2.0); bug(lanes[1], -3); }
-  else if (r < 0.84) { for (let i = 0; i < 4; i++) bug(lanes[0], -i * 2.4); if (Math.random() < 0.5) rock(lanes[1]); }
-  else { rock(lanes[0]); rock(lanes[1]); rock(lanes[2]); bug(lanes[1], 0, 2.1); } // all blocked: must jump
+  // kid-friendly: at most two rocks per row, always a free lane, lots of bugs
+  const twoRocks = 0.08 + game.li * 0.06;
+  if (r < 0.3) { for (let i = 0; i < 4; i++) bug(lanes[0], -i * 2.4); }
+  else if (r < 0.62) { rock(lanes[0]); bug(lanes[1]); bug(lanes[2], -2.5); }
+  else if (r < 0.85 - twoRocks) { rock(lanes[0]); bug(lanes[0], 0, 2.0); bug(lanes[1], -3); }
+  else if (r < 0.85) { rock(lanes[0]); rock(lanes[1]); for (let i = 0; i < 3; i++) bug(lanes[2], -i * 2.4); }
+  else { for (let i = 0; i < 3; i++) bug(lanes[i], -i * 2.4); }
 }
 function burst(pos, colors, n = 10, up = 4) {
   for (let i = 0; i < n; i++) {
@@ -1076,7 +1079,7 @@ function updateGame(dt) {
     poseChick(T, k < 0.6 ? 'idle' : 'run', { freq: 10, hop: k < 0.5 ? Math.abs(Math.sin(g.introT * 8)) * 0.2 : 0 });
     if (g.introT > 1.7) { g.state = 'play'; showBanner('跑！', 600); }
   } else if (g.state === 'play') {
-    g.speed = L.speed + (g.dist / L.length) * 4;
+    g.speed = L.speed + (g.dist / L.length) * 1.5;
     move = g.speed * dt; g.dist += move;
     // lateral
     const tx = LANES[g.lane]; const prevX = g.x;
@@ -1092,7 +1095,7 @@ function updateGame(dt) {
     chick.visible = g.inv > 0 ? Math.floor(T * 14) % 2 === 0 : true;
     // spawn
     g.spawnAcc += move;
-    if (g.spawnAcc >= g.nextGap && g.dist < L.length - 40) { g.spawnAcc = 0; g.nextGap = rand(...L.gap) * (1 - g.li * 0.03); spawnRow(); }
+    if (g.spawnAcc >= g.nextGap && g.dist < L.length - 40) { g.spawnAcc = 0; g.nextGap = rand(...L.gap); spawnRow(); }
     g.sceneryAcc += move;
     const sg = L.id === 'cks' ? 5 : 4;
     while (g.sceneryAcc >= sg) { g.sceneryAcc -= sg; spawnScenery(-130 + g.sceneryAcc); }
@@ -1133,14 +1136,14 @@ function updateGame(dt) {
     if (u.fly) { u.vel.y -= 25 * dt; o.position.addScaledVector(u.vel, dt); o.rotation.x += dt * 8; }
     if (u.gone) { u.t += dt; o.scale.setScalar(Math.max(0.01, 1 + u.t * 4) * (1 - u.t * 3)); if (u.t > 0.3) o.visible = false; }
     // collisions
-    if (g.state === 'play' && !u.done && Math.abs(o.position.z) < 0.7 && Math.abs(o.position.x - g.x) < 0.95) {
+    if (g.state === 'play' && !u.done && Math.abs(o.position.z) < 0.7 && Math.abs(o.position.x - g.x) < (u.kind === 'bug' ? 1.2 : 0.8)) {
       if (u.kind === 'bug' && Math.abs((g.y + 0.7) - (u.baseY + 0.3)) < 1.15) {
         u.done = true; u.gone = true; u.t = 0; g.bugs++; SFX.eat();
         burst(o.position, [0xffe36a, 0x9be05c, 0xffffff], 9, 4);
         const bc = $('#bugCount'); bc.classList.remove('bump'); void bc.offsetWidth; bc.classList.add('bump');
       } else if (u.kind === 'rock' && g.y < 0.75 && g.inv <= 0) {
         u.done = true; u.fly = true; u.vel = new THREE.Vector3(rand(-3, 3), 6, -4);
-        g.hp--; g.inv = 1.4; g.shake = 0.35; SFX.hit();
+        g.hp--; g.inv = 2.2; g.shake = 0.35; SFX.hit();
         burst(chick.position, [0xffe36a, 0xff6a24], 12, 5);
         updateHud();
         if (g.hp <= 0) gameOver();
