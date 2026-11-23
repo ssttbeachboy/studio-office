@@ -127,6 +127,7 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
       <button class="chip" data-view="top">俯視</button>
       <button class="chip" id="autoBtn" aria-pressed="true">自動旋轉</button>
       <button class="chip" id="waveBtn">揮手</button>
+      <button class="chip" id="musicBtn" aria-pressed="true">音樂：開</button>
     </div>
     <div class="levels" id="levels"></div>
     <p class="keys"><kbd>←</kbd><kbd>→</kbd> 換跑道　<kbd>空白鍵</kbd>/<kbd>↑</kbd> 跳躍　<kbd>Esc</kbd> 暫停 ・ 手機：左右滑換道、上滑或點一下跳</p>
@@ -369,6 +370,7 @@ try { muted = localStorage.getItem('chickrun-muted') === '1'; } catch (e) {}
 function ensureAudio() {
   if (actx) { if (actx.state === 'suspended') actx.resume(); return; }
   try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
+  startMusicEngine();
 }
 function tone(f1, f2, dur, type = 'square', vol = 0.06, delay = 0) {
   if (muted || !actx) return;
@@ -386,6 +388,58 @@ const SFX = {
   win: () => [523, 659, 784, 1046].forEach((f, i) => tone(f, f * 1.01, 0.18, 'square', 0.05, i * 0.12)),
   lose: () => [392, 330, 262].forEach((f, i) => tone(f, f * 0.98, 0.25, 'triangle', 0.07, i * 0.18)),
 };
+
+/* ================= Background music ================= */
+// Each song: 8th-note steps. Melody tokens are note names or "-" (rest). Bass plays one note every 4 steps.
+const SONGS = {
+  title: { bpm: 96, lead: 'triangle', lv: 0.05,
+    mel: 'E5 - G5 - A5 G5 E5 - D5 - E5 - C5 - - - E5 - G5 - A5 G5 E5 - D5 - C5 - D5 - - -',
+    bass: 'C3 A2 F2 G2 C3 A2 F2 G2' },
+  park: { bpm: 138, lead: 'square', lv: 0.03,
+    mel: 'C5 E5 G5 E5 C6 - G5 - A5 G5 E5 G5 D5 - - - C5 E5 G5 E5 A5 - G5 - F5 E5 D5 E5 C5 - - -',
+    bass: 'C3 E3 F3 G3 C3 A2 G2 C3' },
+  cks: { bpm: 112, lead: 'triangle', lv: 0.055,
+    mel: 'E5 - D5 E5 G5 - A5 - G5 E5 D5 - C5 - - - D5 - E5 G5 A5 - C6 - A5 G5 E5 G5 D5 - - -',
+    bass: 'A2 A2 C3 C3 F2 G2 A2 G2' },
+  oki: { bpm: 126, lead: 'square', lv: 0.03, pluck: true,
+    mel: 'C5 E5 F5 G5 B5 - C6 - B5 G5 F5 - E5 - - - C5 E5 F5 E5 C5 - G4 - B4 C5 E5 - C5 - - -',
+    bass: 'C3 C3 F2 G2 C3 C3 G2 C3' },
+};
+const NOTE_IDX = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+const noteHz = n => 440 * Math.pow(2, (NOTE_IDX[n[0]] + (+n[n.length - 1] + 1) * 12 - 69) / 12);
+for (const k in SONGS) { SONGS[k].mel = SONGS[k].mel.split(' '); SONGS[k].bass = SONGS[k].bass.split(' '); }
+const music = { cur: null, step: 0, next: 0, timer: null, gain: null };
+function musicNote(name, t, dur, type, vol, pluck) {
+  if (!name || name === '-') return;
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.type = type; o.frequency.setValueAtTime(noteHz(name), t);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.015);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + (pluck ? dur * 0.6 : dur));
+  o.connect(g).connect(music.gain); o.start(t); o.stop(t + dur + 0.05);
+}
+function musicTick() {
+  const s = SONGS[music.cur];
+  if (!s || !actx || muted || actx.state !== 'running') { if (actx) music.next = actx.currentTime + 0.1; return; }
+  const step = 60 / s.bpm / 2;
+  if (music.next < actx.currentTime) music.next = actx.currentTime + 0.05;
+  while (music.next < actx.currentTime + 0.25) {
+    const i = music.step % s.mel.length;
+    musicNote(s.mel[i], music.next, step * 0.95, s.lead, s.lv, s.pluck);
+    if (i % 4 === 0) musicNote(s.bass[(i / 4) % s.bass.length], music.next, step * 3.6, 'triangle', 0.07);
+    music.next += step; music.step++;
+  }
+}
+function playMusic(key) {
+  if (music.cur === key) return;
+  music.cur = key; music.step = 0;
+  if (actx) music.next = actx.currentTime + 0.15;
+}
+function startMusicEngine() {
+  if (!actx || music.timer) return;
+  music.gain = actx.createGain(); music.gain.gain.value = 1; music.gain.connect(actx.destination);
+  music.next = actx.currentTime + 0.15;
+  music.timer = setInterval(musicTick, 60);
+}
 
 /* ================= Viewer scene ================= */
 const viewer = { scene: new THREE.Scene(), theta: 0.5, elev: 0.18, r: 6.6, auto: true, idleT: 0, hop: 0, hopV: 0, wave: 0 };
@@ -839,9 +893,19 @@ function setAuto(on) { viewer.auto = on; $('#autoBtn').setAttribute('aria-presse
 $('#autoBtn').addEventListener('click', () => { setAuto(!viewer.auto); viewTarget = null; });
 $('#waveBtn').addEventListener('click', () => { ensureAudio(); SFX.peep(); viewer.wave = 1.6; });
 const muteBtn = $('#muteBtn');
-function syncMute() { muteBtn.textContent = muted ? '✕' : '♪'; muteBtn.setAttribute('aria-pressed', !muted); }
+const musicBtn = $('#musicBtn');
+function syncMute() {
+  muteBtn.textContent = muted ? '✕' : '♪'; muteBtn.setAttribute('aria-pressed', !muted);
+  musicBtn.textContent = muted ? '音樂：關' : '音樂：開'; musicBtn.setAttribute('aria-pressed', !muted);
+}
 syncMute();
-muteBtn.addEventListener('click', () => { muted = !muted; try { localStorage.setItem('chickrun-muted', muted ? '1' : '0'); } catch (e) {} syncMute(); ensureAudio(); });
+function toggleMute() { muted = !muted; try { localStorage.setItem('chickrun-muted', muted ? '1' : '0'); } catch (e) {} syncMute(); ensureAudio(); }
+muteBtn.addEventListener('click', toggleMute);
+musicBtn.addEventListener('click', toggleMute);
+// browsers only allow sound after the first tap/click/key
+const unlockAudio = () => { ensureAudio(); };
+addEventListener('pointerdown', unlockAudio, { capture: true });
+addEventListener('keydown', unlockAudio, { capture: true });
 $('#pauseBtn').addEventListener('click', () => togglePause());
 
 function showBanner(html, ms) {
@@ -870,7 +934,7 @@ function closeModal() { ui.modal.hidden = true; }
 let mode = 'viewer';
 function toViewer() {
   closeModal(); ui.banner.hidden = true; ui.hud.hidden = true; ui.title.hidden = false;
-  mode = 'viewer'; game.state = 'idle';
+  mode = 'viewer'; game.state = 'idle'; playMusic('title');
   viewer.scene.add(chick); chick.position.set(0, 0, 0); chick.rotation.set(0, 0, 0); chick.scale.setScalar(1);
   chick.userData.rig.rotation.set(0, 0, 0); chick.userData.rig.scale.set(1, 1, 1); chick.visible = true;
   renderLevels();
@@ -881,19 +945,19 @@ function startLevel(li) {
   Object.assign(game, { speed: game.L.speed, dist: 0, hp: 3, bugs: 0, lane: 1, x: 0, y: 0, vy: 0, inv: 0, spawnAcc: 0, nextGap: 22, sceneryAcc: 0, introT: 0, endT: 0, shake: 0, state: 'intro' });
   chick.visible = true;
   $('#hudLevel').textContent = game.L.name;
-  updateHud(); mode = 'game';
+  updateHud(); mode = 'game'; playMusic(game.L.id);
   showBanner(`${game.L.name}<small><span>${game.L.tag}・吃小蟲、跳過石頭！</span></small>`, 1700);
   canvas.focus({ preventScroll: true });
 }
 function togglePause(force) {
   if (mode !== 'game') return;
   if (game.state === 'play' && force !== false) {
-    game.state = 'paused';
-    openModal('暫停中', game.L.name, null, [], [['繼續跑', () => { closeModal(); game.state = 'play'; }, true], ['重新開始', () => startLevel(game.li)], ['回到小雞', toViewer]]);
-  } else if (game.state === 'paused') { closeModal(); game.state = 'play'; }
+    game.state = 'paused'; playMusic(null);
+    openModal('暫停中', game.L.name, null, [], [['繼續跑', () => { closeModal(); game.state = 'play'; music.cur = null; playMusic(game.L.id); }, true], ['重新開始', () => startLevel(game.li)], ['回到小雞', toViewer]]);
+  } else if (game.state === 'paused') { closeModal(); game.state = 'play'; playMusic(game.L.id); }
 }
 function levelClear() {
-  game.state = 'clear'; game.endT = 0; SFX.win();
+  game.state = 'clear'; game.endT = 0; playMusic(null); SFX.win();
   const stars = game.hp, score = game.bugs * 10 + game.hp * 50;
   const prev = best[game.L.id];
   if (!prev || score > prev.score) best[game.L.id] = { stars: Math.max(stars, prev ? prev.stars : 0), score };
@@ -907,7 +971,7 @@ function levelClear() {
   }, 1600);
 }
 function gameOver() {
-  game.state = 'over'; game.endT = 0; SFX.lose();
+  game.state = 'over'; game.endT = 0; playMusic(null); SFX.lose();
   setTimeout(() => openModal('跌倒了…', `在 ${game.L.name} 跑了 ${Math.round(game.dist / game.L.length * 100)}%`, null,
     [[game.bugs, '吃到小蟲'], [Math.round(game.dist) + 'm', '距離'], [game.bugs * 10, '分數']],
     [['再試一次', () => startLevel(game.li), true], ['回到小雞', toViewer]]), 1100);
@@ -1101,6 +1165,7 @@ function updateGame(dt) {
 }
 
 resize();
+playMusic('title');
 requestAnimationFrame(frame);
 })();
 </script>
