@@ -573,7 +573,7 @@ function skyTex(stops) {
 }
 const LEVELS = [
   {
-    id: 'park', name: '四號公園', tag: 'LEVEL 1', meta: '中和・綠樹步道・國立臺灣圖書館', speed: 11, length: 1410, gap: [9, 12],
+    id: 'park', name: '四號公園', tag: 'LEVEL 1', meta: '中和・綠樹步道・國立臺灣圖書館', speed: 11, length: 705, gap: [9, 12],
     sky: [[0, '#79b8e0'], [0.6, '#c3e2f5'], [1, '#e9f4fa']], fog: [0xd3e6ef, 55, 210],
     hemi: [0xe8f6ff, 0x5a8a3a, 0.75], sunColor: 0xfff2d6, rock: 0x8a8378,
     path: () => canvasTex(256, 256, (x, w, h) => {
@@ -591,7 +591,7 @@ const LEVELS = [
     }), sideTile: 10,
   },
   {
-    id: 'cks', name: '中正紀念堂', tag: 'LEVEL 2', meta: '自由廣場・藍頂白牆', speed: 12.5, length: 1590, gap: [8.5, 11.5],
+    id: 'cks', name: '中正紀念堂', tag: 'LEVEL 2', meta: '自由廣場・藍頂白牆', speed: 12.5, length: 795, gap: [8.5, 11.5],
     sky: [[0, '#5aa9e6'], [0.6, '#a9d6f7'], [1, '#e7f4ff']], fog: [0xd8ecf8, 70, 240],
     hemi: [0xf2f8ff, 0xbab3a6, 0.8], sunColor: 0xffffff, rock: 0xa7a197,
     path: () => canvasTex(256, 256, (x, w, h) => {
@@ -611,7 +611,7 @@ const LEVELS = [
     }), sideTile: 14,
   },
   {
-    id: 'oki', name: '沖繩海邊', tag: 'LEVEL 3', meta: '白沙・椰子樹・風獅爺', speed: 14, length: 1770, gap: [8, 11],
+    id: 'oki', name: '沖繩海邊', tag: 'LEVEL 3', meta: '白沙・椰子樹・風獅爺', speed: 14, length: 885, gap: [8, 11],
     sky: [[0, '#2f9de0'], [0.55, '#8fd6f7'], [1, '#fdf3d0']], fog: [0xbfe9f6, 55, 150],
     hemi: [0xf0fbff, 0xe8d29a, 0.85], sunColor: 0xfff4d0, rock: 0x625c52,
     path: () => canvasTex(256, 256, (x, w, h) => {
@@ -1055,12 +1055,11 @@ function buildLevel(li) {
     for (const sx of [-1, 1]) for (let i = 0; i < 4; i++) { const c = cityBlock(); c.rotation.y = sx * Math.PI / 2; c.position.set(sx * rand(48, 60), 0, -30 - i * 45); s.add(c); }
     for (let i = 0; i < 5; i++) s.add(mesh(GEO.sphLo, flat(0x8fa9a6), rand(60, 90), rand(18, 30), 20, -200 + i * 100, 0, -260, false));
     // landmarks from the park, placed along the run
-    const arc = brickArcade(); arc.position.set(-13, 0, -150); addMover(arc, 'deco');
-    const kg = kindergarten(); kg.position.set(-7, 0, -320); addMover(kg, 'deco'); game.clearLeft = [kg];
-    const pg = playground(); pg.position.set(12, 0, -480); addMover(pg, 'deco');
-    const ramp = spiralRamp(); ramp.position.set(15, 0, -700); addMover(ramp, 'deco');
-    const pg2 = playground(); pg2.position.set(-13, 0, -930); pg2.rotation.y = Math.PI; addMover(pg2, 'deco');
-    const arc2 = brickArcade(); arc2.position.set(13, 0, -1150); addMover(arc2, 'deco');
+    const arc = brickArcade(); arc.position.set(-13, 0, -120); addMover(arc, 'deco');
+    const kg = kindergarten(); kg.position.set(-7, 0, -250); addMover(kg, 'deco'); game.clearLeft = [kg];
+    const pg = playground(); pg.position.set(12, 0, -370); addMover(pg, 'deco');
+    const ramp = spiralRamp(); ramp.position.set(15, 0, -480); addMover(ramp, 'deco');
+    const pg2 = playground(); pg2.position.set(-13, 0, -590); pg2.rotation.y = Math.PI; addMover(pg2, 'deco');
     // the library waits at the end; its door is just past the finish line
     const lib = library(); lib.userData.lib = true; s.add(lib); game.library = lib;
   }
@@ -1317,6 +1316,7 @@ document.addEventListener('visibilitychange', () => { if (document.hidden && gam
 const SHAPES = { c: { name: '圓形', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="#e8463c"/></svg>' },
                  t: { name: '三角形', svg: '<svg viewBox="0 0 40 40"><path d="M20 5 L36 34 L4 34Z" fill="#2f7fe0"/></svg>' },
                  s: { name: '正方形', svg: '<svg viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="3" fill="#2fa84f"/></svg>' } };
+const MP_SIDE = 0.72, MP_GHOST_SIZE = 0.95;
 const mp = { roomApi: undefined, room: null, code: [], joinedAt: 0, ready: false, lv: 0, lastGo: null, racing: false, peer: null,
              ghost: null, sendT: 0, resultShown: false, myFinish: null };
 function mulberry32(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
@@ -1437,9 +1437,9 @@ function mpTick(dt) {
   if (ok) {
     const z = g.dist - p.d, gs = p.g ? 2.1 : 1;
     mp.ghost.visible = z > -120 && z < 12;
-    mp.ghost.position.set(lerp(mp.ghost.position.x, +p.x || 0, 0.3), +p.y || 0, lerp(mp.ghost.position.z, z, 0.3));
+    mp.ghost.position.set(lerp(mp.ghost.position.x, (+p.x || 0) - MP_SIDE, 0.3), +p.y || 0, lerp(mp.ghost.position.z, z, 0.3));
     mp.ghost.rotation.set(0, Math.PI, 0);
-    mp.ghost.scale.setScalar(lerp(mp.ghost.scale.x, 0.62 * gs, 0.2));
+    mp.ghost.scale.setScalar(lerp(mp.ghost.scale.x, 0.62 * gs * MP_GHOST_SIZE, 0.2));
     poseChick(T, 'run', { freq: 12, air: (+p.y || 0) > 0.05 }, mp.ghost);
     const pr = clamp(p.d / g.L.length, 0, 1);
     mpEl('progRival').hidden = false; mpEl('progRival').style.left = pr * 100 + '%';
@@ -1526,7 +1526,7 @@ function updateGame(dt) {
     g.x = lerp(g.x, tx, 1 - Math.pow(0.0005, dt));
     // vertical
     if (g.y > 0 || g.vy > 0) { g.vy -= 30 * dt; g.y += g.vy * dt; if (g.y <= 0) { g.y = 0; g.vy = 0; burst(chick.position, [0xffffff, 0xe8d8b0], 4, 1.5); } }
-    chick.position.set(g.x, g.y, 0);
+    chick.position.set(g.x + (g.mpSeed ? MP_SIDE : 0), g.y, 0);
     chick.rotation.set(0, Math.PI, (g.x - prevX) / Math.max(dt, 1e-4) * -0.02);
     const sq = g.y > 0 ? clamp(g.vy * 0.01, -0.08, 0.1) : 0;
     chick.userData.rig.scale.set(1 - sq, 1 + sq, 1 - sq);
