@@ -89,6 +89,31 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
 /* ---------- Modal ---------- */
 #modal{display:flex;align-items:center;justify-content:center;background:rgba(59,42,24,.35);padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
 .card{background:var(--cream);border-radius:20px;padding:24px 22px 20px;width:min(380px,100%);text-align:center;box-shadow:0 8px 0 var(--kraft-dk),0 20px 40px rgba(0,0,0,.3);position:relative}
+.mpchip{background:var(--yolk)}
+#mp{display:flex;align-items:center;justify-content:center;background:rgba(59,42,24,.25);padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));overflow:auto}
+.mpcard{display:flex;flex-direction:column;gap:12px}
+.slots{display:flex;justify-content:center;gap:10px}
+.slot{width:56px;height:56px;border-radius:14px;border:3px dashed #d9c39b;display:flex;align-items:center;justify-content:center}
+.slot.full{border-style:solid;border-color:var(--yolk);background:#fff}
+.slot svg,.shape svg,.shapeBtn svg{width:70%;height:70%}
+.shapes{display:flex;justify-content:center;gap:14px}
+.shapeBtn{width:84px;height:84px;border:0;border-radius:20px;background:#fff;box-shadow:0 4px 0 var(--kraft-dk);display:flex;align-items:center;justify-content:center}
+.shapeBtn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--kraft-dk)}
+.roomcode{display:flex;justify-content:center;gap:8px}
+.shape{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px}
+.players{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pl{background:var(--paper);border-radius:12px;padding:10px 6px;display:flex;flex-direction:column;gap:2px;font-size:13px}
+.pl b{font-size:16px}
+.pl.me b{color:var(--comb)} .pl:not(.me) b{color:#e0569a}
+.pl.wait span{animation:bump 1.4s infinite}
+.mplevels{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.mplevels button{border:0;border-radius:12px;padding:10px 4px;background:var(--paper);font-size:14px;box-shadow:0 3px 0 var(--kraft-dk)}
+.mplevels button[aria-pressed="true"]{background:var(--yolk)}
+.mplevels button:disabled{cursor:default}
+.mplevels button:disabled:not([aria-pressed="true"]){opacity:.55}
+.mpmsg{margin:0;font-size:13px;color:#b2452a;min-height:1em}
+.btn:disabled{opacity:.5;cursor:default}
+.progress #progRival{background:#ff8fc0;border-color:#e0569a;width:18px;height:18px;margin:-9px 0 0 -9px}
 .card h2{margin:0;font-family:var(--f-display);font-size:34px;font-weight:700;color:var(--comb);text-wrap:balance}
 .card .sub{margin:4px 0 0;color:#7a5a36;font-size:14px}
 .stars{font-size:40px;letter-spacing:6px;margin:10px 0 4px;color:var(--yolk);text-shadow:0 2px 0 var(--comb)}
@@ -134,6 +159,7 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
       <button class="chip" id="autoBtn" aria-pressed="true">自動旋轉</button>
       <button class="chip" id="waveBtn">揮手</button>
       <button class="chip" id="musicBtn" aria-pressed="true">音樂：開</button>
+      <button class="chip mpchip" id="mpBtn">雙人連線</button>
     </div>
     <div class="levels" id="levels"></div>
     <p class="keys"><kbd>←</kbd><kbd>→</kbd> 換跑道　<kbd>空白鍵</kbd>/<kbd>↑</kbd> 跳躍　<kbd>Esc</kbd> 暫停 ・ 手機：左右滑換道、上滑或點一下跳</p>
@@ -150,7 +176,7 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
     <button class="iconbtn" id="muteBtn" aria-label="音效開關">♪</button>
     <button class="iconbtn" id="pauseBtn" aria-label="暫停">II</button>
   </div>
-  <div class="progress" aria-hidden="true"><i id="progFill"></i><em id="progChick"></em><u>🏁</u></div>
+  <div class="progress" aria-hidden="true"><i id="progFill"></i><em id="progRival" hidden></em><em id="progChick"></em><u>🏁</u></div>
   <div class="touchpad" id="touchpad">
     <div class="grp">
       <button class="tbtn jump" id="tJumpL" aria-label="跳躍">▲</button>
@@ -160,6 +186,37 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
       <button class="tbtn jump" id="tJumpR" aria-label="跳躍">▲</button>
       <button class="tbtn" id="tRight" aria-label="往右">▶</button>
     </div>
+  </div>
+</section>
+<section id="mp" class="layer" hidden aria-label="雙人連線">
+  <div class="card mpcard">
+    <h2>雙人連線</h2>
+    <div id="mpCode">
+      <p class="sub">兩個人選一樣的三個圖形，就會進到同一個房間</p>
+      <div class="slots" id="mpSlots"></div>
+      <div class="shapes">
+        <button class="shapeBtn" data-shape="c" aria-label="圓形"></button>
+        <button class="shapeBtn" data-shape="t" aria-label="三角形"></button>
+        <button class="shapeBtn" data-shape="s" aria-label="正方形"></button>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="mpJoin" disabled>進入房間</button>
+        <button class="btn" id="mpClear">重新選</button>
+        <button class="btn" id="mpBack">回到小雞</button>
+      </div>
+    </div>
+    <div id="mpLobby" hidden>
+      <p class="sub">房間</p>
+      <div class="roomcode" id="mpRoomCode"></div>
+      <div class="players"><div id="mpMe" class="pl me"></div><div id="mpOther" class="pl wait"></div></div>
+      <p class="sub" id="mpLvHint"></p>
+      <div class="mplevels" id="mpLevels"></div>
+      <div class="actions">
+        <button class="btn primary" id="mpReady" disabled>準備好了！</button>
+        <button class="btn" id="mpLeaveBtn">離開房間</button>
+      </div>
+    </div>
+    <p class="mpmsg" id="mpMsg" role="status"></p>
   </div>
 </section>
 <div id="banner" hidden></div>
@@ -359,15 +416,15 @@ function buildChick() {
   return chick;
 }
 const chick = buildChick();
-function blink(t) { // quick blink every ~3.5s
+function blink(t, who = chick) { // quick blink every ~3.5s
   const k = (t % 3.5), y = k < 0.12 ? Math.max(0.1, Math.abs(k - 0.06) / 0.06) : 1;
-  chick.userData.eyes.forEach(e => e.scale.y = y);
+  who.userData.eyes.forEach(e => e.scale.y = y);
 }
 
 // animation helpers
-function poseChick(t, mode, opts = {}) {
-  const { rig, wings, feet, crest, tipPiv } = chick.userData;
-  blink(t);
+function poseChick(t, mode, opts = {}, who = chick) {
+  const { rig, wings, feet, crest, tipPiv } = who.userData;
+  blink(t, who);
   if (mode === 'run') {
     const f = opts.freq || 14, ph = t * f;
     const air = opts.air || 0;
@@ -1046,9 +1103,11 @@ function spawnScenery(z) {
   }
 }
 const SPAWN_Z = -110;
-function spawnRow() {
-  const L = game.L, r = Math.random();
-  const lanes = [0, 1, 2].sort(() => Math.random() - 0.5);
+let rowRng = Math.random;
+function spawnRow(over = 0) {
+  const L = game.L, r = rowRng();
+  const lanes = [0, 1, 2].map(v => [v, rowRng()]).sort((a, b) => a[1] - b[1]).map(v => v[0]);
+  const SPAWN_Z = -110 + over;
   const rock = (l, dz = 0) => { const m = rockMesh(L.rock); m.position.set(LANES[l], 0, SPAWN_Z + dz); addMover(m, 'rock'); };
   const bug = (l, dz = 0, y = 0.3) => { const m = bugMesh(); m.position.set(LANES[l], y, SPAWN_Z + dz); m.rotation.y = Math.PI; addMover(m, 'bug', { baseY: y }); };
   // kid-friendly: at most two rocks per row, always a free lane, lots of bugs
@@ -1084,7 +1143,7 @@ function renderLevels() {
   }).join('');
 }
 renderLevels();
-$('#levels').addEventListener('click', e => { const b = e.target.closest('.lv'); if (b) { ensureAudio(); SFX.peep(); startLevel(+b.dataset.level); } });
+$('#levels').addEventListener('click', e => { const b = e.target.closest('.lv'); if (b) { ensureAudio(); SFX.peep(); game.mpSeed = null; startLevel(+b.dataset.level); } });
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => {
   const [t, e] = VIEWS[b.dataset.view];
   // shortest rotation to target
@@ -1109,6 +1168,7 @@ const unlockAudio = () => { ensureAudio(); };
 addEventListener('pointerdown', unlockAudio, { capture: true });
 addEventListener('keydown', unlockAudio, { capture: true });
 $('#pauseBtn').addEventListener('click', () => togglePause());
+
 
 function showBanner(html, ms) {
   ui.banner.innerHTML = html; ui.banner.hidden = false;
@@ -1148,15 +1208,17 @@ function toViewer() {
 function startLevel(li) {
   closeModal(); ui.title.hidden = true; ui.hud.hidden = false;
   buildLevel(li);
-  Object.assign(game, { slow: 1, giant: 0, meter: 0, gScale: 1, speed: game.L.speed, dist: 0, hp: 3, bugs: 0, lane: 1, x: 0, y: 0, vy: 0, inv: 0, spawnAcc: 0, nextGap: 22, sceneryAcc: 0, introT: 0, endT: 0, shake: 0, state: 'intro' });
+  Object.assign(game, { raceT: 0, slow: 1, giant: 0, meter: 0, gScale: 1, speed: game.L.speed, dist: 0, hp: 3, bugs: 0, lane: 1, x: 0, y: 0, vy: 0, inv: 0, spawnAcc: 0, nextGap: 22, sceneryAcc: 0, introT: 0, endT: 0, shake: 0, state: 'intro' });
   chick.visible = true;
-  $('#hudLevel').textContent = game.L.name;
+  rowRng = game.mpSeed ? mulberry32(game.mpSeed) : Math.random;
+  $('#pauseBtn').hidden = !!game.mpSeed; $('#progRival').hidden = true;
+  $('#hudLevel').textContent = game.mpSeed ? '雙人・' + game.L.name : game.L.name;
   updateHud(); mode = 'game'; playMusic(game.L.id);
   showBanner(`${game.L.name}<small><span>${game.L.tag}・吃小蟲、跳過石頭！</span></small>`, 1700);
   canvas.focus({ preventScroll: true });
 }
 function togglePause(force) {
-  if (mode !== 'game') return;
+  if (mode !== 'game' || game.mpSeed) return;
   if (game.state === 'play' && force !== false) {
     game.state = 'paused'; playMusic(null);
     openModal('暫停中', game.L.name, null, [], [['繼續跑', () => { closeModal(); game.state = 'play'; music.cur = null; playMusic(game.L.id); }, true], ['重新開始', () => startLevel(game.li)], ['回到小雞', toViewer]]);
@@ -1167,6 +1229,7 @@ function levelClear() {
   chick.userData.rig.visible = true;
   // drop the overhead banner so nothing blocks the view of the goal
   game.finish.children.forEach(c => { if (c.geometry && c.geometry.type === 'PlaneGeometry') return; c.visible = false; });
+  if (game.mpSeed) { mp.myFinish = Math.round(game.raceT * 100) / 100; mp.sendT = 0; return; }
   const stars = game.hp, score = game.bugs * 10 + game.hp * 50;
   const prev = best[game.L.id];
   if (!prev || score > prev.score) best[game.L.id] = { stars: Math.max(stars, prev ? prev.stars : 0), score };
@@ -1182,6 +1245,7 @@ function levelClear() {
 function gameOver() {
   game.state = 'over'; game.endT = 0; playMusic(null); SFX.lose();
   chick.userData.rig.visible = true;
+  if (game.mpSeed) return;
   setTimeout(() => openModal('跌倒了…', `在 ${game.L.name} 跑了 ${Math.round(game.dist / game.L.length * 100)}%`, null,
     [[game.bugs, '吃到小蟲'], [Math.round(game.dist) + 'm', '距離'], [game.bugs * 10, '分數']],
     [['再試一次', () => startLevel(game.li), true], ['回到小雞', toViewer]]), 1100);
@@ -1249,6 +1313,172 @@ canvas.addEventListener('wheel', e => { if (mode === 'viewer') { e.preventDefaul
 canvas.addEventListener('dblclick', () => { if (mode === 'viewer') { viewer.hopV = 6; SFX.peep(); } });
 document.addEventListener('visibilitychange', () => { if (document.hidden && game.state === 'play') togglePause(); });
 
+/* ================= Two-player race (room capability, presence only) ================= */
+const SHAPES = { c: { name: '圓形', svg: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="#e8463c"/></svg>' },
+                 t: { name: '三角形', svg: '<svg viewBox="0 0 40 40"><path d="M20 5 L36 34 L4 34Z" fill="#2f7fe0"/></svg>' },
+                 s: { name: '正方形', svg: '<svg viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="3" fill="#2fa84f"/></svg>' } };
+const mp = { roomApi: undefined, room: null, code: [], joinedAt: 0, ready: false, lv: 0, lastGo: null, racing: false, peer: null,
+             ghost: null, sendT: 0, resultShown: false, myFinish: null };
+function mulberry32(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function getRoomApi() {
+  if (mp.roomApi !== undefined) return Promise.resolve(mp.roomApi);
+  const u = window.claude && window.claude.use;
+  if (!u) { mp.roomApi = null; return Promise.resolve(null); }
+  return window.claude.use('room').then(r => (mp.roomApi = r || null), () => (mp.roomApi = null));
+}
+const mpEl = id => document.getElementById(id);
+function mpOpen() {
+  ui.title.hidden = true; mpEl('mp').hidden = false; mpShowStep(mp.room ? 'lobby' : 'code'); mpRender();
+  getRoomApi().then(r => { if (!r) mpMsg('這個畫面沒辦法連線：請在 claude.ai 登入，並打開分享給你的這個網頁。'); });
+}
+function mpClose() { mpLeave(); mpEl('mp').hidden = true; ui.title.hidden = false; }
+function mpMsg(t) { mpEl('mpMsg').textContent = t || ''; }
+function mpShowStep(s) { mpEl('mpCode').hidden = s !== 'code'; mpEl('mpLobby').hidden = s !== 'lobby'; }
+function mpCodeHTML(code) { return code.map(k => `<span class="shape" title="${SHAPES[k].name}">${SHAPES[k].svg}</span>`).join(''); }
+function mpRender() {
+  const slots = [0, 1, 2].map(i => mp.code[i] ? `<span class="slot full">${SHAPES[mp.code[i]].svg}</span>` : '<span class="slot"></span>').join('');
+  mpEl('mpSlots').innerHTML = slots;
+  mpEl('mpJoin').disabled = mp.code.length < 3;
+  if (!mp.room) return;
+  mpEl('mpRoomCode').innerHTML = mpCodeHTML(mp.code);
+  const { me, other, host } = mpPlayers();
+  const iAmHost = host && me && host.peer === me.peer;
+  const hostLv = host && typeof host.presence.lv === 'number' ? clamp(host.presence.lv | 0, 0, LEVELS.length - 1) : 0;
+  mpEl('mpMe').innerHTML = `<b>你</b><span>${mp.ready ? '準備好了 ✔' : '還沒準備'}</span>`;
+  mpEl('mpOther').innerHTML = other ? `<b>朋友</b><span>${other.presence.ready ? '準備好了 ✔' : '已加入，還沒準備'}</span>` : '<b>朋友</b><span>等待朋友加入…</span>';
+  mpEl('mpOther').classList.toggle('wait', !other);
+  document.querySelectorAll('#mpLevels button').forEach((b, i) => { b.setAttribute('aria-pressed', i === (iAmHost ? mp.lv : hostLv)); b.disabled = !iAmHost; });
+  mpEl('mpLvHint').textContent = iAmHost ? '你先進房間，由你選關卡' : '由先進房間的朋友選關卡';
+  mpEl('mpReady').textContent = mp.ready ? '取消準備' : '準備好了！';
+  mpEl('mpReady').disabled = !other;
+}
+function mpPlayers() {
+  if (!mp.room) return {};
+  const list = mp.room.peers().filter(p => p.kind === 'viewer' && p.presence && typeof p.presence.t === 'number')
+    .slice().sort((a, b) => a.presence.t - b.presence.t || (a.peer < b.peer ? -1 : 1)).slice(0, 2);
+  const me = list.find(p => p.sameTab) || null, other = list.find(p => !p.sameTab) || null;
+  return { me, other, host: list[0] || null, full: !me && list.length >= 2 };
+}
+async function mpJoin() {
+  const api = await getRoomApi();
+  if (!api) { mpMsg('這個畫面沒辦法連線：請在 claude.ai 登入，並打開分享給你的這個網頁。'); return; }
+  mpMsg('連線中…');
+  try {
+    mp.room = await api.join('chick-' + mp.code.join(''));
+  } catch (e) { mpMsg(e && e.code === 'not_permitted' ? '你的帳號不能使用連線房間。' : '連不上房間，請再試一次。'); return; }
+  mp.joinedAt = Date.now(); mp.ready = false; mp.lastGo = null;
+  mp.room.presence({ t: mp.joinedAt, ready: false, lv: mp.lv, st: 'lobby', go: null }).catch(() => {});
+  mp.room.onPeers(mpOnPeers, () => { mpMsg('連線中斷了，請離開房間再進來一次。'); });
+  mpMsg(''); mpShowStep('lobby'); mpRender();
+}
+function mpLeave() {
+  if (mp.room) { const r = mp.room; mp.room = null; r.leave().catch(() => {}); }
+  mp.ready = false; mp.racing = false; mp.peer = null;
+}
+function mpOnPeers() {
+  const { me, other, host, full } = mpPlayers();
+  if (full) { mpMsg('這個房間已經有兩個人了，換一組圖形吧！'); }
+  mp.peer = other;
+  if (!mp.racing) mpRender();
+  // start when both are ready and the first player in the room said go
+  if (!mp.racing && me && other && host && host.presence.go && host.presence.go !== mp.lastGo && mp.ready && other.presence.ready) {
+    mp.lastGo = host.presence.go;
+    const lv = clamp((host.presence.lv | 0), 0, LEVELS.length - 1);
+    mpBeginRace(lv, host.presence.go | 0);
+    return;
+  }
+  if (!mp.racing && me && other && host && host.peer === me.peer && mp.ready && other.presence.ready && !me.presence.go) {
+    mp.room.presence({ go: (Date.now() % 2147483647) || 1, lv: mp.lv }).catch(() => {});
+  }
+}
+function mpBeginRace(lv, seed) {
+  mp.racing = true; mp.resultShown = false; mp.myFinish = null; mp.waitT = 0;
+  mpEl('mp').hidden = true;
+  game.mpSeed = seed;
+  startLevel(lv);
+  mp.room && mp.room.presence({ st: 'race', d: 0, x: 0, y: 0, g: 0, b: 0, ft: null }).catch(() => {});
+}
+function mpAfterRace() { // back to the lobby for a rematch
+  closeModal();
+  mp.racing = false; mp.ready = false; game.mpSeed = null;
+  if (mp.ghost) { mp.ghost.parent && mp.ghost.parent.remove(mp.ghost); }
+  if (mp.room) mp.room.presence({ ready: false, go: null, st: 'lobby' }).catch(() => {});
+  mode = 'viewer'; game.state = 'idle'; ui.hud.hidden = true; ui.banner.hidden = true;
+  viewer.scene.add(chick); chick.position.set(0, 0, 0); chick.rotation.set(0, 0, 0); chick.scale.setScalar(1); chick.visible = true;
+  chick.userData.rig.rotation.set(0, 0, 0); chick.userData.rig.scale.set(1, 1, 1);
+  playMusic('title');
+  mpEl('mp').hidden = false; mpShowStep(mp.room ? 'lobby' : 'code'); mpRender();
+}
+function buildGhost() {
+  const gch = buildChick(), pink = new THREE.Color(0xff7fb6), cache = new Map();
+  gch.traverse(o => {
+    if (!o.isMesh) return; o.castShadow = false;
+    let m = cache.get(o.material);
+    if (!m) { m = new THREE.MeshStandardMaterial({ color: o.material.color.clone().lerp(pink, 0.55), transparent: true, opacity: 0.6, roughness: 0.6 }); cache.set(o.material, m); }
+    o.material = m;
+  });
+  return gch;
+}
+function mpTick(dt) {
+  if (!game.mpSeed || !mp.room) return;
+  const g = game, other = mp.peer, p = other && other.presence;
+  // send my state ~10 times a second
+  mp.sendT -= dt;
+  if (mp.sendT <= 0) {
+    mp.sendT = 0.1;
+    mp.room.presence({ d: Math.round(g.dist * 10) / 10, x: Math.round(g.x * 100) / 100, y: Math.round(g.y * 100) / 100, g: g.giant > 0 ? 1 : 0, b: g.bugs,
+      st: g.state === 'over' ? 'out' : (mp.myFinish != null ? 'done' : 'race'), ft: mp.myFinish == null ? null : Math.round(mp.myFinish * 100) / 100 }).catch(() => {});
+  }
+  // draw the friend
+  if (!mp.ghost) mp.ghost = buildGhost();
+  if (mp.ghost.parent !== g.scene) g.scene.add(mp.ghost);
+  const ok = p && typeof p.d === 'number' && p.st !== 'lobby';
+  mp.ghost.visible = !!ok;
+  if (ok) {
+    const z = g.dist - p.d, gs = p.g ? 2.1 : 1;
+    mp.ghost.visible = z > -120 && z < 12;
+    mp.ghost.position.set(lerp(mp.ghost.position.x, +p.x || 0, 0.3), +p.y || 0, lerp(mp.ghost.position.z, z, 0.3));
+    mp.ghost.rotation.set(0, Math.PI, 0);
+    mp.ghost.scale.setScalar(lerp(mp.ghost.scale.x, 0.62 * gs, 0.2));
+    poseChick(T, 'run', { freq: 12, air: (+p.y || 0) > 0.05 }, mp.ghost);
+    const pr = clamp(p.d / g.L.length, 0, 1);
+    mpEl('progRival').hidden = false; mpEl('progRival').style.left = pr * 100 + '%';
+  } else mpEl('progRival').hidden = true;
+  // result: whoever reaches the finish first wins
+  // wait up to 2 s after my own finish so both screens compare the same two times
+  if (!mp.resultShown && g.state === 'over') mpMaybeResult();
+  if (!mp.resultShown && mp.myFinish != null) {
+    mp.waitT = (mp.waitT || 0) + dt;
+    if (!p || p.st === 'done' || p.st === 'out' || mp.waitT > 2) mpMaybeResult();
+  }
+}
+function mpMaybeResult() {
+  const p = mp.peer && mp.peer.presence, g = game;
+  const otherDone = p && p.st === 'done' && typeof p.ft === 'number', otherOut = p && p.st === 'out';
+  let title, sub;
+  if (g.state === 'over') {
+    title = otherOut ? '兩個人都跌倒了' : '朋友贏了！'; sub = otherOut ? '平手，再比一次吧' : '愛心用完了，再加油！';
+  } else if (mp.myFinish != null) {
+    if (otherDone && Math.abs(p.ft - mp.myFinish) < 0.05) { title = '平手！'; sub = '兩個人同時到終點'; }
+    else if (otherDone && p.ft < mp.myFinish) { title = '朋友贏了！'; sub = `朋友早了 ${(mp.myFinish - p.ft).toFixed(1)} 秒`; }
+    else { title = '你贏了！'; sub = otherDone ? `你早了 ${(p.ft - mp.myFinish).toFixed(1)} 秒` : '你先跑到終點！'; }
+  } else return;
+  mp.resultShown = true;
+  setTimeout(() => openModal(title, sub, null,
+    [[g.bugs, '吃到小蟲'], [p && typeof p.b === 'number' ? p.b : '-', '朋友的小蟲'], [mp.myFinish != null ? mp.myFinish.toFixed(1) + '秒' : '-', '你的時間']],
+    [['回房間再比一次', mpAfterRace, true], ['離開連線', () => { mpAfterRace(); mpClose(); }]]), 1400);
+}
+
+document.querySelectorAll('.shapeBtn').forEach(b => { b.innerHTML = SHAPES[b.dataset.shape].svg; b.addEventListener('click', () => { if (mp.code.length < 3) { mp.code.push(b.dataset.shape); ensureAudio(); SFX.lane(); mpRender(); } }); });
+$('#mpLevels').innerHTML = LEVELS.map((L, i) => `<button data-lv="${i}">${L.name}</button>`).join('');
+$('#mpLevels').addEventListener('click', e => { const b = e.target.closest('button'); if (!b || b.disabled) return; mp.lv = +b.dataset.lv; mp.room && mp.room.presence({ lv: mp.lv }).catch(() => {}); mpRender(); });
+$('#mpBtn').addEventListener('click', () => { ensureAudio(); mpOpen(); });
+$('#mpClear').addEventListener('click', () => { mp.code = []; mpRender(); });
+$('#mpBack').addEventListener('click', mpClose);
+$('#mpJoin').addEventListener('click', mpJoin);
+$('#mpLeaveBtn').addEventListener('click', () => { mpLeave(); mp.code = []; mpShowStep('code'); mpRender(); mpMsg(''); });
+$('#mpReady').addEventListener('click', () => { mp.ready = !mp.ready; mp.room && mp.room.presence({ ready: mp.ready, go: null, lv: mp.lv }).catch(() => {}); mpRender(); mpOnPeers(); });
+
 /* ================= Loop ================= */
 let last = performance.now(), T = 0;
 function frame(now) {
@@ -1287,6 +1517,7 @@ function updateGame(dt) {
     poseChick(T, k < 0.6 ? 'idle' : 'run', { freq: 10, hop: k < 0.5 ? Math.abs(Math.sin(g.introT * 8)) * 0.2 : 0 });
     if (g.introT > 1.7) { g.state = 'play'; showBanner('跑！', 600); }
   } else if (g.state === 'play') {
+    g.raceT += dt;
     g.slow = Math.min(1, g.slow + dt * 0.3);   // recover from bumping into rocks
     g.speed = (L.speed + (g.dist / L.length) * 1.5) * g.slow;
     move = g.speed * dt; g.dist += move;
@@ -1308,7 +1539,7 @@ function updateGame(dt) {
     if (g.giant > 0 && g.giant < 2) chick.userData.rig.visible = Math.floor(T * 10) % 2 === 0; else chick.userData.rig.visible = true;
     // spawn
     g.spawnAcc += move;
-    if (g.spawnAcc >= g.nextGap && g.dist < L.length - 40) { g.spawnAcc = 0; g.nextGap = rand(...L.gap); spawnRow(); }
+    if (g.spawnAcc >= g.nextGap && g.dist < L.length - 40) { g.spawnAcc -= g.nextGap; g.nextGap = L.gap[0] + rowRng() * (L.gap[1] - L.gap[0]); spawnRow(g.spawnAcc); }
     g.sceneryAcc += move;
     const sg = L.id === 'cks' ? 5 : 4;
     while (g.sceneryAcc >= sg) { g.sceneryAcc -= sg; spawnScenery(-130 + g.sceneryAcc); }
@@ -1378,6 +1609,7 @@ function updateGame(dt) {
     u.v.y -= 14 * dt; p.position.addScaledVector(u.v, dt); p.position.z += move;
     if (u.life <= 0) { g.scene.remove(p); g.particles.splice(i, 1); }
   }
+  mpTick(dt);
   // camera
   g.shake = Math.max(0, g.shake - dt);
   const sh = g.shake > 0 ? g.shake * 0.6 : 0;
