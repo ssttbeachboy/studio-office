@@ -76,8 +76,8 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
 .touchpad{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;padding:0 max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 18px) max(16px,env(safe-area-inset-left,0px));pointer-events:none}
 .touchpad .grp{display:flex;gap:12px;pointer-events:auto}
 .tbtn{border:0;width:84px;height:84px;border-radius:50%;background:rgba(255,247,223,.85);box-shadow:0 4px 0 rgba(156,118,71,.85);font-size:30px;font-family:var(--f-display);font-weight:700;touch-action:none;-webkit-tap-highlight-color:transparent}
-.tbtn.jump{width:108px;height:108px;background:rgba(255,216,77,.95);font-size:24px}
-.touchpad .grp{gap:16px}
+.tbtn.jump{background:rgba(255,216,77,.95)}
+.touchpad .grp{gap:16px;flex-direction:column;align-items:center}
 .tbtn:active,.tbtn.on{transform:translateY(3px);box-shadow:0 1px 0 rgba(156,118,71,.85)}
 @media (hover:hover) and (pointer:fine){ html:not(.touch) .touchpad{display:none} }
 
@@ -147,10 +147,13 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
   <div class="progress" aria-hidden="true"><i id="progFill"></i><em id="progChick"></em><u>🏁</u></div>
   <div class="touchpad" id="touchpad">
     <div class="grp">
+      <button class="tbtn jump" id="tJumpL" aria-label="跳躍">▲</button>
       <button class="tbtn" id="tLeft" aria-label="往左">◀</button>
+    </div>
+    <div class="grp">
+      <button class="tbtn jump" id="tJumpR" aria-label="跳躍">▲</button>
       <button class="tbtn" id="tRight" aria-label="往右">▶</button>
     </div>
-    <div class="grp"><button class="tbtn jump" id="tJump" aria-label="跳躍">跳！</button></div>
   </div>
 </section>
 <div id="banner" hidden></div>
@@ -248,9 +251,9 @@ function mesh(geo, mat, sx = 1, sy = 1, sz = 1, x = 0, y = 0, z = 0, shadow = tr
   return m;
 }
 
-/* ================= The chick (Pokémon-style take on the clay model) ================= */
-const C = { yellow: 0xffdc3c, crest: 0xff6f1f, beak: 0xffc04d, foot: 0xffa94a, eye: 0x241a14, cheek: 0xf0325f, line: 0x6b3a12 };
-const BODY = { cy: 1.15, rx: 1.0, ry: 1.0, rz: 0.95 };
+/* ================= The clay chick ================= */
+const C = { yellow: 0xffe36a, pale: 0xfff0a6, orange: 0xff6a24, black: 0x1f1712, cheek: 0xb81f52 };
+const BODY = { cy: 1.18, rx: 1.0, ry: 1.06, rz: 0.94 };
 function onBody(x, y, push = 0) {
   const dx = x / BODY.rx, dy = (y - BODY.cy) / BODY.ry;
   const z = BODY.rz * Math.sqrt(Math.max(0, 1 - dx * dx - dy * dy));
@@ -261,83 +264,78 @@ function stick(obj, x, y, push = 0) {
   const { p, n } = onBody(x, y, push);
   obj.position.copy(p); obj.lookAt(p.clone().add(n)); return obj;
 }
-// cel shading: three soft tone steps
-const toonGrad = new THREE.DataTexture(new Uint8Array([125, 190, 235]), 3, 1, THREE.LuminanceFormat);
-toonGrad.minFilter = toonGrad.magFilter = THREE.NearestFilter; toonGrad.generateMipmaps = false; toonGrad.needsUpdate = true;
-function toon(color) {
-  const k = 't' + color;
-  return MAT[k] || (MAT[k] = new THREE.MeshToonMaterial({ color, gradientMap: toonGrad }));
+// smoother, hand-polished clay: same clay look, softer fingerprints
+function smoothClay(color, rough = 0.72) {
+  const k = 's' + color + rough;
+  return MAT[k] || (MAT[k] = new THREE.MeshStandardMaterial({ color, roughness: rough, metalness: 0, bumpMap: clayBump, bumpScale: 0.005 }));
 }
-const lineMat = new THREE.MeshBasicMaterial({ color: C.line, side: THREE.BackSide });
-// a toon part plus a slightly larger back-face "inverted hull" for the cartoon outline
-function part(parent, geo, mat, sx, sy, sz, x, y, z, rot, line = 0.035) {
-  const g = new THREE.Group(); g.position.set(x, y, z); if (rot) g.rotation.set(rot[0], rot[1], rot[2]);
-  const m = new THREE.Mesh(geo, mat); m.scale.set(sx, sy, sz); m.castShadow = true; g.add(m);
-  if (line) { const o = new THREE.Mesh(geo, lineMat); o.scale.set(sx + line, sy + line, sz + line); g.add(o); }
-  parent.add(g); return g;
-}
+// one seamless egg: a sphere whose lower half swells a little (no separate belly piece, so no crease)
+const eggGeo = (() => {
+  const g = new THREE.SphereGeometry(1, 64, 48), p = g.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const y = p.getY(i), k = y < 0 ? 1 + 0.07 * Math.sin(-y * Math.PI) : 1;
+    p.setX(i, p.getX(i) * k); p.setZ(i, p.getZ(i) * k);
+  }
+  g.computeVertexNormals(); return g;
+})();
+const smoothSph = new THREE.SphereGeometry(1, 40, 30);
 function buildChick() {
   const chick = new THREE.Group();
   const rig = new THREE.Group(); chick.add(rig);
-  const Y = toon(C.yellow), O = toon(C.crest), B = toon(C.beak), F = toon(C.foot), R = toon(C.cheek);
-  const K = new THREE.MeshBasicMaterial({ color: C.eye }), W = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const Y = smoothClay(C.yellow), P = smoothClay(C.pale), O = smoothClay(C.orange, 0.7), K = smoothClay(C.black, 0.35), R = smoothClay(C.cheek, 0.62);
+  const S = smoothSph;
 
-  part(rig, GEO.sph, Y, BODY.rx, BODY.ry, BODY.rz, 0, BODY.cy, 0, null, 0.045);
+  rig.add(mesh(eggGeo, Y, BODY.rx, BODY.ry, BODY.rz, 0, BODY.cy, 0));
 
-  // eyes: matching tall ovals with sparkles
+  // eyes: the same clay oval on both sides, mirrored
   const eyes = [];
   for (const s of [-1, 1]) {
-    const e = new THREE.Group();
-    const lid = new THREE.Group(); e.add(lid);
-    lid.add(mesh(GEO.sph, K, 0.135, 0.185, 0.07, 0, 0, 0, false));
-    lid.add(mesh(GEO.sph, W, 0.05, 0.06, 0.03, -0.045, 0.07, 0.05, false));
-    lid.add(mesh(GEO.sph, W, 0.022, 0.022, 0.02, 0.04, -0.07, 0.055, false));
-    stick(e, s * 0.34, 1.42, 0.0);
-    rig.add(e); eyes.push(lid);
+    const e = new THREE.Group(), lid = new THREE.Group(); e.add(lid);
+    const m = mesh(S, K, 0.16, 0.125, 0.06, 0, 0, 0, false); m.rotation.z = s * -0.12; lid.add(m);
+    stick(e, s * 0.31, 1.5, 0.0); rig.add(e); eyes.push(lid);
   }
 
-  // round cheeks
-  for (const s of [-1, 1]) {
-    const c = mesh(GEO.sph, R, 0.19, 0.17, 0.05, 0, 0, 0, false); c.castShadow = false;
-    stick(c, s * 0.6, 1.05, 0.0); rig.add(c);
-  }
+  // cheeks, mirrored
+  for (const s of [-1, 1]) { const c = mesh(S, R, 0.17, 0.19, 0.05, 0, 0, 0, false); stick(c, s * 0.58, 1.03, 0.0); rig.add(c); }
 
-  // one smooth little beak (no seam), with a tiny tip
-  const beak = new THREE.Group(); stick(beak, 0, 1.18, 0.02);
-  part(beak, GEO.sph, B, 0.17, 0.12, 0.14, 0, 0, 0.03, null, 0.03);
-  rig.add(beak);
+  // beak: two pale lumps, as in the clay model
+  const bU = mesh(S, P, 0.22, 0.13, 0.2); stick(bU, 0.0, 1.2, 0.06);
+  const bD = mesh(S, P, 0.16, 0.1, 0.15); stick(bD, 0.0, 1.04, 0.05);
+  rig.add(bU, bD);
 
-  // wings that flick upward like the clay model's
+  // wings on pivots so they can flap
   const wings = [];
   for (const s of [-1, 1]) {
-    const piv = new THREE.Group(); piv.position.set(s * 0.86, 1.25, -0.05);
-    part(piv, GEO.sph, Y, 0.3, 0.46, 0.3, s * 0.24, 0.1, 0, [0, 0, s * -0.55]);
-    part(piv, GEO.sph, Y, 0.17, 0.25, 0.2, s * 0.42, 0.42, -0.02, [0, 0, s * -0.85]);
-    rig.add(piv); wings.push(piv);
+    const piv = new THREE.Group(); piv.position.set(s * 0.82, 1.32, -0.05);
+    const w = mesh(S, Y, 0.34, 0.56, 0.36, s * 0.32, 0.12, 0); w.rotation.z = s * -0.45;
+    const tip = mesh(S, Y, 0.2, 0.3, 0.26, s * 0.52, 0.5, -0.02); tip.rotation.z = s * -0.7;
+    piv.add(w, tip); rig.add(piv); wings.push(piv);
   }
 
-  // crest: two side lobes, two stacked balls, a curled pointy tip
-  const crest = new THREE.Group(); crest.position.set(0, 2.05, 0.05);
-  for (const s of [-1, 1]) part(crest, GEO.sph, O, 0.3, 0.24, 0.27, s * 0.36, 0.08, 0, [0, 0, s * -0.4]);
-  part(crest, GEO.sph, O, 0.25, 0.26, 0.25, 0, 0.3, 0);
-  part(crest, GEO.sph, O, 0.21, 0.22, 0.21, 0.04, 0.64, 0);
-  const tipPiv = new THREE.Group(); tipPiv.position.set(0.07, 0.8, 0);
-  part(tipPiv, GEO.cone, O, 0.13, 0.38, 0.13, 0.07, 0.16, 0, [0, 0, -0.45], 0.03);
-  part(tipPiv, GEO.cone, O, 0.07, 0.22, 0.07, 0.22, 0.4, 0, [0, 0, -1.0], 0.025);
-  crest.add(tipPiv); rig.add(crest);
+  // crest: two side blobs + stacked column + pointed tip
+  const crest = new THREE.Group(); crest.position.set(0, 2.12, 0.05);
+  for (const s of [-1, 1]) { const b = mesh(S, O, 0.33, 0.26, 0.3, s * 0.4, 0.08, 0); b.rotation.z = s * -0.35; crest.add(b); }
+  crest.add(mesh(S, O, 0.26, 0.28, 0.26, 0, 0.3, 0));
+  crest.add(mesh(S, O, 0.24, 0.26, 0.24, 0.04, 0.68, 0));
+  const tipPiv = new THREE.Group(); tipPiv.position.set(0.08, 0.86, 0);
+  const tip1 = mesh(GEO.cone, O, 0.15, 0.42, 0.15, 0.06, 0.18, 0); tip1.rotation.z = -0.35;
+  const tip2 = mesh(GEO.cone, O, 0.08, 0.3, 0.08, 0.22, 0.46, 0); tip2.rotation.z = -0.8;
+  tipPiv.add(tip1, tip2); crest.add(tipPiv); rig.add(crest);
 
-  // little tail tuft
-  part(rig, GEO.cone, Y, 0.2, 0.36, 0.14, 0, 1.0, -0.98, [-1.9, 0, 0], 0.03);
+  // tail nub
+  const tail = mesh(GEO.cone, Y, 0.25, 0.42, 0.18, 0, 1.0, -0.98); tail.rotation.x = -1.9; rig.add(tail);
+  rig.add(mesh(S, Y, 0.3, 0.26, 0.22, 0, 0.95, -0.82));
 
-  // feet stay on the ground, outside the rig
+  // feet (stay on the ground, outside the rig)
   const feet = [];
   for (const s of [-1, 1]) {
-    const f = new THREE.Group(); f.position.set(s * 0.4, 0, 0.2);
-    part(f, GEO.sph, F, 0.25, 0.16, 0.32, 0, 0.15, 0.02, null, 0.03);
-    for (const t of [-1, 0, 1]) part(f, GEO.sph, F, 0.08, 0.08, 0.1, t * 0.13, 0.08, 0.27, null, 0.025);
+    const f = new THREE.Group(); f.position.set(s * 0.42, 0, 0.2);
+    f.add(mesh(S, Y, 0.28, 0.2, 0.36, 0, 0.18, 0));
+    for (const t of [-1, 0, 1]) f.add(mesh(S, Y, 0.09, 0.09, 0.12, t * 0.14, 0.09, 0.3));
     chick.add(f); feet.push(f);
   }
   chick.userData = { rig, wings, feet, crest, tipPiv, eyes };
+  chick.traverse(o => { if (o.isMesh) o.castShadow = true; });
   return chick;
 }
 const chick = buildChick();
@@ -1017,7 +1015,7 @@ function holdBtn(id, fn) {
   b.addEventListener('pointerdown', e => { e.preventDefault(); e.stopPropagation(); ensureAudio(); b.classList.add('on'); fn(); });
   ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => b.addEventListener(ev, () => b.classList.remove('on')));
 }
-holdBtn('#tLeft', () => moveLane(-1)); holdBtn('#tRight', () => moveLane(1)); holdBtn('#tJump', jump);
+holdBtn('#tLeft', () => moveLane(-1)); holdBtn('#tRight', () => moveLane(1)); holdBtn('#tJumpL', jump); holdBtn('#tJumpR', jump);
 
 // canvas pointer: orbit in viewer, swipe in game
 const ptrs = new Map(); let pinch0 = 0, swipe = null;
