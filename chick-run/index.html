@@ -64,6 +64,11 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
 #bugCount.bump{animation:bump .3s}
 @keyframes bump{50%{transform:scale(1.35)}}
 .lvname{font-family:var(--f-body);font-weight:400}
+.giant{font-family:var(--f-body);font-weight:400;font-size:13px}
+.giant i{display:block;width:64px;height:10px;border-radius:999px;background:#e8d8b8;overflow:hidden}
+.giant b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yolk),var(--comb));border-radius:999px}
+.giant.on{background:var(--yolk);animation:bump .5s infinite}
+@media (max-width:560px){ .lvname{display:none} }
 .spacer{flex:1}
 .iconbtn{pointer-events:auto;border:0;width:40px;height:40px;border-radius:50%;background:rgba(255,247,223,.92);box-shadow:0 3px 0 rgba(156,118,71,.8);font-size:16px;font-family:var(--f-display);font-weight:700}
 .progress{margin-top:10px;height:12px;background:rgba(255,247,223,.6);border-radius:999px;position:relative;max-width:520px;margin-left:auto;margin-right:auto;box-shadow:inset 0 2px 0 rgba(0,0,0,.08)}
@@ -139,6 +144,7 @@ button:focus-visible{outline:3px solid var(--comb);outline-offset:2px}
   <div class="hud-row">
     <div class="pill hearts" id="hearts" aria-label="生命">♥♥♥</div>
     <div class="pill"><span aria-hidden="true">🐛</span><span id="bugCount">0</span></div>
+    <div class="pill giant" id="giantPill" aria-label="巨大能量"><span id="giantTxt">巨大</span><i><b id="giantFill"></b></i></div>
     <div class="pill lvname" id="hudLevel">四號公園</div>
     <div class="spacer"></div>
     <button class="iconbtn" id="muteBtn" aria-label="音效開關">♪</button>
@@ -194,6 +200,20 @@ function resize() {
   camera.updateProjectionMatrix();
 }
 addEventListener('resize', resize);
+
+/* ================= Curved road ================= */
+// The world bends in the vertex shader: the chick really runs straight, but the road ahead
+// curves left/right and rises/falls. Depth (shadow) passes are left unbent.
+const BEND = { value: new THREE.Vector2(0, 0) };
+THREE.ShaderChunk.common = 'uniform vec2 uBend;\n' + THREE.ShaderChunk.common;
+THREE.ShaderChunk.project_vertex += `
+#ifndef DEPTH_PACKING
+  { float d = min(-mvPosition.z, 90.0); d = max(d, 0.0);
+    mvPosition.x += uBend.x * d * d; mvPosition.y += uBend.y * d * d;
+    gl_Position = projectionMatrix * mvPosition; }
+#endif
+`;
+THREE.Material.prototype.onBeforeCompile = function (shader) { shader.uniforms.uBend = BEND; };
 
 /* ================= Textures & materials ================= */
 function makeCanvas(w, h, draw) {
@@ -393,12 +413,16 @@ function tone(f1, f2, dur, type = 'square', vol = 0.06, delay = 0) {
   g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
   o.connect(g).connect(actx.destination); o.start(t); o.stop(t + dur + 0.02);
 }
+const GIANT_NEED = 10, GIANT_TIME = 8;
 const SFX = {
   peep: () => { tone(1300, 1900, 0.08, 'sine', 0.08); tone(1500, 2200, 0.08, 'sine', 0.07, 0.1); },
   jump: () => tone(420, 900, 0.16, 'triangle', 0.08),
   eat: () => { tone(880, 1320, 0.07, 'square', 0.05); tone(1320, 1760, 0.08, 'square', 0.045, 0.06); },
   hit: () => { tone(180, 60, 0.3, 'sawtooth', 0.09); tone(900, 300, 0.15, 'square', 0.04); },
   lane: () => tone(600, 700, 0.04, 'sine', 0.03),
+  grow: () => [392, 523, 659, 784, 1046].forEach((f, i) => tone(f, f * 1.02, 0.12, 'square', 0.05, i * 0.07)),
+  shrink: () => tone(700, 250, 0.4, 'triangle', 0.06),
+  smash: () => { tone(140, 50, 0.2, 'sawtooth', 0.07); tone(1200, 500, 0.08, 'square', 0.03); },
   win: () => [523, 659, 784, 1046].forEach((f, i) => tone(f, f * 1.01, 0.18, 'square', 0.05, i * 0.12)),
   lose: () => [392, 330, 262].forEach((f, i) => tone(f, f * 0.98, 0.25, 'triangle', 0.07, i * 0.18)),
 };
@@ -492,7 +516,7 @@ function skyTex(stops) {
 }
 const LEVELS = [
   {
-    id: 'park', name: '四號公園', tag: 'LEVEL 1', meta: '中和・綠樹步道・國立臺灣圖書館', speed: 11, length: 460, gap: [14, 18],
+    id: 'park', name: '四號公園', tag: 'LEVEL 1', meta: '中和・綠樹步道・國立臺灣圖書館', speed: 11, length: 1410, gap: [9, 12],
     sky: [[0, '#79b8e0'], [0.6, '#c3e2f5'], [1, '#e9f4fa']], fog: [0xd3e6ef, 55, 210],
     hemi: [0xe8f6ff, 0x5a8a3a, 0.75], sunColor: 0xfff2d6, rock: 0x8a8378,
     path: () => canvasTex(256, 256, (x, w, h) => {
@@ -510,7 +534,7 @@ const LEVELS = [
     }), sideTile: 10,
   },
   {
-    id: 'cks', name: '中正紀念堂', tag: 'LEVEL 2', meta: '自由廣場・藍頂白牆', speed: 12.5, length: 530, gap: [13, 17],
+    id: 'cks', name: '中正紀念堂', tag: 'LEVEL 2', meta: '自由廣場・藍頂白牆', speed: 12.5, length: 1590, gap: [8.5, 11.5],
     sky: [[0, '#5aa9e6'], [0.6, '#a9d6f7'], [1, '#e7f4ff']], fog: [0xd8ecf8, 70, 240],
     hemi: [0xf2f8ff, 0xbab3a6, 0.8], sunColor: 0xffffff, rock: 0xa7a197,
     path: () => canvasTex(256, 256, (x, w, h) => {
@@ -530,7 +554,7 @@ const LEVELS = [
     }), sideTile: 14,
   },
   {
-    id: 'oki', name: '沖繩海邊', tag: 'LEVEL 3', meta: '白沙・椰子樹・風獅爺', speed: 14, length: 600, gap: [12, 16],
+    id: 'oki', name: '沖繩海邊', tag: 'LEVEL 3', meta: '白沙・椰子樹・風獅爺', speed: 14, length: 1770, gap: [8, 11],
     sky: [[0, '#2f9de0'], [0.55, '#8fd6f7'], [1, '#fdf3d0']], fog: [0xbfe9f6, 55, 150],
     hemi: [0xf0fbff, 0xe8d29a, 0.85], sunColor: 0xfff4d0, rock: 0x625c52,
     path: () => canvasTex(256, 256, (x, w, h) => {
@@ -778,6 +802,58 @@ function library() { // front face sits at z = 0, door in the middle
   plaza.rotation.x = -Math.PI / 2; plaza.position.set(0, 0.025, 14); plaza.receiveShadow = true; g.add(plaza);
   return g;
 }
+function kindergarten() { // 巧可麗雙和幼兒園: corner tower with a rounded front, blue & yellow signboard
+  const g = new THREE.Group(), H = 26;
+  const facade = canvasTex(256, 256, (x, w, h) => {
+    x.fillStyle = '#d8d2c6'; x.fillRect(0, 0, w, h);
+    x.strokeStyle = 'rgba(160,150,135,.45)';
+    for (let i = 0; i <= w; i += 16) { x.beginPath(); x.moveTo(i, 0); x.lineTo(i, h); x.stroke(); }
+    for (let j = 0; j <= h; j += 16) { x.beginPath(); x.moveTo(0, j); x.lineTo(w, j); x.stroke(); }
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 2; c++) {
+      x.fillStyle = '#6f7578'; x.fillRect(c * 128 + 18, r * 64 + 14, 92, 36);
+      x.fillStyle = 'rgba(255,255,255,.25)'; x.fillRect(c * 128 + 18, r * 64 + 14, 92, 6);
+      x.fillStyle = '#cfc8bb'; x.fillRect(c * 128 + 62, r * 64 + 14, 4, 36);
+    }
+  });
+  const fm = (rx, ry) => { const t = facade.clone(); t.needsUpdate = true; t.repeat.set(rx, ry); return new THREE.MeshStandardMaterial({ map: t, roughness: 0.9 }); };
+  const base = new THREE.MeshStandardMaterial({ color: 0xc7a58c, roughness: 0.9 });
+  g.add(mesh(GEO.box, fm(1.5, 3.2), 11, H - 5, 10, -10.5, 5 + (H - 5) / 2, -5));   // block facing the camera
+  g.add(mesh(GEO.box, fm(2, 3.2), 10, H - 5, 17, -5, 5 + (H - 5) / 2, -13.5));    // block facing the path
+  g.add(mesh(new THREE.CylinderGeometry(5, 5, H - 5, 32), fm(2, 3.2), 1, 1, 1, -5, 5 + (H - 5) / 2, -5));
+  g.add(mesh(GEO.box, base, 11, 5, 10, -10.5, 2.5, -5), mesh(GEO.box, base, 10, 5, 17, -5, 2.5, -13.5));
+  g.add(mesh(new THREE.CylinderGeometry(5, 5, 5, 32), base, 1, 1, 1, -5, 2.5, -5));
+  for (let y = 11; y < H; y += 7) g.add(mesh(new THREE.CylinderGeometry(5.25, 5.25, 0.35, 32), flat(0xbfb6a8, { flatShading: false }), 1, 1, 1, -5, y, -5, false));
+  // signboard band wrapping the rounded corner
+  const sign = canvasTex(1024, 128, (x, w, h) => {
+    x.fillStyle = '#f2c230'; x.fillRect(0, 0, w, h);
+    x.fillStyle = '#2b3fa8'; x.beginPath(); x.moveTo(300, 0); x.lineTo(w, 0); x.lineTo(w, h); x.lineTo(260, h); x.fill();
+    x.textBaseline = 'middle'; x.textAlign = 'center';
+    x.font = '900 84px "Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif';
+    x.fillStyle = '#2b3fa8'; x.fillText('巧可麗', 140, 68);
+    x.fillStyle = '#ffffff'; x.font = '700 70px "Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif';
+    x.fillText('雙 和 幼 兒 園', 650, 68);
+  }, false);
+  const band = new THREE.Mesh(new THREE.CylinderGeometry(5.3, 5.3, 1.8, 40, 1, true, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ map: sign, roughness: 0.6, side: THREE.DoubleSide }));
+  band.position.set(-5, 5.9, -5); g.add(band);
+  const side = canvasTex(512, 64, (x, w, h) => {
+    x.fillStyle = '#2b3fa8'; x.fillRect(0, 0, w, h);
+    x.fillStyle = '#ffffff'; x.textBaseline = 'middle'; x.textAlign = 'center';
+    x.font = '700 30px "Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif';
+    x.fillText('新北市私立巧可麗雙和幼兒園', w / 2, h / 2 + 2);
+  }, false);
+  const sideSign = new THREE.Mesh(new THREE.PlaneGeometry(14, 1.8), new THREE.MeshStandardMaterial({ map: side, roughness: 0.6 }));
+  sideSign.position.set(0.06, 5.9, -14); sideSign.rotation.y = Math.PI / 2; g.add(sideSign);
+  const front = new THREE.Mesh(new THREE.PlaneGeometry(9, 1.8), new THREE.MeshStandardMaterial({ map: sign, roughness: 0.6 }));
+  front.position.set(-11, 5.9, 0.06); g.add(front);
+  // colourful banner strip, glass doors, a yellow column
+  const strip = canvasTex(512, 32, (x, w, h) => { const c = ['#e0403a', '#2f9a4a', '#2f9a4a', '#f2c230', '#2f9a4a', '#e0403a']; c.forEach((col, i) => { x.fillStyle = col; x.fillRect(i * w / 6, 0, w / 6, h); }); x.fillStyle = '#fff'; x.font = '700 18px sans-serif'; x.fillText('FAMILY DAY', 110, 22); x.fillText('MERRY XMAS', 300, 22); }, false);
+  const st = new THREE.Mesh(new THREE.PlaneGeometry(10, 0.7), new THREE.MeshStandardMaterial({ map: strip }));
+  st.position.set(0.07, 4.6, -10); st.rotation.y = Math.PI / 2; g.add(st);
+  g.add(mesh(GEO.box, flat(0x3a4a52), 0.1, 3, 8, 0.05, 1.6, -12, false));
+  g.add(mesh(GEO.box, flat(0x3a4a52), 7, 3, 0.1, -11, 1.6, 0.05, false));
+  g.add(mesh(GEO.box, flat(0xf2c230), 0.6, 4, 0.6, 0.3, 2, -22));
+  return g;
+}
 function brickArcade() { // the long red-brick structure beside the library
   const g = new THREE.Group(), brick = flat(0xa4523a), dark = flat(0x5a2a1e);
   g.add(mesh(GEO.box, brick, 3, 6, 26, 0, 3, 0));
@@ -889,7 +965,7 @@ function buildLevel(li) {
   const side = new THREE.Mesh(new THREE.PlaneGeometry(300, PATH_LEN), new THREE.MeshStandardMaterial({ map: game.sideTex, roughness: 1 }));
   side.rotation.x = -Math.PI / 2; side.position.set(0, 0, -PATH_LEN / 2 + 14); side.receiveShadow = true; s.add(side);
 
-  game.items = []; game.scenery = []; game.particles = []; game.backdrops = []; game.seaTex = null; game.library = null;
+  game.items = []; game.scenery = []; game.particles = []; game.backdrops = []; game.seaTex = null; game.library = null; game.clearLeft = [];
   const sky = new THREE.Group(); s.add(sky);
   for (let i = 0; i < 6; i++) { const c = cloud(); c.position.set(rand(-90, 90), rand(28, 45), rand(-200, -120)); c.scale.setScalar(rand(1, 1.8)); sky.add(c); }
 
@@ -923,9 +999,11 @@ function buildLevel(li) {
     for (let i = 0; i < 5; i++) s.add(mesh(GEO.sphLo, flat(0x8fa9a6), rand(60, 90), rand(18, 30), 20, -200 + i * 100, 0, -260, false));
     // landmarks from the park, placed along the run
     const arc = brickArcade(); arc.position.set(-13, 0, -150); addMover(arc, 'deco');
-    const pg = playground(); pg.position.set(12, 0, -230); addMover(pg, 'deco');
-    const ramp = spiralRamp(); ramp.position.set(15, 0, -330); addMover(ramp, 'deco');
-    const pg2 = playground(); pg2.position.set(-13, 0, -390); pg2.rotation.y = Math.PI; addMover(pg2, 'deco');
+    const kg = kindergarten(); kg.position.set(-7, 0, -320); addMover(kg, 'deco'); game.clearLeft = [kg];
+    const pg = playground(); pg.position.set(12, 0, -480); addMover(pg, 'deco');
+    const ramp = spiralRamp(); ramp.position.set(15, 0, -700); addMover(ramp, 'deco');
+    const pg2 = playground(); pg2.position.set(-13, 0, -930); pg2.rotation.y = Math.PI; addMover(pg2, 'deco');
+    const arc2 = brickArcade(); arc2.position.set(13, 0, -1150); addMover(arc2, 'deco');
     // the library waits at the end; its door is just past the finish line
     const lib = library(); lib.userData.lib = true; s.add(lib); game.library = lib;
   }
@@ -962,6 +1040,7 @@ function spawnScenery(z) {
     return;
   }
   for (const sx of [-1, 1]) {
+    if (sx < 0 && game.clearLeft.some(b => z > b.position.z - 30 && z < b.position.z + 6)) continue; // keep the view of landmarks open
     if (Math.random() < 0.8) { const o = weighted(set.near); o.position.set(sx * rand(5, 10), 0, z + rand(-1.5, 1.5)); o.rotation.y = sx > 0 ? Math.PI : 0; addMover(o, 'deco'); }
     if (Math.random() < 0.35) { const o = weighted(set.far); o.position.set(sx * rand(14, 26), 0, z); addMover(o, 'deco'); }
   }
@@ -970,15 +1049,16 @@ const SPAWN_Z = -110;
 function spawnRow() {
   const L = game.L, r = Math.random();
   const lanes = [0, 1, 2].sort(() => Math.random() - 0.5);
-  const rock = l => { const m = rockMesh(L.rock); m.position.set(LANES[l], 0, SPAWN_Z); addMover(m, 'rock'); };
+  const rock = (l, dz = 0) => { const m = rockMesh(L.rock); m.position.set(LANES[l], 0, SPAWN_Z + dz); addMover(m, 'rock'); };
   const bug = (l, dz = 0, y = 0.3) => { const m = bugMesh(); m.position.set(LANES[l], y, SPAWN_Z + dz); m.rotation.y = Math.PI; addMover(m, 'bug', { baseY: y }); };
   // kid-friendly: at most two rocks per row, always a free lane, lots of bugs
-  const twoRocks = 0.08 + game.li * 0.06;
-  if (r < 0.3) { for (let i = 0; i < 4; i++) bug(lanes[0], -i * 2.4); }
-  else if (r < 0.62) { rock(lanes[0]); bug(lanes[1]); bug(lanes[2], -2.5); }
-  else if (r < 0.85 - twoRocks) { rock(lanes[0]); bug(lanes[0], 0, 2.0); bug(lanes[1], -3); }
+  // more rocks AND more bugs (giant mode smashes rocks); a free lane is always left
+  const twoRocks = 0.22 + game.li * 0.06;
+  if (r < 0.22) { for (let i = 0; i < 4; i++) bug(lanes[0], -i * 2.4); rock(lanes[1]); }
+  else if (r < 0.5) { rock(lanes[0]); bug(lanes[1]); bug(lanes[2], -2.5); bug(lanes[1], -5); }
+  else if (r < 0.85 - twoRocks) { rock(lanes[0]); bug(lanes[0], 0, 2.0); bug(lanes[1], -3); rock(lanes[2], -6); }
   else if (r < 0.85) { rock(lanes[0]); rock(lanes[1]); for (let i = 0; i < 3; i++) bug(lanes[2], -i * 2.4); }
-  else { for (let i = 0; i < 3; i++) bug(lanes[i], -i * 2.4); }
+  else { for (let i = 0; i < 3; i++) bug(lanes[i], -i * 2.4); rock(lanes[1], -8); }
 }
 function burst(pos, colors, n = 10, up = 4) {
   for (let i = 0; i < n; i++) {
@@ -1037,6 +1117,10 @@ function showBanner(html, ms) {
 function updateHud() {
   $('#hearts').innerHTML = [0, 1, 2].map(i => i < game.hp ? '♥' : '<span class="off">♥</span>').join('');
   $('#bugCount').textContent = game.bugs;
+  const gp = $('#giantPill'), on = game.giant > 0;
+  gp.classList.toggle('on', on);
+  $('#giantTxt').textContent = on ? '巨大 ' + Math.ceil(game.giant) : '巨大 ' + game.meter + '/' + GIANT_NEED;
+  $('#giantFill').style.width = (on ? game.giant / GIANT_TIME : game.meter / GIANT_NEED) * 100 + '%';
   const p = clamp(game.dist / game.L.length, 0, 1);
   $('#progFill').style.width = p * 100 + '%'; $('#progChick').style.left = p * 100 + '%';
 }
@@ -1064,7 +1148,7 @@ function toViewer() {
 function startLevel(li) {
   closeModal(); ui.title.hidden = true; ui.hud.hidden = false;
   buildLevel(li);
-  Object.assign(game, { speed: game.L.speed, dist: 0, hp: 3, bugs: 0, lane: 1, x: 0, y: 0, vy: 0, inv: 0, spawnAcc: 0, nextGap: 22, sceneryAcc: 0, introT: 0, endT: 0, shake: 0, state: 'intro' });
+  Object.assign(game, { giant: 0, meter: 0, gScale: 1, speed: game.L.speed, dist: 0, hp: 3, bugs: 0, lane: 1, x: 0, y: 0, vy: 0, inv: 0, spawnAcc: 0, nextGap: 22, sceneryAcc: 0, introT: 0, endT: 0, shake: 0, state: 'intro' });
   chick.visible = true;
   $('#hudLevel').textContent = game.L.name;
   updateHud(); mode = 'game'; playMusic(game.L.id);
@@ -1080,6 +1164,7 @@ function togglePause(force) {
 }
 function levelClear() {
   game.state = 'clear'; game.endT = 0; playMusic(null); SFX.win();
+  chick.userData.rig.visible = true;
   // drop the overhead banner so nothing blocks the view of the goal
   game.finish.children.forEach(c => { if (c.geometry && c.geometry.type === 'PlaneGeometry') return; c.visible = false; });
   const stars = game.hp, score = game.bugs * 10 + game.hp * 50;
@@ -1096,6 +1181,7 @@ function levelClear() {
 }
 function gameOver() {
   game.state = 'over'; game.endT = 0; playMusic(null); SFX.lose();
+  chick.userData.rig.visible = true;
   setTimeout(() => openModal('跌倒了…', `在 ${game.L.name} 跑了 ${Math.round(game.dist / game.L.length * 100)}%`, null,
     [[game.bugs, '吃到小蟲'], [Math.round(game.dist) + 'm', '距離'], [game.bugs * 10, '分數']],
     [['再試一次', () => startLevel(game.li), true], ['回到小雞', toViewer]]), 1100);
@@ -1171,6 +1257,7 @@ function frame(now) {
   if (mode === 'viewer') updateViewer(dt); else updateGame(dt);
 }
 function updateViewer(dt) {
+  BEND.value.set(0, 0);
   viewer.idleT += dt;
   if (viewTarget) {
     viewer.theta = lerp(viewer.theta, viewTarget[0], 1 - Math.pow(0.002, dt));
@@ -1212,8 +1299,12 @@ function updateGame(dt) {
     const sq = g.y > 0 ? clamp(g.vy * 0.01, -0.08, 0.1) : 0;
     chick.userData.rig.scale.set(1 - sq, 1 + sq, 1 - sq);
     poseChick(T, 'run', { freq: 6 + g.speed * 0.5, air: g.y > 0.05 });
+    if (g.giant > 0) { g.giant -= dt; if (g.giant <= 0) { g.giant = 0; SFX.shrink(); } }
+    g.gScale = lerp(g.gScale, g.giant > 0 ? 2.1 : 1, 1 - Math.pow(0.02, dt));
+    chick.scale.setScalar(0.62 * g.gScale);
     g.inv = Math.max(0, g.inv - dt);
-    chick.visible = g.inv > 0 ? Math.floor(T * 14) % 2 === 0 : true;
+    chick.visible = g.inv > 0 && g.giant <= 0 ? Math.floor(T * 14) % 2 === 0 : true;
+    if (g.giant > 0 && g.giant < 2) chick.userData.rig.visible = Math.floor(T * 10) % 2 === 0; else chick.userData.rig.visible = true;
     // spawn
     g.spawnAcc += move;
     if (g.spawnAcc >= g.nextGap && g.dist < L.length - 40) { g.spawnAcc = 0; g.nextGap = rand(...L.gap); spawnRow(); }
@@ -1235,6 +1326,10 @@ function updateGame(dt) {
     chick.rotation.x = lerp(chick.rotation.x, -Math.PI / 2.2, 1 - Math.pow(0.01, dt));
     chick.position.y = Math.max(0, chick.position.y - dt * 2);
   }
+  // road curves: slow mix of sines along the distance; straightens at start and before the finish
+  const ramp = clamp(g.dist / 60, 0, 1) * clamp((L.length - g.dist) / 160, 0, 1);
+  BEND.value.set((0.0016 * Math.sin(g.dist / 85) + 0.0007 * Math.sin(g.dist / 33 + 1)) * ramp,
+                 (0.0007 * Math.sin(g.dist / 60 + 2) - 0.0002) * ramp);
   // scroll ground & move world
   const tileShift = move;
   g.pathTex.offset.y += tileShift / L.pathTile; g.sideTex.offset.y += tileShift / L.sideTile;
@@ -1258,11 +1353,15 @@ function updateGame(dt) {
     if (u.fly) { u.vel.y -= 25 * dt; o.position.addScaledVector(u.vel, dt); o.rotation.x += dt * 8; }
     if (u.gone) { u.t += dt; o.scale.setScalar(Math.max(0.01, 1 + u.t * 4) * (1 - u.t * 3)); if (u.t > 0.3) o.visible = false; }
     // collisions
-    if (g.state === 'play' && !u.done && Math.abs(o.position.z) < 0.7 && Math.abs(o.position.x - g.x) < (u.kind === 'bug' ? 1.2 : 0.8)) {
-      if (u.kind === 'bug' && Math.abs((g.y + 0.7) - (u.baseY + 0.3)) < 1.15) {
+    if (g.state === 'play' && !u.done && Math.abs(o.position.z) < 0.7 * g.gScale && Math.abs(o.position.x - g.x) < (g.giant > 0 ? 1.9 : (u.kind === 'bug' ? 1.2 : 0.8))) {
+      if (u.kind === 'bug' && Math.abs((g.y + 0.7 * g.gScale) - (u.baseY + 0.3)) < 1.15 * g.gScale) {
         u.done = true; u.gone = true; u.t = 0; g.bugs++; SFX.eat();
+        if (g.giant <= 0 && ++g.meter >= GIANT_NEED) { g.meter = 0; g.giant = GIANT_TIME; SFX.grow(); showBanner('變巨大！', 900); }
         burst(o.position, [0xffe36a, 0x9be05c, 0xffffff], 9, 4);
         const bc = $('#bugCount'); bc.classList.remove('bump'); void bc.offsetWidth; bc.classList.add('bump');
+      } else if (u.kind === 'rock' && g.giant > 0) { // giant: kick the rock away, no damage
+        u.done = true; u.fly = true; u.vel = new THREE.Vector3((o.position.x - g.x || rand(-1, 1)) * 6 + rand(-2, 2), 9, -14);
+        g.shake = 0.15; SFX.smash(); burst(o.position, [0x9a948a, 0xc9c3b8, 0xffffff], 10, 6);
       } else if (u.kind === 'rock' && g.y < 0.75 && g.inv <= 0) {
         u.done = true; u.fly = true; u.vel = new THREE.Vector3(rand(-3, 3), 6, -4);
         g.hp--; g.inv = 2.2; g.shake = 0.35; SFX.hit();
@@ -1283,7 +1382,8 @@ function updateGame(dt) {
   const sh = g.shake > 0 ? g.shake * 0.6 : 0;
   const intro = g.state === 'intro' ? clamp(1 - g.introT / 1.6, 0, 1) : 0;
   const portrait = camera.aspect < 1;
-  const cz = (portrait ? 8.6 : 7.4) - intro * 2.8, cy = (portrait ? 4.6 : 4.0) - intro * 1.8;
+  const gs = (g.gScale || 1) - 1;
+  const cz = (portrait ? 8.6 : 7.4) - intro * 2.8 + gs * 3, cy = (portrait ? 4.6 : 4.0) - intro * 1.8 + gs * 1.8;
   const fin = g.state === 'clear' ? clamp(g.endT / 1.4, 0, 1) : 0, fe = fin * fin * (3 - 2 * fin);
   camera.position.set(lerp(g.x * 0.55, g.x * 0.3, fe) + rand(-sh, sh), lerp(cy + chick.position.y * 0.3, cy - 0.6, fe) + rand(-sh, sh), lerp(cz, cz + 1.5, fe));
   camera.lookAt(g.x * 0.7, lerp(1.1 + chick.position.y * 0.25 - intro * 0.2, 4.5, fe), lerp(-7 + intro * 7, -30, fe));
