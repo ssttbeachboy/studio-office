@@ -492,15 +492,16 @@ function skyTex(stops) {
 }
 const LEVELS = [
   {
-    id: 'park', name: '四號公園', tag: 'LEVEL 1', meta: '草地小徑・樹蔭長椅', speed: 11, length: 460, gap: [14, 18],
-    sky: [[0, '#6fc3f0'], [0.6, '#bfe8ff'], [1, '#e9f7ff']], fog: [0xcdeaf5, 45, 125],
+    id: 'park', name: '四號公園', tag: 'LEVEL 1', meta: '中和・綠樹步道・國立臺灣圖書館', speed: 11, length: 460, gap: [14, 18],
+    sky: [[0, '#79b8e0'], [0.6, '#c3e2f5'], [1, '#e9f4fa']], fog: [0xd3e6ef, 55, 210],
     hemi: [0xe8f6ff, 0x5a8a3a, 0.75], sunColor: 0xfff2d6, rock: 0x8a8378,
     path: () => canvasTex(256, 256, (x, w, h) => {
-      x.fillStyle = '#d9b888'; x.fillRect(0, 0, w, h);
-      speckle(x, w, h, 500, ['#cba373', '#e6c99c', '#bf9666', '#efd7ae'], 1, 3.5);
-      speckle(x, w, h, 26, ['#a9a39a', '#c4bfb6', '#8f8a82'], 3, 6);
-      x.fillStyle = '#c29a69'; x.fillRect(0, 0, 10, h); x.fillRect(w - 10, 0, 10, h);
-      x.fillStyle = 'rgba(255,255,255,.25)'; for (let y = 0; y < h; y += 64) { x.fillRect(84, y + 8, 3, 30); x.fillRect(169, y + 8, 3, 30); }
+      x.fillStyle = '#c9c6c0'; x.fillRect(0, 0, w, h);
+      speckle(x, w, h, 300, ['#bfbcb5', '#d3d0ca', '#b7b3ab'], 1, 3);
+      x.strokeStyle = '#a9a59d'; x.lineWidth = 2;
+      for (let i = 0; i <= 4; i++) { x.beginPath(); x.moveTo(i * 64, 0); x.lineTo(i * 64, h); x.stroke(); x.beginPath(); x.moveTo(0, i * 64); x.lineTo(w, i * 64); x.stroke(); }
+      x.strokeStyle = 'rgba(140,135,128,.5)'; x.strokeRect(96, 96, 64, 64); x.beginPath(); x.moveTo(96, 96); x.lineTo(160, 160); x.moveTo(160, 96); x.lineTo(96, 160); x.stroke();
+      x.fillStyle = '#8f8b84'; x.fillRect(0, 0, 8, h); x.fillRect(w - 8, 0, 8, h);
     }), pathTile: 6,
     side: () => canvasTex(256, 256, (x, w, h) => {
       x.fillStyle = '#6cb64f'; x.fillRect(0, 0, w, h);
@@ -715,8 +716,104 @@ function cloud() {
   for (let i = 0; i < 5; i++) g.add(mesh(GEO.sphLo, w, rand(2, 3.5), rand(1.3, 2), rand(2, 3), i * 2.6 - 5, rand(0, 1), rand(-1, 1), false));
   return g;
 }
+/* ---------- 中和四號公園 & 國立臺灣圖書館 ---------- */
+let libFacadeTex = null;
+function libraryFacade() {
+  return libFacadeTex || (libFacadeTex = canvasTex(256, 256, (x, w, h) => {
+    x.fillStyle = '#d6d8dd'; x.fillRect(0, 0, w, h);
+    x.strokeStyle = 'rgba(150,152,160,.5)'; x.lineWidth = 1;
+    for (let i = 0; i <= w; i += 16) { x.beginPath(); x.moveTo(i, 0); x.lineTo(i, h); x.stroke(); }
+    for (let j = 0; j <= h; j += 16) { x.beginPath(); x.moveTo(0, j); x.lineTo(w, j); x.stroke(); }
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+      x.fillStyle = '#4f9c95'; x.fillRect(c * 64 + 14, r * 64 + 18, 36, 26);
+      x.fillStyle = 'rgba(255,255,255,.35)'; x.fillRect(c * 64 + 14, r * 64 + 18, 36, 5);
+      x.fillStyle = '#e8e9ec'; x.fillRect(c * 64 + 31, r * 64 + 18, 2, 26);
+    }
+  }));
+}
+function library() { // front face sits at z = 0, door in the middle
+  const g = new THREE.Group();
+  const tex = libraryFacade(); tex.repeat.set(1, 1);
+  const wall = (wd, ht, dp, x, z) => {
+    const t = tex.clone(); t.needsUpdate = true; t.repeat.set(wd / 8, ht / 8);
+    const m = mesh(GEO.box, new THREE.MeshStandardMaterial({ map: t, roughness: 0.85 }), wd, ht, dp, x, ht / 2, z);
+    g.add(m); return m;
+  };
+  wall(16, 26, 26, -15, -13); wall(16, 26, 26, 15, -13);   // two tall wings
+  wall(14, 22, 22, 0, -17);                                  // recessed middle
+  g.add(mesh(GEO.box, flat(0xc9ccd2), 12, 2.4, 10, 0, 23.2, -18));
+  // glass atrium with steel space-frame
+  const glass = new THREE.MeshStandardMaterial({ color: 0x9ad7d2, transparent: true, opacity: 0.55, roughness: 0.08, metalness: 0.35 });
+  g.add(mesh(GEO.box, glass, 17, 15, 4, 0, 7.5, -1.6, false));
+  g.add(mesh(GEO.box, glass, 19, 1.2, 6, 0, 15.6, -1.0, false));
+  const steel = flat(0xeef3f3);
+  for (let i = -8; i <= 8; i += 2) g.add(mesh(GEO.box, steel, 0.12, 15, 0.12, i, 7.5, 0.45, false));
+  for (let j = 1; j <= 15; j += 2.5) g.add(mesh(GEO.box, steel, 17, 0.12, 0.12, 0, j, 0.45, false));
+  for (let i = -8; i < 8; i += 4) for (let j = 0; j < 15; j += 5) {
+    const d = mesh(GEO.box, steel, 0.08, 6.4, 0.08, i + 2, j + 2.5, 0.5, false); d.rotation.z = 0.67; g.add(d);
+    const d2 = mesh(GEO.box, steel, 0.08, 6.4, 0.08, i + 2, j + 2.5, 0.5, false); d2.rotation.z = -0.67; g.add(d2);
+  }
+  // curved grey canopy over the entrance
+  const grey = flat(0xb4b7bc, { flatShading: false });
+  g.add(mesh(GEO.box, grey, 12, 0.5, 5, 0, 7.6, 2.4));
+  const lip = mesh(new THREE.CylinderGeometry(1.4, 1.4, 12, 20, 1, false, Math.PI, Math.PI / 2), grey, 1, 1, 1, 0, 7.6, 4.2);
+  lip.rotation.z = Math.PI / 2; g.add(lip);
+  // white pillars + dark glass doors
+  for (const px of [-5.2, 5.2]) g.add(mesh(GEO.cyl, flat(0xb9bcc2), 0.55, 7.4, 0.55, px, 3.7, 2.6));
+  for (const px of [-3, -1.6, 1.6, 3]) g.add(mesh(GEO.cyl, flat(0xf4f4f2), 0.22, 5.6, 0.22, px, 2.8, 0.9));
+  g.add(mesh(GEO.box, flat(0x2d3a3c), 5, 3.4, 0.2, 0, 1.7, 0.1, false));
+  g.add(mesh(GEO.box, flat(0xf0d8a0, { emissive: 0x4a3a10 }), 4.4, 0.6, 0.1, 0, 4.0, 0.25, false));
+  // round planter in front of the door
+  const ring = mesh(new THREE.CylinderGeometry(4.6, 4.8, 0.9, 40, 1, true), flat(0x55595e, { flatShading: false, side: THREE.DoubleSide }), 1, 1, 1, 0, 0.45, 11);
+  g.add(ring);
+  const soil = mesh(new THREE.CircleGeometry(4.6, 40), flat(0x5b4430), 1, 1, 1, 0, 0.85, 11, false); soil.rotation.x = -Math.PI / 2; g.add(soil);
+  for (let i = 0; i < 22; i++) { const a = rand(0, 6.28), r = rand(0, 3.9); g.add(mesh(GEO.ico, flat(pick([0x3f8f3a, 0x4f9e42, 0x5aa84a])), rand(0.5, 0.8), rand(0.5, 0.75), rand(0.5, 0.8), Math.cos(a) * r, 1.3, 11 + Math.sin(a) * r)); }
+  // stone plaza
+  const plazaTex = canvasTex(128, 128, (x, w, h) => {
+    x.fillStyle = '#cfcbc4'; x.fillRect(0, 0, w, h); x.strokeStyle = '#b3aea5'; x.lineWidth = 2;
+    for (let i = 0; i <= w; i += 32) { x.beginPath(); x.moveTo(i, 0); x.lineTo(i, h); x.stroke(); x.beginPath(); x.moveTo(0, i); x.lineTo(w, i); x.stroke(); }
+  });
+  plazaTex.repeat.set(12, 7);
+  const plaza = new THREE.Mesh(new THREE.PlaneGeometry(56, 32), new THREE.MeshStandardMaterial({ map: plazaTex, roughness: 1 }));
+  plaza.rotation.x = -Math.PI / 2; plaza.position.set(0, 0.025, 14); plaza.receiveShadow = true; g.add(plaza);
+  return g;
+}
+function brickArcade() { // the long red-brick structure beside the library
+  const g = new THREE.Group(), brick = flat(0xa4523a), dark = flat(0x5a2a1e);
+  g.add(mesh(GEO.box, brick, 3, 6, 26, 0, 3, 0));
+  for (let i = 0; i < 8; i++) g.add(mesh(GEO.box, dark, 0.2, 3.6, 1.6, 1.55, 2.2, -11 + i * 3.1, false));
+  g.add(mesh(GEO.box, flat(0x8c4430), 3.6, 0.5, 26.6, 0, 6.2, 0));
+  return g;
+}
+function spiralRamp() { // the curved ramp seen from above
+  const g = new THREE.Group(), c = flat(0xbfc1c4, { flatShading: false });
+  const arc = mesh(new THREE.TorusGeometry(6, 0.6, 8, 40, Math.PI * 1.2), c, 1, 1, 0.35, 0, 2.2, 0);
+  arc.rotation.x = -Math.PI / 2; g.add(arc);
+  for (let i = 0; i < 6; i++) { const a = (i / 5) * Math.PI * 1.2; g.add(mesh(GEO.cyl, c, 0.18, 2.2, 0.18, Math.cos(a) * 6, 1.1, -Math.sin(a) * 6)); }
+  const pit = mesh(new THREE.CircleGeometry(5, 30), flat(0x6d8a5a), 1, 1, 1, 0, 0.03, 0, false); pit.rotation.x = -Math.PI / 2; g.add(pit);
+  return g;
+}
+function playground() { // blue kids' play area
+  const g = new THREE.Group(), blue = flat(0x2f8fe0), yellow = flat(0xffc83d), red = flat(0xef5a4a);
+  const mat = mesh(GEO.box, flat(0x4fb0f0), 9, 0.1, 7, 0, 0.05, 0, false); mat.receiveShadow = true; g.add(mat);
+  for (const [x, z] of [[-1.5, -1], [1.5, -1], [-1.5, 1.5], [1.5, 1.5]]) g.add(mesh(GEO.cyl, yellow, 0.12, 3, 0.12, x, 1.5, z));
+  g.add(mesh(GEO.box, blue, 3.4, 0.2, 2.9, 0, 1.8, 0.25));
+  const roof = mesh(new THREE.ConeGeometry(2.6, 1.2, 4), red, 1, 1, 1, 0, 3.6, 0.25); roof.rotation.y = Math.PI / 4; g.add(roof);
+  const slide = mesh(GEO.box, yellow, 1, 0.12, 4, 2.8, 1.0, 0.25); slide.rotation.z = 0; slide.rotation.x = 0; slide.rotation.set(0, Math.PI / 2, -0.45); slide.position.set(3.4, 1.0, 0.25); g.add(slide);
+  g.add(mesh(GEO.sph, red, 0.5, 0.5, 0.5, -3, 0.5, 2));
+  return g;
+}
+function cityBlock() { // apartment towers around the park
+  const g = new THREE.Group(), cols = [0xd99a84, 0xe8c9b8, 0xf0ece4, 0xc98a74, 0xdcd3c6];
+  for (let i = 0; i < 4; i++) {
+    const h = rand(14, 34), w = rand(7, 12);
+    const m = mesh(GEO.box, flat(pick(cols)), w, h, rand(7, 11), i * 11 + rand(-1, 1), h / 2, rand(-3, 3), false); g.add(m);
+    for (let k = 3; k < h - 1; k += 3) g.add(mesh(GEO.box, flat(0x8aa5b0), w * 0.8, 0.8, 0.1, m.position.x, k, m.position.z + m.scale.z / 2 + 0.05, false));
+  }
+  return g;
+}
 const SCENERY = {
-  park: { near: [[() => tree(rand(0.9, 1.3)), 5], [() => tree(rand(0.9, 1.2), false), 2], [bench, 2], [() => lamp(), 2], [() => bush([0xffffff, 0xffd84d, 0xff8fb0]), 3], [pond, 1], [pavilion, 0.6]], far: [[() => tree(rand(1.5, 2.4)), 1]] },
+  park: { near: [[() => tree(rand(1.0, 1.5)), 7], [bench, 2], [() => lamp(), 2], [() => bush(), 3], [() => bush([0xffffff, 0xff8fb0]), 1]], far: [[() => tree(rand(1.6, 2.6)), 1]] },
   cks: { near: [[juniper, 3], [flowerBed, 2], [() => bush(), 1]], far: [[() => juniper(), 1]] },
   oki: { near: [[() => palm(rand(4.5, 6.5)), 4], [umbrella, 2], [hibiscus, 2], [shisa, 0.7]], far: [[okiHouse, 1], [() => palm(rand(6, 8)), 2]] },
 };
@@ -792,7 +889,7 @@ function buildLevel(li) {
   const side = new THREE.Mesh(new THREE.PlaneGeometry(300, PATH_LEN), new THREE.MeshStandardMaterial({ map: game.sideTex, roughness: 1 }));
   side.rotation.x = -Math.PI / 2; side.position.set(0, 0, -PATH_LEN / 2 + 14); side.receiveShadow = true; s.add(side);
 
-  game.items = []; game.scenery = []; game.particles = []; game.backdrops = []; game.seaTex = null;
+  game.items = []; game.scenery = []; game.particles = []; game.backdrops = []; game.seaTex = null; game.library = null;
   const sky = new THREE.Group(); s.add(sky);
   for (let i = 0; i < 6; i++) { const c = cloud(); c.position.set(rand(-90, 90), rand(28, 45), rand(-200, -120)); c.scale.setScalar(rand(1, 1.8)); sky.add(c); }
 
@@ -820,12 +917,22 @@ function buildLevel(li) {
     const gate = cksGate(); gate.position.z = -30; addMover(gate, 'deco');
   }
   if (L.id === 'park') {
-    // far hills / city edge
-    for (let i = 0; i < 7; i++) { const h = mesh(GEO.sphLo, flat(pick([0x5ea85a, 0x6cb466, 0x4f9a4f])), rand(25, 45), rand(8, 16), 12, -140 + i * 45, 0, -170, false); s.add(h); }
+    // apartment towers ringing the park, and the far mountains
+    for (let i = 0; i < 7; i++) { const c = cityBlock(); c.position.set(-150 + i * 46, 0, -205 + rand(-10, 10)); s.add(c); }
+    for (const sx of [-1, 1]) for (let i = 0; i < 4; i++) { const c = cityBlock(); c.rotation.y = sx * Math.PI / 2; c.position.set(sx * rand(48, 60), 0, -30 - i * 45); s.add(c); }
+    for (let i = 0; i < 5; i++) s.add(mesh(GEO.sphLo, flat(0x8fa9a6), rand(60, 90), rand(18, 30), 20, -200 + i * 100, 0, -260, false));
+    // landmarks from the park, placed along the run
+    const arc = brickArcade(); arc.position.set(-13, 0, -150); addMover(arc, 'deco');
+    const pg = playground(); pg.position.set(12, 0, -230); addMover(pg, 'deco');
+    const ramp = spiralRamp(); ramp.position.set(15, 0, -330); addMover(ramp, 'deco');
+    const pg2 = playground(); pg2.position.set(-13, 0, -390); pg2.rotation.y = Math.PI; addMover(pg2, 'deco');
+    // the library waits at the end; its door is just past the finish line
+    const lib = library(); lib.userData.lib = true; s.add(lib); game.library = lib;
   }
   // pre-populate scenery so the world isn't empty
   for (let z = 10; z > -130; z -= L.id === 'cks' ? 5 : 4) spawnScenery(z);
   game.finish = finishArch(); game.finish.position.z = -L.length; s.add(game.finish);
+  if (game.library) game.library.position.z = Math.max(-L.length - 22, -190);
   chick.position.set(0, 0, 0); chick.rotation.set(0, 0, 0); chick.scale.setScalar(0.62); s.add(chick);
 }
 
@@ -1131,6 +1238,7 @@ function updateGame(dt) {
   g.pathTex.offset.y += tileShift / L.pathTile; g.sideTex.offset.y += tileShift / L.sideTile;
   if (g.seaTex) { g.seaTex.offset.y += tileShift / 30; g.seaTex.offset.x = Math.sin(T * 0.5) * 0.01; g.foam.position.x = 9.6 + Math.sin(T * 1.6) * 0.35; }
   if (g.finish) g.finish.position.z += move;
+  if (g.library) g.library.position.z = Math.max(g.finish.position.z - 22, -190);
   const prog = clamp(g.dist / L.length, 0, 1);
   for (const b of g.backdrops) b.position.z = lerp(b.userData.z0, b.userData.z1, prog);
   for (let i = g.scenery.length - 1; i >= 0; i--) {
