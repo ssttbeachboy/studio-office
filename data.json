@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24 09:23",
+ "generated": "2026-11-24 13:29",
  "members": [
   {
    "id": "manager",
@@ -30,11 +30,11 @@
    "name": "音控師",
    "role": "降噪・響度・白噪音",
    "state": "idle",
-   "count": 33,
+   "count": 35,
    "project": null,
    "last": {
-    "time": "2026-11-23 11:08",
-    "summary": "番茄鐘 25 分鐘三支完成（雨合成、咖啡廳真錄音、海浪真錄音＋合成），規格達標；等頻道名稱和照片就能做成影片私人上傳"
+    "time": "2026-11-24 13:29",
+    "summary": "森林 25 分鐘完成（風、湖水合成，鳥叫真錄音但很少），影片做好等上傳；海浪換照片重做 v2"
    }
   },
   {
@@ -437,6 +437,27 @@
   }
  ],
  "events": [
+  {
+   "id": "20261124132908-b231",
+   "time": "2026-11-24 13:29",
+   "type": "handoff",
+   "by": "sound",
+   "to": "owner",
+   "project": "2026-11-24_森林_白噪音森林25分",
+   "summary": "森林 25 分鐘完成（風、湖水合成，鳥叫真錄音但很少），影片做好等上傳；海浪換照片重做 v2",
+   "files": [
+    "02_plans/sound_tests/pomodoro/forest_25min.m4a",
+    "03_output/2026-11-24_森林_白噪音森林25分/video/forest_25min.mp4",
+    "03_output/2026-11-24_沖繩名城_白噪音海浪25分/video/ocean_25min_v2.mp4"
+   ]
+  },
+  {
+   "id": "20261124130735-a849",
+   "time": "2026-11-24 13:07",
+   "type": "start",
+   "by": "sound",
+   "summary": "森林 25 分鐘：合成風吹樹葉、湖邊水聲，加上墨爾本素材裡的真鳥鳴"
+  },
   {
    "id": "20261124092328-f1d7",
    "time": "2026-11-24 09:23",
@@ -2513,29 +2534,79 @@
    "type": "note",
    "by": "main",
    "summary": "已下載VSCO 2弦樂長音取樣75個（CC0，188MB）到tools/soundfonts/vsco2"
-  },
-  {
-   "id": "20261117163209-4ad1",
-   "time": "2026-11-17 16:32",
-   "type": "resolve",
-   "by": "owner",
-   "ref": "20261117161933-58e2",
-   "summary": "同意下載VSCO 2弦樂；三組版與兩組版都要"
-  },
-  {
-   "id": "20261117162257-c914",
-   "time": "2026-11-17 16:22",
-   "type": "handoff",
-   "by": "main",
-   "to": "owner",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "C版v5（34.7秒、咖啡收尾）量測與Gemini檢查完成，送S老闆試聽",
-   "files": [
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/preview/ep01_C_v5_music_preview.mp4"
-   ]
   }
  ],
  "projects": [
+  {
+   "name": "2026-11-24_沖繩名城_白噪音海浪25分",
+   "status": "待核准",
+   "current": "換照片重做 v2，等上傳",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-24 13:15",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "doing"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 4,
+   "review": null,
+   "videos": 2,
+   "events": [
+    {
+     "id": "20261124092328-f1d7",
+     "time": "2026-11-24 09:23",
+     "type": "approval",
+     "by": "owner",
+     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+     "summary": "核准海浪 25 分鐘改成不公開（有連結才看得到）"
+    },
+    {
+     "id": "20261124074039-7b0c",
+     "time": "2026-11-24 07:40",
+     "type": "note",
+     "by": "main",
+     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+     "summary": "海浪 25 分鐘已私人上傳到「窗邊的25分」，等S老闆用手機試聽"
+    }
+   ]
+  },
   {
    "name": "2026-11-20_墨爾本_結構測試_雨後的一天",
    "status": "待核准",
@@ -2750,15 +2821,15 @@
    ]
   },
   {
-   "name": "2026-11-24_沖繩名城_白噪音海浪25分",
-   "status": "已核准",
-   "current": "已設為不公開，S老闆用原本帳號試聽",
+   "name": "2026-11-24_森林_白噪音森林25分",
+   "status": "製作中",
+   "current": "等S老闆拖檔上傳（私人）",
    "owner": "owner",
    "kind": "YouTube 長版",
    "platforms": [
     "YouTube"
    ],
-   "updated": "2026-11-24 09:25",
+   "updated": "2026-11-24 13:50",
    "steps": [
     {
      "label": "方向核准",
@@ -2778,7 +2849,7 @@
     },
     {
      "label": "標題與說明欄",
-     "state": "doing"
+     "state": "todo"
     },
     {
      "label": "審稿",
@@ -2790,32 +2861,30 @@
     },
     {
      "label": "S老闆核准",
-     "state": "done"
+     "state": "todo"
     },
     {
      "label": "發佈",
      "state": "todo"
     }
    ],
-   "done": 5,
+   "done": 4,
    "review": null,
    "videos": 1,
    "events": [
     {
-     "id": "20261124092328-f1d7",
-     "time": "2026-11-24 09:23",
-     "type": "approval",
-     "by": "owner",
-     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
-     "summary": "核准海浪 25 分鐘改成不公開（有連結才看得到）"
-    },
-    {
-     "id": "20261124074039-7b0c",
-     "time": "2026-11-24 07:40",
-     "type": "note",
-     "by": "main",
-     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
-     "summary": "海浪 25 分鐘已私人上傳到「窗邊的25分」，等S老闆用手機試聽"
+     "id": "20261124132908-b231",
+     "time": "2026-11-24 13:29",
+     "type": "handoff",
+     "by": "sound",
+     "to": "owner",
+     "project": "2026-11-24_森林_白噪音森林25分",
+     "summary": "森林 25 分鐘完成（風、湖水合成，鳥叫真錄音但很少），影片做好等上傳；海浪換照片重做 v2",
+     "files": [
+      "02_plans/sound_tests/pomodoro/forest_25min.m4a",
+      "03_output/2026-11-24_森林_白噪音森林25分/video/forest_25min.mp4",
+      "03_output/2026-11-24_沖繩名城_白噪音海浪25分/video/ocean_25min_v2.mp4"
+     ]
     }
    ]
   },
