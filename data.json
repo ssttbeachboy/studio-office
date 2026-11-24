@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24 23:42",
+ "generated": "2026-11-25 07:29",
  "members": [
   {
    "id": "manager",
@@ -445,6 +445,14 @@
   }
  ],
  "events": [
+  {
+   "id": "20261125072956-8858",
+   "time": "2026-11-25 07:29",
+   "type": "resolve",
+   "by": "owner",
+   "project": "2026-11-24_森林_白噪音森林25分",
+   "summary": "森林 v3 先暫聽，等S老闆補樹林錄音素材再重做"
+  },
   {
    "id": "20261124234210-8998",
    "time": "2026-11-24 23:42",
@@ -2531,30 +2539,19 @@
    "by": "owner",
    "ref": "20261117172343-d7a8",
    "summary": "同意IG／Threads研究帳號做法，CLAUDE.md已補例外"
-  },
-  {
-   "id": "20261117173336-aba2",
-   "time": "2026-11-17 17:33",
-   "type": "report",
-   "by": "manager",
-   "to": "owner",
-   "summary": "YouTube對標分析：長版安靜散步頻道做得好；安靜Shorts在YouTube上找不到夠格的；散步頻道Shorts畫面幾乎不放字",
-   "files": [
-    "01_reference/對標_YouTube_2026-11-17.md"
-   ]
   }
  ],
  "projects": [
   {
    "name": "2026-11-24_沖繩名城_白噪音海浪25分",
    "status": "待核准",
-   "current": "換照片重做 v2，等上傳",
+   "current": "v2 已私人上傳，等S老闆試聽",
    "owner": "owner",
    "kind": "YouTube 長版",
    "platforms": [
     "YouTube"
    ],
-   "updated": "2026-11-24 13:15",
+   "updated": "2026-11-25 07:29",
    "steps": [
     {
      "label": "方向核准",
@@ -2829,6 +2826,164 @@
    ]
   },
   {
+   "name": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+   "status": "製作中",
+   "current": "已私人上傳，等S老闆試聽",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-25 07:29",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "todo"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 4,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261124091300-342b",
+     "time": "2026-11-24 09:13",
+     "type": "request",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+     "summary": "白噪音：咖啡廳 25 分鐘影片已做好，等S老闆拖進 YouTube 上傳；雨、休息版還缺照片；要不要設定 YouTube 上傳程式讓總調度直接私人上傳"
+    }
+   ]
+  },
+  {
+   "name": "2026-11-24_森林_白噪音森林25分",
+   "status": "製作中",
+   "current": "v3 先暫聽，等S老闆補樹林錄音素材",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-25 07:29",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "doing"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "todo"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 3,
+   "review": null,
+   "videos": 3,
+   "events": [
+    {
+     "id": "20261125072956-8858",
+     "time": "2026-11-25 07:29",
+     "type": "resolve",
+     "by": "owner",
+     "project": "2026-11-24_森林_白噪音森林25分",
+     "summary": "森林 v3 先暫聽，等S老闆補樹林錄音素材再重做"
+    },
+    {
+     "id": "20261124233511-ccde",
+     "time": "2026-11-24 23:35",
+     "type": "handoff",
+     "by": "sound",
+     "to": "owner",
+     "project": "2026-11-24_森林_白噪音森林25分",
+     "summary": "森林 v3：風改成 69 陣獨立陣風，中間真的安靜；LRA 23（總調度決定森林不設 LRA 上限）",
+     "files": [
+      "03_output/2026-11-24_森林_白噪音森林25分/video/forest_25min.mp4"
+     ]
+    },
+    {
+     "id": "20261124232133-e1cc",
+     "time": "2026-11-24 23:21",
+     "type": "handoff",
+     "by": "owner",
+     "to": "sound",
+     "project": "2026-11-24_森林_白噪音森林25分",
+     "summary": "S老闆試聽森林 v2：還是像雨、太持續，退回做 v3（陣風之間要有真的安靜）"
+    },
+    {
+     "id": "20261124231328-f658",
+     "time": "2026-11-24 23:13",
+     "type": "handoff",
+     "by": "sound",
+     "to": "owner",
+     "project": "2026-11-24_森林_白噪音森林25分",
+     "summary": "森林 v2：拿掉顆粒聲、改成一陣一陣的風聲，2–8 kHz 比雨低 11 dB；影片重做好",
+     "files": [
+      "03_output/2026-11-24_森林_白噪音森林25分/video/forest_25min.mp4"
+     ]
+    }
+   ]
+  },
+  {
    "name": "2026-11-24_宜蘭_一隻鴨變三道",
    "status": "提案",
    "current": "等你核准方向，選第四吃和日期",
@@ -3015,165 +3170,6 @@
      "files": [
       "03_output/2026-11-20_宜蘭_溫泉水放滿一缸/storyboard.html"
      ]
-    }
-   ]
-  },
-  {
-   "name": "2026-11-24_森林_白噪音森林25分",
-   "status": "製作中",
-   "current": "聲音 v3 做好，等S老闆試聽",
-   "owner": "owner",
-   "kind": "YouTube 長版",
-   "platforms": [
-    "YouTube"
-   ],
-   "updated": "2026-11-24 13:50",
-   "steps": [
-    {
-     "label": "方向核准",
-     "state": "done"
-    },
-    {
-     "label": "素材挑選",
-     "state": "done"
-    },
-    {
-     "label": "聲音",
-     "state": "done"
-    },
-    {
-     "label": "畫面",
-     "state": "done"
-    },
-    {
-     "label": "標題與說明欄",
-     "state": "todo"
-    },
-    {
-     "label": "審稿",
-     "state": "todo"
-    },
-    {
-     "label": "成品檢查",
-     "state": "todo"
-    },
-    {
-     "label": "S老闆核准",
-     "state": "todo"
-    },
-    {
-     "label": "發佈",
-     "state": "todo"
-    }
-   ],
-   "done": 4,
-   "review": null,
-   "videos": 3,
-   "events": [
-    {
-     "id": "20261124233511-ccde",
-     "time": "2026-11-24 23:35",
-     "type": "handoff",
-     "by": "sound",
-     "to": "owner",
-     "project": "2026-11-24_森林_白噪音森林25分",
-     "summary": "森林 v3：風改成 69 陣獨立陣風，中間真的安靜；LRA 23（總調度決定森林不設 LRA 上限）",
-     "files": [
-      "03_output/2026-11-24_森林_白噪音森林25分/video/forest_25min.mp4"
-     ]
-    },
-    {
-     "id": "20261124232133-e1cc",
-     "time": "2026-11-24 23:21",
-     "type": "handoff",
-     "by": "owner",
-     "to": "sound",
-     "project": "2026-11-24_森林_白噪音森林25分",
-     "summary": "S老闆試聽森林 v2：還是像雨、太持續，退回做 v3（陣風之間要有真的安靜）"
-    },
-    {
-     "id": "20261124231328-f658",
-     "time": "2026-11-24 23:13",
-     "type": "handoff",
-     "by": "sound",
-     "to": "owner",
-     "project": "2026-11-24_森林_白噪音森林25分",
-     "summary": "森林 v2：拿掉顆粒聲、改成一陣一陣的風聲，2–8 kHz 比雨低 11 dB；影片重做好",
-     "files": [
-      "03_output/2026-11-24_森林_白噪音森林25分/video/forest_25min.mp4"
-     ]
-    },
-    {
-     "id": "20261124225402-c45b",
-     "time": "2026-11-24 22:54",
-     "type": "handoff",
-     "by": "owner",
-     "to": "sound",
-     "project": "2026-11-24_森林_白噪音森林25分",
-     "summary": "S老闆試聽：森林太像下雨、沒有風吹樹的聲音，退回重做"
-    }
-   ]
-  },
-  {
-   "name": "2026-11-24_墨爾本_白噪音咖啡廳25分",
-   "status": "製作中",
-   "current": "等S老闆拖檔上傳（私人）",
-   "owner": "owner",
-   "kind": "YouTube 長版",
-   "platforms": [
-    "YouTube"
-   ],
-   "updated": "2026-11-24 08:20",
-   "steps": [
-    {
-     "label": "方向核准",
-     "state": "done"
-    },
-    {
-     "label": "素材挑選",
-     "state": "done"
-    },
-    {
-     "label": "聲音",
-     "state": "done"
-    },
-    {
-     "label": "畫面",
-     "state": "done"
-    },
-    {
-     "label": "標題與說明欄",
-     "state": "todo"
-    },
-    {
-     "label": "審稿",
-     "state": "todo"
-    },
-    {
-     "label": "成品檢查",
-     "state": "todo"
-    },
-    {
-     "label": "S老闆核准",
-     "state": "todo"
-    },
-    {
-     "label": "發佈",
-     "state": "todo"
-    }
-   ],
-   "done": 4,
-   "review": null,
-   "videos": 1,
-   "events": [
-    {
-     "id": "20261124091300-342b",
-     "time": "2026-11-24 09:13",
-     "type": "request",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
-     "summary": "白噪音：咖啡廳 25 分鐘影片已做好，等S老闆拖進 YouTube 上傳；雨、休息版還缺照片；要不要設定 YouTube 上傳程式讓總調度直接私人上傳"
     }
    ]
   },
