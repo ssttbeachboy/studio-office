@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24 17:56",
+ "generated": "2026-11-24 23:02",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 62,
+   "count": 64,
    "project": null,
    "last": {
-    "time": "2026-11-24 17:56",
-    "summary": "第三版改到湯屋拍：牆上出水口、竹簾窗、休息區切奶凍捲、池邊開啤酒"
+    "time": "2026-11-24 23:02",
+    "summary": "分鏡加 iPhone 機位：湯屋平面圖、iPhone 畫面構圖、要有和不要有；池子草圖改成順著池子拍"
    }
   }
  ],
@@ -437,6 +437,34 @@
   }
  ],
  "events": [
+  {
+   "id": "20261124230200-b547",
+   "time": "2026-11-24 23:02",
+   "type": "report",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-20_宜蘭_溫泉水放滿一缸",
+   "summary": "分鏡加 iPhone 機位：湯屋平面圖、iPhone 畫面構圖、要有和不要有；池子草圖改成順著池子拍",
+   "files": [
+    "03_output/2026-11-20_宜蘭_溫泉水放滿一缸/storyboard.html"
+   ]
+  },
+  {
+   "id": "20261124225402-2463",
+   "time": "2026-11-24 22:54",
+   "type": "note",
+   "by": "main",
+   "summary": "咖啡廳 25 分鐘、海浪 v2 已私人上傳到「窗邊的25分」"
+  },
+  {
+   "id": "20261124225402-c45b",
+   "time": "2026-11-24 22:54",
+   "type": "handoff",
+   "by": "owner",
+   "to": "sound",
+   "project": "2026-11-24_森林_白噪音森林25分",
+   "summary": "S老闆試聽：森林太像下雨、沒有風吹樹的聲音，退回重做"
+  },
   {
    "id": "20261124175614-ad02",
    "time": "2026-11-24 17:56",
@@ -2501,46 +2529,6 @@
    "by": "owner",
    "ref": "20261117165857-d54b",
    "summary": "配樂用v6a（三組弦樂）"
-  },
-  {
-   "id": "20261117165857-d54b",
-   "time": "2026-11-17 16:58",
-   "type": "decision",
-   "by": "main",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "第1集配樂：v6a三組弦樂、v6b兩組弦樂或v5鋼琴墊底",
-   "options": [
-    "A v6a 三組",
-    "B v6b 兩組",
-    "C v5 鋼琴墊底"
-   ]
-  },
-  {
-   "id": "20261117165857-bfd5",
-   "time": "2026-11-17 16:58",
-   "type": "handoff",
-   "by": "main",
-   "to": "owner",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "C版v6a／v6b量測與Gemini檢查完成，送S老闆比較",
-   "files": [
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/preview/ep01_C_v6a_music_preview.mp4",
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/preview/ep01_C_v6b_music_preview.mp4"
-   ]
-  },
-  {
-   "id": "20261117165538-0dcd",
-   "time": "2026-11-17 16:55",
-   "type": "handoff",
-   "by": "sound",
-   "to": "main",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "C版v6弦樂兩版完成（三組／兩組）",
-   "files": [
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v6a_music.mp4",
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v6b_music.mp4",
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
-   ]
   }
  ],
  "projects": [
@@ -2882,6 +2870,18 @@
    "videos": 0,
    "events": [
     {
+     "id": "20261124230200-b547",
+     "time": "2026-11-24 23:02",
+     "type": "report",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-20_宜蘭_溫泉水放滿一缸",
+     "summary": "分鏡加 iPhone 機位：湯屋平面圖、iPhone 畫面構圖、要有和不要有；池子草圖改成順著池子拍",
+     "files": [
+      "03_output/2026-11-20_宜蘭_溫泉水放滿一缸/storyboard.html"
+     ]
+    },
+    {
      "id": "20261124175614-ad02",
      "time": "2026-11-24 17:56",
      "type": "report",
@@ -2916,26 +2916,14 @@
      "files": [
       "03_output/2026-11-20_宜蘭_溫泉水放滿一缸/storyboard.html"
      ]
-    },
-    {
-     "id": "20261123103351-cb78",
-     "time": "2026-11-23 10:33",
-     "type": "report",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-20_宜蘭_溫泉水放滿一缸",
-     "summary": "看完S老闆小紅書表現最好的森林秘境短片，整理可借用和不借用的地方，建議春和改成早上窗光＋放水＋倒一杯",
-     "files": [
-      "_gemini/01_reference/xhs_BeachUncle_森林秘境.reference.md"
-     ]
     }
    ]
   },
   {
    "name": "2026-11-24_森林_白噪音森林25分",
    "status": "製作中",
-   "current": "等S老闆拖檔上傳（私人）",
-   "owner": "owner",
+   "current": "聲音重做（太像雨，沒有風吹樹的聲音）",
+   "owner": "sound",
    "kind": "YouTube 長版",
    "platforms": [
     "YouTube"
@@ -2952,7 +2940,7 @@
     },
     {
      "label": "聲音",
-     "state": "done"
+     "state": "doing"
     },
     {
      "label": "畫面",
@@ -2979,10 +2967,19 @@
      "state": "todo"
     }
    ],
-   "done": 4,
+   "done": 3,
    "review": null,
    "videos": 1,
    "events": [
+    {
+     "id": "20261124225402-c45b",
+     "time": "2026-11-24 22:54",
+     "type": "handoff",
+     "by": "owner",
+     "to": "sound",
+     "project": "2026-11-24_森林_白噪音森林25分",
+     "summary": "S老闆試聽：森林太像下雨、沒有風吹樹的聲音，退回重做"
+    },
     {
      "id": "20261124132908-b231",
      "time": "2026-11-24 13:29",
