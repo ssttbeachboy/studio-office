@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24 07:40",
+ "generated": "2026-11-24 09:13",
  "members": [
   {
    "id": "manager",
@@ -75,15 +75,24 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 59,
+   "count": 60,
    "project": null,
    "last": {
-    "time": "2026-11-24 07:40",
-    "summary": "海浪 25 分鐘已私人上傳到「窗邊的25分」，等S老闆用手機試聽"
+    "time": "2026-11-24 09:13",
+    "summary": "白噪音：咖啡廳 25 分鐘影片已做好，等S老闆拖進 YouTube 上傳；雨、休息版還缺照片；要不要設定 YouTube 上傳程式讓總調度直接私人上傳"
    }
   }
  ],
  "pending": [
+  {
+   "id": "20261124091300-342b",
+   "time": "2026-11-24 09:13",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+   "summary": "白噪音：咖啡廳 25 分鐘影片已做好，等S老闆拖進 YouTube 上傳；雨、休息版還缺照片；要不要設定 YouTube 上傳程式讓總調度直接私人上傳"
+  },
   {
    "id": "20261124072612-f0e7",
    "time": "2026-11-24 07:26",
@@ -428,6 +437,15 @@
   }
  ],
  "events": [
+  {
+   "id": "20261124091300-342b",
+   "time": "2026-11-24 09:13",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+   "summary": "白噪音：咖啡廳 25 分鐘影片已做好，等S老闆拖進 YouTube 上傳；雨、休息版還缺照片；要不要設定 YouTube 上傳程式讓總調度直接私人上傳"
+  },
   {
    "id": "20261124074039-7b0c",
    "time": "2026-11-24 07:40",
@@ -2520,19 +2538,6 @@
     "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v5_music.mp4",
     "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
    ]
-  },
-  {
-   "id": "20261117161933-58e2",
-   "time": "2026-11-17 16:19",
-   "type": "decision",
-   "by": "main",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "下載VSCO 2弦樂取樣（CC0，GitHub官方庫，約190MB）",
-   "options": [
-    "A 下載小提琴＋中提琴＋大提琴長音（約190MB）",
-    "B 只下載小提琴＋大提琴（約119MB）",
-    "C 先不要"
-   ]
   }
  ],
  "projects": [
@@ -2746,6 +2751,69 @@
       "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2_540.mp4",
       "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
      ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+   "status": "製作中",
+   "current": "等S老闆拖檔上傳（私人）",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-24 08:20",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "todo"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 4,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261124091300-342b",
+     "time": "2026-11-24 09:13",
+     "type": "request",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+     "summary": "白噪音：咖啡廳 25 分鐘影片已做好，等S老闆拖進 YouTube 上傳；雨、休息版還缺照片；要不要設定 YouTube 上傳程式讓總調度直接私人上傳"
     }
    ]
   },
