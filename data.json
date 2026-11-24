@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24 09:13",
+ "generated": "2026-11-24 09:23",
  "members": [
   {
    "id": "manager",
@@ -437,6 +437,14 @@
   }
  ],
  "events": [
+  {
+   "id": "20261124092328-f1d7",
+   "time": "2026-11-24 09:23",
+   "type": "approval",
+   "by": "owner",
+   "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+   "summary": "核准海浪 25 分鐘改成不公開（有連結才看得到）"
+  },
   {
    "id": "20261124091300-342b",
    "time": "2026-11-24 09:13",
@@ -2525,19 +2533,6 @@
    "files": [
     "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/preview/ep01_C_v5_music_preview.mp4"
    ]
-  },
-  {
-   "id": "20261117162109-9765",
-   "time": "2026-11-17 16:21",
-   "type": "handoff",
-   "by": "sound",
-   "to": "main",
-   "project": "2026-11-15_墨爾本_早上的墨爾本01",
-   "summary": "C版v5聲音完成：新剪接點踩拍、鋼琴長音墊底、咖啡收尾",
-   "files": [
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v5_music.mp4",
-    "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
-   ]
   }
  ],
  "projects": [
@@ -2755,6 +2750,76 @@
    ]
   },
   {
+   "name": "2026-11-24_沖繩名城_白噪音海浪25分",
+   "status": "已核准",
+   "current": "已設為不公開，S老闆用原本帳號試聽",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-24 09:25",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "doing"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "done"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 5,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261124092328-f1d7",
+     "time": "2026-11-24 09:23",
+     "type": "approval",
+     "by": "owner",
+     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+     "summary": "核准海浪 25 分鐘改成不公開（有連結才看得到）"
+    },
+    {
+     "id": "20261124074039-7b0c",
+     "time": "2026-11-24 07:40",
+     "type": "note",
+     "by": "main",
+     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+     "summary": "海浪 25 分鐘已私人上傳到「窗邊的25分」，等S老闆用手機試聽"
+    }
+   ]
+  },
+  {
    "name": "2026-11-24_墨爾本_白噪音咖啡廳25分",
    "status": "製作中",
    "current": "等S老闆拖檔上傳（私人）",
@@ -2814,68 +2879,6 @@
      "to": "owner",
      "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
      "summary": "白噪音：咖啡廳 25 分鐘影片已做好，等S老闆拖進 YouTube 上傳；雨、休息版還缺照片；要不要設定 YouTube 上傳程式讓總調度直接私人上傳"
-    }
-   ]
-  },
-  {
-   "name": "2026-11-24_沖繩名城_白噪音海浪25分",
-   "status": "製作中",
-   "current": "已私人上傳，等S老闆試聽",
-   "owner": "owner",
-   "kind": "YouTube 長版",
-   "platforms": [
-    "YouTube"
-   ],
-   "updated": "2026-11-24 07:55",
-   "steps": [
-    {
-     "label": "方向核准",
-     "state": "done"
-    },
-    {
-     "label": "素材挑選",
-     "state": "done"
-    },
-    {
-     "label": "聲音",
-     "state": "done"
-    },
-    {
-     "label": "畫面",
-     "state": "done"
-    },
-    {
-     "label": "標題與說明欄",
-     "state": "doing"
-    },
-    {
-     "label": "審稿",
-     "state": "todo"
-    },
-    {
-     "label": "成品檢查",
-     "state": "todo"
-    },
-    {
-     "label": "S老闆核准",
-     "state": "todo"
-    },
-    {
-     "label": "發佈",
-     "state": "todo"
-    }
-   ],
-   "done": 4,
-   "review": null,
-   "videos": 1,
-   "events": [
-    {
-     "id": "20261124074039-7b0c",
-     "time": "2026-11-24 07:40",
-     "type": "note",
-     "by": "main",
-     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
-     "summary": "海浪 25 分鐘已私人上傳到「窗邊的25分」，等S老闆用手機試聽"
     }
    ]
   },
