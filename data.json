@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25 09:49",
+ "generated": "2026-11-25 09:55",
  "members": [
   {
    "id": "manager",
@@ -51,11 +51,11 @@
    "name": "審稿員",
    "role": "只挑 AI 感",
    "state": "idle",
-   "count": 23,
+   "count": 27,
    "project": null,
    "last": {
-    "time": "2026-11-21 08:13",
-    "summary": "文案二校通過，畫面上的字只有三行地名"
+    "time": "2026-11-25 09:55",
+    "summary": "頻道名稱與說明二校通過，等S老闆決定"
    }
   },
   {
@@ -75,15 +75,26 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 65,
+   "count": 66,
    "project": null,
    "last": {
-    "time": "2026-11-25 09:49",
-    "summary": "雨聲 25 分鐘做成影片並私人上傳（暫時照片），等S老闆試聽"
+    "time": "2026-11-25 09:55",
+    "summary": "白噪音頻道改英文名稱與說明"
    }
   }
  ],
  "pending": [
+  {
+   "id": "20261125095544-6a1f",
+   "time": "2026-11-25 09:55",
+   "type": "decision",
+   "by": "main",
+   "summary": "白噪音頻道改英文名稱與說明",
+   "options": [
+    "A 25 Minutes by the Window",
+    "B By the Window 25"
+   ]
+  },
   {
    "id": "20261124234210-8998",
    "time": "2026-11-24 23:42",
@@ -445,6 +456,57 @@
   }
  ],
  "events": [
+  {
+   "id": "20261125095544-6a1f",
+   "time": "2026-11-25 09:55",
+   "type": "decision",
+   "by": "main",
+   "summary": "白噪音頻道改英文名稱與說明",
+   "options": [
+    "A 25 Minutes by the Window",
+    "B By the Window 25"
+   ]
+  },
+  {
+   "id": "20261125095544-fdcc",
+   "time": "2026-11-25 09:55",
+   "type": "handoff",
+   "by": "reviewer",
+   "to": "owner",
+   "project": "2026-11-25_雨_白噪音雨聲25分",
+   "summary": "頻道名稱與說明二校通過，等S老闆決定",
+   "files": [
+    "02_plans/youtube_channel/channel_copy.md"
+   ]
+  },
+  {
+   "id": "20261125095510-f5b8",
+   "time": "2026-11-25 09:55",
+   "type": "start",
+   "by": "reviewer",
+   "project": "2026-11-25_雨_白噪音雨聲25分",
+   "summary": "頻道名稱與說明二校"
+  },
+  {
+   "id": "20261125095510-9daa",
+   "time": "2026-11-25 09:55",
+   "type": "handoff",
+   "by": "reviewer",
+   "to": "manager",
+   "project": "2026-11-25_雨_白噪音雨聲25分",
+   "summary": "頻道說明第 1 輪退回：三段式排比、太對稱",
+   "files": [
+    "02_plans/youtube_channel/review.md"
+   ]
+  },
+  {
+   "id": "20261125095421-5cca",
+   "time": "2026-11-25 09:54",
+   "type": "start",
+   "by": "reviewer",
+   "project": "2026-11-25_雨_白噪音雨聲25分",
+   "summary": "審 YouTube 白噪音頻道英文名稱與說明"
+  },
   {
    "id": "20261125094936-8e64",
    "time": "2026-11-25 09:49",
@@ -2494,55 +2556,6 @@
     "3 雨天路口",
     "都不要"
    ]
-  },
-  {
-   "id": "20261117183242-9d95",
-   "time": "2026-11-17 18:32",
-   "type": "report",
-   "by": "manager",
-   "to": "owner",
-   "project": "2026-11-12_墨爾本_早上的墨爾本03",
-   "summary": "第3集重新提案：1 白霧裡的蒸汽火車（推薦）、2 從雨裡走進圓頂、3 雨天路口",
-   "files": [
-    "02_plans/提案_ep03_v2_2026-11-17.md"
-   ]
-  },
-  {
-   "id": "20261117182220-48b0",
-   "time": "2026-11-17 18:22",
-   "type": "start",
-   "by": "manager",
-   "project": "2026-11-12_墨爾本_早上的墨爾本03",
-   "summary": "第3集重新提案：從全部素材找真正有鉤子、想往下看的題材"
-  },
-  {
-   "id": "20261117182220-06b5",
-   "time": "2026-11-17 18:22",
-   "type": "resolve",
-   "by": "owner",
-   "ref": "20261117172934-6143",
-   "summary": "三個方向都太無聊、沒有鉤子，請重新提案"
-  },
-  {
-   "id": "20261117180311-d2f3",
-   "time": "2026-11-17 18:03",
-   "type": "report",
-   "by": "manager",
-   "to": "owner",
-   "project": "2026-11-12_墨爾本_早上的墨爾本03",
-   "summary": "第3集三個方向粗腳本＋分鏡截圖（各約30秒）",
-   "files": [
-    "03_output/2026-11-12_墨爾本_早上的墨爾本03/script.md",
-    "_frames/03_output/2026-11-12_墨爾本_早上的墨爾本03/board/direction_1.jpg"
-   ]
-  },
-  {
-   "id": "20261117175829-0f22",
-   "time": "2026-11-17 17:58",
-   "type": "start",
-   "by": "manager",
-   "project": "2026-11-12_墨爾本_早上的墨爾本03",
-   "summary": "第3集三個方向各寫粗腳本＋截圖分鏡，讓S老闆比較"
   }
  ],
  "projects": [
@@ -2882,16 +2895,44 @@
    "videos": 1,
    "events": [
     {
-     "id": "20261125094936-8e64",
-     "time": "2026-11-25 09:49",
+     "id": "20261125095544-fdcc",
+     "time": "2026-11-25 09:55",
      "type": "handoff",
-     "by": "main",
+     "by": "reviewer",
      "to": "owner",
      "project": "2026-11-25_雨_白噪音雨聲25分",
-     "summary": "雨聲 25 分鐘做成影片並私人上傳（暫時照片），等S老闆試聽",
+     "summary": "頻道名稱與說明二校通過，等S老闆決定",
      "files": [
-      "03_output/2026-11-25_雨_白噪音雨聲25分/video/rain_25min.mp4"
+      "02_plans/youtube_channel/channel_copy.md"
      ]
+    },
+    {
+     "id": "20261125095510-f5b8",
+     "time": "2026-11-25 09:55",
+     "type": "start",
+     "by": "reviewer",
+     "project": "2026-11-25_雨_白噪音雨聲25分",
+     "summary": "頻道名稱與說明二校"
+    },
+    {
+     "id": "20261125095510-9daa",
+     "time": "2026-11-25 09:55",
+     "type": "handoff",
+     "by": "reviewer",
+     "to": "manager",
+     "project": "2026-11-25_雨_白噪音雨聲25分",
+     "summary": "頻道說明第 1 輪退回：三段式排比、太對稱",
+     "files": [
+      "02_plans/youtube_channel/review.md"
+     ]
+    },
+    {
+     "id": "20261125095421-5cca",
+     "time": "2026-11-25 09:54",
+     "type": "start",
+     "by": "reviewer",
+     "project": "2026-11-25_雨_白噪音雨聲25分",
+     "summary": "審 YouTube 白噪音頻道英文名稱與說明"
     }
    ]
   },
