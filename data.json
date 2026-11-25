@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25 10:26",
+ "generated": "2026-11-25 12:38",
  "members": [
   {
    "id": "manager",
@@ -29,12 +29,12 @@
    "id": "sound",
    "name": "音控師",
    "role": "降噪・響度・白噪音",
-   "state": "working",
-   "count": 38,
+   "state": "idle",
+   "count": 39,
    "project": null,
    "last": {
-    "time": "2026-11-25 10:25",
-    "summary": "夜裡的窗外城市 3 分鐘試聽，並做 2 小時 4 輪長版"
+    "time": "2026-11-25 12:30",
+    "summary": "夜裡城市 3 分鐘試聽與 2 小時海浪＋咖啡廳長版完成，等S老闆試聽"
    }
   },
   {
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 68,
+   "count": 69,
    "project": null,
    "last": {
-    "time": "2026-11-25 10:06",
-    "summary": "舊海浪影片已刪除；雨聲等正式照片再公開"
+    "time": "2026-11-25 12:38",
+    "summary": "2 小時長版私人上傳，夜裡城市試聽檔已傳給S老闆"
    }
   }
  ],
@@ -443,6 +443,29 @@
   }
  ],
  "events": [
+  {
+   "id": "20261125123817-b263",
+   "time": "2026-11-25 12:38",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "summary": "2 小時長版私人上傳，夜裡城市試聽檔已傳給S老闆",
+   "files": [
+    "02_plans/sound_tests/long_2h/sound_log.md"
+   ]
+  },
+  {
+   "id": "20261125123039-42d1",
+   "time": "2026-11-25 12:30",
+   "type": "handoff",
+   "by": "sound",
+   "to": "owner",
+   "summary": "夜裡城市 3 分鐘試聽與 2 小時海浪＋咖啡廳長版完成，等S老闆試聽",
+   "files": [
+    "02_plans/sound_tests/night_city/night_city_test_3min.m4a",
+    "02_plans/sound_tests/long_2h/pomodoro_2h_ocean_cafe.m4a"
+   ]
+  },
   {
    "id": "20261125102619-dbcf",
    "time": "2026-11-25 10:26",
@@ -2500,25 +2523,6 @@
     "B 用現有素材先做",
     "C 等之後再說"
    ]
-  },
-  {
-   "id": "20261118063057-70b8",
-   "time": "2026-11-18 06:30",
-   "type": "report",
-   "by": "manager",
-   "to": "owner",
-   "summary": "左到右素材掃描完：排了 8 顆約 34 秒的分鏡，自評 6/10；截圖裡的固定鏡頭電車等素材不在 00_footage",
-   "files": [
-    "02_plans/提案_左到右_2026-11-18.md",
-    "_frames/02_plans/left_to_right/board.jpg"
-   ]
-  },
-  {
-   "id": "20261118061224-e473",
-   "time": "2026-11-18 06:12",
-   "type": "start",
-   "by": "manager",
-   "summary": "找全部素材裡由左往右的鏡頭（鏡頭橫移，或車、電車由左往右經過），評估能不能做成一支短片"
   }
  ],
  "projects": [
@@ -3697,9 +3701,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 2.1982,
-  "gemini_total_usd": 2.1982,
-  "gemini_runs": 217,
+  "gemini_month_usd": 2.2252,
+  "gemini_total_usd": 2.2252,
+  "gemini_runs": 219,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -3732,15 +3736,33 @@
    {
     "day": "2026-11-23",
     "usd": 0.0613
+   },
+   {
+    "day": "2026-11-25",
+    "usd": 0.027
    }
   ],
   "by_mode": {
    "reference": 0.1691,
    "footage": 1.3694,
    "output": 0.5163,
-   "audio": 0.1434
+   "audio": 0.1704
   },
   "recent": [
+   {
+    "time": "2026-11-25 12:28",
+    "mode": "audio",
+    "source": "night_city_test_3min.m4a",
+    "seconds": "180.0",
+    "usd": 0.0132
+   },
+   {
+    "time": "2026-11-25 12:23",
+    "mode": "audio",
+    "source": "night_city_test_3min.m4a",
+    "seconds": "180.0",
+    "usd": 0.0138
+   },
    {
     "time": "2026-11-23 10:33",
     "mode": "reference",
@@ -3831,20 +3853,6 @@
     "source": "video-8433_singular_display.MOV",
     "seconds": "39.7",
     "usd": 0.0112
-   },
-   {
-    "time": "2026-11-22 09:27",
-    "mode": "footage",
-    "source": "video-8426_singular_display.MOV",
-    "seconds": "0.3",
-    "usd": 0.0033
-   },
-   {
-    "time": "2026-11-22 09:27",
-    "mode": "footage",
-    "source": "IMG_7460.MOV",
-    "seconds": "3.4",
-    "usd": 0.0049
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
