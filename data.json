@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25 10:06",
+ "generated": "2026-11-25 10:08",
  "members": [
   {
    "id": "manager",
@@ -84,17 +84,6 @@
   }
  ],
  "pending": [
-  {
-   "id": "20261125100330-841e",
-   "time": "2026-11-25 10:03",
-   "type": "decision",
-   "by": "main",
-   "summary": "海浪 v2、咖啡廳、雨聲三支改公開，等S老闆說核准",
-   "options": [
-    "A 三支都公開",
-    "B 海浪和咖啡廳先公開，雨聲等正式照片"
-   ]
-  },
   {
    "id": "20261124234210-8998",
    "time": "2026-11-24 23:42",
@@ -456,6 +445,30 @@
   }
  ],
  "events": [
+  {
+   "id": "20261125100832-0840",
+   "time": "2026-11-25 10:08",
+   "type": "resolve",
+   "by": "owner",
+   "ref": "20261125100330-841e",
+   "summary": "海浪 v2、咖啡廳核准公開；雨聲等正式照片"
+  },
+  {
+   "id": "20261125100832-d7ab",
+   "time": "2026-11-25 10:08",
+   "type": "approval",
+   "by": "owner",
+   "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+   "summary": "核准發佈（YouTube 公開）"
+  },
+  {
+   "id": "20261125100832-4266",
+   "time": "2026-11-25 10:08",
+   "type": "approval",
+   "by": "owner",
+   "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+   "summary": "核准發佈（YouTube 公開）"
+  },
   {
    "id": "20261125100621-60ee",
    "time": "2026-11-25 10:06",
@@ -2520,122 +2533,9 @@
     "_frames/03_output/2026-11-12_墨爾本_早上的墨爾本03/board/look_up_v2.jpg",
     "02_plans/拍攝清單_抬頭.md"
    ]
-  },
-  {
-   "id": "20261117191101-8cb5",
-   "time": "2026-11-17 19:11",
-   "type": "start",
-   "by": "manager",
-   "project": "2026-11-12_墨爾本_早上的墨爾本03",
-   "summary": "檢查全部素材裡有沒有抬頭動作或正上方畫面，看能不能做角度一致的「抬頭」"
-  },
-  {
-   "id": "20261117190426-7bef",
-   "time": "2026-11-17 19:04",
-   "type": "decision",
-   "by": "manager",
-   "project": "2026-11-12_墨爾本_早上的墨爾本03",
-   "summary": "「抬頭」要不要做；NGV藝術品能不能入鏡；這集不掛系列名",
-   "options": [
-    "做，NGV保留",
-    "做，NGV換掉",
-    "不做"
-   ]
-  },
-  {
-   "id": "20261117190426-1270",
-   "time": "2026-11-17 19:04",
-   "type": "report",
-   "by": "manager",
-   "to": "owner",
-   "project": "2026-11-12_墨爾本_早上的墨爾本03",
-   "summary": "第3集「抬頭」粗腳本與分鏡（約31秒、8顆，自評7/10）",
-   "files": [
-    "03_output/2026-11-12_墨爾本_早上的墨爾本03/script.md",
-    "_frames/03_output/2026-11-12_墨爾本_早上的墨爾本03/board/look_up.jpg"
-   ]
   }
  ],
  "projects": [
-  {
-   "name": "2026-11-24_沖繩名城_白噪音海浪25分",
-   "status": "待核准",
-   "current": "v2 已私人上傳，等S老闆試聽",
-   "owner": "owner",
-   "kind": "YouTube 長版",
-   "platforms": [
-    "YouTube"
-   ],
-   "updated": "2026-11-25 07:29",
-   "steps": [
-    {
-     "label": "方向核准",
-     "state": "done"
-    },
-    {
-     "label": "素材挑選",
-     "state": "done"
-    },
-    {
-     "label": "聲音",
-     "state": "done"
-    },
-    {
-     "label": "畫面",
-     "state": "done"
-    },
-    {
-     "label": "標題與說明欄",
-     "state": "doing"
-    },
-    {
-     "label": "審稿",
-     "state": "todo"
-    },
-    {
-     "label": "成品檢查",
-     "state": "todo"
-    },
-    {
-     "label": "S老闆核准",
-     "state": "todo"
-    },
-    {
-     "label": "發佈",
-     "state": "todo"
-    }
-   ],
-   "done": 4,
-   "review": null,
-   "videos": 2,
-   "events": [
-    {
-     "id": "20261125100621-60ee",
-     "time": "2026-11-25 10:06",
-     "type": "handoff",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
-     "summary": "舊海浪影片已刪除；雨聲等正式照片再公開"
-    },
-    {
-     "id": "20261124092328-f1d7",
-     "time": "2026-11-24 09:23",
-     "type": "approval",
-     "by": "owner",
-     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
-     "summary": "核准海浪 25 分鐘改成不公開（有連結才看得到）"
-    },
-    {
-     "id": "20261124074039-7b0c",
-     "time": "2026-11-24 07:40",
-     "type": "note",
-     "by": "main",
-     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
-     "summary": "海浪 25 分鐘已私人上傳到「窗邊的25分」，等S老闆用手機試聽"
-    }
-   ]
-  },
   {
    "name": "2026-11-20_墨爾本_結構測試_雨後的一天",
    "status": "待核准",
@@ -2940,69 +2840,6 @@
      "by": "reviewer",
      "project": "2026-11-25_雨_白噪音雨聲25分",
      "summary": "審 YouTube 白噪音頻道英文名稱與說明"
-    }
-   ]
-  },
-  {
-   "name": "2026-11-24_墨爾本_白噪音咖啡廳25分",
-   "status": "製作中",
-   "current": "已私人上傳，等S老闆試聽",
-   "owner": "owner",
-   "kind": "YouTube 長版",
-   "platforms": [
-    "YouTube"
-   ],
-   "updated": "2026-11-25 07:29",
-   "steps": [
-    {
-     "label": "方向核准",
-     "state": "done"
-    },
-    {
-     "label": "素材挑選",
-     "state": "done"
-    },
-    {
-     "label": "聲音",
-     "state": "done"
-    },
-    {
-     "label": "畫面",
-     "state": "done"
-    },
-    {
-     "label": "標題與說明欄",
-     "state": "todo"
-    },
-    {
-     "label": "審稿",
-     "state": "todo"
-    },
-    {
-     "label": "成品檢查",
-     "state": "todo"
-    },
-    {
-     "label": "S老闆核准",
-     "state": "todo"
-    },
-    {
-     "label": "發佈",
-     "state": "todo"
-    }
-   ],
-   "done": 4,
-   "review": null,
-   "videos": 1,
-   "events": [
-    {
-     "id": "20261124091300-342b",
-     "time": "2026-11-24 09:13",
-     "type": "request",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
-     "summary": "白噪音：咖啡廳 25 分鐘影片已做好，等S老闆拖進 YouTube 上傳；雨、休息版還缺照片；要不要設定 YouTube 上傳程式讓總調度直接私人上傳"
     }
    ]
   },
@@ -3703,6 +3540,164 @@
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v6b_music.mp4",
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
      ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+   "status": "已發佈",
+   "current": "已在 YouTube 公開",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-25 10:08",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "done"
+    },
+    {
+     "label": "審稿",
+     "state": "done"
+    },
+    {
+     "label": "成品檢查",
+     "state": "done"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "done"
+    },
+    {
+     "label": "發佈",
+     "state": "done"
+    }
+   ],
+   "done": 9,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261125100832-d7ab",
+     "time": "2026-11-25 10:08",
+     "type": "approval",
+     "by": "owner",
+     "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+     "summary": "核准發佈（YouTube 公開）"
+    },
+    {
+     "id": "20261124091300-342b",
+     "time": "2026-11-24 09:13",
+     "type": "request",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-24_墨爾本_白噪音咖啡廳25分",
+     "summary": "白噪音：咖啡廳 25 分鐘影片已做好，等S老闆拖進 YouTube 上傳；雨、休息版還缺照片；要不要設定 YouTube 上傳程式讓總調度直接私人上傳"
+    }
+   ]
+  },
+  {
+   "name": "2026-11-24_沖繩名城_白噪音海浪25分",
+   "status": "已發佈",
+   "current": "已在 YouTube 公開",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-25 10:08",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "done"
+    },
+    {
+     "label": "審稿",
+     "state": "done"
+    },
+    {
+     "label": "成品檢查",
+     "state": "done"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "done"
+    },
+    {
+     "label": "發佈",
+     "state": "done"
+    }
+   ],
+   "done": 9,
+   "review": null,
+   "videos": 2,
+   "events": [
+    {
+     "id": "20261125100832-4266",
+     "time": "2026-11-25 10:08",
+     "type": "approval",
+     "by": "owner",
+     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+     "summary": "核准發佈（YouTube 公開）"
+    },
+    {
+     "id": "20261125100621-60ee",
+     "time": "2026-11-25 10:06",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+     "summary": "舊海浪影片已刪除；雨聲等正式照片再公開"
+    },
+    {
+     "id": "20261124092328-f1d7",
+     "time": "2026-11-24 09:23",
+     "type": "approval",
+     "by": "owner",
+     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+     "summary": "核准海浪 25 分鐘改成不公開（有連結才看得到）"
+    },
+    {
+     "id": "20261124074039-7b0c",
+     "time": "2026-11-24 07:40",
+     "type": "note",
+     "by": "main",
+     "project": "2026-11-24_沖繩名城_白噪音海浪25分",
+     "summary": "海浪 25 分鐘已私人上傳到「窗邊的25分」，等S老闆用手機試聽"
     }
    ]
   }
