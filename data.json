@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25 07:29",
+ "generated": "2026-11-25 09:49",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 64,
+   "count": 65,
    "project": null,
    "last": {
-    "time": "2026-11-24 23:02",
-    "summary": "分鏡加 iPhone 機位：湯屋平面圖、iPhone 畫面構圖、要有和不要有；池子草圖改成順著池子拍"
+    "time": "2026-11-25 09:49",
+    "summary": "雨聲 25 分鐘做成影片並私人上傳（暫時照片），等S老闆試聽"
    }
   }
  ],
@@ -445,6 +445,18 @@
   }
  ],
  "events": [
+  {
+   "id": "20261125094936-8e64",
+   "time": "2026-11-25 09:49",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-25_雨_白噪音雨聲25分",
+   "summary": "雨聲 25 分鐘做成影片並私人上傳（暫時照片），等S老闆試聽",
+   "files": [
+    "03_output/2026-11-25_雨_白噪音雨聲25分/video/rain_25min.mp4"
+   ]
+  },
   {
    "id": "20261125072956-8858",
    "time": "2026-11-25 07:29",
@@ -2531,14 +2543,6 @@
    "by": "manager",
    "project": "2026-11-12_墨爾本_早上的墨爾本03",
    "summary": "第3集三個方向各寫粗腳本＋截圖分鏡，讓S老闆比較"
-  },
-  {
-   "id": "20261117175829-edd2",
-   "time": "2026-11-17 17:58",
-   "type": "resolve",
-   "by": "owner",
-   "ref": "20261117172343-d7a8",
-   "summary": "同意IG／Threads研究帳號做法，CLAUDE.md已補例外"
   }
  ],
  "projects": [
@@ -2821,6 +2825,72 @@
      "files": [
       "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2_540.mp4",
       "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-25_雨_白噪音雨聲25分",
+   "status": "製作中",
+   "current": "已私人上傳（暫時照片），等S老闆試聽",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-25 09:49",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "doing"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "doing"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 3,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261125094936-8e64",
+     "time": "2026-11-25 09:49",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-25_雨_白噪音雨聲25分",
+     "summary": "雨聲 25 分鐘做成影片並私人上傳（暫時照片），等S老闆試聽",
+     "files": [
+      "03_output/2026-11-25_雨_白噪音雨聲25分/video/rain_25min.mp4"
      ]
     }
    ]
