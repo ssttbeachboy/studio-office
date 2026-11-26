@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27 00:11",
+ "generated": "2026-11-27 00:13",
  "members": [
   {
    "id": "manager",
@@ -391,6 +391,14 @@
   }
  ],
  "events": [
+  {
+   "id": "20261127001352-37f1",
+   "time": "2026-11-27 00:13",
+   "type": "approval",
+   "by": "owner",
+   "project": "2026-11-26_今泊_白噪音清晨1小時",
+   "summary": "S老闆自己發佈公開今泊清晨動態版，並刪除舊靜態版"
+  },
   {
    "id": "20261127001126-6d22",
    "time": "2026-11-27 00:11",
@@ -2450,18 +2458,6 @@
    "files": [
     "03_output/2026-11-18_墨爾本_往右轉/review.md"
    ]
-  },
-  {
-   "id": "20261118075053-58ce",
-   "time": "2026-11-18 07:50",
-   "type": "handoff",
-   "by": "manager",
-   "to": "reviewer",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "文案三校修改完",
-   "files": [
-    "03_output/2026-11-18_墨爾本_往右轉/copy.md"
-   ]
   }
  ],
  "projects": [
@@ -2793,90 +2789,6 @@
      "summary": "今泊遠浪 1 小時音檔與影片做好，等S老闆定標題",
      "files": [
       "03_output/2026-11-26_今泊_白噪音遠浪1小時/video/imadomari_far_waves_1h.mp4"
-     ]
-    }
-   ]
-  },
-  {
-   "name": "2026-11-26_今泊_白噪音清晨1小時",
-   "status": "製作中",
-   "current": "動態版私人上傳中，等S老闆試聽",
-   "owner": "owner",
-   "kind": "YouTube 長版",
-   "platforms": [
-    "YouTube"
-   ],
-   "updated": "2026-11-26 14:05",
-   "steps": [
-    {
-     "label": "方向核准",
-     "state": "done"
-    },
-    {
-     "label": "素材挑選",
-     "state": "done"
-    },
-    {
-     "label": "聲音",
-     "state": "done"
-    },
-    {
-     "label": "畫面",
-     "state": "done"
-    },
-    {
-     "label": "標題與說明欄",
-     "state": "doing"
-    },
-    {
-     "label": "審稿",
-     "state": "todo"
-    },
-    {
-     "label": "成品檢查",
-     "state": "todo"
-    },
-    {
-     "label": "S老闆核准",
-     "state": "todo"
-    },
-    {
-     "label": "發佈",
-     "state": "todo"
-    }
-   ],
-   "done": 4,
-   "review": null,
-   "videos": 2,
-   "events": [
-    {
-     "id": "20261126145437-064e",
-     "time": "2026-11-26 14:54",
-     "type": "request",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-26_今泊_白噪音清晨1小時",
-     "summary": "今泊清晨 1 小時動態版做好，請S老闆在電腦前拖檔上傳"
-    },
-    {
-     "id": "20261126141907-9c75",
-     "time": "2026-11-26 14:19",
-     "type": "handoff",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-26_今泊_白噪音清晨1小時",
-     "summary": "今泊清晨 1 小時已私人上傳，等S老闆試聽；公開前標題說明送審"
-    },
-    {
-     "id": "20261126140531-b15c",
-     "time": "2026-11-26 14:05",
-     "type": "handoff",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-26_今泊_白噪音清晨1小時",
-     "summary": "今泊清晨 1 小時：遠浪當底、清晨鳥叫零散疊上，等S老闆試聽",
-     "files": [
-      "02_plans/sound_tests/week1/imadomari_dawn_1h_v2_excerpt_0700-1000.m4a"
      ]
     }
    ]
@@ -3672,6 +3584,98 @@
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v6a_music.mp4",
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v6b_music.mp4",
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-26_今泊_白噪音清晨1小時",
+   "status": "已發佈",
+   "current": "已公開",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-27 00:20",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "done"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "done"
+    },
+    {
+     "label": "發佈",
+     "state": "done"
+    }
+   ],
+   "done": 7,
+   "review": null,
+   "videos": 2,
+   "events": [
+    {
+     "id": "20261127001352-37f1",
+     "time": "2026-11-27 00:13",
+     "type": "approval",
+     "by": "owner",
+     "project": "2026-11-26_今泊_白噪音清晨1小時",
+     "summary": "S老闆自己發佈公開今泊清晨動態版，並刪除舊靜態版"
+    },
+    {
+     "id": "20261126145437-064e",
+     "time": "2026-11-26 14:54",
+     "type": "request",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-26_今泊_白噪音清晨1小時",
+     "summary": "今泊清晨 1 小時動態版做好，請S老闆在電腦前拖檔上傳"
+    },
+    {
+     "id": "20261126141907-9c75",
+     "time": "2026-11-26 14:19",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-26_今泊_白噪音清晨1小時",
+     "summary": "今泊清晨 1 小時已私人上傳，等S老闆試聽；公開前標題說明送審"
+    },
+    {
+     "id": "20261126140531-b15c",
+     "time": "2026-11-26 14:05",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-26_今泊_白噪音清晨1小時",
+     "summary": "今泊清晨 1 小時：遠浪當底、清晨鳥叫零散疊上，等S老闆試聽",
+     "files": [
+      "02_plans/sound_tests/week1/imadomari_dawn_1h_v2_excerpt_0700-1000.m4a"
      ]
     }
    ]
