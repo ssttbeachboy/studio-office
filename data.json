@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-27 00:51",
+ "generated": "2026-11-27 00:58",
  "members": [
   {
    "id": "manager",
    "name": "小主管",
    "role": "企劃・腳本・分鏡・週報",
-   "state": "idle",
-   "count": 103,
-   "project": null,
+   "state": "working",
+   "count": 104,
+   "project": "2026-11-24_宜蘭_一隻鴨變三道",
    "last": {
-    "time": "2026-11-25 10:10",
-    "summary": "下一批白噪音：夜裡城市試聽、2 小時 4 輪長版"
+    "time": "2026-11-27 00:53",
+    "summary": "改主線為切片＋握壽司，英文字幕給外國人，定稿腳本與拍攝清單（明天拍）"
    }
   },
   {
@@ -438,6 +438,22 @@
   }
  ],
  "events": [
+  {
+   "id": "20261127005820-49c0",
+   "time": "2026-11-27 00:58",
+   "type": "approval",
+   "by": "owner",
+   "project": "2026-11-26_沖繩_白噪音番茄鐘2小時海浪咖啡廳",
+   "summary": "S老闆說發布吧，2 小時名城動態版設為公開"
+  },
+  {
+   "id": "20261127005335-adf0",
+   "time": "2026-11-27 00:53",
+   "type": "start",
+   "by": "manager",
+   "project": "2026-11-24_宜蘭_一隻鴨變三道",
+   "summary": "改主線為切片＋握壽司，英文字幕給外國人，定稿腳本與拍攝清單（明天拍）"
+  },
   {
    "id": "20261127001815-b41f",
    "time": "2026-11-27 00:18",
@@ -2480,29 +2496,6 @@
     "03_output/2026-11-18_墨爾本_往右轉/script.md",
     "03_output/2026-11-18_墨爾本_往右轉/copy.md"
    ]
-  },
-  {
-   "id": "20261118080543-f3a6",
-   "time": "2026-11-18 08:05",
-   "type": "note",
-   "by": "main",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "Gemini 檢查兩版成品：順序、方向、配樂連續都對；#6 近處休旅車車牌可讀，#5 有戲劇海報人像，待S老闆決定"
-  },
-  {
-   "id": "20261118080247-1211",
-   "time": "2026-11-18 08:02",
-   "type": "handoff",
-   "by": "sound",
-   "to": "manager",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "聲音 v1 完成並合成兩版成品（-14.1 LUFS），配樂踩新剪接點",
-   "files": [
-    "03_output/2026-11-18_墨爾本_往右轉/audio/mix_v1.wav",
-    "03_output/2026-11-18_墨爾本_往右轉/video/rtr_v1_dup.mp4",
-    "03_output/2026-11-18_墨爾本_往右轉/video/rtr_v1_mi.mp4",
-    "03_output/2026-11-18_墨爾本_往右轉/sound_log.md"
-   ]
   }
  ],
  "projects": [
@@ -2720,38 +2713,38 @@
    ]
   },
   {
-   "name": "2026-11-26_沖繩_白噪音番茄鐘2小時海浪咖啡廳",
+   "name": "2026-11-24_宜蘭_一隻鴨變三道",
    "status": "製作中",
-   "current": "動態版做好，等S老闆拖檔上傳",
-   "owner": "owner",
-   "kind": "YouTube 長版",
+   "current": "改寫腳本（主線改切片＋握壽司、英文字幕），明天 11/28 拍",
+   "owner": "manager",
+   "kind": "短影音",
    "platforms": [
-    "YouTube"
+    "IG"
    ],
-   "updated": "2026-11-26 23:54",
+   "updated": "2026-11-27 00:53",
    "steps": [
     {
      "label": "方向核准",
      "state": "done"
     },
     {
-     "label": "素材挑選",
-     "state": "done"
+     "label": "腳本／分鏡",
+     "state": "doing"
     },
     {
-     "label": "聲音",
-     "state": "done"
-    },
-    {
-     "label": "畫面",
-     "state": "done"
-    },
-    {
-     "label": "標題與說明欄",
+     "label": "文案",
      "state": "todo"
     },
     {
      "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "粗剪",
+     "state": "todo"
+    },
+    {
+     "label": "聲音",
      "state": "todo"
     },
     {
@@ -2767,10 +2760,51 @@
      "state": "todo"
     }
    ],
-   "done": 4,
+   "done": 1,
    "review": null,
-   "videos": 1,
-   "events": []
+   "videos": 0,
+   "events": [
+    {
+     "id": "20261127005335-adf0",
+     "time": "2026-11-27 00:53",
+     "type": "start",
+     "by": "manager",
+     "project": "2026-11-24_宜蘭_一隻鴨變三道",
+     "summary": "改主線為切片＋握壽司，英文字幕給外國人，定稿腳本與拍攝清單（明天拍）"
+    },
+    {
+     "id": "20261127001815-b41f",
+     "time": "2026-11-27 00:18",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-24_宜蘭_一隻鴨變三道",
+     "summary": "拍攝清單同一份，含鴨的 9 顆主線和 8 顆備用",
+     "files": [
+      "02_plans/宜蘭_拍攝清單.html"
+     ]
+    },
+    {
+     "id": "20261126000208-6542",
+     "time": "2026-11-26 00:02",
+     "type": "resolve",
+     "by": "owner",
+     "project": "2026-11-24_宜蘭_一隻鴨變三道",
+     "ref": "20261124234210-8998",
+     "summary": "方向核准，第四吃選 A 三杯鴨骨煲；日期待定"
+    },
+    {
+     "id": "20261124234210-8998",
+     "time": "2026-11-24 23:42",
+     "type": "decision",
+     "by": "manager",
+     "project": "2026-11-24_宜蘭_一隻鴨變三道",
+     "summary": "櫻桃鴨：第四吃點哪一道、哪天去",
+     "options": [
+      "A 三杯鴨骨煲｜B 生菜包鴨絲｜C 夏之櫻"
+     ]
+    }
+   ]
   },
   {
    "name": "2026-11-26_今泊_白噪音遠浪1小時",
@@ -2932,105 +2966,6 @@
      "summary": "分鏡加 iPhone 機位：湯屋平面圖、iPhone 畫面構圖、要有和不要有；池子草圖改成順著池子拍",
      "files": [
       "03_output/2026-11-20_宜蘭_溫泉水放滿一缸/storyboard.html"
-     ]
-    }
-   ]
-  },
-  {
-   "name": "2026-11-24_宜蘭_一隻鴨變三道",
-   "status": "製作中",
-   "current": "腳本定稿（第四吃三杯鴨骨煲），待你給日期和人數",
-   "owner": "manager",
-   "kind": "短影音",
-   "platforms": [
-    "小紅書",
-    "IG"
-   ],
-   "updated": "2026-11-26 00:02",
-   "steps": [
-    {
-     "label": "方向核准",
-     "state": "done"
-    },
-    {
-     "label": "腳本／分鏡",
-     "state": "todo"
-    },
-    {
-     "label": "文案",
-     "state": "todo"
-    },
-    {
-     "label": "審稿",
-     "state": "todo"
-    },
-    {
-     "label": "粗剪",
-     "state": "todo"
-    },
-    {
-     "label": "聲音",
-     "state": "todo"
-    },
-    {
-     "label": "成品檢查",
-     "state": "todo"
-    },
-    {
-     "label": "S老闆核准",
-     "state": "todo"
-    },
-    {
-     "label": "發佈",
-     "state": "todo"
-    }
-   ],
-   "done": 1,
-   "review": null,
-   "videos": 0,
-   "events": [
-    {
-     "id": "20261127001815-b41f",
-     "time": "2026-11-27 00:18",
-     "type": "handoff",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-24_宜蘭_一隻鴨變三道",
-     "summary": "拍攝清單同一份，含鴨的 9 顆主線和 8 顆備用",
-     "files": [
-      "02_plans/宜蘭_拍攝清單.html"
-     ]
-    },
-    {
-     "id": "20261126000208-6542",
-     "time": "2026-11-26 00:02",
-     "type": "resolve",
-     "by": "owner",
-     "project": "2026-11-24_宜蘭_一隻鴨變三道",
-     "ref": "20261124234210-8998",
-     "summary": "方向核准，第四吃選 A 三杯鴨骨煲；日期待定"
-    },
-    {
-     "id": "20261124234210-8998",
-     "time": "2026-11-24 23:42",
-     "type": "decision",
-     "by": "manager",
-     "project": "2026-11-24_宜蘭_一隻鴨變三道",
-     "summary": "櫻桃鴨：第四吃點哪一道、哪天去",
-     "options": [
-      "A 三杯鴨骨煲｜B 生菜包鴨絲｜C 夏之櫻"
-     ]
-    },
-    {
-     "id": "20261124234210-8b85",
-     "time": "2026-11-24 23:42",
-     "type": "report",
-     "by": "manager",
-     "to": "owner",
-     "project": "2026-11-24_宜蘭_一隻鴨變三道",
-     "summary": "晶英紅樓櫻桃鴨提案：查到是五吃、桌邊片鴨，主線 9 顆約 32 秒，片、捲、第四吃、湯",
-     "files": [
-      "03_output/2026-11-24_宜蘭_一隻鴨變三道/script.md"
      ]
     }
    ]
@@ -3820,6 +3755,68 @@
      "to": "owner",
      "project": "2026-11-26_沖繩_白噪音濟井出的雨1小時",
      "summary": "濟井出的雨 1 小時私人上傳，等S老闆試聽"
+    }
+   ]
+  },
+  {
+   "name": "2026-11-26_沖繩_白噪音番茄鐘2小時海浪咖啡廳",
+   "status": "已發佈",
+   "current": "設為公開，上傳處理完自動公開；舊版 Tc2fzP8B2uk 待刪",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-26 23:54",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "done"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "done"
+    },
+    {
+     "label": "發佈",
+     "state": "done"
+    }
+   ],
+   "done": 7,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261127005820-49c0",
+     "time": "2026-11-27 00:58",
+     "type": "approval",
+     "by": "owner",
+     "project": "2026-11-26_沖繩_白噪音番茄鐘2小時海浪咖啡廳",
+     "summary": "S老闆說發布吧，2 小時名城動態版設為公開"
     }
    ]
   },
