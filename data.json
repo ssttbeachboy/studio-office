@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26 00:02",
+ "generated": "2026-11-26 14:00",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 69,
+   "count": 70,
    "project": null,
    "last": {
-    "time": "2026-11-25 12:38",
-    "summary": "2 小時長版私人上傳，夜裡城市試聽檔已傳給S老闆"
+    "time": "2026-11-26 14:00",
+    "summary": "今泊遠浪 1 小時音檔與影片做好，等S老闆定標題"
    }
   }
  ],
@@ -382,6 +382,18 @@
   }
  ],
  "events": [
+  {
+   "id": "20261126140045-6738",
+   "time": "2026-11-26 14:00",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-26_今泊_白噪音遠浪1小時",
+   "summary": "今泊遠浪 1 小時音檔與影片做好，等S老闆定標題",
+   "files": [
+    "03_output/2026-11-26_今泊_白噪音遠浪1小時/video/imadomari_far_waves_1h.mp4"
+   ]
+  },
   {
    "id": "20261126000208-6542",
    "time": "2026-11-26 00:02",
@@ -2447,14 +2459,6 @@
    "type": "note",
    "by": "main",
    "summary": "更正：上一筆刪除重複檔的紀錄誤掛在「左到右做哪一版」的決定上，那個決定其實還沒定"
-  },
-  {
-   "id": "20261118073710-5ffd",
-   "time": "2026-11-18 07:37",
-   "type": "resolve",
-   "by": "owner",
-   "ref": "20261118073309-9dd6",
-   "summary": "S老闆指示刪除素材重複檔；4 個重複檔已移到垃圾桶，各保留分鏡引用的那份"
   }
  ],
  "projects": [
@@ -2667,6 +2671,72 @@
      "files": [
       "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2_540.mp4",
       "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-26_今泊_白噪音遠浪1小時",
+   "status": "製作中",
+   "current": "定標題",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-26 15:30",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "doing"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 4,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261126140045-6738",
+     "time": "2026-11-26 14:00",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-26_今泊_白噪音遠浪1小時",
+     "summary": "今泊遠浪 1 小時音檔與影片做好，等S老闆定標題",
+     "files": [
+      "03_output/2026-11-26_今泊_白噪音遠浪1小時/video/imadomari_far_waves_1h.mp4"
      ]
     }
    ]
