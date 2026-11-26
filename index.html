@@ -223,15 +223,16 @@ const PAL = {
   white:"#ece6d8", grey:"#a7a3b8", cyan:"#68e0e6", red:"#e5534b", gold:"#f2c14e"
 };
 const PEOPLE = {
-  manager: {hair:"#3a2a22", shirt:"#2f4a7a", x:14,  y:54, screen:"doc"},
-  editor:  {hair:"#2a2230", shirt:"#3f8a55", x:74,  y:54, screen:"film", hat:"#e0823d"},
-  sound:   {hair:"#15121c", shirt:"#7a4fa8", x:134, y:54, screen:"wave", phones:true},
-  analyst: {hair:"#c9a052", shirt:"#2f8f86", x:194, y:54, screen:"chart"},
-  reviewer:{hair:"#8a8598", shirt:"#8a3046", x:44,  y:88, screen:"text", glasses:true},
-  biz:     {hair:"#6b3f2a", shirt:"#c08a3e", x:154, y:88, screen:"idea"},
-  engineer:{hair:"#1f1f2e", shirt:"#3d4a63", x:204, y:88, screen:"code", beanie:"#4a7fc1"}
+  manager: {hair:"#3a2a22", shirt:"#2f4a7a", x:84,  y:116, screen:"doc"},
+  editor:  {hair:"#2a2230", shirt:"#3f8a55", x:34,  y:88, screen:"film", hat:"#e0823d"},
+  sound:   {hair:"#15121c", shirt:"#7a4fa8", x:104, y:88, screen:"wave", phones:true},
+  analyst: {hair:"#c9a052", shirt:"#2f8f86", x:174, y:88, screen:"chart"},
+  reviewer:{hair:"#8a8598", shirt:"#8a3046", x:14,  y:54, screen:"text", glasses:true},
+  biz:     {hair:"#6b3f2a", shirt:"#c08a3e", x:134, y:54, screen:"idea"},
+  engineer:{hair:"#1f1f2e", shirt:"#3d4a63", x:194, y:54, screen:"code", beanie:"#4a7fc1"},
+  main:    {hair:"#4a3528", shirt:"#d97757", x:144, y:116, screen:"chat"}   // Claude 助理：和小主管一起坐最後一排
 };
-const GEMINI = {x:104, y:88};
+const GEMINI = {x:74, y:54};
 const HEAD = [
 "..HHHHHH..",
 ".HHHHHHHH.",
@@ -283,6 +284,7 @@ function drawMonitor(c,x,y,kind,frame,working){
   if(kind==="wave"){for(let i=0;i<sw;i++){const h=1+((i*7+frame*3)%5);R(c,sx+i,sy+3-(h>>1),1,h,"#a97bd6");}}
   if(kind==="chart"){const hs=[2,4,3,5];hs.forEach((h,i)=>{const hh=Math.min(5,h+((frame+i)%2));R(c,sx+1+i*2,sy+sh-hh,1,hh,"#3fb6a8");});}
   if(kind==="idea"){const on=frame%4<3;R(c,sx+3,sy,3,3,on?PAL.gold:"#7a6a3a");R(c,sx+2,sy+1,5,1,on?PAL.gold:"#7a6a3a");R(c,sx+4,sy+3,1,1,PAL.grey);R(c,sx+3,sy+4,3,1,PAL.grey);if(on){R(c,sx,sy+1,1,1,PAL.lit2);R(c,sx+8,sy+1,1,1,PAL.lit2);}}
+  if(kind==="chat"){R(c,sx,sy,sw,sh,"#2a2234");R(c,sx+1,sy+1,5,2,"#d97757");R(c,sx+3,sy+4,5,1,PAL.grey);if(frame%4<2)R(c,sx+1,sy+4,1,1,PAL.white);}
   if(kind==="code"){const cols=["#6cc070","#5aa9e6","#e0823d","#c792ea"];for(let i=0;i<3;i++){const ind=(i%2)*2;R(c,sx+1+ind,sy+1+i*2,2+((frame+i)%4),1,cols[(i+frame)%4]);}if(frame%2)R(c,sx+7,sy+5,1,1,PAL.white);}
   if(kind==="text"){R(c,sx,sy,sw,sh,"#ece6d8");for(let i=0;i<3;i++)R(c,sx+1,sy+1+i*2,7,1,"#777");R(c,sx+2+(frame%4),sy+1+((frame>>1)%3)*2,3,1,"#e5534b");}
 }
@@ -301,8 +303,8 @@ function drawGemini(c,frame,working){
   for(let i=0;i<4;i++) R(c,x+6+i*4,y+12,2,1,(working&&(frame+i)%2)?PAL.green:"#304030");
 }
 /* 每位成員桌前的站位（腳的位置）。main＝左側門口，owner＝牆上的待決信箱下方 */
-const SPOT={manager:[28,82],editor:[88,82],sound:[148,82],analyst:[196,82],reviewer:[58,117],gemini:[118,117],biz:[168,117],engineer:[218,117],main:[14,117],owner:[222,82]};
-const AISLE=92;
+const SPOT={reviewer:[28,82],gemini:[88,82],biz:[148,82],engineer:[208,82],editor:[48,114],sound:[118,114],analyst:[188,114],manager:[74,136],main:[180,136],owner:[222,82]};
+const AISLE=68;   // 三排桌子之間共同的空隙
 function along(pts,f){
   const seg=[];let tot=0; for(let i=1;i<pts.length;i++){const l=Math.abs(pts[i][0]-pts[i-1][0])+Math.abs(pts[i][1]-pts[i-1][1]);seg.push(l);tot+=l;}
   let d=f*tot; for(let i=0;i<seg.length;i++){ if(d<=seg[i]||i===seg.length-1){const p=seg[i]?Math.min(1,d/seg[i]):1; const a=pts[i],b=pts[i+1]; return [a[0]+(b[0]-a[0])*p, a[1]+(b[1]-a[1])*p, Math.sign(b[0]-a[0])||1]; } d-=seg[i]; }
@@ -344,7 +346,6 @@ function drawRoom(c,frame,pending){
   R(c,0,0,256,50,PAL.wall); for(let x=0;x<256;x+=16) R(c,x,0,1,50,PAL.wall2);
   R(c,0,48,256,3,PAL.trim);
   for(let y=51;y<144;y+=8) for(let x=0;x<256;x+=8) R(c,x,y,8,8,((x+y)/8)%2?PAL.floorA:PAL.floorB);
-  R(c,70,118,120,20,PAL.rug); R(c,72,120,116,16,PAL.rug2); R(c,74,122,112,12,PAL.rug);
   [[10,8],[58,8]].forEach(([wx,wy])=>{
     R(c,wx-2,wy-2,44,32,PAL.winFrame); R(c,wx,wy,40,28,PAL.sky1);
     const blds=[[0,14,7],[7,8,6],[13,18,8],[21,10,5],[26,4,8],[34,12,6]];
@@ -367,7 +368,7 @@ const cv=document.getElementById("cv"), ctx=cv.getContext("2d");
 const fx=document.getElementById("fx"), fctx=fx.getContext("2d");   // 走動的人畫在名牌上面這一層
 let DATA=null, frame=0, tick=0, selected="manager", RELAY_IDX=null;
 const HIT={};
-Object.entries(PEOPLE).forEach(([id,p])=>HIT[id]=[p.x-2,p.y-3,32,25]);
+Object.entries(PEOPLE).forEach(([id,p])=>HIT[id]=p.standing?[SPOT[id][0]-7,SPOT[id][1]-18,14,20]:[p.x-2,p.y-3,32,25]);
 HIT.gemini=[GEMINI.x-2,GEMINI.y-3,32,25];
 
 function memberState(id){ if(!DATA) return "idle"; const m=DATA.members.find(m=>m.id===id); return m?m.state:"idle"; }
@@ -381,6 +382,10 @@ function render(t){
   const wk=walkerFor(rels[ri],tick);
   Object.keys(PEOPLE).forEach(id=>{
     const p=PEOPLE[id], w=memberState(id)==="working", away=wk&&wk.id===id;
+    if(p.standing){ if(!away) drawWalker(ctx,id,SPOT[id][0],SPOT[id][1],frame,1,false,true);
+      if(!away){ if(wk&&wk.phase==="talk"&&wk.other===id&&(frame>>2)%2) drawBubble(ctx,SPOT[id][0]+4,SPOT[id][1]-28,frame,"dots"); else if(w) drawBubble(ctx,SPOT[id][0]+4,SPOT[id][1]-28,frame,"dots"); }
+      if(selected===id) R(ctx,SPOT[id][0]-7,SPOT[id][1]+1,14,1,PAL.gold);
+      return; }
     if(!away) drawPerson(ctx,id,p.x+3,p.y,frame,w);
     drawDesk(ctx,p.x,p.y); if(!away) drawHands(ctx,p.x+3,p.y,frame,w); drawMonitor(ctx,p.x,p.y,p.screen,frame,w&&!away);
     if(id==="reviewer") {R(ctx,p.x+24,p.y+11,4,1,PAL.red);}
@@ -402,7 +407,7 @@ function placeTags(){
   const office=document.getElementById("office");
   office.querySelectorAll(".tag").forEach(n=>n.remove());
   const add=(id,x,y)=>{const s=document.createElement("span");s.className="tag"+(memberState(id)==="working"?" working":"");s.textContent=NAMES[id];s.style.left=(x/256*100)+"%";s.style.top=(y/144*100)+"%";office.appendChild(s);};
-  Object.entries(PEOPLE).forEach(([id,p])=>add(id,p.x+14,p.y+13));   // 名牌貼在桌子正面
+  Object.entries(PEOPLE).forEach(([id,p])=>p.standing?add(id,SPOT[id][0],SPOT[id][1]+2):add(id,p.x+14,p.y+13));   // 名牌貼在桌子正面；站著的貼在腳下
   add("gemini",GEMINI.x+14,GEMINI.y+13);
   const s=document.createElement("span");s.className="tag";s.textContent="待決信箱";s.style.left=(223/256*100)+"%";s.style.top=(39/144*100)+"%";office.appendChild(s);
 }
@@ -419,7 +424,7 @@ function avatar(id){
   if(AV[id]) return AV[id];
   const c=document.createElement("canvas"); c.width=16; c.height=16; const g=c.getContext("2d");
   g.fillStyle="#2a2640"; g.fillRect(0,0,16,16);
-  if(PEOPLE[id]) drawPerson(g,id,3,3,0,false);
+  if(PEOPLE[id]&&id!=="main") drawPerson(g,id,3,3,0,false);
   else if(id==="gemini"){R(g,7,3,2,10,PAL.cyan);R(g,3,7,10,2,PAL.cyan);R(g,6,6,4,4,PAL.cyan);}
   else if(id==="main"){R(g,2,3,12,8,"#e0823d");R(g,4,11,3,2,"#e0823d");R(g,4,6,2,2,PAL.white);R(g,7,6,2,2,PAL.white);R(g,10,6,2,2,PAL.white);}
   else {R(g,4,3,8,3,PAL.gold);R(g,4,6,8,6,PAL.skin);R(g,6,8,1,1,PAL.eye);R(g,9,8,1,1,PAL.eye);R(g,3,12,10,4,"#e0823d");}
