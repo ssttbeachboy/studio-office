@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27 00:13",
+ "generated": "2026-11-27 00:18",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 75,
+   "count": 77,
    "project": null,
    "last": {
-    "time": "2026-11-26 23:56",
-    "summary": "濟井出的雨 1 小時私人上傳，等S老闆試聽"
+    "time": "2026-11-27 00:18",
+    "summary": "拍攝清單同一份，含鴨的 9 顆主線和 8 顆備用"
    }
   }
  ],
@@ -391,6 +391,30 @@
   }
  ],
  "events": [
+  {
+   "id": "20261127001815-b41f",
+   "time": "2026-11-27 00:18",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-24_宜蘭_一隻鴨變三道",
+   "summary": "拍攝清單同一份，含鴨的 9 顆主線和 8 顆備用",
+   "files": [
+    "02_plans/宜蘭_拍攝清單.html"
+   ]
+  },
+  {
+   "id": "20261127001815-3c63",
+   "time": "2026-11-27 00:18",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-20_宜蘭_溫泉水放滿一缸",
+   "summary": "整理宜蘭兩支的現場拍攝清單：每顆鏡頭的角度、聲音、隱私、開拍前勾選",
+   "files": [
+    "02_plans/宜蘭_拍攝清單.html"
+   ]
+  },
   {
    "id": "20261127001352-37f1",
    "time": "2026-11-27 00:13",
@@ -2432,32 +2456,6 @@
     "03_output/2026-11-18_墨爾本_往右轉/video/rtr_v1_mi.mp4",
     "03_output/2026-11-18_墨爾本_往右轉/sound_log.md"
    ]
-  },
-  {
-   "id": "20261118075847-11f8",
-   "time": "2026-11-18 07:58",
-   "type": "handoff",
-   "by": "editor",
-   "to": "sound",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "畫面粗剪完成兩版（重複格／插格），26.4 秒；3 顆到變速下限仍偏快",
-   "files": [
-    "03_output/2026-11-18_墨爾本_往右轉/video/_picture_dup.mp4",
-    "03_output/2026-11-18_墨爾本_往右轉/video/_picture_mi.mp4",
-    "03_output/2026-11-18_墨爾本_往右轉/edit_log.md"
-   ]
-  },
-  {
-   "id": "20261118075217-8a45",
-   "time": "2026-11-18 07:52",
-   "type": "handoff",
-   "by": "reviewer",
-   "to": "editor",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "文案第 3 輪通過，剩 2 條存疑（非 AI 感）交S老闆",
-   "files": [
-    "03_output/2026-11-18_墨爾本_往右轉/review.md"
-   ]
   }
  ],
  "projects": [
@@ -2676,9 +2674,9 @@
   },
   {
    "name": "2026-11-26_沖繩_白噪音番茄鐘2小時海浪咖啡廳",
-   "status": "提案",
-   "current": "方向討論中",
-   "owner": "manager",
+   "status": "製作中",
+   "current": "動態版做好，等S老闆拖檔上傳",
+   "owner": "owner",
    "kind": "YouTube 長版",
    "platforms": [
     "YouTube"
@@ -2687,19 +2685,19 @@
    "steps": [
     {
      "label": "方向核准",
-     "state": "todo"
+     "state": "done"
     },
     {
      "label": "素材挑選",
-     "state": "todo"
+     "state": "done"
     },
     {
      "label": "聲音",
-     "state": "todo"
+     "state": "done"
     },
     {
      "label": "畫面",
-     "state": "todo"
+     "state": "done"
     },
     {
      "label": "標題與說明欄",
@@ -2722,7 +2720,7 @@
      "state": "todo"
     }
    ],
-   "done": 0,
+   "done": 4,
    "review": null,
    "videos": 1,
    "events": []
@@ -2848,6 +2846,18 @@
    "videos": 0,
    "events": [
     {
+     "id": "20261127001815-3c63",
+     "time": "2026-11-27 00:18",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-20_宜蘭_溫泉水放滿一缸",
+     "summary": "整理宜蘭兩支的現場拍攝清單：每顆鏡頭的角度、聲音、隱私、開拍前勾選",
+     "files": [
+      "02_plans/宜蘭_拍攝清單.html"
+     ]
+    },
+    {
      "id": "20261126000208-243e",
      "time": "2026-11-26 00:02",
      "type": "resolve",
@@ -2873,18 +2883,6 @@
      "to": "owner",
      "project": "2026-11-20_宜蘭_溫泉水放滿一缸",
      "summary": "分鏡加 iPhone 機位：湯屋平面圖、iPhone 畫面構圖、要有和不要有；池子草圖改成順著池子拍",
-     "files": [
-      "03_output/2026-11-20_宜蘭_溫泉水放滿一缸/storyboard.html"
-     ]
-    },
-    {
-     "id": "20261124175614-ad02",
-     "time": "2026-11-24 17:56",
-     "type": "report",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-20_宜蘭_溫泉水放滿一缸",
-     "summary": "第三版改到湯屋拍：牆上出水口、竹簾窗、休息區切奶凍捲、池邊開啤酒",
      "files": [
       "03_output/2026-11-20_宜蘭_溫泉水放滿一缸/storyboard.html"
      ]
@@ -2945,6 +2943,18 @@
    "videos": 0,
    "events": [
     {
+     "id": "20261127001815-b41f",
+     "time": "2026-11-27 00:18",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-24_宜蘭_一隻鴨變三道",
+     "summary": "拍攝清單同一份，含鴨的 9 顆主線和 8 顆備用",
+     "files": [
+      "02_plans/宜蘭_拍攝清單.html"
+     ]
+    },
+    {
      "id": "20261126000208-6542",
      "time": "2026-11-26 00:02",
      "type": "resolve",
@@ -2975,14 +2985,6 @@
      "files": [
       "03_output/2026-11-24_宜蘭_一隻鴨變三道/script.md"
      ]
-    },
-    {
-     "id": "20261124232725-0355",
-     "time": "2026-11-24 23:27",
-     "type": "start",
-     "by": "manager",
-     "project": "2026-11-24_宜蘭_一隻鴨變三道",
-     "summary": "提方向：晶英櫻桃鴨，一隻鴨變三道，寫拍攝清單"
     }
    ]
   },
