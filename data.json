@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26 23:45",
+ "generated": "2026-11-26 23:56",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 74,
+   "count": 75,
    "project": null,
    "last": {
-    "time": "2026-11-26 23:45",
-    "summary": "濟井出的雨 1 小時影片做好（390 MB），請S老闆拖檔上傳"
+    "time": "2026-11-26 23:56",
+    "summary": "濟井出的雨 1 小時私人上傳，等S老闆試聽"
    }
   }
  ],
@@ -391,6 +391,15 @@
   }
  ],
  "events": [
+  {
+   "id": "20261126235606-ddc4",
+   "time": "2026-11-26 23:56",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-26_沖繩_白噪音濟井出的雨1小時",
+   "summary": "濟井出的雨 1 小時私人上傳，等S老闆試聽"
+  },
   {
    "id": "20261126234519-2b22",
    "time": "2026-11-26 23:45",
@@ -2461,14 +2470,6 @@
    "files": [
     "03_output/2026-11-18_墨爾本_往右轉/review.md"
    ]
-  },
-  {
-   "id": "20261118074537-7df9",
-   "time": "2026-11-18 07:45",
-   "type": "start",
-   "by": "sound",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "乾淨環境音替換、雨聲漸弱、原創配樂"
   }
  ],
  "projects": [
@@ -2686,9 +2687,62 @@
    ]
   },
   {
+   "name": "2026-11-26_沖繩_白噪音番茄鐘2小時海浪咖啡廳",
+   "status": "提案",
+   "current": "方向討論中",
+   "owner": "manager",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-26 23:54",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "todo"
+    },
+    {
+     "label": "素材挑選",
+     "state": "todo"
+    },
+    {
+     "label": "聲音",
+     "state": "todo"
+    },
+    {
+     "label": "畫面",
+     "state": "todo"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "todo"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 0,
+   "review": null,
+   "videos": 1,
+   "events": []
+  },
+  {
    "name": "2026-11-26_沖繩_白噪音濟井出的雨1小時",
    "status": "製作中",
-   "current": "影片做好，等S老闆拖檔上傳",
+   "current": "已私人上傳，等S老闆試聽；公開前標題說明送審",
    "owner": "owner",
    "kind": "YouTube 長版",
    "platforms": [
@@ -2737,6 +2791,15 @@
    "review": null,
    "videos": 1,
    "events": [
+    {
+     "id": "20261126235606-ddc4",
+     "time": "2026-11-26 23:56",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-26_沖繩_白噪音濟井出的雨1小時",
+     "summary": "濟井出的雨 1 小時私人上傳，等S老闆試聽"
+    },
     {
      "id": "20261126234519-2b22",
      "time": "2026-11-26 23:45",
