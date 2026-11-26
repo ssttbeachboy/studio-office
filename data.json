@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26 14:00",
+ "generated": "2026-11-26 14:05",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 70,
+   "count": 71,
    "project": null,
    "last": {
-    "time": "2026-11-26 14:00",
-    "summary": "今泊遠浪 1 小時音檔與影片做好，等S老闆定標題"
+    "time": "2026-11-26 14:05",
+    "summary": "今泊清晨 1 小時：遠浪當底、清晨鳥叫零散疊上，等S老闆試聽"
    }
   }
  ],
@@ -382,6 +382,18 @@
   }
  ],
  "events": [
+  {
+   "id": "20261126140531-b15c",
+   "time": "2026-11-26 14:05",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-26_今泊_白噪音清晨1小時",
+   "summary": "今泊清晨 1 小時：遠浪當底、清晨鳥叫零散疊上，等S老闆試聽",
+   "files": [
+    "02_plans/sound_tests/week1/imadomari_dawn_1h_v2_excerpt_0700-1000.m4a"
+   ]
+  },
   {
    "id": "20261126140045-6738",
    "time": "2026-11-26 14:00",
@@ -2452,13 +2464,6 @@
     "B 鏡頭往右轉版（約33秒）",
     "等下一趟補拍"
    ]
-  },
-  {
-   "id": "20261118073718-f881",
-   "time": "2026-11-18 07:37",
-   "type": "note",
-   "by": "main",
-   "summary": "更正：上一筆刪除重複檔的紀錄誤掛在「左到右做哪一版」的決定上，那個決定其實還沒定"
   }
  ],
  "projects": [
@@ -2737,6 +2742,72 @@
      "summary": "今泊遠浪 1 小時音檔與影片做好，等S老闆定標題",
      "files": [
       "03_output/2026-11-26_今泊_白噪音遠浪1小時/video/imadomari_far_waves_1h.mp4"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-26_今泊_白噪音清晨1小時",
+   "status": "製作中",
+   "current": "試聽疊鳥叫的版本",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-26 14:05",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "doing"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "todo"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 3,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261126140531-b15c",
+     "time": "2026-11-26 14:05",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-26_今泊_白噪音清晨1小時",
+     "summary": "今泊清晨 1 小時：遠浪當底、清晨鳥叫零散疊上，等S老闆試聽",
+     "files": [
+      "02_plans/sound_tests/week1/imadomari_dawn_1h_v2_excerpt_0700-1000.m4a"
      ]
     }
    ]
