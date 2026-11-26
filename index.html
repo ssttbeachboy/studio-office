@@ -223,16 +223,16 @@ const PAL = {
   white:"#ece6d8", grey:"#a7a3b8", cyan:"#68e0e6", red:"#e5534b", gold:"#f2c14e"
 };
 const PEOPLE = {
-  manager: {hair:"#3a2a22", shirt:"#2f4a7a", x:84,  y:116, screen:"doc"},
-  editor:  {hair:"#2a2230", shirt:"#3f8a55", x:34,  y:88, screen:"film", hat:"#e0823d"},
-  sound:   {hair:"#15121c", shirt:"#7a4fa8", x:104, y:88, screen:"wave", phones:true},
+  manager: {hair:"#3a2a22", shirt:"#2f4a7a", x:84,  y:54, screen:"doc", coffee:"#ece6d8"},
+  editor:  {hair:"#2a2230", shirt:"#3f8a55", x:34,  y:88, screen:"film", hat:"#e0823d", coffee:"#6cc070"},
+  sound:   {hair:"#15121c", shirt:"#7a4fa8", x:104, y:88, screen:"wave", phones:true, coffee:"#e5534b"},
   analyst: {hair:"#c9a052", shirt:"#2f8f86", x:174, y:88, screen:"chart"},
-  reviewer:{hair:"#8a8598", shirt:"#8a3046", x:14,  y:54, screen:"text", glasses:true},
-  biz:     {hair:"#6b3f2a", shirt:"#c08a3e", x:134, y:54, screen:"idea"},
-  engineer:{hair:"#1f1f2e", shirt:"#3d4a63", x:194, y:54, screen:"code", beanie:"#4a7fc1"},
-  main:    {hair:"#4a3528", shirt:"#d97757", x:144, y:116, screen:"chat"}   // Claude 助理：和小主管一起坐最後一排
+  reviewer:{hair:"#8a8598", shirt:"#8a3046", x:24,  y:116, screen:"text", glasses:true, coffee:"#ece6d8"},
+  biz:     {hair:"#6b3f2a", shirt:"#c08a3e", x:204, y:116, screen:"idea", coffee:"#ece6d8"},
+  engineer:{hair:"#1f1f2e", shirt:"#3d4a63", x:144, y:116, screen:"code", beanie:"#4a7fc1", coffee:"#5aa9e6"},
+  main:    {hair:"#4a3528", shirt:"#d97757", x:144, y:54, screen:"chat", coffee:"#f2c14e"}   // Claude 助理：和小主管一起坐最後一排（靠牆）
 };
-const GEMINI = {x:74, y:54};
+const GEMINI = {x:84, y:116};
 const HEAD = [
 "..HHHHHH..",
 ".HHHHHHHH.",
@@ -265,6 +265,27 @@ function drawPerson(c,id,x,y,frame,working){
   if(id==="manager"){R(c,x+4,y+8,2,1,PAL.red);R(c,x+4,y+9,2,2,"#b8403a");R(c,x+2,y+7,1,1,PAL.white);R(c,x+7,y+7,1,1,PAL.white);}
   if(id==="analyst"){R(c,x+1,y+7,1,4,"#256f68");R(c,x+8,y+7,1,4,"#256f68");}
 }
+function drawCoffee(c,x,y,col,frame){            // 桌上的咖啡，會冒熱氣
+  R(c,x,y,3,3,col); R(c,x+3,y+1,1,1,col); R(c,x,y,3,1,"#5a3a22");
+  const s=frame%6; if(s<4){ R(c,x+1,y-1-(s>>1),1,1,"rgba(236,230,216,.55)"); if(s%2) R(c,x+2,y-3,1,1,"rgba(236,230,216,.35)"); }
+}
+function drawPlant(c,x,yb,kind,frame){            // yb＝花盆底部
+  const sway=(frame>>3)%2;
+  if(kind==="big"){
+    R(c,x,yb-9,12,9,PAL.pot); R(c,x-1,yb-11,14,2,"#c97a5a"); R(c,x+1,yb-2,10,2,"#8a4a36");
+    R(c,x+4,yb-24,2,13,PAL.plant2);
+    R(c,x-2+sway,yb-20,7,4,PAL.plant); R(c,x+7-sway,yb-23,7,4,PAL.plant); R(c,x+1,yb-29,8,5,PAL.plant2);
+    R(c,x-1,yb-15,5,3,PAL.plant2); R(c,x+8,yb-17,5,3,PAL.plant); R(c,x+3+sway,yb-32,4,3,PAL.plant);
+  } else if(kind==="small"){
+    R(c,x,yb-5,7,5,PAL.pot); R(c,x-1,yb-6,9,1,"#c97a5a");
+    R(c,x+1,yb-10,2,4,PAL.plant); R(c,x+4,yb-11,2,5,PAL.plant2); R(c,x-1+sway,yb-9,2,2,PAL.plant); R(c,x+6-sway,yb-10,2,2,PAL.plant);
+  } else if(kind==="hang"){
+    R(c,x+3,0,1,5,"#2a2238"); R(c,x,5,7,4,"#e9e2cf"); R(c,x,5,7,1,"#c9c2b0");
+    R(c,x-1,8,2,6+sway,PAL.plant); R(c,x+6,8,2,8-sway,PAL.plant2); R(c,x+2,9,3,3,PAL.plant); R(c,x+3,12,1,5,PAL.plant2);
+  } else if(kind==="cactus"){
+    R(c,x,yb-4,5,4,"#d9c7a0"); R(c,x+1,yb-11,3,7,"#5f9e6a"); R(c,x-1,yb-9,2,3,"#5f9e6a"); R(c,x+4,yb-8,2,2,"#5f9e6a"); R(c,x+2,yb-12,1,1,"#e58fb0");
+  }
+}
 function drawDesk(c,x,y){
   R(c,x-2,y+10,32,3,PAL.deskTop); R(c,x-2,y+13,32,9,PAL.deskFront);
   R(c,x-2,y+13,32,1,PAL.deskDark); R(c,x+1,y+15,10,5,PAL.deskDark); R(c,x+2,y+16,8,1,PAL.deskTop);
@@ -284,6 +305,7 @@ function drawMonitor(c,x,y,kind,frame,working){
   if(kind==="wave"){for(let i=0;i<sw;i++){const h=1+((i*7+frame*3)%5);R(c,sx+i,sy+3-(h>>1),1,h,"#a97bd6");}}
   if(kind==="chart"){const hs=[2,4,3,5];hs.forEach((h,i)=>{const hh=Math.min(5,h+((frame+i)%2));R(c,sx+1+i*2,sy+sh-hh,1,hh,"#3fb6a8");});}
   if(kind==="idea"){const on=frame%4<3;R(c,sx+3,sy,3,3,on?PAL.gold:"#7a6a3a");R(c,sx+2,sy+1,5,1,on?PAL.gold:"#7a6a3a");R(c,sx+4,sy+3,1,1,PAL.grey);R(c,sx+3,sy+4,3,1,PAL.grey);if(on){R(c,sx,sy+1,1,1,PAL.lit2);R(c,sx+8,sy+1,1,1,PAL.lit2);}}
+  if(kind==="eye"){const s2=working?(frame%4):1;const cx=sx+4,cy=sy+3;R(c,cx,cy-1-(s2%2),1,3+2*(s2%2),PAL.cyan);R(c,cx-1-(s2%2),cy,3+2*(s2%2),1,PAL.cyan);}
   if(kind==="chat"){R(c,sx,sy,sw,sh,"#2a2234");R(c,sx+1,sy+1,5,2,"#d97757");R(c,sx+3,sy+4,5,1,PAL.grey);if(frame%4<2)R(c,sx+1,sy+4,1,1,PAL.white);}
   if(kind==="code"){const cols=["#6cc070","#5aa9e6","#e0823d","#c792ea"];for(let i=0;i<3;i++){const ind=(i%2)*2;R(c,sx+1+ind,sy+1+i*2,2+((frame+i)%4),1,cols[(i+frame)%4]);}if(frame%2)R(c,sx+7,sy+5,1,1,PAL.white);}
   if(kind==="text"){R(c,sx,sy,sw,sh,"#ece6d8");for(let i=0;i<3;i++)R(c,sx+1,sy+1+i*2,7,1,"#777");R(c,sx+2+(frame%4),sy+1+((frame>>1)%3)*2,3,1,"#e5534b");}
@@ -294,16 +316,36 @@ function drawBubble(c,x,y,frame,kind){
   else if(kind==="doc"){R(c,x+3,y+1,5,5,"#c9c2dc");R(c,x+4,y+2,3,1,"#5a5078");R(c,x+4,y+4,3,1,"#5a5078");}
   else {R(c,x+5,y+1,1,4,PAL.red);R(c,x+5,y+5,1,1,PAL.red);}
 }
+const ROBOT = [
+"....AA....",
+"..MMMMMM..",
+".MMMMMMMM.",
+".MVVVVVVM.",
+".MMMMMMMM.",
+"..MDDDDM..",
+"...MMMM...",
+".BBBBBBBB.",
+"BBBBCCBBBB",
+"BBBBCCBBBB",
+"BBBBBBBBBB",
+"BBBBBBBBBB"];
+function drawRobot(c,x,y,frame,working){        // Gemini：人形機器人
+  const bob=(working&&frame%2)?1:0, eye=working?PAL.cyan:"#3d5a77";
+  const map={A:(working&&frame%4<2)?PAL.red:"#7a7390",M:"#b9bfcc",V:"#141826",D:"#7d8596",B:"#8e95a6",C:eye};
+  ROBOT.forEach((row,ry)=>{[...row].forEach((ch,rx)=>{ if(ch!==".") R(c,x+rx,y+ry+(ry<7?bob:0),1,1,map[ch]); });});
+  const sc=working?(frame%6):0; R(c,x+2+(sc>3?6-sc:sc),y+3+bob,2,1,eye); R(c,x+6-(sc>3?6-sc:sc),y+3+bob,1,1,eye);   // 掃描的眼睛
+  R(c,x,y+5+bob,1,2,"#7d8596"); R(c,x+9,y+5+bob,1,2,"#7d8596");                                                    // 耳朵
+}
 function drawGemini(c,frame,working){
   const {x,y}=GEMINI;
+  drawRobot(c,x+3,y,frame,working);
   R(c,x-2,y+10,32,3,PAL.deskTop); R(c,x-2,y+13,32,9,PAL.deskFront); R(c,x-2,y+13,32,1,PAL.deskDark);
-  R(c,x+4,y-2,20,13,"#2c2944"); R(c,x+5,y-1,18,11,"#0d1020");
-  const s = working?(frame%4):1; const cx=x+14, cy=y+4; const col = working?PAL.cyan:"#3d5a77";
-  R(c,cx,cy-2-s%2,1,5+2*(s%2),col); R(c,cx-2-s%2,cy,5+2*(s%2),1,col); R(c,cx-1,cy-1,3,3,col);
-  for(let i=0;i<4;i++) R(c,x+6+i*4,y+12,2,1,(working&&(frame+i)%2)?PAL.green:"#304030");
+  const o=working?(frame%2):0; R(c,x+4+o,y+10,2,1,"#b9bfcc"); R(c,x+10-o,y+10,2,1,"#b9bfcc");                      // 金屬手
+  drawMonitor(c,x,y,"eye",frame,working);
+  drawPlant(c,x-1,y+10,"cactus",frame);
 }
 /* 每位成員桌前的站位（腳的位置）。main＝左側門口，owner＝牆上的待決信箱下方 */
-const SPOT={reviewer:[28,82],gemini:[88,82],biz:[148,82],engineer:[208,82],editor:[48,114],sound:[118,114],analyst:[188,114],manager:[74,136],main:[180,136],owner:[222,82]};
+const SPOT={manager:[98,82],main:[158,82],editor:[48,114],sound:[118,114],analyst:[188,114],reviewer:[60,136],gemini:[120,136],engineer:[180,136],biz:[240,136],owner:[222,82]};
 const AISLE=68;   // 三排桌子之間共同的空隙
 function along(pts,f){
   const seg=[];let tot=0; for(let i=1;i<pts.length;i++){const l=Math.abs(pts[i][0]-pts[i-1][0])+Math.abs(pts[i][1]-pts[i-1][1]);seg.push(l);tot+=l;}
@@ -361,6 +403,9 @@ function drawRoom(c,frame,pending){
   R(c,206,12,34,26,"#6b4a2d"); R(c,208,14,30,22,"#8a6038"); R(c,210,16,26,10,"#2a1e14");
   const n=Math.min(99,pending||0); const ns=String(n); text3x5(c,ns,223-ns.length*2,19,n?PAL.gold:"#5a4a3a");
   R(c,212,29,22,2,PAL.gold); if(n&&frame%2) R(c,236,12,3,3,PAL.red);
+  drawPlant(c,101,0,"hang",frame); drawPlant(c,195,0,"hang",frame); drawPlant(c,150,0,"hang",frame);
+  drawPlant(c,40,80,"big",frame); drawPlant(c,196,80,"big",frame);
+  drawPlant(c,4,142,"small",frame); drawPlant(c,242,142,"small",frame); drawPlant(c,4,90,"small",frame);
   R(c,236,74,12,12,PAL.pot); R(c,238,86,8,2,"#8a4a36"); R(c,233,60,6,8,PAL.plant); R(c,241,56,7,10,PAL.plant2); R(c,237,52,5,10,PAL.plant);
 }
 
@@ -387,14 +432,14 @@ function render(t){
       if(selected===id) R(ctx,SPOT[id][0]-7,SPOT[id][1]+1,14,1,PAL.gold);
       return; }
     if(!away) drawPerson(ctx,id,p.x+3,p.y,frame,w);
-    drawDesk(ctx,p.x,p.y); if(!away) drawHands(ctx,p.x+3,p.y,frame,w); drawMonitor(ctx,p.x,p.y,p.screen,frame,w&&!away);
+    drawDesk(ctx,p.x,p.y); if(p.coffee) drawCoffee(ctx,p.x-1,p.y+7,p.coffee,frame); if(!away) drawHands(ctx,p.x+3,p.y,frame,w); drawMonitor(ctx,p.x,p.y,p.screen,frame,w&&!away);
     if(id==="reviewer") {R(ctx,p.x+24,p.y+11,4,1,PAL.red);}
     if(!away){ if(wk&&wk.phase==="talk"&&wk.other===id&&(frame>>2)%2) drawBubble(ctx,p.x+12,p.y-10,frame,"dots");
       else if(w) drawBubble(ctx,p.x+12,p.y-10,frame,"dots"); else if(recent(id)&&!wk) drawBubble(ctx,p.x+12,p.y-10,frame,"bang"); }
     if(selected===id){R(ctx,p.x-3,p.y+23,34,1,PAL.gold);}
   });
   const gw=memberState("gemini")==="working"; drawGemini(ctx,frame,gw);
-  if(gw) drawBubble(ctx,GEMINI.x+27,GEMINI.y-3,frame,"dots"); else if(recent("gemini")) drawBubble(ctx,GEMINI.x+27,GEMINI.y-3,frame,"bang");
+  if(gw) drawBubble(ctx,GEMINI.x+12,GEMINI.y-10,frame,"dots"); else if(recent("gemini")) drawBubble(ctx,GEMINI.x+12,GEMINI.y-10,frame,"bang");
   if(selected==="gemini") R(ctx,GEMINI.x-3,GEMINI.y+23,34,1,PAL.gold);
   R(ctx,4,96,14,22,"#2a2238"); R(ctx,5,97,12,21,"#5a4632"); R(ctx,14,107,2,2,PAL.gold);   // 左側門口（Claude 助理所在）
   fctx.clearRect(0,0,256,144);
@@ -425,7 +470,7 @@ function avatar(id){
   const c=document.createElement("canvas"); c.width=16; c.height=16; const g=c.getContext("2d");
   g.fillStyle="#2a2640"; g.fillRect(0,0,16,16);
   if(PEOPLE[id]&&id!=="main") drawPerson(g,id,3,3,0,false);
-  else if(id==="gemini"){R(g,7,3,2,10,PAL.cyan);R(g,3,7,10,2,PAL.cyan);R(g,6,6,4,4,PAL.cyan);}
+  else if(id==="gemini"){drawRobot(g,3,3,0,true);}
   else if(id==="main"){R(g,2,3,12,8,"#e0823d");R(g,4,11,3,2,"#e0823d");R(g,4,6,2,2,PAL.white);R(g,7,6,2,2,PAL.white);R(g,10,6,2,2,PAL.white);}
   else {R(g,4,3,8,3,PAL.gold);R(g,4,6,8,6,PAL.skin);R(g,6,8,1,1,PAL.eye);R(g,9,8,1,1,PAL.eye);R(g,3,12,10,4,"#e0823d");}
   AV[id]=c.toDataURL(); return AV[id];

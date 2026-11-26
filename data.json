@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27 01:16",
+ "generated": "2026-11-27 01:18",
  "members": [
   {
    "id": "manager",
@@ -3991,7 +3991,7 @@
  "spend": {
   "gemini_month_usd": 2.2252,
   "gemini_total_usd": 2.2252,
-  "gemini_runs": 227,
+  "gemini_runs": 229,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -4045,6 +4045,20 @@
    "audio": 0.1704
   },
   "recent": [
+   {
+    "time": "2026-11-27 01:18",
+    "mode": "audio",
+    "source": "fs117578.ogg",
+    "seconds": "654.0",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-27 01:16",
+    "mode": "audio",
+    "source": "fs190941.ogg",
+    "seconds": "1080.0",
+    "usd": 0.0
+   },
    {
     "time": "2026-11-27 01:15",
     "mode": "audio",
@@ -4135,20 +4149,6 @@
     "source": "ig_reels_9x16_v3.mp4",
     "seconds": "22.1",
     "usd": 0.0334
-   },
-   {
-    "time": "2026-11-22 20:48",
-    "mode": "output",
-    "source": "ig_reels_9x16_v2_sound.mp4",
-    "seconds": "23.8",
-    "usd": 0.0298
-   },
-   {
-    "time": "2026-11-22 09:34",
-    "mode": "footage",
-    "source": "video-8515_singular_display.MOV",
-    "seconds": "9.7",
-    "usd": 0.0085
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
