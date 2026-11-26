@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26 19:58",
+ "generated": "2026-11-26 23:45",
  "members": [
   {
    "id": "manager",
@@ -75,15 +75,24 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 73,
+   "count": 74,
    "project": null,
    "last": {
-    "time": "2026-11-26 14:54",
-    "summary": "今泊清晨 1 小時動態版做好，請S老闆在電腦前拖檔上傳"
+    "time": "2026-11-26 23:45",
+    "summary": "濟井出的雨 1 小時影片做好（390 MB），請S老闆拖檔上傳"
    }
   }
  ],
  "pending": [
+  {
+   "id": "20261126234519-2b22",
+   "time": "2026-11-26 23:45",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-26_沖繩_白噪音濟井出的雨1小時",
+   "summary": "濟井出的雨 1 小時影片做好（390 MB），請S老闆拖檔上傳"
+  },
   {
    "id": "20261124091300-342b",
    "time": "2026-11-24 09:13",
@@ -382,6 +391,15 @@
   }
  ],
  "events": [
+  {
+   "id": "20261126234519-2b22",
+   "time": "2026-11-26 23:45",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-26_沖繩_白噪音濟井出的雨1小時",
+   "summary": "濟井出的雨 1 小時影片做好（390 MB），請S老闆拖檔上傳"
+  },
   {
    "id": "20261126195801-5b2e",
    "time": "2026-11-26 19:58",
@@ -2451,14 +2469,6 @@
    "by": "sound",
    "project": "2026-11-18_墨爾本_往右轉",
    "summary": "乾淨環境音替換、雨聲漸弱、原創配樂"
-  },
-  {
-   "id": "20261118074537-cf87",
-   "time": "2026-11-18 07:45",
-   "type": "start",
-   "by": "editor",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "依分鏡粗剪並對齊轉速（含 24fps 補格兩版）"
   }
  ],
  "projects": [
@@ -2672,6 +2682,69 @@
       "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2_540.mp4",
       "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
      ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-26_沖繩_白噪音濟井出的雨1小時",
+   "status": "製作中",
+   "current": "影片做好，等S老闆拖檔上傳",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-26 23:44",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "todo"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 4,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261126234519-2b22",
+     "time": "2026-11-26 23:45",
+     "type": "request",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-26_沖繩_白噪音濟井出的雨1小時",
+     "summary": "濟井出的雨 1 小時影片做好（390 MB），請S老闆拖檔上傳"
     }
    ]
   },
@@ -3790,7 +3863,7 @@
  "spend": {
   "gemini_month_usd": 2.2252,
   "gemini_total_usd": 2.2252,
-  "gemini_runs": 219,
+  "gemini_runs": 224,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -3827,6 +3900,10 @@
    {
     "day": "2026-11-25",
     "usd": 0.027
+   },
+   {
+    "day": "2026-11-26",
+    "usd": 0.0
    }
   ],
   "by_mode": {
@@ -3836,6 +3913,41 @@
    "audio": 0.1704
   },
   "recent": [
+   {
+    "time": "2026-11-26 22:39",
+    "mode": "audio",
+    "source": "fs422097.ogg",
+    "seconds": "600.7",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-26 22:37",
+    "mode": "audio",
+    "source": "fs640648.ogg",
+    "seconds": "272.5",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-26 22:36",
+    "mode": "audio",
+    "source": "fs422052.ogg",
+    "seconds": "500.8",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-26 22:35",
+    "mode": "audio",
+    "source": "fs614204.ogg",
+    "seconds": "287.7",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-26 22:33",
+    "mode": "audio",
+    "source": "fs214993.ogg",
+    "seconds": "301.7",
+    "usd": 0.0
+   },
    {
     "time": "2026-11-25 12:28",
     "mode": "audio",
@@ -3905,41 +4017,6 @@
     "source": "video-8491_singular_display.MOV",
     "seconds": "4.7",
     "usd": 0.0051
-   },
-   {
-    "time": "2026-11-22 09:31",
-    "mode": "footage",
-    "source": "video-8486_singular_display.MOV",
-    "seconds": "6.3",
-    "usd": 0.007
-   },
-   {
-    "time": "2026-11-22 09:30",
-    "mode": "footage",
-    "source": "video-8481_singular_display.MOV",
-    "seconds": "3.5",
-    "usd": 0.0035
-   },
-   {
-    "time": "2026-11-22 09:30",
-    "mode": "footage",
-    "source": "video-8475_singular_display.MOV",
-    "seconds": "1.8",
-    "usd": 0.0069
-   },
-   {
-    "time": "2026-11-22 09:29",
-    "mode": "footage",
-    "source": "video-8470_singular_display.MOV",
-    "seconds": "1.4",
-    "usd": 0.0053
-   },
-   {
-    "time": "2026-11-22 09:29",
-    "mode": "footage",
-    "source": "video-8433_singular_display.MOV",
-    "seconds": "39.7",
-    "usd": 0.0112
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
