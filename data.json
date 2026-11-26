@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27 00:18",
+ "generated": "2026-11-27 00:51",
  "members": [
   {
    "id": "manager",
@@ -80,6 +80,53 @@
    "last": {
     "time": "2026-11-27 00:18",
     "summary": "拍攝清單同一份，含鴨的 9 顆主線和 8 顆備用"
+   }
+  },
+  {
+   "id": "biz",
+   "name": "商業分析",
+   "role": "其他部門：想點子・預估與追蹤效益",
+   "state": "idle",
+   "count": 10,
+   "count_label": "份提案",
+   "project": null,
+   "units": null,
+   "dept": true,
+   "last": {
+    "time": "2026-11-26 18:17",
+    "summary": "最近在整理效益追蹤（目前共 10 份提案）"
+   }
+  },
+  {
+   "id": "engineer",
+   "name": "工程師",
+   "role": "其他部門：APP 開發團隊",
+   "state": "working",
+   "count": 4,
+   "count_label": "個單位",
+   "project": null,
+   "units": [
+    {
+     "name": "跑步錶面部",
+     "time": "2026-11-26 23:48"
+    },
+    {
+     "name": "記帳 APP",
+     "time": "2026-11-26 18:17"
+    },
+    {
+     "name": "讀書 App 部",
+     "time": "2026-11-26 01:35"
+    },
+    {
+     "name": "股票資料部",
+     "time": "2026-11-26 01:21"
+    }
+   ],
+   "dept": true,
+   "last": {
+    "time": "2026-11-26 23:48",
+    "summary": "最近在做：跑步錶面部"
    }
   }
  ],

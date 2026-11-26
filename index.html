@@ -210,7 +210,7 @@ footer{color:var(--dim);font-size:12px;text-align:center;margin:24px 0 8px}
 (function(){
 "use strict";
 const TWD = 32; // 約略匯率，只用於顯示
-const NAMES = {owner:"你", main:"Claude 助理", manager:"小主管", editor:"剪輯師", sound:"音控師", analyst:"數據分析師", reviewer:"審稿員", gemini:"Gemini"};
+const NAMES = {owner:"你", main:"Claude 助理", manager:"小主管", editor:"剪輯師", sound:"音控師", analyst:"數據分析師", reviewer:"審稿員", gemini:"Gemini", biz:"商業分析", engineer:"工程師"};
 const TYPE_LABEL = {start:"開始", handoff:"交棒", report:"報告", decision:"待決定", request:"待處理", resolve:"已決定", approval:"核准", note:"紀錄"};
 
 /* ---------------- pixel art ---------------- */
@@ -226,7 +226,9 @@ const PEOPLE = {
   editor:  {hair:"#2a2230", shirt:"#3f8a55", x:74,  y:54, screen:"film", hat:"#e0823d"},
   sound:   {hair:"#15121c", shirt:"#7a4fa8", x:134, y:54, screen:"wave", phones:true},
   analyst: {hair:"#c9a052", shirt:"#2f8f86", x:194, y:54, screen:"chart"},
-  reviewer:{hair:"#8a8598", shirt:"#8a3046", x:44,  y:88, screen:"text", glasses:true}
+  reviewer:{hair:"#8a8598", shirt:"#8a3046", x:44,  y:88, screen:"text", glasses:true},
+  biz:     {hair:"#6b3f2a", shirt:"#c08a3e", x:154, y:88, screen:"idea"},
+  engineer:{hair:"#1f1f2e", shirt:"#3d4a63", x:204, y:88, screen:"code", beanie:"#4a7fc1"}
 };
 const GEMINI = {x:104, y:88};
 const HEAD = [
@@ -255,6 +257,9 @@ function drawPerson(c,id,x,y,frame,working){
   if(p.hat){R(c,x+1,yy-1,8,2,p.hat);R(c,x+1,yy+1,8,1,p.hat);R(c,x+4,yy-2,2,1,PAL.white);}
   if(p.phones){R(c,x+2,yy-1,6,1,PAL.K);R(c,x+1,yy,1,1,PAL.K);R(c,x+8,yy,1,1,PAL.K);R(c,x,yy+2,2,3,PAL.K);R(c,x+8,yy+2,2,3,PAL.K);R(c,x,yy+3,1,1,PAL.red);R(c,x+9,yy+3,1,1,PAL.red);}
   if(p.glasses){R(c,x+2,yy+3,3,1,PAL.K);R(c,x+5,yy+3,3,1,PAL.K);R(c,x+3,yy+3,1,1,PAL.white);R(c,x+6,yy+3,1,1,PAL.white);}
+  if(p.beanie){R(c,x+1,yy-1,8,3,p.beanie);R(c,x+1,yy+1,8,1,"#35609a");R(c,x+4,yy-2,2,1,PAL.white);}
+  if(id==="biz"){R(c,x+3,y+7,4,1,PAL.white);R(c,x+4,y+8,2,3,"#8a5f22");}
+  if(id==="engineer"){R(c,x+3,y+8,1,2,PAL.grey);R(c,x+6,y+8,1,2,PAL.grey);}
   if(id==="manager"){R(c,x+4,y+8,2,1,PAL.red);R(c,x+4,y+9,2,2,"#b8403a");R(c,x+2,y+7,1,1,PAL.white);R(c,x+7,y+7,1,1,PAL.white);}
   if(id==="analyst"){R(c,x+1,y+7,1,4,"#256f68");R(c,x+8,y+7,1,4,"#256f68");}
 }
@@ -276,6 +281,8 @@ function drawMonitor(c,x,y,kind,frame,working){
   if(kind==="film"){const cols=["#e5534b","#f2c14e","#5aa9e6","#6cc070"];for(let i=0;i<3;i++)R(c,sx+i*3,sy+1,2,4,cols[(i+frame)%4]);R(c,sx,sy,sw,1,"#000");R(c,sx,sy+5,sw,1,"#000");}
   if(kind==="wave"){for(let i=0;i<sw;i++){const h=1+((i*7+frame*3)%5);R(c,sx+i,sy+3-(h>>1),1,h,"#a97bd6");}}
   if(kind==="chart"){const hs=[2,4,3,5];hs.forEach((h,i)=>{const hh=Math.min(5,h+((frame+i)%2));R(c,sx+1+i*2,sy+sh-hh,1,hh,"#3fb6a8");});}
+  if(kind==="idea"){const on=frame%4<3;R(c,sx+3,sy,3,3,on?PAL.gold:"#7a6a3a");R(c,sx+2,sy+1,5,1,on?PAL.gold:"#7a6a3a");R(c,sx+4,sy+3,1,1,PAL.grey);R(c,sx+3,sy+4,3,1,PAL.grey);if(on){R(c,sx,sy+1,1,1,PAL.lit2);R(c,sx+8,sy+1,1,1,PAL.lit2);}}
+  if(kind==="code"){const cols=["#6cc070","#5aa9e6","#e0823d","#c792ea"];for(let i=0;i<3;i++){const ind=(i%2)*2;R(c,sx+1+ind,sy+1+i*2,2+((frame+i)%4),1,cols[(i+frame)%4]);}if(frame%2)R(c,sx+7,sy+5,1,1,PAL.white);}
   if(kind==="text"){R(c,sx,sy,sw,sh,"#ece6d8");for(let i=0;i<3;i++)R(c,sx+1,sy+1+i*2,7,1,"#777");R(c,sx+2+(frame%4),sy+1+((frame>>1)%3)*2,3,1,"#e5534b");}
 }
 function drawBubble(c,x,y,frame,kind){
@@ -293,7 +300,7 @@ function drawGemini(c,frame,working){
   for(let i=0;i<4;i++) R(c,x+6+i*4,y+12,2,1,(working&&(frame+i)%2)?PAL.green:"#304030");
 }
 /* 每位成員桌前的站位（腳的位置）。main＝左側門口，owner＝牆上的待決信箱下方 */
-const SPOT={manager:[28,82],editor:[88,82],sound:[148,82],analyst:[196,82],reviewer:[58,117],gemini:[118,117],main:[14,117],owner:[222,82]};
+const SPOT={manager:[28,82],editor:[88,82],sound:[148,82],analyst:[196,82],reviewer:[58,117],gemini:[118,117],biz:[168,117],engineer:[218,117],main:[14,117],owner:[222,82]};
 const AISLE=92;
 function along(pts,f){
   const seg=[];let tot=0; for(let i=1;i<pts.length;i++){const l=Math.abs(pts[i][0]-pts[i-1][0])+Math.abs(pts[i][1]-pts[i-1][1]);seg.push(l);tot+=l;}
@@ -353,8 +360,6 @@ function drawRoom(c,frame,pending){
   const n=Math.min(99,pending||0); const ns=String(n); text3x5(c,ns,223-ns.length*2,19,n?PAL.gold:"#5a4a3a");
   R(c,212,29,22,2,PAL.gold); if(n&&frame%2) R(c,236,12,3,3,PAL.red);
   R(c,236,74,12,12,PAL.pot); R(c,238,86,8,2,"#8a4a36"); R(c,233,60,6,8,PAL.plant); R(c,241,56,7,10,PAL.plant2); R(c,237,52,5,10,PAL.plant);
-  R(c,176,84,14,26,"#c9d6e6"); R(c,178,78,10,8,"#7fb6e6"); R(c,179,79,8,3,"#a9d4f5"); R(c,180,94,6,4,"#5a6a86");
-  R(c,200,86,30,24,"#3a3350"); R(c,202,88,26,3,"#5a5078"); R(c,202,94,26,3,"#5a5078"); R(c,202,100,26,3,"#5a5078");
 }
 
 const cv=document.getElementById("cv"), ctx=cv.getContext("2d");
@@ -434,12 +439,14 @@ function renderCard(){
   renderTabs();
   const id=selected, m=DATA&&DATA.members.find(x=>x.id===id);
   if(!m){$("card").innerHTML='<div class="empty">選一位成員，看他最近在做什麼。</div>';return;}
-  const evs=DATA.events.filter(e=>e.by===id||e.to===id).slice(0,4);
+  const evs=m.dept?[]:DATA.events.filter(e=>e.by===id||e.to===id).slice(0,4);
   $("card").innerHTML=`<div class="who"><img alt="" src="${avatar(id)}"><div><div class="nm">${esc(m.name)}</div><div class="rl">${esc(m.role)}</div></div></div>
-   <div style="margin-bottom:10px"><span class="pill ${m.state}">${m.state==="working"?"工作中":"待命"}</span><span class="pill">${m.count} 筆紀錄</span></div>
+   <div style="margin-bottom:10px"><span class="pill ${m.state}">${m.state==="working"?"工作中":"待命"}</span><span class="pill">${m.count} ${esc(m.count_label||"筆紀錄")}</span></div>
+   ${m.dept?`<div class="hint" style="margin-bottom:8px">其他部門，不寫交棒紀錄；這裡看的是資料夾最後修改的時間，3 小時內有動就算工作中。</div>`:""}
    ${m.last?`<div class="item" style="border-color:var(--gold)"><div class="t">最近在做・${esc(m.last.time)}</div><div class="s">${esc(m.last.summary)}</div></div>`:""}
+   ${m.units&&m.units.length?`<div class="hint" style="margin:8px 0 6px">底下的單位</div>`+m.units.map(u=>`<div class="item"><div class="t">${esc(u.time)}</div><div class="s">${esc(u.name)}</div></div>`).join(""):""}
    ${m.project?`<div class="item" style="border-color:var(--green)"><div class="t">正在做</div><div class="s">${esc(m.project)}</div></div>`:""}
-   ${evs.length?`<div class="hint" style="margin:8px 0 6px">和其他人的往來</div>`+evs.map(e=>`<div class="item ${e.type}"><div class="t">${esc(e.time)}・${TYPE_LABEL[e.type]||e.type}・${e.by===id?(e.to?"交給 "+esc(NAMES[e.to]||e.to):"自己"):"來自 "+esc(NAMES[e.by]||e.by)}</div><div class="s">${esc(e.summary)}</div>${files(e.files)}</div>`).join(""):'<div class="empty">還沒有紀錄。</div>'}`;
+   ${m.dept?"":evs.length?`<div class="hint" style="margin:8px 0 6px">和其他人的往來</div>`+evs.map(e=>`<div class="item ${e.type}"><div class="t">${esc(e.time)}・${TYPE_LABEL[e.type]||e.type}・${e.by===id?(e.to?"交給 "+esc(NAMES[e.to]||e.to):"自己"):"來自 "+esc(NAMES[e.by]||e.by)}</div><div class="s">${esc(e.summary)}</div>${files(e.files)}</div>`).join(""):'<div class="empty">還沒有紀錄。</div>'}`;
 }
 
 function renderAll(){
