@@ -216,8 +216,8 @@ const TYPE_LABEL = {start:"開始", handoff:"交棒", report:"報告", decision:
 
 /* ---------------- pixel art ---------------- */
 const PAL = {
-  wall:"#3b3357", wall2:"#332c4c", trim:"#5b4e7e", floorA:"#4a3f35", floorB:"#433930", rug:"#5c2f3f", rug2:"#6e3a4c",
-  win:"#0f1a33", winFrame:"#1d1a2b", sky1:"#1b2547", bld:"#0b1022", lit:"#f2c14e", lit2:"#ffe8a3",
+  wall:"#ece5d6", wall2:"#e2d9c6", trim:"#b98e5f", floorA:"#d8b98c", floorB:"#cfae7f",   // Japandi：米白牆、淺橡木地板 rug:"#5c2f3f", rug2:"#6e3a4c",
+  win:"#0f1a33", winFrame:"#a77c4f", sky1:"#1b2547", bld:"#0b1022", lit:"#f2c14e", lit2:"#ffe8a3",
   deskTop:"#b07a4a", deskFront:"#7d5333", deskDark:"#5a3b25", mon:"#1a1826", stand:"#2e2a3f",
   skin:"#f1c39b", skin2:"#d9a57c", eye:"#2a1e1a", mouth:"#b5564e", K:"#1a1826", plant:"#4f9a52", plant2:"#357a3c", pot:"#b5654a",
   white:"#ece6d8", grey:"#a7a3b8", cyan:"#68e0e6", red:"#e5534b", gold:"#f2c14e"
@@ -385,9 +385,14 @@ function walkerFor(rel,t){
   return {id,other,x,y,dir,phase,carry:phase==="go"&&id===rel.by};
 }
 function drawRoom(c,frame,pending){
-  R(c,0,0,256,50,PAL.wall); for(let x=0;x<256;x+=16) R(c,x,0,1,50,PAL.wall2);
-  R(c,0,48,256,3,PAL.trim);
-  for(let y=51;y<144;y+=8) for(let x=0;x<256;x+=8) R(c,x,y,8,8,((x+y)/8)%2?PAL.floorA:PAL.floorB);
+  R(c,0,0,256,50,PAL.wall); R(c,0,0,256,2,PAL.wall2);
+  R(c,0,38,256,10,"#c9a476"); for(let x=0;x<256;x+=4) R(c,x,38,1,10,"#b38c5f");        // 下半截木條護牆板
+  R(c,0,37,256,1,"#a77c4f"); R(c,0,48,256,3,PAL.trim);
+  for(let y=51,r=0;y<144;y+=6,r++){                                                     // 長條木地板，接縫錯開
+    R(c,0,y,256,6,r%2?PAL.floorA:PAL.floorB); R(c,0,y+5,256,1,"#c09d70");
+    for(let x=(r*23)%40;x<256;x+=40) R(c,x,y,1,5,"#c09d70");
+    for(let x=(r*37)%61+7;x<256;x+=61) R(c,x,y+2,3,1,"#e2c69c");                        // 木紋
+  }
   [[10,8],[58,8]].forEach(([wx,wy])=>{
     R(c,wx-2,wy-2,44,32,PAL.winFrame); R(c,wx,wy,40,28,PAL.sky1);
     const blds=[[0,14,7],[7,8,6],[13,18,8],[21,10,5],[26,4,8],[34,12,6]];
@@ -399,7 +404,7 @@ function drawRoom(c,frame,pending){
   const d=new Date(); const hh=String(d.getHours()).padStart(2,"0"), mm=String(d.getMinutes()).padStart(2,"0");
   text3x5(c,hh,118,13,PAL.red); text3x5(c,mm,128,13,PAL.red);
   const colon=(frame%4<2)?PAL.red:"#3a1414"; R(c,126,14,1,1,colon); R(c,126,16,1,1,colon);
-  R(c,160,6,28,30,"#e9e2cf"); R(c,162,8,24,4,PAL.red); for(let i=0;i<4;i++) R(c,163,15+i*4,18-(i%2)*6,1,"#7a7390"); R(c,183,30,3,3,PAL.gold);
+  R(c,159,5,30,32,"#a77c4f"); R(c,160,6,28,30,"#f7f3ea"); R(c,162,8,24,4,PAL.red); for(let i=0;i<4;i++) R(c,163,15+i*4,18-(i%2)*6,1,"#7a7390"); R(c,183,30,3,3,PAL.gold);
   R(c,206,12,34,26,"#6b4a2d"); R(c,208,14,30,22,"#8a6038"); R(c,210,16,26,10,"#2a1e14");
   const n=Math.min(99,pending||0); const ns=String(n); text3x5(c,ns,223-ns.length*2,19,n?PAL.gold:"#5a4a3a");
   R(c,212,29,22,2,PAL.gold); if(n&&frame%2) R(c,236,12,3,3,PAL.red);
