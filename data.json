@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27 09:46",
+ "generated": "2026-11-27 09:57",
  "members": [
   {
    "id": "manager",
@@ -108,7 +108,7 @@
    "units": [
     {
      "name": "跑步錶面部",
-     "time": "2026-11-27 09:42"
+     "time": "2026-11-27 09:57"
     },
     {
      "name": "記帳 APP",
@@ -125,7 +125,7 @@
    ],
    "dept": true,
    "last": {
-    "time": "2026-11-27 09:42",
+    "time": "2026-11-27 09:57",
     "summary": "最近在做：跑步錶面部"
    }
   }
@@ -447,6 +447,14 @@
   }
  ],
  "events": [
+  {
+   "id": "20261127095745-fe5b",
+   "time": "2026-11-27 09:57",
+   "type": "approval",
+   "by": "owner",
+   "project": "2026-11-27_墨爾本_白噪音咖啡廳1小時",
+   "summary": "S老闆說發布，咖啡廳 1 小時設為公開"
+  },
   {
    "id": "20261127094654-cc86",
    "time": "2026-11-27 09:46",
@@ -2490,20 +2498,6 @@
     "A 現在做＋模糊＋不放慢",
     "B 等補拍再做"
    ]
-  },
-  {
-   "id": "20261118123828-68d4",
-   "time": "2026-11-18 12:38",
-   "type": "handoff",
-   "by": "manager",
-   "to": "owner",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "v2 分鏡：5 顆原地轉頭、15.4 秒，晴天轉到下雨，最後一刀白柱接橋柱；擋格不夠大，其他刀靠轉速接",
-   "files": [
-    "03_output/2026-11-18_墨爾本_往右轉/script.md",
-    "02_plans/提案_往右轉_v2_2026-11-18.md",
-    "_frames/03_output/2026-11-18_墨爾本_往右轉/board_v2/board_v2.jpg"
-   ]
   }
  ],
  "projects": [
@@ -2717,78 +2711,6 @@
       "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2_540.mp4",
       "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
      ]
-    }
-   ]
-  },
-  {
-   "name": "2026-11-27_墨爾本_白噪音咖啡廳1小時",
-   "status": "製作中",
-   "current": "已私人上傳，等S老闆試聽／決定發佈",
-   "owner": "owner",
-   "kind": "YouTube 長版",
-   "platforms": [
-    "YouTube"
-   ],
-   "updated": "2026-11-27 09:11",
-   "steps": [
-    {
-     "label": "方向核准",
-     "state": "done"
-    },
-    {
-     "label": "素材挑選",
-     "state": "done"
-    },
-    {
-     "label": "聲音",
-     "state": "done"
-    },
-    {
-     "label": "畫面",
-     "state": "done"
-    },
-    {
-     "label": "標題與說明欄",
-     "state": "todo"
-    },
-    {
-     "label": "審稿",
-     "state": "todo"
-    },
-    {
-     "label": "成品檢查",
-     "state": "todo"
-    },
-    {
-     "label": "S老闆核准",
-     "state": "todo"
-    },
-    {
-     "label": "發佈",
-     "state": "todo"
-    }
-   ],
-   "done": 4,
-   "review": null,
-   "videos": 1,
-   "events": [
-    {
-     "id": "20261127094654-cc86",
-     "time": "2026-11-27 09:46",
-     "type": "handoff",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-27_墨爾本_白噪音咖啡廳1小時",
-     "summary": "咖啡廳 1 小時私人上傳，等S老闆試聽"
-    },
-    {
-     "id": "20261127092328-4156",
-     "time": "2026-11-27 09:23",
-     "type": "request",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-27_墨爾本_白噪音咖啡廳1小時",
-     "summary": "咖啡廳 1 小時影片做好，請S老闆拖檔上傳"
     }
    ]
   },
@@ -3652,6 +3574,86 @@
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v6b_music.mp4",
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
      ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-27_墨爾本_白噪音咖啡廳1小時",
+   "status": "已發佈",
+   "current": "設為公開（處理完自動公開）",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-27 09:11",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "done"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "done"
+    },
+    {
+     "label": "發佈",
+     "state": "done"
+    }
+   ],
+   "done": 7,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261127095745-fe5b",
+     "time": "2026-11-27 09:57",
+     "type": "approval",
+     "by": "owner",
+     "project": "2026-11-27_墨爾本_白噪音咖啡廳1小時",
+     "summary": "S老闆說發布，咖啡廳 1 小時設為公開"
+    },
+    {
+     "id": "20261127094654-cc86",
+     "time": "2026-11-27 09:46",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-27_墨爾本_白噪音咖啡廳1小時",
+     "summary": "咖啡廳 1 小時私人上傳，等S老闆試聽"
+    },
+    {
+     "id": "20261127092328-4156",
+     "time": "2026-11-27 09:23",
+     "type": "request",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-27_墨爾本_白噪音咖啡廳1小時",
+     "summary": "咖啡廳 1 小時影片做好，請S老闆拖檔上傳"
     }
    ]
   },
