@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27 10:09",
+ "generated": "2026-11-27 21:53",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 80,
+   "count": 81,
    "project": null,
    "last": {
-    "time": "2026-11-27 09:46",
-    "summary": "咖啡廳 1 小時私人上傳，等S老闆試聽"
+    "time": "2026-11-27 21:53",
+    "summary": "墨爾本夜景 1 小時影片做好，請S老闆拖檔上傳"
    }
   },
   {
@@ -101,14 +101,14 @@
    "id": "engineer",
    "name": "工程師",
    "role": "其他部門：APP 開發團隊",
-   "state": "working",
+   "state": "idle",
    "count": 4,
    "count_label": "個單位",
    "project": null,
    "units": [
     {
      "name": "跑步錶面部",
-     "time": "2026-11-27 10:04"
+     "time": "2026-11-27 10:38"
     },
     {
      "name": "記帳 APP",
@@ -125,12 +125,21 @@
    ],
    "dept": true,
    "last": {
-    "time": "2026-11-27 10:04",
+    "time": "2026-11-27 10:38",
     "summary": "最近在做：跑步錶面部"
    }
   }
  ],
  "pending": [
+  {
+   "id": "20261127215311-c684",
+   "time": "2026-11-27 21:53",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+   "summary": "墨爾本夜景 1 小時影片做好，請S老闆拖檔上傳"
+  },
   {
    "id": "20261127092328-4156",
    "time": "2026-11-27 09:23",
@@ -447,6 +456,15 @@
   }
  ],
  "events": [
+  {
+   "id": "20261127215311-c684",
+   "time": "2026-11-27 21:53",
+   "type": "request",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+   "summary": "墨爾本夜景 1 小時影片做好，請S老闆拖檔上傳"
+  },
   {
    "id": "20261127100537-b346",
    "time": "2026-11-27 10:05",
@@ -2485,15 +2503,6 @@
    "by": "editor",
    "project": "2026-11-18_墨爾本_往右轉",
    "summary": "照 v2 分鏡粗剪 5 顆，15.4 秒"
-  },
-  {
-   "id": "20261118144605-281d",
-   "time": "2026-11-18 14:46",
-   "type": "resolve",
-   "by": "owner",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "ref": "20261118123828-4689",
-   "summary": "先用現有素材做；橋下有一點往前但可以；店員和海報先不模糊，看成品再說；結尾照現在試；壁畫可以用"
   }
  ],
  "projects": [
@@ -2707,6 +2716,69 @@
       "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2_540.mp4",
       "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
      ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-27_墨爾本_白噪音夜景1小時",
+   "status": "製作中",
+   "current": "影片做好，等S老闆拖檔上傳",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-27 21:46",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "todo"
+    },
+    {
+     "label": "審稿",
+     "state": "todo"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "todo"
+    },
+    {
+     "label": "發佈",
+     "state": "todo"
+    }
+   ],
+   "done": 4,
+   "review": null,
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261127215311-c684",
+     "time": "2026-11-27 21:53",
+     "type": "request",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+     "summary": "墨爾本夜景 1 小時影片做好，請S老闆拖檔上傳"
     }
    ]
   },
@@ -4071,7 +4143,7 @@
  "spend": {
   "gemini_month_usd": 2.2252,
   "gemini_total_usd": 2.2252,
-  "gemini_runs": 229,
+  "gemini_runs": 236,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -4125,6 +4197,55 @@
    "audio": 0.1704
   },
   "recent": [
+   {
+    "time": "2026-11-27 20:26",
+    "mode": "audio",
+    "source": "fs36736.ogg",
+    "seconds": "313.9",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-27 20:25",
+    "mode": "audio",
+    "source": "fs209972.ogg",
+    "seconds": "317.5",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-27 20:24",
+    "mode": "audio",
+    "source": "fs396773.ogg",
+    "seconds": "344.3",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-27 20:24",
+    "mode": "audio",
+    "source": "fs620683.ogg",
+    "seconds": "580.6",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-27 20:23",
+    "mode": "audio",
+    "source": "fs129679.ogg",
+    "seconds": "356.2",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-27 20:22",
+    "mode": "audio",
+    "source": "fs590763.ogg",
+    "seconds": "512.8",
+    "usd": 0.0
+   },
+   {
+    "time": "2026-11-27 20:21",
+    "mode": "audio",
+    "source": "fs270881.ogg",
+    "seconds": "828.4",
+    "usd": 0.0
+   },
    {
     "time": "2026-11-27 01:18",
     "mode": "audio",
@@ -4180,55 +4301,6 @@
     "source": "fs422052.ogg",
     "seconds": "500.8",
     "usd": 0.0
-   },
-   {
-    "time": "2026-11-26 22:35",
-    "mode": "audio",
-    "source": "fs614204.ogg",
-    "seconds": "287.7",
-    "usd": 0.0
-   },
-   {
-    "time": "2026-11-26 22:33",
-    "mode": "audio",
-    "source": "fs214993.ogg",
-    "seconds": "301.7",
-    "usd": 0.0
-   },
-   {
-    "time": "2026-11-25 12:28",
-    "mode": "audio",
-    "source": "night_city_test_3min.m4a",
-    "seconds": "180.0",
-    "usd": 0.0132
-   },
-   {
-    "time": "2026-11-25 12:23",
-    "mode": "audio",
-    "source": "night_city_test_3min.m4a",
-    "seconds": "180.0",
-    "usd": 0.0138
-   },
-   {
-    "time": "2026-11-23 10:33",
-    "mode": "reference",
-    "source": "xhs_BeachUncle_森林秘境.mov",
-    "seconds": "33.3",
-    "usd": 0.0101
-   },
-   {
-    "time": "2026-11-23 08:36",
-    "mode": "output",
-    "source": "ig_reels_9x16_v3_sound.mp4",
-    "seconds": "22.1",
-    "usd": 0.0178
-   },
-   {
-    "time": "2026-11-23 08:27",
-    "mode": "output",
-    "source": "ig_reels_9x16_v3.mp4",
-    "seconds": "22.1",
-    "usd": 0.0334
    }
   ],
   "note": "Gemini 費用為程式依單價估算；Claude 用量包含在訂閱方案內，未列入。"
