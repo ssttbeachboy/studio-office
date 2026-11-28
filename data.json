@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28 16:07",
+ "generated": "2026-11-28 16:11",
  "members": [
   {
    "id": "manager",
@@ -51,11 +51,11 @@
    "name": "審稿員",
    "role": "只挑 AI 感",
    "state": "idle",
-   "count": 31,
+   "count": 33,
    "project": null,
    "last": {
-    "time": "2026-11-27 00:11",
-    "summary": "Rain in an Okinawa Village 標題說明第 1 輪通過（2 條存疑）"
+    "time": "2026-11-28 16:11",
+    "summary": "夜景標題說明第 1 輪通過，2 條存疑"
    }
   },
   {
@@ -456,6 +456,34 @@
   }
  ],
  "events": [
+  {
+   "id": "20261128161138-6477",
+   "time": "2026-11-28 16:11",
+   "type": "approval",
+   "by": "owner",
+   "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+   "summary": "S老闆說發布，已公開"
+  },
+  {
+   "id": "20261128161138-47a8",
+   "time": "2026-11-28 16:11",
+   "type": "handoff",
+   "by": "reviewer",
+   "to": "owner",
+   "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+   "summary": "夜景標題說明第 1 輪通過，2 條存疑",
+   "files": [
+    "03_output/2026-11-27_墨爾本_白噪音夜景1小時/review.md"
+   ]
+  },
+  {
+   "id": "20261128161005-4916",
+   "time": "2026-11-28 16:10",
+   "type": "start",
+   "by": "reviewer",
+   "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+   "summary": "審夜景 1 小時 YouTube 標題說明"
+  },
   {
    "id": "20261128160724-5aaa",
    "time": "2026-11-28 16:07",
@@ -2470,36 +2498,6 @@
     "C 市場裡拿咖啡",
     "D 按過馬路按鈕"
    ]
-  },
-  {
-   "id": "20261118152445-bb3f",
-   "time": "2026-11-18 15:24",
-   "type": "handoff",
-   "by": "manager",
-   "to": "owner",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "v3 結尾候選 4 個：A 手上的 Padre 咖啡（推薦）、B 店員遞咖啡再接 A、C 市場裡拿 Padre 杯、D 按過馬路按鈕",
-   "files": [
-    "02_plans/提案_往右轉_v2_2026-11-18.md",
-    "_frames/03_output/2026-11-18_墨爾本_往右轉/v3_end/"
-   ]
-  },
-  {
-   "id": "20261118151709-80c4",
-   "time": "2026-11-18 15:17",
-   "type": "start",
-   "by": "manager",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "保留前三顆，找新的結尾：轉到最後要看到一個東西，換掉冰淇淋和橋下兩顆"
-  },
-  {
-   "id": "20261118151709-401a",
-   "time": "2026-11-18 15:17",
-   "type": "resolve",
-   "by": "owner",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "ref": "20261118145237-4c41",
-   "summary": "國外短暫入鏡的車牌、路人、店員不用處理；前三顆順，後兩顆頓、接不上、雨不明顯，結尾沒有特殊感；可能少配樂所以乾"
   }
  ],
  "projects": [
@@ -2713,87 +2711,6 @@
       "03_output/2026-11-19_墨爾本_手伸出去/video/hands_v2_540.mp4",
       "03_output/2026-11-19_墨爾本_手伸出去/copy.md"
      ]
-    }
-   ]
-  },
-  {
-   "name": "2026-11-27_墨爾本_白噪音夜景1小時",
-   "status": "製作中",
-   "current": "已私人上傳（uhdrIG0qflw），等S老闆看過說「發布」",
-   "owner": "owner",
-   "kind": "YouTube 長版",
-   "platforms": [
-    "YouTube"
-   ],
-   "updated": "2026-11-28 16:30",
-   "steps": [
-    {
-     "label": "方向核准",
-     "state": "done"
-    },
-    {
-     "label": "素材挑選",
-     "state": "done"
-    },
-    {
-     "label": "聲音",
-     "state": "done"
-    },
-    {
-     "label": "畫面",
-     "state": "done"
-    },
-    {
-     "label": "標題與說明欄",
-     "state": "done"
-    },
-    {
-     "label": "審稿",
-     "state": "todo"
-    },
-    {
-     "label": "成品檢查",
-     "state": "todo"
-    },
-    {
-     "label": "S老闆核准",
-     "state": "todo"
-    },
-    {
-     "label": "發佈",
-     "state": "todo"
-    }
-   ],
-   "done": 5,
-   "review": null,
-   "videos": 1,
-   "events": [
-    {
-     "id": "20261128160724-5aaa",
-     "time": "2026-11-28 16:07",
-     "type": "handoff",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-27_墨爾本_白噪音夜景1小時",
-     "summary": "夜景片照今泊格式改標題說明（深夜、South Wharf），仍是私人"
-    },
-    {
-     "id": "20261128160016-36cb",
-     "time": "2026-11-28 16:00",
-     "type": "handoff",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-27_墨爾本_白噪音夜景1小時",
-     "summary": "墨爾本夜景 1 小時已私人上傳 YouTube，等S老闆看過再決定公開"
-    },
-    {
-     "id": "20261127215311-c684",
-     "time": "2026-11-27 21:53",
-     "type": "request",
-     "by": "main",
-     "to": "owner",
-     "project": "2026-11-27_墨爾本_白噪音夜景1小時",
-     "summary": "墨爾本夜景 1 小時影片做好，請S老闆拖檔上傳"
     }
    ]
   },
@@ -3657,6 +3574,100 @@
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/video/ep01_C_v6b_music.mp4",
       "03_output/2026-11-15_墨爾本_早上的墨爾本01/sound_log.md"
      ]
+    }
+   ]
+  },
+  {
+   "name": "2026-11-27_墨爾本_白噪音夜景1小時",
+   "status": "已發佈",
+   "current": "已公開",
+   "owner": "owner",
+   "kind": "YouTube 長版",
+   "platforms": [
+    "YouTube"
+   ],
+   "updated": "2026-11-28 16:20",
+   "steps": [
+    {
+     "label": "方向核准",
+     "state": "done"
+    },
+    {
+     "label": "素材挑選",
+     "state": "done"
+    },
+    {
+     "label": "聲音",
+     "state": "done"
+    },
+    {
+     "label": "畫面",
+     "state": "done"
+    },
+    {
+     "label": "標題與說明欄",
+     "state": "done"
+    },
+    {
+     "label": "審稿（第 1 輪・通過）",
+     "state": "done"
+    },
+    {
+     "label": "成品檢查",
+     "state": "todo"
+    },
+    {
+     "label": "S老闆核准",
+     "state": "done"
+    },
+    {
+     "label": "發佈",
+     "state": "done"
+    }
+   ],
+   "done": 8,
+   "review": {
+    "round": 1,
+    "result": "通過"
+   },
+   "videos": 1,
+   "events": [
+    {
+     "id": "20261128161138-6477",
+     "time": "2026-11-28 16:11",
+     "type": "approval",
+     "by": "owner",
+     "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+     "summary": "S老闆說發布，已公開"
+    },
+    {
+     "id": "20261128161138-47a8",
+     "time": "2026-11-28 16:11",
+     "type": "handoff",
+     "by": "reviewer",
+     "to": "owner",
+     "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+     "summary": "夜景標題說明第 1 輪通過，2 條存疑",
+     "files": [
+      "03_output/2026-11-27_墨爾本_白噪音夜景1小時/review.md"
+     ]
+    },
+    {
+     "id": "20261128161005-4916",
+     "time": "2026-11-28 16:10",
+     "type": "start",
+     "by": "reviewer",
+     "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+     "summary": "審夜景 1 小時 YouTube 標題說明"
+    },
+    {
+     "id": "20261128160724-5aaa",
+     "time": "2026-11-28 16:07",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+     "summary": "夜景片照今泊格式改標題說明（深夜、South Wharf），仍是私人"
     }
    ]
   },
