@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28 16:11",
+ "generated": "2026-11-28 16:52",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 83,
+   "count": 84,
    "project": null,
    "last": {
-    "time": "2026-11-28 16:07",
-    "summary": "夜景片照今泊格式改標題說明（深夜、South Wharf），仍是私人"
+    "time": "2026-11-28 16:52",
+    "summary": "櫻桃鴨素材盤點完成：10 支，無清楚喀啦聲，有握壽司製作過程；缺骨煲與收尾"
    }
   },
   {
@@ -456,6 +456,18 @@
   }
  ],
  "events": [
+  {
+   "id": "20261128165207-36aa",
+   "time": "2026-11-28 16:52",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-24_宜蘭_一隻鴨變三道",
+   "summary": "櫻桃鴨素材盤點完成：10 支，無清楚喀啦聲，有握壽司製作過程；缺骨煲與收尾",
+   "files": [
+    "03_output/2026-11-24_宜蘭_一隻鴨變三道/footage_notes.md"
+   ]
+  },
   {
    "id": "20261128161138-6477",
    "time": "2026-11-28 16:11",
@@ -2484,20 +2496,6 @@
    "project": "2026-11-18_墨爾本_往右轉",
    "ref": "20261118152445-a885",
    "summary": "結尾用咖啡；河不知道代表什麼要換；找電車鏡頭；麵包櫃是反方向，看能不能技術處理放進咖啡店段"
-  },
-  {
-   "id": "20261118152445-a885",
-   "time": "2026-11-18 15:24",
-   "type": "decision",
-   "by": "manager",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "往右轉結尾選哪一個",
-   "options": [
-    "A 手上的咖啡",
-    "B 遞咖啡＋手上的咖啡",
-    "C 市場裡拿咖啡",
-    "D 按過馬路按鈕"
-   ]
   }
  ],
  "projects": [
@@ -2717,13 +2715,13 @@
   {
    "name": "2026-11-24_宜蘭_一隻鴨變三道",
    "status": "製作中",
-   "current": "今天 11/27 週五下午現場拍攝",
+   "current": "素材盤點完成，等你決定要不要改分鏡",
    "owner": "owner",
    "kind": "短影音",
    "platforms": [
     "IG"
    ],
-   "updated": "2026-11-27 01:14",
+   "updated": "2026-11-28 17:10",
    "steps": [
     {
      "label": "方向核准",
@@ -2767,6 +2765,18 @@
    "videos": 0,
    "events": [
     {
+     "id": "20261128165207-36aa",
+     "time": "2026-11-28 16:52",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-24_宜蘭_一隻鴨變三道",
+     "summary": "櫻桃鴨素材盤點完成：10 支，無清楚喀啦聲，有握壽司製作過程；缺骨煲與收尾",
+     "files": [
+      "03_output/2026-11-24_宜蘭_一隻鴨變三道/footage_notes.md"
+     ]
+    },
+    {
      "id": "20261127011441-91c5",
      "time": "2026-11-27 01:14",
      "type": "resolve",
@@ -2800,14 +2810,6 @@
       "03_output/2026-11-24_宜蘭_一隻鴨變三道/copy.md",
       "02_plans/宜蘭_拍攝清單.html"
      ]
-    },
-    {
-     "id": "20261127005335-adf0",
-     "time": "2026-11-27 00:53",
-     "type": "start",
-     "by": "manager",
-     "project": "2026-11-24_宜蘭_一隻鴨變三道",
-     "summary": "改主線為切片＋握壽司，英文字幕給外國人，定稿腳本與拍攝清單（明天拍）"
     }
    ]
   },
@@ -4167,9 +4169,9 @@
   "已發佈"
  ],
  "spend": {
-  "gemini_month_usd": 2.2252,
-  "gemini_total_usd": 2.2252,
-  "gemini_runs": 236,
+  "gemini_month_usd": 2.2797,
+  "gemini_total_usd": 2.2797,
+  "gemini_runs": 243,
   "by_day": [
    {
     "day": "2026-11-16",
@@ -4214,15 +4216,68 @@
    {
     "day": "2026-11-27",
     "usd": 0.0
+   },
+   {
+    "day": "2026-11-28",
+    "usd": 0.0545
    }
   ],
   "by_mode": {
    "reference": 0.1691,
-   "footage": 1.3694,
+   "footage": 1.4239,
    "output": 0.5163,
    "audio": 0.1704
   },
   "recent": [
+   {
+    "time": "2026-11-28 16:51",
+    "mode": "footage",
+    "source": "IMG_7583.MOV",
+    "seconds": "43.9",
+    "usd": 0.0086
+   },
+   {
+    "time": "2026-11-28 16:48",
+    "mode": "footage",
+    "source": "IMG_7586.MOV",
+    "seconds": "31.5",
+    "usd": 0.0104
+   },
+   {
+    "time": "2026-11-28 16:46",
+    "mode": "footage",
+    "source": "IMG_7582.mov",
+    "seconds": "25.5",
+    "usd": 0.01
+   },
+   {
+    "time": "2026-11-28 16:42",
+    "mode": "footage",
+    "source": "IMG_7589.MOV",
+    "seconds": "9.3",
+    "usd": 0.0065
+   },
+   {
+    "time": "2026-11-28 16:37",
+    "mode": "footage",
+    "source": "IMG_7588.mov",
+    "seconds": "14.1",
+    "usd": 0.0063
+   },
+   {
+    "time": "2026-11-28 16:33",
+    "mode": "footage",
+    "source": "IMG_7587.MOV",
+    "seconds": "2.4",
+    "usd": 0.0053
+   },
+   {
+    "time": "2026-11-28 16:27",
+    "mode": "footage",
+    "source": "IMG_7584.MOV",
+    "seconds": "9.9",
+    "usd": 0.0074
+   },
    {
     "time": "2026-11-27 20:26",
     "mode": "audio",
@@ -4277,55 +4332,6 @@
     "mode": "audio",
     "source": "fs117578.ogg",
     "seconds": "654.0",
-    "usd": 0.0
-   },
-   {
-    "time": "2026-11-27 01:16",
-    "mode": "audio",
-    "source": "fs190941.ogg",
-    "seconds": "1080.0",
-    "usd": 0.0
-   },
-   {
-    "time": "2026-11-27 01:15",
-    "mode": "audio",
-    "source": "fs562863.ogg",
-    "seconds": "900.0",
-    "usd": 0.0
-   },
-   {
-    "time": "2026-11-27 01:10",
-    "mode": "audio",
-    "source": "fs233281.ogg",
-    "seconds": "720.5",
-    "usd": 0.0
-   },
-   {
-    "time": "2026-11-27 01:07",
-    "mode": "audio",
-    "source": "fs717748.ogg",
-    "seconds": "960.1",
-    "usd": 0.0
-   },
-   {
-    "time": "2026-11-26 22:39",
-    "mode": "audio",
-    "source": "fs422097.ogg",
-    "seconds": "600.7",
-    "usd": 0.0
-   },
-   {
-    "time": "2026-11-26 22:37",
-    "mode": "audio",
-    "source": "fs640648.ogg",
-    "seconds": "272.5",
-    "usd": 0.0
-   },
-   {
-    "time": "2026-11-26 22:36",
-    "mode": "audio",
-    "source": "fs422052.ogg",
-    "seconds": "500.8",
     "usd": 0.0
    }
   ],
