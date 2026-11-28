@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27 21:53",
+ "generated": "2026-11-28 16:00",
  "members": [
   {
    "id": "manager",
@@ -75,11 +75,11 @@
    "name": "Claude 助理",
    "role": "你在 App 裡對話的對象：派工、傳話、把問題帶給你",
    "state": "idle",
-   "count": 81,
+   "count": 82,
    "project": null,
    "last": {
-    "time": "2026-11-27 21:53",
-    "summary": "墨爾本夜景 1 小時影片做好，請S老闆拖檔上傳"
+    "time": "2026-11-28 16:00",
+    "summary": "墨爾本夜景 1 小時已私人上傳 YouTube，等S老闆看過再決定公開"
    }
   },
   {
@@ -101,14 +101,14 @@
    "id": "engineer",
    "name": "工程師",
    "role": "其他部門：APP 開發團隊",
-   "state": "idle",
+   "state": "working",
    "count": 4,
    "count_label": "個單位",
    "project": null,
    "units": [
     {
      "name": "跑步錶面部",
-     "time": "2026-11-27 10:38"
+     "time": "2026-11-28 13:57"
     },
     {
      "name": "記帳 APP",
@@ -125,7 +125,7 @@
    ],
    "dept": true,
    "last": {
-    "time": "2026-11-27 10:38",
+    "time": "2026-11-28 13:57",
     "summary": "最近在做：跑步錶面部"
    }
   }
@@ -456,6 +456,15 @@
   }
  ],
  "events": [
+  {
+   "id": "20261128160016-36cb",
+   "time": "2026-11-28 16:00",
+   "type": "handoff",
+   "by": "main",
+   "to": "owner",
+   "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+   "summary": "墨爾本夜景 1 小時已私人上傳 YouTube，等S老闆看過再決定公開"
+  },
   {
    "id": "20261127215311-c684",
    "time": "2026-11-27 21:53",
@@ -2495,14 +2504,6 @@
     "03_output/2026-11-18_墨爾本_往右轉/video/rtr_v2.mp4",
     "03_output/2026-11-18_墨爾本_往右轉/edit_log.md"
    ]
-  },
-  {
-   "id": "20261118144605-7a70",
-   "time": "2026-11-18 14:46",
-   "type": "start",
-   "by": "editor",
-   "project": "2026-11-18_墨爾本_往右轉",
-   "summary": "照 v2 分鏡粗剪 5 顆，15.4 秒"
   }
  ],
  "projects": [
@@ -2722,13 +2723,13 @@
   {
    "name": "2026-11-27_墨爾本_白噪音夜景1小時",
    "status": "製作中",
-   "current": "影片做好，等S老闆拖檔上傳",
+   "current": "已私人上傳（uhdrIG0qflw），等S老闆看過說「發布」",
    "owner": "owner",
    "kind": "YouTube 長版",
    "platforms": [
     "YouTube"
    ],
-   "updated": "2026-11-27 21:46",
+   "updated": "2026-11-28 16:10",
    "steps": [
     {
      "label": "方向核准",
@@ -2748,7 +2749,7 @@
     },
     {
      "label": "標題與說明欄",
-     "state": "todo"
+     "state": "done"
     },
     {
      "label": "審稿",
@@ -2767,10 +2768,19 @@
      "state": "todo"
     }
    ],
-   "done": 4,
+   "done": 5,
    "review": null,
    "videos": 1,
    "events": [
+    {
+     "id": "20261128160016-36cb",
+     "time": "2026-11-28 16:00",
+     "type": "handoff",
+     "by": "main",
+     "to": "owner",
+     "project": "2026-11-27_墨爾本_白噪音夜景1小時",
+     "summary": "墨爾本夜景 1 小時已私人上傳 YouTube，等S老闆看過再決定公開"
+    },
     {
      "id": "20261127215311-c684",
      "time": "2026-11-27 21:53",
